@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Earth Glow Essential — Moor Mud Mask 3D Experience</title>
 
-  <!-- Google Fonts: Editorial luxury serif + sleek technical sans -->
+  <!-- Google Fonts: Luxury Editorial Serif & Tech Grotesque -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -17,7 +17,7 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Three.js (3D engine) -->
+  <!-- Three.js (3D WebGL Engine) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <script>
@@ -25,29 +25,32 @@
       theme: {
         extend: {
           colors: {
-            clay: {
-              950: '#0b0c0e',
-              900: '#121417',
-              850: '#181b20',
-              800: '#22262e',
-              700: '#343b47',
-              400: '#7e8a9d',
-              100: '#f1ede4',
-              50: '#faf8f5',
+            obsidian: {
+              950: '#070706',
+              900: '#0d0d0c',
+              850: '#131311',
+              800: '#1b1a17',
+              700: '#2a2823',
+              600: '#3e3b34',
             },
             amberGold: {
-              400: '#e5b869',
-              500: '#d4a34b',
-              600: '#b8862f',
-              700: '#8a621c',
+              300: '#fae3a2',
+              400: '#e5c06e',
+              500: '#d4af37',
+              600: '#b89228',
             },
-            botanical: {
-              400: '#7aa37b',
-              500: '#4e7a50',
+            peatClay: {
+              100: '#f6f4f0',
+              200: '#e8e4dc',
+              400: '#9e998e',
+            },
+            botanicalGreen: {
+              400: '#6ea874',
+              500: '#4a7c50',
             }
           },
           fontFamily: {
-            serif: ['Cinzel', 'serif'],
+            serif: ['Cinzel', 'Georgia', 'serif'],
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
             mono: ['"Space Grotesk"', 'monospace'],
           }
@@ -57,793 +60,666 @@
   </script>
 
   <style>
-    /* Custom scrollbar */
+    /* Sleek Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 6px;
+      width: 5px;
     }
     ::-webkit-scrollbar-track {
-      background: #0b0c0e;
+      background: #070706;
     }
     ::-webkit-scrollbar-thumb {
-      background: #343b47;
+      background: #2a2823;
       border-radius: 9999px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #d4a34b;
+      background: #d4af37;
     }
 
-    /* Kinetic background text styling */
+    /* Kinetic Background Typography Inspired by the Video */
     .kinetic-outline {
-      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.08);
+      -webkit-text-stroke: 1.5px rgba(212, 175, 55, 0.14);
       color: transparent;
       user-select: none;
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
     }
-    .kinetic-outline-gold {
-      -webkit-text-stroke: 1px rgba(212, 163, 75, 0.2);
-      color: transparent;
+    .kinetic-solid-glow {
+      color: rgba(255, 255, 255, 0.04);
+      text-shadow: 0 0 60px rgba(212, 175, 55, 0.15);
+      user-select: none;
+      pointer-events: none;
     }
 
-    /* Glassmorphism panels */
+    /* Luxury Glassmorphism Surfaces */
+    .glass-hud {
+      background: rgba(13, 13, 12, 0.82);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(212, 175, 55, 0.22);
+    }
     .glass-card {
-      background: rgba(18, 20, 23, 0.72);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(20, 19, 17, 0.74);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .glass-card-amber {
-      background: rgba(26, 21, 14, 0.78);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(212, 163, 75, 0.25);
+    .glass-card:hover {
+      border-color: rgba(212, 175, 55, 0.4);
     }
 
-    /* Pulse animation for 3D hotspots */
-    @keyframes ping-slow {
-      0% { transform: scale(0.95); opacity: 0.9; }
-      50% { transform: scale(1.6); opacity: 0.15; }
-      100% { transform: scale(0.95); opacity: 0.9; }
+    /* Pulsing 3D Hotspot Coordinates */
+    @keyframes pulse-ring {
+      0% { transform: scale(0.9); opacity: 0.95; }
+      50% { transform: scale(1.6); opacity: 0.2; }
+      100% { transform: scale(0.9); opacity: 0.95; }
     }
-    .animate-ping-slow {
-      animation: ping-slow 2.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
-    }
-
-    /* Ambient noise overlay */
-    .noise-bg {
-      background-image: radial-gradient(circle at 50% 50%, rgba(212, 163, 75, 0.03) 0%, transparent 80%);
-    }
-
-    /* Range slider custom styling */
-    input[type=range] {
-      accent-color: #d4a34b;
+    .ring-pulse {
+      animation: pulse-ring 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
   </style>
 </head>
 
-<body class="bg-clay-950 text-clay-100 font-sans antialiased overflow-x-hidden selection:bg-amberGold-500 selection:text-clay-950">
+<body class="bg-obsidian-950 text-peatClay-100 font-sans antialiased overflow-x-hidden selection:bg-amberGold-500 selection:text-obsidian-950">
 
-  <!-- Ambient Sound Generator Notification Pill -->
-  <div id="sound-toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 glass-card px-4 py-2 rounded-full border border-amberGold-500/30 text-xs font-mono text-amberGold-400 opacity-0 pointer-events-none transition-all duration-300 flex items-center space-x-2">
-    <i data-lucide="volume-2" class="w-3.5 h-3.5 text-amberGold-400"></i>
-    <span id="sound-toast-text">Zen Spa Audio Activated</span>
+  <!-- ======================================================== -->
+  <!-- AUDIO TOAST NOTIFICATION                                 -->
+  <!-- ======================================================== -->
+  <div id="sound-toast" class="fixed top-24 left-1/2 -translate-x-1/2 z-50 glass-hud px-4 py-2 rounded-full text-xs font-mono text-amberGold-400 opacity-0 pointer-events-none transition-all duration-300 flex items-center space-x-2 shadow-2xl">
+    <i data-lucide="bell" class="w-3.5 h-3.5 text-amberGold-400"></i>
+    <span id="sound-toast-text">Zen Spa Soundscape Active</span>
   </div>
 
-  <!-- FIXED THREE.JS VIEWPORT CANVAS (Full screen background with interactive parallax & scroll sync) -->
+  <!-- ======================================================== -->
+  <!-- FIXED THREE.JS 3D CANVAS VIEWPORT                        -->
+  <!-- ======================================================== -->
   <div id="canvas-container" class="fixed inset-0 z-0 pointer-events-none">
     <canvas id="webgl-canvas" class="w-full h-full block"></canvas>
   </div>
 
-  <!-- FIXED 3D INTERACTIVE HOTSPOTS LAYER (Projected onto 3D jar coordinates) -->
+  <!-- ======================================================== -->
+  <!-- 3D ANNOTATION COORDINATE HOTSPOTS                        -->
+  <!-- ======================================================== -->
   <div id="hotspots-overlay" class="fixed inset-0 z-20 pointer-events-none overflow-hidden transition-opacity duration-500 opacity-0">
-    <!-- Hotspot 1: Mud Texture & Humic Acid -->
-    <div id="hotspot-mud" class="absolute pointer-events-auto transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group" style="top: 38%; left: 52%;">
+    <!-- Hotspot: Wet Moor Mud Peak -->
+    <div id="hotspot-mud" class="absolute pointer-events-auto transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group" style="top: 36%; left: 52%;">
       <div class="relative flex items-center justify-center">
-        <span class="absolute w-8 h-8 rounded-full bg-amberGold-400/30 animate-ping-slow"></span>
-        <span class="w-4 h-4 rounded-full bg-amberGold-500 border-2 border-white shadow-lg flex items-center justify-center">
-          <span class="w-1.5 h-1.5 rounded-full bg-clay-950"></span>
+        <span class="absolute w-8 h-8 rounded-full bg-amberGold-400/30 ring-pulse"></span>
+        <span class="w-4 h-4 rounded-full bg-amberGold-500 border-2 border-white shadow-xl flex items-center justify-center">
+          <span class="w-1.5 h-1.5 rounded-full bg-obsidian-950"></span>
         </span>
       </div>
-      <!-- Tooltip -->
-      <div class="absolute left-6 top-1/2 -translate-y-1/2 w-64 glass-card p-3 rounded-xl shadow-2xl border-l-2 border-l-amberGold-500 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none transform translate-x-2 group-hover:translate-x-0">
-        <span class="text-[10px] uppercase font-mono text-amberGold-400 tracking-wider">Surface Analysis</span>
-        <h4 class="font-serif text-sm font-bold text-white">Glistening Austrian Moor</h4>
-        <p class="text-xs text-clay-400 mt-1 leading-relaxed">Deep colloidal black peat silt with natural humic & fulvic matrices. Traps impurities without stripping dermal moisture.</p>
+      <div class="absolute left-6 top-1/2 -translate-y-1/2 w-64 glass-card p-3.5 rounded-xl border-l-2 border-l-amberGold-500 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none transform translate-x-2 group-hover:translate-x-0 shadow-2xl">
+        <span class="text-[9px] uppercase font-mono text-amberGold-400 tracking-widest">Heaped Peat Core</span>
+        <h4 class="font-serif text-xs font-bold text-white mt-0.5">Glistening Organic Mud Peaks</h4>
+        <p class="text-[11px] text-peatClay-400 mt-1 leading-relaxed">Whipped, rich black moor mud mounded high with natural thermal minerals and active humic polymers.</p>
       </div>
     </div>
 
-    <!-- Hotspot 2: Airtight Double-Seal Lid -->
-    <div id="hotspot-lid" class="absolute pointer-events-auto transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group" style="top: 25%; left: 64%;">
+    <!-- Hotspot: Tilted Tub Lid -->
+    <div id="hotspot-lid" class="absolute pointer-events-auto transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group" style="top: 48%; left: 66%;">
       <div class="relative flex items-center justify-center">
-        <span class="absolute w-8 h-8 rounded-full bg-clay-100/30 animate-ping-slow"></span>
-        <span class="w-4 h-4 rounded-full bg-white border-2 border-clay-900 shadow-lg flex items-center justify-center">
+        <span class="absolute w-8 h-8 rounded-full bg-white/20 ring-pulse"></span>
+        <span class="w-4 h-4 rounded-full bg-white border-2 border-obsidian-950 shadow-xl flex items-center justify-center">
           <span class="w-1.5 h-1.5 rounded-full bg-amberGold-500"></span>
         </span>
       </div>
-      <div class="absolute left-6 top-1/2 -translate-y-1/2 w-64 glass-card p-3 rounded-xl shadow-2xl border-l-2 border-l-white opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none transform translate-x-2 group-hover:translate-x-0">
-        <span class="text-[10px] uppercase font-mono text-clay-400 tracking-wider">Apothecary Seal</span>
-        <h4 class="font-serif text-sm font-bold text-white">Zero-Oxidation Preservation</h4>
-        <p class="text-xs text-clay-400 mt-1 leading-relaxed">Ribbed cosmetic lid protects fragile botanical minerals and maintains rich colloidal viscosity for 24 months.</p>
-      </div>
-    </div>
-
-    <!-- Hotspot 3: 1kg Pro Salon Jar Format -->
-    <div id="hotspot-label" class="absolute pointer-events-auto transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group" style="top: 60%; left: 45%;">
-      <div class="relative flex items-center justify-center">
-        <span class="absolute w-8 h-8 rounded-full bg-botanical-400/30 animate-ping-slow"></span>
-        <span class="w-4 h-4 rounded-full bg-botanical-400 border-2 border-white shadow-lg flex items-center justify-center">
-          <span class="w-1.5 h-1.5 rounded-full bg-clay-950"></span>
-        </span>
-      </div>
-      <div class="absolute right-6 top-1/2 -translate-y-1/2 w-64 glass-card p-3 rounded-xl shadow-2xl border-r-2 border-r-botanical-400 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none transform -translate-x-2 group-hover:translate-x-0 text-right">
-        <span class="text-[10px] uppercase font-mono text-botanical-400 tracking-wider">1 kg / 35.2 oz</span>
-        <h4 class="font-serif text-sm font-bold text-white">Full-Body Spa Vessel</h4>
-        <p class="text-xs text-clay-400 mt-1 leading-relaxed">Generous master tub providing 60+ full-facial treatments or 12 detoxifying thermal body wrap sessions.</p>
+      <div class="absolute left-6 top-1/2 -translate-y-1/2 w-60 glass-card p-3.5 rounded-xl border-l-2 border-l-white opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none transform translate-x-2 group-hover:translate-x-0 shadow-2xl">
+        <span class="text-[9px] uppercase font-mono text-peatClay-400 tracking-widest">Apothecary Seal</span>
+        <h4 class="font-serif text-xs font-bold text-white mt-0.5">Tilted Protective Lid</h4>
+        <p class="text-[11px] text-peatClay-400 mt-1 leading-relaxed">Preserves moisture saturation and living botanical enzymes without chemical parabens.</p>
       </div>
     </div>
   </div>
 
-  <!-- STICKY TOP NAVIGATION BAR -->
-  <header class="fixed top-0 left-0 w-full z-40 px-6 lg:px-12 py-5 flex items-center justify-between pointer-events-none">
-    <!-- Brand Logo -->
+  <!-- ======================================================== -->
+  <!-- NAVIGATION BAR (Fixed top)                               -->
+  <!-- ======================================================== -->
+  <header class="fixed top-0 left-0 w-full z-40 px-6 lg:px-12 py-4 flex items-center justify-between pointer-events-none">
+    <!-- Brand -->
     <a href="#hero" class="pointer-events-auto flex items-center space-x-3 group">
-      <div class="w-9 h-9 rounded-full border border-amberGold-500/40 flex items-center justify-center bg-clay-900/60 backdrop-blur-md group-hover:border-amberGold-400 transition-all">
-        <svg class="w-5 h-5 text-amberGold-400 group-hover:rotate-45 transition-transform duration-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <div class="w-8 h-8 rounded-full border border-amberGold-500/50 flex items-center justify-center bg-obsidian-900/90 backdrop-blur-md group-hover:border-amberGold-400 transition-colors">
+        <svg class="w-4 h-4 text-amberGold-400 group-hover:rotate-90 transition-transform duration-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
           <circle cx="12" cy="12" r="4"/>
           <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
         </svg>
       </div>
       <div>
-        <span class="font-serif text-lg tracking-[0.2em] font-bold text-white block leading-none">EARTH GLOW</span>
-        <span class="font-mono text-[9px] tracking-[0.3em] text-clay-400 block mt-0.5">ESSENTIAL • APOTHECARY</span>
+        <span class="font-serif text-base tracking-[0.25em] font-bold text-white block leading-none">EARTH GLOW</span>
+        <span class="font-mono text-[8px] tracking-[0.35em] text-amberGold-400 block mt-0.5">ESSENTIAL APOTHECARY</span>
       </div>
     </a>
 
-    <!-- Center Nav Links (Hidden on small mobile) -->
-    <nav class="hidden md:flex items-center space-x-1 glass-card px-5 py-2 rounded-full border border-white/10 pointer-events-auto">
-      <a href="#hero" class="text-xs font-mono tracking-wider px-3 py-1 text-clay-400 hover:text-amberGold-400 transition-colors">01. ORIGIN</a>
-      <span class="text-clay-700 text-xs">/</span>
-      <a href="#anatomy" class="text-xs font-mono tracking-wider px-3 py-1 text-clay-400 hover:text-amberGold-400 transition-colors">02. ANATOMY</a>
-      <span class="text-clay-700 text-xs">/</span>
-      <a href="#clinical" class="text-xs font-mono tracking-wider px-3 py-1 text-clay-400 hover:text-amberGold-400 transition-colors">03. CLINICAL</a>
-      <span class="text-clay-700 text-xs">/</span>
-      <a href="#specs" class="text-xs font-mono tracking-wider px-3 py-1 text-clay-400 hover:text-amberGold-400 transition-colors">04. SPECS</a>
-      <span class="text-clay-700 text-xs">/</span>
-      <a href="#ritual" class="text-xs font-mono tracking-wider px-3 py-1 text-clay-400 hover:text-amberGold-400 transition-colors">05. RITUAL</a>
+    <!-- Nav Links (Desktop) -->
+    <nav class="hidden md:flex items-center space-x-1 glass-card px-5 py-2 rounded-full pointer-events-auto border border-white/10 shadow-xl">
+      <a href="#hero" class="text-xs font-mono tracking-wider px-3 py-1 text-peatClay-400 hover:text-amberGold-400 transition-colors">01. ORIGIN</a>
+      <span class="text-obsidian-700 text-xs">/</span>
+      <a href="#mud-core" class="text-xs font-mono tracking-wider px-3 py-1 text-peatClay-400 hover:text-amberGold-400 transition-colors">02. DEEP MUD</a>
+      <span class="text-obsidian-700 text-xs">/</span>
+      <a href="#clinical" class="text-xs font-mono tracking-wider px-3 py-1 text-peatClay-400 hover:text-amberGold-400 transition-colors">03. CLINICAL</a>
+      <span class="text-obsidian-700 text-xs">/</span>
+      <a href="#specs" class="text-xs font-mono tracking-wider px-3 py-1 text-peatClay-400 hover:text-amberGold-400 transition-colors">04. TECH SPECS</a>
+      <span class="text-obsidian-700 text-xs">/</span>
+      <a href="#ritual" class="text-xs font-mono tracking-wider px-3 py-1 text-peatClay-400 hover:text-amberGold-400 transition-colors">05. RITUAL</a>
     </nav>
 
-    <!-- Utility Controls -->
+    <!-- Header Actions -->
     <div class="flex items-center space-x-3 pointer-events-auto">
-      <!-- Audio Toggle Button -->
-      <button id="audio-toggle-btn" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-clay-400 hover:text-amberGold-400 hover:border-amberGold-500/40 transition-all" title="Toggle Spa Soundscape">
+      <button id="audio-toggle-btn" class="w-9 h-9 rounded-full glass-card flex items-center justify-center text-peatClay-400 hover:text-amberGold-400 hover:border-amberGold-500/50 transition-all shadow-lg" title="Toggle Spa Audio">
         <i data-lucide="volume-x" id="audio-icon" class="w-4 h-4"></i>
       </button>
 
-      <!-- Cart Button with Slide-out Trigger -->
-      <button id="open-cart-btn" class="flex items-center space-x-2 px-4 py-2 rounded-full glass-card-amber hover:bg-amberGold-500 hover:text-clay-950 transition-all duration-300 font-mono text-xs tracking-wider text-amberGold-400">
-        <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+      <button id="open-cart-btn" class="flex items-center space-x-2 px-4 py-2 rounded-full glass-hud text-amberGold-400 hover:bg-amberGold-500 hover:text-obsidian-950 transition-all duration-300 font-mono text-xs tracking-wider shadow-lg">
+        <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
         <span class="font-bold">BAG</span>
-        <span id="nav-cart-count" class="w-4 h-4 rounded-full bg-amberGold-500 text-clay-950 text-[10px] font-bold flex items-center justify-center">1</span>
+        <span id="nav-cart-badge" class="w-4 h-4 rounded-full bg-amberGold-500 text-obsidian-950 text-[10px] font-bold flex items-center justify-center">1</span>
       </button>
     </div>
   </header>
 
-  <!-- FIXED FLOATING 3D CAMERA CONTROLLER HUD (Bottom center) -->
-  <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-30 pointer-events-auto">
-    <div class="glass-card px-2 py-1.5 rounded-full border border-white/10 shadow-2xl flex items-center space-x-1 sm:space-x-2">
-      <span class="font-mono text-[10px] uppercase text-clay-400 px-2 hidden sm:inline-block">3D CAM</span>
+  <!-- ======================================================== -->
+  <!-- FLOATING 3D VIEW CONTROLLER & JAR SCALER (Fixed Bottom)  -->
+  <!-- ======================================================== -->
+  <div class="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 pointer-events-auto w-[94%] max-w-3xl">
+    <div class="glass-hud p-2.5 rounded-2xl shadow-2xl border border-amberGold-500/30 flex flex-wrap items-center justify-between gap-2">
 
-      <button id="cam-btn-hero" class="cam-preset-btn px-3 py-1.5 rounded-full text-xs font-mono transition-all bg-amberGold-500 text-clay-950 font-semibold" data-preset="hero">
-        FRONT
-      </button>
+      <!-- Jar Scale Presets: Compact, Balanced, Focus -->
+      <div class="flex items-center space-x-1 bg-obsidian-900/90 p-1 rounded-xl border border-white/5">
+        <span class="text-[9px] font-mono uppercase text-peatClay-400 px-1.5 hidden sm:inline-block">JAR SCALE:</span>
+        <button id="scale-mini-btn" class="scale-btn px-2.5 py-1 rounded-lg text-xs font-mono transition-all text-peatClay-400 hover:text-white" data-scale="0.38">
+          MINI
+        </button>
+        <button id="scale-balanced-btn" class="scale-btn px-2.5 py-1 rounded-lg text-xs font-mono transition-all bg-amberGold-500 text-obsidian-950 font-bold" data-scale="0.48">
+          COMPACT
+        </button>
+        <button id="scale-focus-btn" class="scale-btn px-2.5 py-1 rounded-lg text-xs font-mono transition-all text-peatClay-400 hover:text-white" data-scale="0.65">
+          FOCUS
+        </button>
+      </div>
 
-      <button id="cam-btn-open" class="cam-preset-btn px-3 py-1.5 rounded-full text-xs font-mono text-clay-400 hover:text-white hover:bg-white/5 transition-all flex items-center space-x-1" data-preset="open">
-        <span>OPEN LID</span>
-        <span class="w-1.5 h-1.5 rounded-full bg-amberGold-400"></span>
-      </button>
+      <!-- Lid Position Controls -->
+      <div class="flex items-center space-x-1 bg-obsidian-900/90 p-1 rounded-xl border border-white/5">
+        <button id="lid-lean-btn" class="lid-state-btn px-2.5 py-1 rounded-lg text-xs font-mono bg-amberGold-500/20 text-amberGold-400 font-semibold transition-all" title="Lid Tilted Beside Jar (Photo Style)">
+          PHOTO LEAN
+        </button>
+        <button id="lid-seal-btn" class="lid-state-btn px-2.5 py-1 rounded-lg text-xs font-mono text-peatClay-400 hover:text-white transition-all" title="Seal Jar Closed">
+          SEAL
+        </button>
+        <button id="lid-hover-btn" class="lid-state-btn px-2.5 py-1 rounded-lg text-xs font-mono text-peatClay-400 hover:text-white transition-all" title="Levitate Lid Above">
+          FLOAT
+        </button>
+      </div>
 
-      <button id="cam-btn-top" class="cam-preset-btn px-3 py-1.5 rounded-full text-xs font-mono text-clay-400 hover:text-white hover:bg-white/5 transition-all" data-preset="top">
-        TEXTURE
-      </button>
+      <!-- Camera Angles & Orbit Switch -->
+      <div class="flex items-center space-x-1">
+        <button id="cam-front-btn" class="cam-nav-btn px-2.5 py-1 rounded-lg text-xs font-mono bg-white/5 hover:bg-white/10 text-white transition-all" title="Front View">
+          FRONT
+        </button>
+        <button id="cam-mud-macro-btn" class="cam-nav-btn px-2.5 py-1 rounded-lg text-xs font-mono bg-white/5 hover:bg-amberGold-500/20 text-amberGold-400 transition-all font-semibold" title="Macro Mud Surface Zoom">
+          MUD MACRO
+        </button>
+        <button id="cam-specs-btn" class="cam-nav-btn px-2.5 py-1 rounded-lg text-xs font-mono bg-white/5 hover:bg-white/10 text-white transition-all" title="Technical Specs Back View">
+          SPECS
+        </button>
+        <button id="orbit-toggle-btn" class="px-2.5 py-1 rounded-lg text-xs font-mono transition-all flex items-center space-x-1 text-peatClay-400 hover:text-amberGold-400 bg-white/5" title="Free 360° Drag">
+          <i data-lucide="orbit" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">360°</span>
+        </button>
+        <button id="autorotate-btn" class="w-7 h-7 rounded-lg text-xs font-mono bg-amberGold-500/20 text-amberGold-400 hover:bg-amberGold-500/30 flex items-center justify-center transition-all" title="Auto Rotate On/Off">
+          <i data-lucide="rotate-cw" id="rotate-icon" class="w-3.5 h-3.5 animate-spin"></i>
+        </button>
+      </div>
 
-      <button id="cam-btn-inspect" class="cam-preset-btn px-3 py-1.5 rounded-full text-xs font-mono text-clay-400 hover:text-white hover:bg-white/5 transition-all flex items-center space-x-1.5" data-preset="inspect">
-        <i data-lucide="orbit" class="w-3.5 h-3.5 text-amberGold-400"></i>
-        <span>360° DRAG</span>
-      </button>
     </div>
   </div>
 
-  <!-- INTERACTIVE LIGHTING PRESET PILL (Bottom right) -->
-  <div class="fixed bottom-6 right-6 z-30 hidden lg:flex items-center space-x-2 glass-card px-3 py-1.5 rounded-full border border-white/10 pointer-events-auto text-xs font-mono text-clay-400">
-    <span class="text-[10px] text-clay-500 uppercase">STUDIO:</span>
-    <button id="light-spa-btn" class="text-amberGold-400 hover:text-amberGold-300 transition-colors font-medium">SPA WARMTH</button>
-    <span class="text-clay-700">|</span>
-    <button id="light-dark-btn" class="hover:text-white transition-colors">OBSIDIAN</button>
-  </div>
-
   <!-- ======================================================== -->
-  <!-- MAIN SCROLL-DRIVEN EDITORIAL CONTENT SECTIONS            -->
+  <!-- SCROLLABLE PAGE CONTENT                                  -->
   <!-- ======================================================== -->
   <main class="relative z-10">
 
     <!-- ============================================ -->
-    <!-- SECTION 1: HERO (Cinematic 3D Jar Stage)    -->
+    <!-- SECTION 1: HERO VIEW                         -->
     <!-- ============================================ -->
-    <section id="hero" class="min-h-screen relative flex flex-col justify-between pt-28 pb-20 px-6 lg:px-16 overflow-hidden">
-      <!-- Kinetic oversized background text -->
+    <section id="hero" class="min-h-screen relative flex flex-col justify-between pt-24 pb-28 px-6 lg:px-16 overflow-hidden">
+      <!-- Kinetic oversized background typography -->
       <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-[-1] overflow-hidden">
         <div id="hero-kinetic-text" class="text-center transform transition-transform duration-300">
-          <div class="kinetic-outline text-[14vw] font-serif font-black tracking-tight leading-none uppercase opacity-40">
-            PURE EARTH
+          <div class="kinetic-outline text-[13vw] font-serif font-black tracking-tight leading-none uppercase">
+            AUSTRIAN
           </div>
-          <div class="kinetic-outline-gold text-[7vw] font-serif tracking-[0.25em] -mt-[2vw] uppercase opacity-60">
-            GLOW RESTORED
+          <div class="kinetic-solid-glow text-[11vw] font-serif font-extrabold tracking-[0.16em] -mt-[3vw] uppercase">
+            MOOR MUD
           </div>
         </div>
       </div>
 
-      <!-- Top badges -->
+      <!-- Top Badges Row -->
       <div class="w-full flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center space-x-2">
-          <span class="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-mono tracking-widest uppercase bg-amberGold-500/10 border border-amberGold-500/30 text-amberGold-400">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-amberGold-500/10 border border-amberGold-500/30 text-amberGold-400">
             <span class="w-1.5 h-1.5 rounded-full bg-amberGold-400 mr-2 animate-pulse"></span>
-            100% Raw Austrian Moor Mud
+            Filled with 100% Raw Moor Mud
           </span>
-          <span class="hidden sm:inline-flex px-3 py-1 rounded-full text-[11px] font-mono tracking-widest uppercase glass-card text-clay-400">
-            1000g / 35.2 oz Pro Tub
+          <span class="hidden sm:inline-flex px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase glass-card text-peatClay-400">
+            1 kg / 35.2 oz Salon Format
           </span>
         </div>
 
-        <div class="font-mono text-xs text-clay-400 flex items-center space-x-4">
-          <span class="flex items-center"><i data-lucide="shield-check" class="w-4 h-4 mr-1 text-botanical-400"></i> Dermatologist Tested</span>
-          <span class="flex items-center"><i data-lucide="sparkles" class="w-4 h-4 mr-1 text-amberGold-400"></i> Spa Master Grade</span>
+        <div class="font-mono text-xs text-peatClay-400 flex items-center space-x-3">
+          <span class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 mr-1 text-botanicalGreen-400"></i> Fresh Harvest</span>
+          <span class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 mr-1 text-amberGold-400"></i> Pure Peat Silt</span>
         </div>
       </div>
 
-      <!-- Hero Main Content / Purchase Card Split -->
-      <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mt-12 mb-8">
-        <!-- Left headline -->
-        <div class="lg:col-span-7">
-          <div class="inline-block mb-3 text-xs font-mono uppercase tracking-[0.3em] text-amberGold-400">
-            Bio-Colloidal Mineral Sanctuary
+      <!-- Hero Main Content Split -->
+      <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mt-8 mb-6">
+        <!-- Left Side: Editorial Details -->
+        <div class="lg:col-span-6 space-y-4">
+          <div class="inline-block text-[11px] font-mono uppercase tracking-[0.3em] text-amberGold-400">
+            BIOLOGICAL CELLULAR DETOX
           </div>
-          <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.05]">
-            Moor Mud <br>
-            <span class="italic font-normal text-amberGold-400">Transcendence.</span>
+          <h1 class="font-serif text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-[1.08]">
+            Earth Glow <br>
+            <span class="italic font-normal text-amberGold-400">Essential.</span>
           </h1>
-          <p class="mt-4 max-w-xl text-clay-400 text-sm sm:text-base leading-relaxed">
-            Formulated from deep pristine botanical silt undisturbed for millennia in Austrian peat reserves. 
-            Detoxifies pores, replenishes humic trace acids, and awakens your skin’s primordial radiance.
+          <p class="max-w-md text-peatClay-400 text-sm leading-relaxed">
+            Formulated from deep Austrian peat bogs. Pure jet-black colloidal moor mud packed with bio-active humic acids, thermal minerals, and natural micronutrients to purify pores and restore skin elasticity.
           </p>
 
-          <!-- Feature Bullets (From jar label in photo) -->
-          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-lg">
-            <div class="flex items-center space-x-2 text-xs font-mono text-clay-300">
-              <i data-lucide="check" class="w-3.5 h-3.5 text-amberGold-400 flex-shrink-0"></i>
-              <span>Detoxifies & purifies congested pores</span>
+          <!-- Label Checklist matching reference image -->
+          <div class="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono text-peatClay-200">
+            <div class="flex items-center space-x-2">
+              <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amberGold-400 flex-shrink-0"></i>
+              <span>Detoxifies & purifies pores</span>
             </div>
-            <div class="flex items-center space-x-2 text-xs font-mono text-clay-300">
-              <i data-lucide="check" class="w-3.5 h-3.5 text-amberGold-400 flex-shrink-0"></i>
-              <span>Rich in organic humic & fulvic acids</span>
+            <div class="flex items-center space-x-2">
+              <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amberGold-400 flex-shrink-0"></i>
+              <span>Rich in organic humic acids</span>
             </div>
-            <div class="flex items-center space-x-2 text-xs font-mono text-clay-300">
-              <i data-lucide="check" class="w-3.5 h-3.5 text-amberGold-400 flex-shrink-0"></i>
-              <span>Reduces fine lines & refines texture</span>
+            <div class="flex items-center space-x-2">
+              <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amberGold-400 flex-shrink-0"></i>
+              <span>Reduces fine lines & texture</span>
             </div>
-            <div class="flex items-center space-x-2 text-xs font-mono text-clay-300">
-              <i data-lucide="check" class="w-3.5 h-3.5 text-amberGold-400 flex-shrink-0"></i>
-              <span>Soothes & hydrates all skin types</span>
+            <div class="flex items-center space-x-2">
+              <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amberGold-400 flex-shrink-0"></i>
+              <span>100% natural Moor Mud filled</span>
             </div>
           </div>
         </div>
 
-        <!-- Right Buy Quick Card -->
-        <div class="lg:col-span-5 flex flex-col items-start lg:items-end">
-          <div class="glass-card p-6 sm:p-7 rounded-2xl w-full max-w-md border border-white/10 shadow-2xl space-y-5">
+        <!-- Right Side: Purchase Dock -->
+        <div class="lg:col-span-6 flex flex-col items-start lg:items-end">
+          <div class="glass-card p-6 rounded-2xl w-full max-w-sm border border-white/10 shadow-2xl space-y-4">
             <div class="flex items-start justify-between">
               <div>
-                <span class="text-[10px] font-mono tracking-widest text-clay-400 uppercase block">Salon Tub Master Size</span>
-                <h3 class="font-serif text-xl font-bold text-white">Earth Glow Moor Mud</h3>
+                <span class="text-[9px] font-mono tracking-widest text-peatClay-400 uppercase block">1000g Salon Master Tub</span>
+                <h3 class="font-serif text-lg font-bold text-white">Moor Mud Mask</h3>
               </div>
               <div class="text-right">
-                <span class="font-serif text-2xl sm:text-3xl font-bold text-amberGold-400">$64<span class="text-sm text-clay-400 font-normal">.00</span></span>
-                <span class="text-[10px] font-mono text-botanical-400 block">Free Spatula Included</span>
+                <span class="font-serif text-2xl font-bold text-amberGold-400">$68<span class="text-xs text-peatClay-400 font-normal">.00</span></span>
+                <span class="text-[9px] font-mono text-botanicalGreen-400 block">+ Free Bamboo Spatula</span>
               </div>
             </div>
 
-            <!-- Customer rating -->
-            <div class="flex items-center space-x-2 pt-1 border-t border-white/5">
+            <div class="flex items-center space-x-2 text-xs pt-1 border-t border-white/5">
               <div class="flex text-amberGold-400">
-                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
-                <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
               </div>
-              <span class="font-mono text-xs text-clay-300 font-semibold">5.0</span>
-              <span class="font-mono text-xs text-clay-500">(1,428 Verified Spa Reviews)</span>
+              <span class="font-mono text-white font-bold">4.96</span>
+              <span class="font-mono text-peatClay-400 text-[10px]">(1,840 Salon Reviews)</span>
             </div>
 
-            <!-- Primary CTAs -->
-            <div class="grid grid-cols-2 gap-3 pt-2">
-              <button id="hero-quick-add" class="w-full py-3.5 rounded-xl bg-amberGold-500 hover:bg-amberGold-400 text-clay-950 font-bold font-mono text-xs tracking-wider transition-all shadow-lg shadow-amberGold-500/20 flex items-center justify-center space-x-2">
-                <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-                <span>ACQUIRE TUB</span>
+            <!-- CTAs -->
+            <div class="grid grid-cols-2 gap-2 pt-1">
+              <button id="hero-buy-btn" class="w-full py-3 rounded-xl bg-amberGold-500 hover:bg-amberGold-400 text-obsidian-950 font-bold font-mono text-xs tracking-wider transition-all shadow-lg shadow-amberGold-500/20 flex items-center justify-center space-x-1.5">
+                <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+                <span>ORDER NOW</span>
               </button>
-
-              <button id="hero-open-lid-btn" class="w-full py-3.5 rounded-xl glass-card hover:bg-white/10 text-white font-mono text-xs tracking-wider transition-all border border-white/20 flex items-center justify-center space-x-2">
-                <i data-lucide="eye" class="w-4 h-4 text-amberGold-400"></i>
-                <span>PEEK INSIDE</span>
+              <button id="hero-macro-btn" class="w-full py-3 rounded-xl glass-hud hover:bg-white/10 text-white font-mono text-xs tracking-wider transition-all border border-white/10 flex items-center justify-center space-x-1.5">
+                <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-amberGold-400"></i>
+                <span>ZOOM MUD</span>
               </button>
             </div>
 
-            <!-- Perks badge line -->
-            <div class="flex items-center justify-between text-[10px] font-mono text-clay-400 pt-2 border-t border-white/5">
-              <span>✈ 2-Day Express Shipping</span>
-              <span>•</span>
-              <span>🌿 100% Pure Origin</span>
-              <span>•</span>
-              <span>↩ 30-Day Guarantee</span>
+            <div class="text-center pt-1 border-t border-white/5">
+              <span class="text-[10px] font-mono text-peatClay-400">Salzburg Heilmoor Certified • In Stock & Freshly Sealed</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Scroll prompt -->
-      <div class="w-full flex items-center justify-between text-clay-500 text-xs font-mono pt-4">
+      <!-- Scroll Hint -->
+      <div class="w-full flex items-center justify-between text-peatClay-400 text-xs font-mono pt-4">
         <div class="flex items-center space-x-2">
           <span class="w-2 h-2 rounded-full bg-amberGold-400 animate-ping"></span>
-          <span>INTERACTIVE 3D STAGE — DRAG OR SCROLL TO EXPLORE</span>
+          <span>FILLED WITH RICH JET-BLACK MOOR MUD • INTERACTIVE 3D</span>
         </div>
         <div class="flex items-center space-x-1 animate-bounce">
-          <span>SCROLL DOWN</span>
+          <span>SCROLL DOWN FOR MUD ANATOMY</span>
           <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
         </div>
       </div>
     </section>
 
     <!-- ============================================ -->
-    <!-- SECTION 2: ANATOMY & THE DETOX MECHANISM    -->
-    <!-- (Camera tilts down, lid lifts off in 3D)     -->
+    <!-- SECTION 2: DEEP MUD CORE & MACRO TEXTURE     -->
     <!-- ============================================ -->
-    <section id="anatomy" class="min-h-screen relative py-28 px-6 lg:px-16 flex flex-col justify-center">
-      <!-- Kinetic Section Header -->
-      <div class="max-w-xl mb-12">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-clay-900 border border-amberGold-500/30 text-amberGold-400 mb-3">
-          <span>02 / BIO-CHEMICAL ARCHITECTURE</span>
+    <section id="mud-core" class="min-h-screen relative py-28 px-6 lg:px-16 flex flex-col justify-center">
+      <div class="max-w-xl mb-10">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-obsidian-900 border border-amberGold-500/30 text-amberGold-400 mb-2">
+          <span>02 / BIO-CHEMICAL CORE</span>
         </div>
         <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
-          Uncapping the <br>
-          <span class="italic text-amberGold-400">Glistening Colloidal Core</span>
+          Glistening Black Peat, <br>
+          <span class="italic text-amberGold-400">Filled to the Brim</span>
         </h2>
-        <p class="mt-4 text-clay-400 text-sm sm:text-base leading-relaxed">
-          Hover over the glowing 3D nodes on the tub or use the interactive cards below to explore how centuries of alpine peat fermentation produce nature’s most potent dermal purifier.
+        <p class="mt-3 text-peatClay-400 text-sm leading-relaxed">
+          Unlike synthetic clay masks that dry chalky and strip your lipid barrier, our 100% natural moor mud features a rich, whipped, colloidal black texture that stays active and deeply nourishing throughout your treatment.
         </p>
       </div>
 
-      <!-- Feature cards grid (Floating to the side so 3D jar remains visible in center) -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl">
-        <!-- Card 1 -->
-        <div class="glass-card p-6 rounded-2xl border border-white/10 hover:border-amberGold-500/40 transition-all group">
-          <div class="w-10 h-10 rounded-xl bg-amberGold-500/10 border border-amberGold-500/30 flex items-center justify-center text-amberGold-400 mb-4 group-hover:scale-110 transition-transform">
-            <i data-lucide="droplet" class="w-5 h-5"></i>
+      <!-- Feature Grid positioned to keep 3D jar visible -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl">
+        <div class="glass-card p-5 rounded-2xl border border-white/10 group hover:border-amberGold-500/40 transition-all">
+          <div class="w-9 h-9 rounded-xl bg-amberGold-500/10 border border-amberGold-500/30 flex items-center justify-center text-amberGold-400 mb-3 group-hover:scale-105 transition-transform">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
           </div>
-          <span class="text-[10px] font-mono uppercase tracking-widest text-clay-400">53.4% Bio-Active</span>
-          <h3 class="font-serif text-lg font-bold text-white mt-1">Humic & Fulvic Acid Matrix</h3>
-          <p class="text-xs text-clay-400 mt-2 leading-relaxed">
-            Unlike bentonite clays that draw moisture from the skin, our moor silt deposits small-molecule humic polyphenols that infuse cellular moisture while extracting heavy sebum deposits.
-          </p>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between font-mono text-[11px] text-amberGold-400">
-            <span>pH 5.4 - 5.8 (Skin Ideal)</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-          </div>
+          <span class="text-[9px] font-mono uppercase tracking-widest text-peatClay-400">Organic Matrix</span>
+          <h3 class="font-serif text-base font-bold text-white mt-0.5">Humic & Fulvic Bio-Peat</h3>
+          <p class="text-xs text-peatClay-400 mt-2 leading-relaxed">Rich micro-humic compounds deeply chelate impurities from within congested pores while providing biocompatible nutrients.</p>
         </div>
 
-        <!-- Card 2 -->
-        <div class="glass-card p-6 rounded-2xl border border-white/10 hover:border-amberGold-500/40 transition-all group">
-          <div class="w-10 h-10 rounded-xl bg-botanical-400/10 border border-botanical-400/30 flex items-center justify-center text-botanical-400 mb-4 group-hover:scale-110 transition-transform">
-            <i data-lucide="layers" class="w-5 h-5"></i>
+        <div class="glass-card p-5 rounded-2xl border border-white/10 group hover:border-amberGold-500/40 transition-all">
+          <div class="w-9 h-9 rounded-xl bg-botanicalGreen-400/10 border border-botanicalGreen-400/30 flex items-center justify-center text-botanicalGreen-400 mb-3 group-hover:scale-105 transition-transform">
+            <i data-lucide="droplets" class="w-4 h-4"></i>
           </div>
-          <span class="text-[10px] font-mono uppercase tracking-widest text-clay-400">Micro-Osmotic Action</span>
-          <h3 class="font-serif text-lg font-bold text-white mt-1">Thermal Pore Vacuum</h3>
-          <p class="text-xs text-clay-400 mt-2 leading-relaxed">
-            The rich black mud retains natural exothermic insulation, gently warming skin micro-vessels upon application to dilate pores and liquefy stubborn comedones naturally.
-          </p>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between font-mono text-[11px] text-botanical-400">
-            <span>Non-Stripping Purifying</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-          </div>
+          <span class="text-[9px] font-mono uppercase tracking-widest text-peatClay-400">Specular Sheen</span>
+          <h3 class="font-serif text-base font-bold text-white mt-0.5">Non-Drying Wet Glaze</h3>
+          <p class="text-xs text-peatClay-400 mt-2 leading-relaxed">Retains osmotic moisture for a full 20 minutes without hardening or cracking, ensuring your facial capillaries stay calm.</p>
         </div>
 
-        <!-- Card 3 -->
-        <div class="glass-card p-6 rounded-2xl border border-white/10 hover:border-amberGold-500/40 transition-all group">
-          <div class="w-10 h-10 rounded-xl bg-clay-700/40 border border-white/20 flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
-            <i data-lucide="package" class="w-5 h-5"></i>
+        <div class="glass-card p-5 rounded-2xl border border-white/10 group hover:border-amberGold-500/40 transition-all">
+          <div class="w-9 h-9 rounded-xl bg-obsidian-700/50 border border-white/20 flex items-center justify-center text-white mb-3 group-hover:scale-105 transition-transform">
+            <i data-lucide="package" class="w-4 h-4"></i>
           </div>
-          <span class="text-[10px] font-mono uppercase tracking-widest text-clay-400">Eco-Luxury Format</span>
-          <h3 class="font-serif text-lg font-bold text-white mt-1">1000 Gram Apothecary Vessel</h3>
-          <p class="text-xs text-clay-400 mt-2 leading-relaxed">
-            Designed to eliminate unnecessary single-use packaging. Generous 1-kilogram volume allows lavish weekly facial masques and holistic therapeutic body compresses.
-          </p>
-          <div class="mt-4 pt-3 border-t border-white/5 flex items-center justify-between font-mono text-[11px] text-clay-300">
-            <span>60+ Applications</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-          </div>
+          <span class="text-[9px] font-mono uppercase tracking-widest text-peatClay-400">Generous Vessel</span>
+          <h3 class="font-serif text-base font-bold text-white mt-0.5">1 kg Professional Capacity</h3>
+          <p class="text-xs text-peatClay-400 mt-2 leading-relaxed">Filled to the rim with over 60 facial applications or 12 full-body therapeutic peat wraps for master spa rituals.</p>
         </div>
       </div>
     </section>
 
     <!-- ============================================ -->
-    <!-- SECTION 3: CLINICAL PROWESS & PROVEN GLOW   -->
-    <!-- (Inspired by sneaker / tech video motion)   -->
+    <!-- SECTION 3: CLINICAL LABORATORY BENCHMARKS    -->
     <!-- ============================================ -->
     <section id="clinical" class="min-h-screen relative py-28 px-6 lg:px-16 flex flex-col justify-center overflow-hidden">
-      <!-- Kinetic floating background ticker -->
+      <!-- Kinetic background typography -->
       <div class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none z-[-1] opacity-20 hidden lg:block">
-        <div class="kinetic-outline text-[12vw] font-serif font-black uppercase text-right leading-none">
-          CLINICAL<br>PURITY
+        <div class="kinetic-outline text-[11vw] font-serif font-black uppercase text-right leading-none">
+          CLINICAL<br>EFFICACY
         </div>
       </div>
 
-      <div class="max-w-2xl mb-12">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-clay-900 border border-botanical-400/30 text-botanical-400 mb-3">
-          <span>03 / LABORATORY VALIDATION</span>
+      <div class="max-w-xl mb-10">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-obsidian-900 border border-botanicalGreen-400/30 text-botanicalGreen-400 mb-2">
+          <span>03 / LABORATORY BENCHMARKS</span>
         </div>
-        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight">
-          Proven Skin <br>
-          <span class="italic text-amberGold-400">Resurfacing Dynamics</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
+          Clinically Validated <br>
+          <span class="italic text-amberGold-400">Radiance Metrics</span>
         </h2>
-        <p class="mt-3 text-clay-400 text-sm sm:text-base">
-          Third-party clinical testing over 28 days of twice-weekly application across 240 diverse skin profiles.
+        <p class="mt-3 text-peatClay-400 text-sm">
+          Results from 14-day double-blind clinical evaluations across all skin phototypes.
         </p>
       </div>
 
-      <!-- Large metric display inspired by the tech video -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mb-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mb-8">
         <div class="glass-card p-6 rounded-2xl border-l-4 border-l-amberGold-500">
-          <span class="text-4xl sm:text-5xl font-serif font-black text-white block">98.4<span class="text-amberGold-400">%</span></span>
-          <span class="font-mono text-xs uppercase text-amberGold-400 font-semibold tracking-wider mt-2 block">Pore Sebum Reduction</span>
-          <p class="text-xs text-clay-400 mt-1">Visible clearance of oxidized blackheads and micro-comedones within two applications.</p>
+          <span class="text-4xl sm:text-5xl font-serif font-extrabold text-white block">98<span class="text-amberGold-400">%</span></span>
+          <span class="font-mono text-xs uppercase text-amberGold-400 tracking-wider font-semibold mt-1 block">Sebum & Pore Purification</span>
+          <p class="text-xs text-peatClay-400 mt-1">Dissolves oxidized follicular debris and diminishes noticeable pore diameter in 2 rituals.</p>
         </div>
 
-        <div class="glass-card p-6 rounded-2xl border-l-4 border-l-botanical-400">
-          <span class="text-4xl sm:text-5xl font-serif font-black text-white block">24<span class="text-botanical-400">HR</span></span>
-          <span class="font-mono text-xs uppercase text-botanical-400 font-semibold tracking-wider mt-2 block">Epidermal Moisture Lock</span>
-          <p class="text-xs text-clay-400 mt-1">Zero sensation of taut dryness post-wash; trans-epidermal water retention increased by 37%.</p>
+        <div class="glass-card p-6 rounded-2xl border-l-4 border-l-botanicalGreen-400">
+          <span class="text-4xl sm:text-5xl font-serif font-extrabold text-white block">24<span class="text-botanicalGreen-400">HR</span></span>
+          <span class="font-mono text-xs uppercase text-botanicalGreen-400 tracking-wider font-semibold mt-1 block">Hydration Retention</span>
+          <p class="text-xs text-peatClay-400 mt-1">Trans-epidermal water loss (TEWL) is drastically diminished thanks to natural humic matrix binding.</p>
         </div>
 
         <div class="glass-card p-6 rounded-2xl border-l-4 border-l-white">
-          <span class="text-4xl sm:text-5xl font-serif font-black text-white block">+41<span class="text-white">%</span></span>
-          <span class="font-mono text-xs uppercase text-clay-300 font-semibold tracking-wider mt-2 block">Collagen Elasticity Index</span>
-          <p class="text-xs text-clay-400 mt-1">Significant smoothing of superficial tension lines around the forehead and nasolabial folds.</p>
-        </div>
-      </div>
-
-      <!-- Interactive Before/After Radiance Reveal Card -->
-      <div class="max-w-3xl glass-card p-6 rounded-3xl border border-white/10">
-        <div class="flex items-center justify-between mb-4">
-          <div>
-            <h4 class="font-serif text-lg font-bold text-white">Interactive Radiance Gauge</h4>
-            <p class="text-xs text-clay-400">Drag to observe cellular turnover progression from congested to purified state</p>
-          </div>
-          <span id="slider-day-indicator" class="font-mono text-xs px-3 py-1 rounded-full bg-amberGold-500/20 text-amberGold-400 border border-amberGold-500/40 font-bold">
-            Day 14 (Mid-Cycle)
-          </span>
-        </div>
-
-        <input type="range" id="clinical-slider" min="0" max="100" value="50" class="w-full h-2 bg-clay-800 rounded-lg appearance-none cursor-pointer">
-
-        <div class="flex justify-between text-[11px] font-mono text-clay-500 mt-2">
-          <span>Day 0: Congested / Dull</span>
-          <span class="text-amberGold-400">Day 14: Cellular Purge</span>
-          <span class="text-white font-semibold">Day 28: Luminous Porcelain</span>
+          <span class="text-4xl sm:text-5xl font-serif font-extrabold text-white block">100<span class="text-white">%</span></span>
+          <span class="font-mono text-xs uppercase text-peatClay-200 tracking-wider font-semibold mt-1 block">Natural Austrian Peat</span>
+          <p class="text-xs text-peatClay-400 mt-1">Zero synthetic fragrance, parabens, fillers, or microplastics. 100% pure organic moor mud.</p>
         </div>
       </div>
     </section>
 
     <!-- ============================================ -->
-    <!-- SECTION 4: APOTHECARY SPECS & INGREDIENT HUD -->
-    <!-- (Inspired by the Powerbank spec grid video)  -->
+    <!-- SECTION 4: TECHNICAL SPECS HUD               -->
     <!-- ============================================ -->
     <section id="specs" class="min-h-screen relative py-28 px-6 lg:px-16 flex flex-col justify-center">
-      <div class="max-w-xl mb-12">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-clay-900 border border-amberGold-500/30 text-amberGold-400 mb-3">
-          <span>04 / FORMULATION DOSSIER</span>
+      <div class="max-w-xl mb-10">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-obsidian-900 border border-amberGold-500/30 text-amberGold-400 mb-2">
+          <span>04 / APOTHECARY DOSSIER</span>
         </div>
-        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight">
-          Precision Specs & <br>
-          <span class="italic text-amberGold-400">Trace Mineral Profile</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
+          Technical Specs & <br>
+          <span class="italic text-amberGold-400">Salzburg Origin</span>
         </h2>
-        <p class="mt-3 text-clay-400 text-sm">
-          Technical specifications modeled after master salon grade dispensaries.
+        <p class="mt-3 text-peatClay-400 text-sm">
+          Technical cosmetic dossier calibrated for elite salon treatments.
         </p>
       </div>
 
-      <!-- Technical HUD Specs Grid (Direct homage to the powerbank specs layout in video) -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mb-8">
-        <!-- Spec 1: Net Weight -->
-        <div class="glass-card p-5 rounded-2xl border border-white/10 hover:border-amberGold-500/40 transition-colors">
-          <div class="flex items-center justify-between text-clay-500 mb-2">
-            <span class="font-mono text-[10px] uppercase tracking-wider">NET CONTENT</span>
-            <i data-lucide="scale" class="w-4 h-4 text-amberGold-400"></i>
-          </div>
-          <div class="font-mono text-2xl font-bold text-white">1,000 g</div>
-          <div class="font-mono text-xs text-clay-400 mt-0.5">35.2 oz / 2.2 lbs</div>
-          <div class="mt-3 text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-clay-300 inline-block">100% FILL DENSITY</div>
+      <!-- Spec Cards Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mb-6">
+        <div class="glass-card p-5 rounded-2xl">
+          <span class="font-mono text-[9px] uppercase tracking-wider text-peatClay-400 block mb-1">NET WEIGHT</span>
+          <div class="font-mono text-xl sm:text-2xl font-bold text-white">1,000 g</div>
+          <span class="font-mono text-xs text-amberGold-400">35.2 oz / 2.2 lbs</span>
         </div>
 
-        <!-- Spec 2: Texture -->
-        <div class="glass-card p-5 rounded-2xl border border-white/10 hover:border-amberGold-500/40 transition-colors">
-          <div class="flex items-center justify-between text-clay-500 mb-2">
-            <span class="font-mono text-[10px] uppercase tracking-wider">VISCOSITY</span>
-            <i data-lucide="feather" class="w-4 h-4 text-amberGold-400"></i>
-          </div>
-          <div class="font-mono text-xl sm:text-2xl font-bold text-white">Colloidal</div>
-          <div class="font-mono text-xs text-clay-400 mt-0.5">Velvety Milled Mud</div>
-          <div class="mt-3 text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-clay-300 inline-block">ZERO GRIT / POLISHED</div>
+        <div class="glass-card p-5 rounded-2xl">
+          <span class="font-mono text-[9px] uppercase tracking-wider text-peatClay-400 block mb-1">VISCOSITY</span>
+          <div class="font-mono text-xl sm:text-2xl font-bold text-white">Rich Cream</div>
+          <span class="font-mono text-xs text-peatClay-400">Thick Wet Peat</span>
         </div>
 
-        <!-- Spec 3: Aroma -->
-        <div class="glass-card p-5 rounded-2xl border border-white/10 hover:border-amberGold-500/40 transition-colors">
-          <div class="flex items-center justify-between text-clay-500 mb-2">
-            <span class="font-mono text-[10px] uppercase tracking-wider">OLFACTORY PROFILE</span>
-            <i data-lucide="wind" class="w-4 h-4 text-amberGold-400"></i>
-          </div>
-          <div class="font-mono text-xl sm:text-2xl font-bold text-white">Petrichor</div>
-          <div class="font-mono text-xs text-clay-400 mt-0.5">Alpine Rain & Wet Stone</div>
-          <div class="mt-3 text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-clay-300 inline-block">100% UNPERFUMED</div>
+        <div class="glass-card p-5 rounded-2xl">
+          <span class="font-mono text-[9px] uppercase tracking-wider text-peatClay-400 block mb-1">PROVENANCE</span>
+          <div class="font-mono text-xl sm:text-2xl font-bold text-white">Austria</div>
+          <span class="font-mono text-xs text-botanicalGreen-400">Salzburg Alpine Peat</span>
         </div>
 
-        <!-- Spec 4: Origin -->
-        <div class="glass-card p-5 rounded-2xl border border-white/10 hover:border-amberGold-500/40 transition-colors">
-          <div class="flex items-center justify-between text-clay-500 mb-2">
-            <span class="font-mono text-[10px] uppercase tracking-wider">GEOGRAPHY</span>
-            <i data-lucide="map-pin" class="w-4 h-4 text-amberGold-400"></i>
-          </div>
-          <div class="font-mono text-xl sm:text-2xl font-bold text-white">Salzburg</div>
-          <div class="font-mono text-xs text-clay-400 mt-0.5">Protected Peat Bog, AT</div>
-          <div class="mt-3 text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-clay-300 inline-block">SUSTAINABLE HARVEST</div>
+        <div class="glass-card p-5 rounded-2xl">
+          <span class="font-mono text-[9px] uppercase tracking-wider text-peatClay-400 block mb-1">pH BALANCE</span>
+          <div class="font-mono text-xl sm:text-2xl font-bold text-white">5.5 - 5.8</div>
+          <span class="font-mono text-xs text-amberGold-400">Dermal Equilibrium</span>
         </div>
       </div>
 
-      <!-- Ingredient purity bar -->
-      <div class="max-w-5xl glass-card-amber p-6 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <!-- Full Ingredient Card -->
+      <div class="max-w-5xl glass-hud p-6 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <span class="text-[10px] font-mono uppercase tracking-widest text-amberGold-400 block">Single Ingredient Integrity</span>
-          <h4 class="font-serif text-lg font-bold text-white">100% Heilmoor Clay (Peat Water Extract)</h4>
-          <p class="text-xs text-clay-400 mt-1">Free of synthetic thickeners, preservatives, artificial fragrances, emulsifiers, parabens, and micro-plastics.</p>
+          <span class="text-[9px] font-mono uppercase tracking-widest text-amberGold-400 block">Single Ingredient Guarantee</span>
+          <h4 class="font-serif text-lg font-bold text-white">100% Austrian Moor Mud (Peat Water Extract)</h4>
+          <p class="text-xs text-peatClay-400 mt-1">Preservative-free. Bottled fresh under aseptic salon laboratory protocols.</p>
         </div>
-
-        <div class="flex items-center space-x-3 flex-shrink-0">
-          <span class="px-3 py-1.5 rounded-lg bg-black/40 border border-white/10 text-xs font-mono text-white flex items-center">
-            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-botanical-400 mr-1.5"></i> ECOCERT Natural
-          </span>
-          <span class="px-3 py-1.5 rounded-lg bg-black/40 border border-white/10 text-xs font-mono text-white flex items-center">
-            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-botanical-400 mr-1.5"></i> Leaping Bunny Vegan
-          </span>
-        </div>
+        <button id="view-specs-3d-btn" class="px-4 py-2 rounded-xl bg-amberGold-500 hover:bg-amberGold-400 text-obsidian-950 font-bold font-mono text-xs tracking-wider transition-all flex items-center space-x-1.5 flex-shrink-0">
+          <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+          <span>SPIN TO 3D SPECS</span>
+        </button>
       </div>
     </section>
 
     <!-- ============================================ -->
-    <!-- SECTION 5: THE 4-STEP SPA RITUAL            -->
+    <!-- SECTION 5: THE 4-STEP SPA RITUAL             -->
     <!-- ============================================ -->
     <section id="ritual" class="min-h-screen relative py-28 px-6 lg:px-16 flex flex-col justify-center">
-      <div class="max-w-xl mb-12">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-clay-900 border border-amberGold-500/30 text-amberGold-400 mb-3">
-          <span>05 / CEREMONY & APPLICATION</span>
+      <div class="max-w-xl mb-10">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-obsidian-900 border border-amberGold-500/30 text-amberGold-400 mb-2">
+          <span>05 / CEREMONY</span>
         </div>
-        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight">
-          The Moor Spa <br>
-          <span class="italic text-amberGold-400">Sensory Ritual</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
+          The 4-Step <br>
+          <span class="italic text-amberGold-400">Moor Mud Ritual</span>
         </h2>
-        <p class="mt-3 text-clay-400 text-sm">
-          Four deliberate steps to optimize humic acid absorption and skin rejuvenation.
+        <p class="mt-3 text-peatClay-400 text-sm">
+          Optimize humic absorption with this time-honored Austrian salon protocol.
         </p>
       </div>
 
-      <!-- Step Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl">
-        <div class="glass-card p-6 rounded-2xl border border-white/10 relative overflow-hidden group hover:border-amberGold-500/40 transition-all">
-          <span class="font-serif text-5xl font-bold text-white/10 absolute right-4 top-2 group-hover:text-amberGold-500/20 transition-colors">01</span>
-          <span class="text-[10px] font-mono uppercase tracking-widest text-amberGold-400">Prep</span>
-          <h3 class="font-serif text-lg font-bold text-white mt-1">Thermal Cleanse</h3>
-          <p class="text-xs text-clay-400 mt-2 leading-relaxed">Wash face with warm water or hold a warm steam towel against the skin for 60 seconds to open pores.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl">
+        <div class="glass-card p-5 rounded-2xl border border-white/10 relative overflow-hidden group">
+          <span class="font-serif text-4xl font-bold text-white/10 absolute right-3 top-2">01</span>
+          <span class="text-[9px] font-mono uppercase tracking-widest text-amberGold-400">Prepare</span>
+          <h3 class="font-serif text-base font-bold text-white mt-1">Warm Steam</h3>
+          <p class="text-xs text-peatClay-400 mt-2 leading-relaxed">Warm your face with a damp organic towel for 60 seconds to prime pore permeability.</p>
         </div>
 
-        <div class="glass-card p-6 rounded-2xl border border-white/10 relative overflow-hidden group hover:border-amberGold-500/40 transition-all">
-          <span class="font-serif text-5xl font-bold text-white/10 absolute right-4 top-2 group-hover:text-amberGold-500/20 transition-colors">02</span>
-          <span class="text-[10px] font-mono uppercase tracking-widest text-amberGold-400">Sculpt</span>
-          <h3 class="font-serif text-lg font-bold text-white mt-1">Rich Clay Layer</h3>
-          <p class="text-xs text-clay-400 mt-2 leading-relaxed">Using the included wooden spatula, smooth an opaque 2mm layer over face and neck, avoiding direct eye contour.</p>
+        <div class="glass-card p-5 rounded-2xl border border-white/10 relative overflow-hidden group">
+          <span class="font-serif text-4xl font-bold text-white/10 absolute right-3 top-2">02</span>
+          <span class="text-[9px] font-mono uppercase tracking-widest text-amberGold-400">Sculpt</span>
+          <h3 class="font-serif text-base font-bold text-white mt-1">Apply Mud</h3>
+          <p class="text-xs text-peatClay-400 mt-2 leading-relaxed">Using the carved spatula, smooth a thick 2-3mm layer over face and neck, avoiding the eye contour.</p>
         </div>
 
-        <div class="glass-card p-6 rounded-2xl border border-white/10 relative overflow-hidden group hover:border-amberGold-500/40 transition-all">
-          <span class="font-serif text-5xl font-bold text-white/10 absolute right-4 top-2 group-hover:text-amberGold-500/20 transition-colors">03</span>
-          <span class="text-[10px] font-mono uppercase tracking-widest text-amberGold-400">Stillness</span>
-          <h3 class="font-serif text-lg font-bold text-white mt-1">15-Minute Rest</h3>
-          <p class="text-xs text-clay-400 mt-2 leading-relaxed">Relax as the moor mud dries softly. Mist lightly with botanical hydrosol or water if you prefer a continuous wet mask.</p>
+        <div class="glass-card p-5 rounded-2xl border border-white/10 relative overflow-hidden group">
+          <span class="font-serif text-4xl font-bold text-white/10 absolute right-3 top-2">03</span>
+          <span class="text-[9px] font-mono uppercase tracking-widest text-amberGold-400">Stillness</span>
+          <h3 class="font-serif text-base font-bold text-white mt-1">15-Min Infusion</h3>
+          <p class="text-xs text-peatClay-400 mt-2 leading-relaxed">Rest quietly as active humic acids draw out cellular impurities while delivering trace minerals.</p>
         </div>
 
-        <div class="glass-card p-6 rounded-2xl border border-white/10 relative overflow-hidden group hover:border-amberGold-500/40 transition-all">
-          <span class="font-serif text-5xl font-bold text-white/10 absolute right-4 top-2 group-hover:text-amberGold-500/20 transition-colors">04</span>
-          <span class="text-[10px] font-mono uppercase tracking-widest text-amberGold-400">Awaken</span>
-          <h3 class="font-serif text-lg font-bold text-white mt-1">Warm Rinse & Glow</h3>
-          <p class="text-xs text-clay-400 mt-2 leading-relaxed">Rinse with circular motions using lukewarm water. Pat dry to reveal velvety soft, clear, and radiant porcelain skin.</p>
+        <div class="glass-card p-5 rounded-2xl border border-white/10 relative overflow-hidden group">
+          <span class="font-serif text-4xl font-bold text-white/10 absolute right-3 top-2">04</span>
+          <span class="text-[9px] font-mono uppercase tracking-widest text-amberGold-400">Reveal</span>
+          <h3 class="font-serif text-base font-bold text-white mt-1">Warm Rinse</h3>
+          <p class="text-xs text-peatClay-400 mt-2 leading-relaxed">Rinse gently with circular motions. Pat dry to unveil velvety, revived, glowing skin.</p>
         </div>
       </div>
     </section>
 
     <!-- ============================================ -->
-    <!-- SECTION 6: FOOTER & LUXURY GUARANTEE         -->
+    <!-- FOOTER                                       -->
     <!-- ============================================ -->
-    <footer class="relative z-10 border-t border-white/10 py-16 px-6 lg:px-16 bg-clay-950/80 backdrop-blur-lg">
-      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10">
-        <div class="md:col-span-5 space-y-4">
-          <div class="flex items-center space-x-3">
-            <div class="w-8 h-8 rounded-full border border-amberGold-500/40 flex items-center justify-center bg-clay-900">
-              <svg class="w-4 h-4 text-amberGold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="4"/>
-                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41"/>
-              </svg>
-            </div>
-            <span class="font-serif text-lg tracking-widest font-bold text-white">EARTH GLOW ESSENTIAL</span>
+    <footer class="border-t border-white/10 py-12 px-6 lg:px-16 bg-obsidian-950">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-peatClay-400 font-mono">
+        <div class="flex items-center space-x-3">
+          <div class="w-6 h-6 rounded-full border border-amberGold-500/50 flex items-center justify-center">
+            <span class="w-1.5 h-1.5 rounded-full bg-amberGold-400"></span>
           </div>
-          <p class="text-xs text-clay-400 leading-relaxed max-w-sm">
-            Handcrafted apothecary mud masques formulated from certified pristine peat bogs in Salzburg, Austria. Purifying skin rituals rooted in geological wisdom.
-          </p>
-          <div class="font-mono text-[11px] text-clay-500">
-            © 2026 Earth Glow Essential. All mineral rights reserved.
-          </div>
+          <span class="text-white font-serif font-bold tracking-wider">EARTH GLOW ESSENTIAL</span>
+          <span>• 100% NATURAL HEILMOOR</span>
         </div>
-
-        <div class="md:col-span-3 space-y-2">
-          <span class="font-mono text-xs uppercase tracking-widest text-amberGold-400 block mb-3">APOTHECARY</span>
-          <a href="#hero" class="block text-xs text-clay-400 hover:text-white transition-colors">1000g Master Tub</a>
-          <a href="#anatomy" class="block text-xs text-clay-400 hover:text-white transition-colors">Organic Humic Complex</a>
-          <a href="#clinical" class="block text-xs text-clay-400 hover:text-white transition-colors">Clinical Study Results</a>
-          <a href="#specs" class="block text-xs text-clay-400 hover:text-white transition-colors">Batch Certification</a>
-        </div>
-
-        <div class="md:col-span-4 space-y-4">
-          <span class="font-mono text-xs uppercase tracking-widest text-amberGold-400 block">SPA CONCIERGE & DISPATCH</span>
-          <p class="text-xs text-clay-400">Subscribe for archival batch notifications, seasonal harvesting logs, and salon trade pricing.</p>
-          <div class="flex items-center">
-            <input type="email" placeholder="concierge@residence.com" class="bg-clay-900 border border-white/10 rounded-l-xl px-4 py-2.5 text-xs text-white placeholder-clay-500 focus:outline-none focus:border-amberGold-500 w-full font-mono">
-            <button class="bg-amberGold-500 hover:bg-amberGold-400 text-clay-950 font-bold px-4 py-2.5 rounded-r-xl text-xs font-mono transition-colors">
-              JOIN
-            </button>
-          </div>
+        <div class="text-center md:text-right">
+          © 2026 Earth Glow Essential. Salon Format 1 kg / 35.2 oz.
         </div>
       </div>
     </footer>
   </main>
 
   <!-- ======================================================== -->
-  <!-- SLIDE-OUT SHOPPING BAG DRAWER                            -->
+  <!-- LUXURY APOTHECARY CART DRAWER                            -->
   <!-- ======================================================== -->
   <div id="cart-drawer-backdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
 
-  <div id="cart-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-clay-900 border-l border-white/10 z-50 p-6 sm:p-8 flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-out shadow-2xl">
+  <div id="cart-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-obsidian-900 border-l border-white/10 z-50 p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-out shadow-2xl">
     <div>
-      <!-- Drawer Header -->
-      <div class="flex items-center justify-between pb-6 border-b border-white/10">
+      <div class="flex items-center justify-between pb-5 border-b border-white/10">
         <div class="flex items-center space-x-2">
-          <i data-lucide="shopping-bag" class="w-5 h-5 text-amberGold-400"></i>
-          <h3 class="font-serif text-lg font-bold text-white tracking-wide">Apothecary Cart</h3>
-          <span class="font-mono text-xs text-clay-400">(<span id="cart-badge-count">1</span> ITEM)</span>
+          <i data-lucide="shopping-bag" class="w-4 h-4 text-amberGold-400"></i>
+          <h3 class="font-serif text-base font-bold text-white tracking-wide">Apothecary Cart</h3>
+          <span class="font-mono text-xs text-peatClay-400">(<span id="cart-drawer-qty">1</span>)</span>
         </div>
-        <button id="close-cart-btn" class="w-8 h-8 rounded-full glass-card flex items-center justify-center text-clay-400 hover:text-white transition-colors">
+        <button id="close-cart-btn" class="w-8 h-8 rounded-full glass-card flex items-center justify-center text-peatClay-400 hover:text-white transition-colors">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
 
-      <!-- Free Spatula Tier Progress -->
-      <div class="mt-5 p-3 rounded-xl bg-amberGold-500/10 border border-amberGold-500/20">
-        <div class="flex items-center justify-between text-[11px] font-mono text-amberGold-400 mb-1.5">
-          <span>✨ COMPLIMENTARY BAMBOO SPATULA UNLOCKED</span>
-          <span>100%</span>
-        </div>
-        <div class="w-full h-1.5 rounded-full bg-clay-800 overflow-hidden">
-          <div class="w-full h-full bg-amberGold-500 rounded-full"></div>
-        </div>
+      <div class="mt-4 p-3 rounded-xl bg-amberGold-500/10 border border-amberGold-500/30 flex items-center space-x-3">
+        <i data-lucide="sparkles" class="w-4 h-4 text-amberGold-400 flex-shrink-0"></i>
+        <span class="text-xs font-mono text-amberGold-300">Complimentary Carved Wooden Spatula Included</span>
       </div>
 
       <!-- Item Row -->
       <div class="mt-6 flex space-x-4 pb-6 border-b border-white/10">
-        <div class="w-20 h-20 rounded-xl bg-clay-800 border border-white/10 flex items-center justify-center p-2 flex-shrink-0 relative overflow-hidden">
-          <div class="w-12 h-14 bg-white rounded-md flex flex-col items-center justify-center shadow-md">
-            <span class="text-[6px] font-bold text-clay-950 font-serif">EARTH GLOW</span>
-            <div class="w-7 h-2 bg-clay-900 rounded-sm mt-0.5"></div>
-          </div>
+        <div class="w-16 h-16 rounded-xl bg-obsidian-800 border border-white/10 flex items-center justify-center flex-shrink-0">
+          <span class="font-serif text-xs font-bold text-amberGold-400">1 KG</span>
         </div>
         <div class="flex-1">
-          <div class="flex justify-between items-start">
-            <h4 class="font-serif text-sm font-bold text-white">Moor Mud Mask (1 kg)</h4>
-            <span id="cart-item-price" class="font-mono text-sm font-bold text-amberGold-400">$64.00</span>
+          <div class="flex justify-between">
+            <h4 class="font-serif text-sm font-bold text-white">Moor Mud Mask</h4>
+            <span class="font-mono text-sm font-bold text-amberGold-400" id="cart-price">$68.00</span>
           </div>
-          <span class="font-mono text-[10px] text-clay-400 block mt-0.5">35.2 oz Salon Format • Batch #884</span>
+          <span class="font-mono text-[10px] text-peatClay-400 block mt-0.5">1 kg / 35.2 oz Salon Format</span>
 
-          <!-- Quantity Stepper -->
           <div class="flex items-center space-x-3 mt-3">
             <div class="flex items-center glass-card rounded-lg border border-white/10">
-              <button id="cart-qty-minus" class="px-2.5 py-1 text-xs text-clay-400 hover:text-white transition-colors">-</button>
-              <span id="cart-qty-val" class="font-mono text-xs px-2 text-white font-bold">1</span>
-              <button id="cart-qty-plus" class="px-2.5 py-1 text-xs text-clay-400 hover:text-white transition-colors">+</button>
+              <button id="qty-minus" class="px-2.5 py-1 text-xs text-peatClay-400 hover:text-white">-</button>
+              <span id="qty-display" class="font-mono text-xs px-2 text-white font-bold">1</span>
+              <button id="qty-plus" class="px-2.5 py-1 text-xs text-peatClay-400 hover:text-white">+</button>
             </div>
-            <button id="cart-remove-item" class="text-[11px] font-mono text-red-400/80 hover:text-red-400 transition-colors">Remove</button>
+            <span class="text-[11px] font-mono text-botanicalGreen-400">In Stock</span>
           </div>
         </div>
       </div>
-
-      <!-- Free Gift Included Banner -->
-      <div class="mt-4 flex items-center space-x-3 p-3 rounded-xl glass-card border border-white/5">
-        <div class="w-7 h-7 rounded-lg bg-botanical-400/20 text-botanical-400 flex items-center justify-center flex-shrink-0">
-          <i data-lucide="gift" class="w-4 h-4"></i>
-        </div>
-        <div class="text-xs">
-          <span class="text-white font-medium block">Hand-Carved Wooden Spatula</span>
-          <span class="text-clay-400 text-[10px] font-mono">Automatically included at zero charge</span>
-        </div>
-      </div>
     </div>
 
-    <!-- Drawer Footer Checkout -->
-    <div class="pt-6 border-t border-white/10 space-y-4">
-      <div class="space-y-1.5 font-mono text-xs">
-        <div class="flex justify-between text-clay-400">
+    <!-- Drawer Footer -->
+    <div class="pt-5 border-t border-white/10 space-y-4">
+      <div class="space-y-1 font-mono text-xs">
+        <div class="flex justify-between text-peatClay-400">
           <span>Subtotal</span>
-          <span id="cart-subtotal-text" class="text-white">$64.00</span>
+          <span id="cart-subtotal" class="text-white font-bold">$68.00</span>
         </div>
-        <div class="flex justify-between text-clay-400">
-          <span>Spa Courier Delivery</span>
-          <span class="text-botanical-400 font-bold">FREE</span>
+        <div class="flex justify-between text-peatClay-400">
+          <span>Express Shipping</span>
+          <span class="text-botanicalGreen-400 font-bold">FREE</span>
         </div>
-        <div class="flex justify-between text-base font-bold text-white pt-2 border-t border-white/10">
+        <div class="flex justify-between text-sm font-bold text-white pt-2 border-t border-white/10">
           <span class="font-serif">Total</span>
-          <span id="cart-total-text" class="text-amberGold-400 font-mono">$64.00</span>
+          <span id="cart-total" class="text-amberGold-400 font-mono text-base">$68.00</span>
         </div>
       </div>
 
-      <button id="checkout-btn" class="w-full py-4 rounded-xl bg-amberGold-500 hover:bg-amberGold-400 text-clay-950 font-bold font-mono text-xs tracking-widest transition-all shadow-xl shadow-amberGold-500/20 flex items-center justify-center space-x-2">
-        <i data-lucide="lock" class="w-4 h-4"></i>
-        <span>SECURE CHECKOUT — $64.00</span>
+      <button id="checkout-trigger-btn" class="w-full py-3.5 rounded-xl bg-amberGold-500 hover:bg-amberGold-400 text-obsidian-950 font-bold font-mono text-xs tracking-widest transition-all shadow-xl shadow-amberGold-500/20 flex items-center justify-center space-x-2">
+        <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+        <span>SECURE APOTHECARY CHECKOUT</span>
       </button>
-
-      <div class="text-center">
-        <span class="text-[10px] font-mono text-clay-500">Encrypted 256-Bit SSL Checkout Guarantee</span>
-      </div>
     </div>
   </div>
 
-  <!-- CHECKOUT SUCCESS MODAL -->
-  <div id="checkout-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
-    <div class="glass-card max-w-md w-full p-8 rounded-3xl border border-amberGold-500/40 text-center space-y-4 shadow-2xl">
-      <div class="w-16 h-16 rounded-full bg-amberGold-500/20 border border-amberGold-500/40 text-amberGold-400 flex items-center justify-center mx-auto">
-        <i data-lucide="check" class="w-8 h-8"></i>
+  <!-- ORDER SUCCESS MODAL -->
+  <div id="order-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="glass-hud max-w-sm w-full p-6 rounded-2xl border border-amberGold-500/40 text-center space-y-3 shadow-2xl">
+      <div class="w-12 h-12 rounded-full bg-amberGold-500/20 border border-amberGold-500/40 text-amberGold-400 flex items-center justify-center mx-auto">
+        <i data-lucide="check" class="w-6 h-6"></i>
       </div>
-      <h3 class="font-serif text-2xl font-bold text-white">Order Confirmed</h3>
-      <p class="text-xs text-clay-400 leading-relaxed font-mono">
-        Thank you for trusting Earth Glow Essential. Batch #884 Moor Mud Mask will be freshly sealed and dispatched from our apothecary warehouse within 24 hours.
+      <h3 class="font-serif text-xl font-bold text-white">Order Received</h3>
+      <p class="text-xs text-peatClay-400 leading-relaxed font-mono">
+        Your fresh batch of Earth Glow Essential 100% Moor Mud Mask has been scheduled for priority dispatch.
       </p>
-      <div class="pt-2">
-        <button id="modal-close-btn" class="px-6 py-2.5 rounded-xl bg-amberGold-500 text-clay-950 font-mono text-xs font-bold hover:bg-amberGold-400 transition-colors">
-          RETURN TO EXPERIENCE
-        </button>
-      </div>
+      <button id="order-modal-close" class="mt-2 px-5 py-2 rounded-xl bg-amberGold-500 text-obsidian-950 font-mono text-xs font-bold hover:bg-amberGold-400 transition-colors">
+        RETURN
+      </button>
     </div>
   </div>
 
   <!-- ======================================================== -->
-  <!-- JAVASCRIPT: THREE.JS 3D SCENE + INTERACTION ENGINE       -->
+  <!-- THREE.JS ENGINE & INTERACTIVITY                          -->
   <!-- ======================================================== -->
   <script>
-    /* ----------------------------------------------------
-       1. SYNTHESIZED WEB AUDIO API SOUND ENGINE
-       (Pure procedural Tibetan bowl & tactile feedback)
-    ---------------------------------------------------- */
+    /* --------------------------------------------------------
+       1. SYNTHESIZED SPA SOUND EFFECTS (Web Audio API)
+    -------------------------------------------------------- */
     let audioCtx = null;
-    let isSoundOn = false;
+    let isSoundActive = false;
 
-    function initAudio() {
+    function initAudioEngine() {
       if (!audioCtx) {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         audioCtx = new AudioContext();
@@ -853,197 +729,171 @@
       }
     }
 
-    function playSingingBowlChime(freq = 432, duration = 2.5) {
-      if (!isSoundOn) return;
+    function playTone(freq = 432, duration = 2.0) {
+      if (!isSoundActive) return;
       try {
-        initAudio();
+        initAudioEngine();
+        const now = audioCtx.currentTime;
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
 
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        osc.frequency.setValueAtTime(freq, now);
 
-        // Harmonic overtone
-        const osc2 = audioCtx.createOscillator();
-        const gain2 = audioCtx.createGain();
-        osc2.type = 'sine';
-        osc2.frequency.setValueAtTime(freq * 2.76, audioCtx.currentTime);
-
-        const now = audioCtx.currentTime;
         gain.gain.setValueAtTime(0.001, now);
-        gain.gain.exponentialRampToValueAtTime(0.18, now + 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.12, now + 0.04);
         gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
 
-        gain2.gain.setValueAtTime(0.001, now);
-        gain2.gain.exponentialRampToValueAtTime(0.06, now + 0.04);
-        gain2.gain.exponentialRampToValueAtTime(0.0001, now + duration * 0.7);
-
         osc.connect(gain);
         gain.connect(audioCtx.destination);
-        osc2.connect(gain2);
-        gain2.connect(audioCtx.destination);
-
         osc.start(now);
-        osc2.start(now);
         osc.stop(now + duration);
-        osc2.stop(now + duration);
-      } catch (e) {
-        console.warn('Audio not allowed yet', e);
-      }
-    }
-
-    function playTactileClick() {
-      if (!isSoundOn) return;
-      try {
-        initAudio();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.04);
-
-        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
-
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.04);
       } catch (e) {}
     }
 
-    // Audio toggle button handler
+    function playClick() {
+      if (!isSoundActive) return;
+      try {
+        initAudioEngine();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(700, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + 0.03);
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.03);
+      } catch (e) {}
+    }
+
     const audioToggleBtn = document.getElementById('audio-toggle-btn');
     const audioIcon = document.getElementById('audio-icon');
     const soundToast = document.getElementById('sound-toast');
     const soundToastText = document.getElementById('sound-toast-text');
 
     audioToggleBtn.addEventListener('click', () => {
-      isSoundOn = !isSoundOn;
-      if (isSoundOn) {
-        initAudio();
-        playSingingBowlChime(528, 3.0); // 528Hz Solfeggio frequency
+      isSoundActive = !isSoundActive;
+      if (isSoundActive) {
+        initAudioEngine();
+        playTone(528, 2.4);
         audioIcon.setAttribute('data-lucide', 'volume-2');
         audioToggleBtn.classList.add('text-amberGold-400', 'border-amberGold-500/50');
-        showToast('Zen Spa Soundscape: ON');
+        showToast('Spa Soundscape: ACTIVE');
       } else {
         audioIcon.setAttribute('data-lucide', 'volume-x');
         audioToggleBtn.classList.remove('text-amberGold-400', 'border-amberGold-500/50');
-        showToast('Zen Spa Soundscape: MUTED');
+        showToast('Spa Soundscape: MUTED');
       }
       lucide.createIcons();
     });
 
-    function showToast(text) {
-      soundToastText.innerText = text;
+    function showToast(msg) {
+      soundToastText.innerText = msg;
       soundToast.classList.remove('opacity-0');
       soundToast.classList.add('opacity-100');
       setTimeout(() => {
         soundToast.classList.remove('opacity-100');
         soundToast.classList.add('opacity-0');
-      }, 2200);
+      }, 2000);
     }
 
-    /* ----------------------------------------------------
-       2. DYNAMIC TEXTURE GENERATOR FOR TUB & LABEL
-       (Renders ultra-crisp Earth Glow Essential branding)
-    ---------------------------------------------------- */
-    function createProductLabelTexture() {
+    /* --------------------------------------------------------
+       2. PROCEDURAL HIGH-RES LABEL TEXTURE (2048 x 1024)
+       Accurately reproducing the user's reference image
+    -------------------------------------------------------- */
+    function generateJarLabelTexture() {
       const canvas = document.createElement('canvas');
       canvas.width = 2048;
       canvas.height = 1024;
       const ctx = canvas.getContext('2d');
 
-      // 1. Pristine Off-White Matte Jar Background
+      // Cosmetic off-white tub background
       ctx.fillStyle = '#faf8f5';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Subtle warm cosmetic tub texture
+      // Fine cosmetic stipple texture
       for (let i = 0; i < 4000; i++) {
-        ctx.fillStyle = Math.random() > 0.5 ? 'rgba(0,0,0,0.012)' : 'rgba(255,255,255,0.02)';
+        ctx.fillStyle = Math.random() > 0.5 ? 'rgba(0,0,0,0.015)' : 'rgba(255,255,255,0.025)';
         ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 2, 2);
       }
 
-      // FRONT LABEL PANEL (Centered around X = 1024)
+      // FRONT LABEL PANEL (Centered on front)
       const labelW = 920;
-      const labelH = 780;
+      const labelH = 800;
       const labelX = (canvas.width - labelW) / 2;
-      const labelY = (canvas.height - labelH) / 2 + 10;
+      const labelY = (canvas.height - labelH) / 2;
 
-      // Label background card (Crisp white rectangular label from image)
+      // Label background card
       ctx.fillStyle = '#ffffff';
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.06)';
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.07)';
       ctx.shadowBlur = 12;
       ctx.fillRect(labelX, labelY, labelW, labelH);
       ctx.shadowColor = 'transparent';
 
-      // Inner delicate border
+      // Inner hairline border
       ctx.strokeStyle = 'rgba(0, 0, 0, 0.08)';
       ctx.lineWidth = 2;
       ctx.strokeRect(labelX + 16, labelY + 16, labelW - 32, labelH - 32);
 
       const centerX = canvas.width / 2;
-      let currY = labelY + 95;
+      let y = labelY + 95;
 
-      // BRAND LOGO ICON: Radiant Sunburst Mark (from photo)
+      // RADIANT SUNBURST LOGO (From reference photo)
       ctx.strokeStyle = '#222222';
-      ctx.lineWidth = 4;
-      ctx.fillStyle = '#222222';
-
-      // Sun rays
-      const sunCenterY = currY - 8;
+      ctx.lineWidth = 3.5;
       ctx.beginPath();
-      ctx.arc(centerX, sunCenterY + 2, 10, Math.PI, 0, false);
+      ctx.arc(centerX, y + 2, 9, Math.PI, 0, false);
       ctx.stroke();
 
-      // Radiating sun spikes
-      for (let angle = 190; angle <= 350; angle += 20) {
-        const rad = (angle * Math.PI) / 180;
-        const x1 = centerX + Math.cos(rad) * 16;
-        const y1 = sunCenterY + 2 + Math.sin(rad) * 16;
-        const x2 = centerX + Math.cos(rad) * 26;
-        const y2 = sunCenterY + 2 + Math.sin(rad) * 26;
+      for (let a = 190; a <= 350; a += 20) {
+        const rad = (a * Math.PI) / 180;
+        const x1 = centerX + Math.cos(rad) * 14;
+        const y1 = y + 2 + Math.sin(rad) * 14;
+        const x2 = centerX + Math.cos(rad) * 23;
+        const y2 = y + 2 + Math.sin(rad) * 23;
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
         ctx.stroke();
       }
 
-      currY += 55;
+      y += 56;
 
-      // BRAND NAME: "Earth Glow"
+      // "Earth Glow" Serif Title
       ctx.textAlign = 'center';
-      ctx.fillStyle = '#1c1b18';
-      ctx.font = '500 64px "Cinzel", Georgia, serif';
-      ctx.letterSpacing = '6px';
-      ctx.fillText('Earth Glow', centerX, currY);
+      ctx.fillStyle = '#1e1c19';
+      ctx.font = '500 66px "Cinzel", Georgia, serif';
+      ctx.letterSpacing = '5px';
+      ctx.fillText('Earth Glow', centerX, y);
 
-      currY += 32;
+      y += 34;
 
-      // SUB-TITLE: "— Essential —"
-      ctx.font = '300 32px "Plus Jakarta Sans", sans-serif';
+      // "— Essential —"
+      ctx.font = '300 30px "Plus Jakarta Sans", sans-serif';
       ctx.letterSpacing = '8px';
       ctx.fillStyle = '#444444';
-      ctx.fillText('— ESSENTIAL —', centerX, currY);
+      ctx.fillText('— ESSENTIAL —', centerX, y);
 
-      currY += 45;
+      y += 42;
 
-      // DARK CHARCOAL BADGE: "MOOR MUD MASK" (Exact rectangular badge from the image)
+      // DARK CHARCOAL RECTANGLE BANNER: "MOOR MUD MASK"
       const badgeW = 620;
-      const badgeH = 72;
-      const badgeX = centerX - badgeW / 2;
-      ctx.fillStyle = '#2a2c2b';
-      ctx.fillRect(badgeX, currY, badgeW, badgeH);
+      const badgeH = 74;
+      ctx.fillStyle = '#292b2a';
+      ctx.fillRect(centerX - badgeW / 2, y, badgeW, badgeH);
 
-      ctx.fillStyle = '#f8f6f0';
+      ctx.fillStyle = '#faf8f5';
       ctx.font = '700 36px "Plus Jakarta Sans", sans-serif';
       ctx.letterSpacing = '6px';
-      ctx.fillText('MOOR MUD MASK', centerX, currY + 49);
+      ctx.fillText('MOOR MUD MASK', centerX, y + 50);
 
-      currY += badgeH + 60;
+      y += badgeH + 60;
 
-      // 5 BULLET POINTS (Exact text from photo):
-      const bullets = [
+      // 5 BULLET POINTS FROM REFERENCE PHOTO
+      const bulletList = [
         "Detoxifies & purifies pores",
         "Rich in organic humic acids",
         "Reduces fine lines & improves texture",
@@ -1053,54 +903,51 @@
 
       ctx.textAlign = 'left';
       ctx.font = '500 24px "Plus Jakarta Sans", sans-serif';
-      ctx.fillStyle = '#2b2926';
+      ctx.fillStyle = '#2d2b27';
 
-      const bulletStartX = centerX - 240;
+      const bulletX = centerX - 230;
 
-      bullets.forEach((bullet) => {
-        // Bullet circle
-        ctx.fillStyle = '#2a2c2b';
+      bulletList.forEach((text) => {
+        ctx.fillStyle = '#292b2a';
         ctx.beginPath();
-        ctx.arc(bulletStartX - 18, currY - 8, 4.5, 0, Math.PI * 2);
+        ctx.arc(bulletX - 18, y - 8, 4.5, 0, Math.PI * 2);
         ctx.fill();
 
-        // Text
-        ctx.fillText(bullet, bulletStartX, currY);
-        currY += 42;
+        ctx.fillText(text, bulletX, y);
+        y += 42;
       });
 
-      currY += 28;
+      y += 30;
 
       // WEIGHT INDICATION: "1 kg / 35.2 oz"
       ctx.textAlign = 'center';
       ctx.font = '600 24px "Space Grotesk", monospace';
       ctx.fillStyle = '#444444';
-      ctx.letterSpacing = '3px';
-      ctx.fillText('1 kg / 35.2 oz', centerX, currY);
+      ctx.letterSpacing = '2px';
+      ctx.fillText('1 kg / 35.2 oz', centerX, y);
 
-      // BACK LABEL (Positioned on the other side of cylinder texture: X = 180)
+      // BACK OF TUB DOSSIER & BARCODE
       const backX = 260;
       ctx.textAlign = 'center';
-      ctx.fillStyle = '#333333';
-      ctx.font = '700 22px "Plus Jakarta Sans", sans-serif';
-      ctx.fillText('DIRECTIONS FOR USE', backX, 300);
+      ctx.fillStyle = '#222222';
+      ctx.font = '700 20px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('TECHNICAL SPECIFICATIONS', backX, 320);
 
       ctx.font = '400 16px "Plus Jakarta Sans", sans-serif';
-      ctx.fillStyle = '#666666';
-      ctx.fillText('Apply 2mm layer to cleansed skin.', backX, 335);
-      ctx.fillText('Allow 15 minutes to act. Rinse with warm water.', backX, 365);
-      ctx.fillText('For full body wrap, envelope with linen drape.', backX, 395);
+      ctx.fillStyle = '#555555';
+      ctx.fillText('Pure Austrian Heilmoor Clay Extract', backX, 360);
+      ctx.fillText('Net Weight: 1000g / 35.2 oz', backX, 395);
+      ctx.fillText('Salzburg Peat Reserve Harvested', backX, 430);
+      ctx.fillText('pH 5.6 Balanced • Biodegradable Vessel', backX, 465);
 
       ctx.font = '600 18px "Space Grotesk", monospace';
-      ctx.fillStyle = '#1c1b18';
-      ctx.fillText('LOT 884-AUSTRIA • SALZBURG BOGS', backX, 520);
-      ctx.font = '400 14px "Space Grotesk", monospace';
-      ctx.fillText('100% NATURAL HEILMOOR CLAY', backX, 550);
+      ctx.fillStyle = '#1e1c19';
+      ctx.fillText('BATCH: #884-SALZBURG', backX, 540);
 
-      // Barcode graphic mock
+      // Barcode
       ctx.fillStyle = '#222222';
-      for (let b = backX - 100; b < backX + 100; b += 4 + Math.random() * 6) {
-        ctx.fillRect(b, 600, 2 + Math.random() * 2, 45);
+      for (let b = backX - 90; b < backX + 90; b += 4 + Math.random() * 5) {
+        ctx.fillRect(b, 590, 2 + Math.random() * 2, 45);
       }
 
       const texture = new THREE.CanvasTexture(canvas);
@@ -1109,129 +956,126 @@
       return texture;
     }
 
-    /* ----------------------------------------------------
-       3. PROCEDURAL SURFACE DISPLACEMENT / BUMP MAP FOR MUD
-       (Creates organic glistening peaks like real thick mud)
-    ---------------------------------------------------- */
-    function createMudBumpMap() {
+    /* --------------------------------------------------------
+       3. PROCEDURAL WET MUD BUMP MAP (Swirling Mud Texture)
+    -------------------------------------------------------- */
+    function generateMudBumpMap() {
       const canvas = document.createElement('canvas');
       canvas.width = 512;
       canvas.height = 512;
       const ctx = canvas.getContext('2d');
 
-      // Base gray
       ctx.fillStyle = '#808080';
       ctx.fillRect(0, 0, 512, 512);
 
-      // Radial organic swirls
-      for (let i = 0; i < 40; i++) {
-        const rad = Math.random() * 200 + 40;
-        const x = 256 + Math.cos(i) * rad * 0.7;
-        const y = 256 + Math.sin(i) * rad * 0.7;
-        const grad = ctx.createRadialGradient(x, y, 5, x, y, 70);
-        grad.addColorStop(0, 'rgba(255,255,255,0.4)');
-        grad.addColorStop(0.5, 'rgba(200,200,200,0.2)');
-        grad.addColorStop(1, 'rgba(0,0,0,0)');
+      // Organic ripples and circular swirls
+      for (let i = 0; i < 400; i++) {
+        const x = Math.random() * 512;
+        const y = Math.random() * 512;
+        const radius = 10 + Math.random() * 45;
+        const grad = ctx.createRadialGradient(x, y, 2, x, y, radius);
+        const intensity = (Math.random() - 0.5) * 60;
+        grad.addColorStop(0, `rgb(${128 + intensity}, ${128 + intensity}, ${128 + intensity})`);
+        grad.addColorStop(1, 'rgb(128, 128, 128)');
         ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.arc(x, y, 70, 0, Math.PI * 2);
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
         ctx.fill();
       }
 
-      // Fine grit
-      for (let j = 0; j < 3000; j++) {
-        ctx.fillStyle = Math.random() > 0.5 ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.15)';
-        ctx.fillRect(Math.random() * 512, Math.random() * 512, 2, 2);
-      }
-
       const texture = new THREE.CanvasTexture(canvas);
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.RepeatWrapping;
+      texture.repeat.set(2, 2);
       texture.needsUpdate = true;
       return texture;
     }
 
-    /* ----------------------------------------------------
-       4. THREE.JS SCENE SETUP & PROCEDURAL 3D MASK TUB
-    ---------------------------------------------------- */
+    /* --------------------------------------------------------
+       4. THREE.JS 3D SCENE & RICH BLACK MUD MESH BUILDER
+    -------------------------------------------------------- */
     let scene, camera, renderer;
-    let tubGroup, jarMesh, lidMesh, mudSurfaceMesh, shadowMesh, particleSystem;
-    let pointLightWarm, rimLightGold;
+    let tubGroup, jarMesh, lidMesh, mudMoundMesh, mudBaseMesh, shadowMesh, particleSystem;
+    let dirLightKey, goldRimLight;
 
-    // Camera animation state & targets
-    let targetCameraPos = new THREE.Vector3(0, 0.4, 6.4);
-    let targetCameraLookAt = new THREE.Vector3(0, 0, 0);
-    let targetTubRotation = { x: 0.12, y: 0.05, z: 0 };
-    let targetTubPosition = { x: 0, y: -0.1, z: 0 };
-    let targetLidY = 1.62;
-    let targetLidRotationZ = 0;
-    let targetLidRotationX = 0;
-    let targetLidX = 0;
+    // SCALING & PROPORTION VARIABLES
+    let currentJarScale = 0.48; // Compact and well-proportioned
+    let targetJarScale = 0.48;
 
-    // Interactive inspection mode
-    let isFreeInspect = false;
-    let isDragging = false;
-    let previousMousePosition = { x: 0, y: 0 };
+    // LID STATES:
+    // 'LEAN': Resting tilted to the side on the stone (just like reference image!)
+    // 'SEAL': Clamped shut on top of the tub
+    // 'FLOAT': Hovering gracefully in the air above the mud
+    let lidState = 'LEAN';
+    let targetLidPos = new THREE.Vector3(1.18, -0.05, 0.25);
+    let targetLidRot = new THREE.Euler(0.2, -0.3, -1.05);
+
+    // CAMERA & ORBIT STATE
+    let targetCameraPos = new THREE.Vector3(0, 0.45, 5.6);
+    let targetCameraLookAt = new THREE.Vector3(0, 0.05, 0);
+    let targetTubRotation = { x: 0.16, y: -0.15, z: 0 };
+    let targetTubPosition = { x: 0.45, y: -0.1, z: 0 };
+
+    let isAutoRotating = false;
+    let isFreeOrbitActive = false;
+    let isMouseDown = false;
+    let prevMousePos = { x: 0, y: 0 };
     let mouseParallax = { x: 0, y: 0 };
 
-    function init3DScene() {
-      const container = document.getElementById('canvas-container');
+    function init3D() {
       const canvas = document.getElementById('webgl-canvas');
 
-      // 1. Scene & Camera
+      // 1. Scene & Perspective Camera
       scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 100);
-      camera.position.set(0, 0.4, 6.4);
+      camera = new THREE.PerspectiveCamera(36, window.innerWidth / window.innerHeight, 0.1, 100);
+      camera.position.copy(targetCameraPos);
 
-      // 2. Renderer
+      // 2. High Performance WebGL Renderer
       renderer = new THREE.WebGLRenderer({
         canvas: canvas,
         antialias: true,
         alpha: true,
-        powerPreference: "high-performance"
+        powerPreference: 'high-performance'
       });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.15;
+      renderer.toneMappingExposure = 1.25;
       renderer.shadowMap.enabled = true;
       renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-      // 3. Lighting Setup (Cinematic Spa Apothecary 3-point lighting)
-      const ambientLight = new THREE.AmbientLight(0xfff8ee, 0.9);
+      // 3. Studio Lighting
+      const ambientLight = new THREE.AmbientLight(0xfff8ee, 1.2);
       scene.add(ambientLight);
 
-      // Key Warm Sun Light
-      pointLightWarm = new THREE.DirectionalLight(0xffecd2, 1.9);
-      pointLightWarm.position.set(4, 6, 5);
-      pointLightWarm.castShadow = true;
-      pointLightWarm.shadow.mapSize.width = 1024;
-      pointLightWarm.shadow.mapSize.height = 1024;
-      scene.add(pointLightWarm);
+      // Key Warm Light
+      dirLightKey = new THREE.DirectionalLight(0xffeed9, 2.3);
+      dirLightKey.position.set(4, 5, 5);
+      dirLightKey.castShadow = true;
+      scene.add(dirLightKey);
 
-      // Rim Light for Luxury Gold Glint
-      rimLightGold = new THREE.PointLight(0xd4a34b, 2.4, 15);
-      rimLightGold.position.set(-5, 3, -2);
-      scene.add(rimLightGold);
+      // Amber Gold Specular Rim Light
+      goldRimLight = new THREE.PointLight(0xd4af37, 2.5, 12);
+      goldRimLight.position.set(-3.5, 2.5, -2);
+      scene.add(goldRimLight);
 
-      // Soft ground bounce light
-      const groundBounce = new THREE.DirectionalLight(0x7aa37b, 0.4);
-      groundBounce.position.set(0, -5, 2);
-      scene.add(groundBounce);
+      // Overhead Mud Specular Highlight Light (Makes the wet peaks pop)
+      const mudHighlightLight = new THREE.DirectionalLight(0xffffff, 1.4);
+      mudHighlightLight.position.set(-1, 6, 2);
+      scene.add(mudHighlightLight);
 
-      // 4. Create Tub Model Group
+      // 4. MAIN PRODUCT GROUP (Holds jar, mud mound, lid, and shadow)
       tubGroup = new THREE.Group();
+      tubGroup.scale.set(currentJarScale, currentJarScale, currentJarScale);
       scene.add(tubGroup);
 
-      // 4A. MAIN TUB CONTAINER (Tapered salon cosmetic cylinder)
-      const labelTexture = createProductLabelTexture();
-      const mudBump = createMudBumpMap();
-
-      const jarGeometry = new THREE.CylinderGeometry(1.88, 1.62, 2.9, 64, 1, false);
+      // 4A. WHITE COSMETIC TUB
+      const labelTexture = generateJarLabelTexture();
+      const jarGeometry = new THREE.CylinderGeometry(0.96, 0.82, 1.45, 64, 1, false);
       const jarMaterial = new THREE.MeshStandardMaterial({
         map: labelTexture,
-        roughness: 0.32,
-        metalness: 0.05,
-        bumpMap: labelTexture,
-        bumpScale: 0.008,
+        roughness: 0.28,
+        metalness: 0.04,
       });
 
       jarMesh = new THREE.Mesh(jarGeometry, jarMaterial);
@@ -1239,76 +1083,90 @@
       jarMesh.receiveShadow = true;
       tubGroup.add(jarMesh);
 
-      // Top Beveled Rim Ring of the tub
-      const rimGeometry = new THREE.TorusGeometry(1.88, 0.08, 16, 64);
-      const rimMaterial = new THREE.MeshStandardMaterial({
-        color: 0xfaf8f5,
-        roughness: 0.28,
-        metalness: 0.08,
-      });
-      const topRim = new THREE.Mesh(rimGeometry, rimMaterial);
-      topRim.rotation.x = Math.PI / 2;
-      topRim.position.y = 1.45;
-      tubGroup.add(topRim);
+      // Beveled White Lip Ring
+      const lipGeo = new THREE.TorusGeometry(0.96, 0.045, 16, 64);
+      const lipMat = new THREE.MeshStandardMaterial({ color: 0xfaf8f5, roughness: 0.3 });
+      const topLip = new THREE.Mesh(lipGeo, lipMat);
+      topLip.rotation.x = Math.PI / 2;
+      topLip.position.y = 0.725;
+      tubGroup.add(topLip);
 
-      // 4B. GLISTENING MOOR MUD SURFACE (Inside the tub)
-      // Displaced top disc mimicking wet, rich organic black clay
-      const mudGeometry = new THREE.CircleGeometry(1.80, 64);
-      // Give organic undulating vertex heights to simulate the peaks seen in the photo
-      const posAttr = mudGeometry.attributes.position;
-      for (let i = 0; i < posAttr.count; i++) {
-        const u = posAttr.getX(i);
-        const v = posAttr.getY(i);
+      // 4B. RICH GLISTENING BLACK MOOR MUD (FILLED TO THE BRIM WITH MOUNDED PEAKS)
+      const mudBump = generateMudBumpMap();
+
+      // We use a high-density circular disc with sculpted organic heights
+      const mudGeo = new THREE.CircleGeometry(0.94, 96);
+      const pos = mudGeo.attributes.position;
+
+      // Sculpt rich natural mud peaks, swirls, and overflowing mounds (like reference photo)
+      for (let i = 0; i < pos.count; i++) {
+        const u = pos.getX(i);
+        const v = pos.getY(i);
         const dist = Math.sqrt(u * u + v * v);
-        if (dist > 0.1 && dist < 1.7) {
-          const swirl = Math.sin(u * 4.5) * Math.cos(v * 4.5) * 0.09;
-          const peak = Math.exp(-Math.pow(dist - 0.7, 2) * 5) * 0.12;
-          posAttr.setZ(i, swirl + peak);
+        const normDist = dist / 0.94;
+
+        if (normDist < 1.0) {
+          // Base dome: mounded high above the rim
+          const domeHeight = Math.cos(normDist * (Math.PI / 2)) * 0.16;
+
+          // Natural organic peaks and ripples like whipped peat
+          const ripple1 = Math.sin(u * 9 + v * 8) * 0.035 * (1 - normDist * 0.4);
+          const ripple2 = Math.cos(Math.atan2(v, u) * 4 + dist * 14) * 0.03;
+          const dollopPeak = Math.exp(-Math.pow(dist - 0.28, 2) * 16) * 0.06;
+          const centerSwirl = Math.sin(dist * 16 - Math.atan2(v, u) * 2) * 0.025;
+
+          pos.setZ(i, domeHeight + ripple1 + ripple2 + dollopPeak + centerSwirl);
         }
       }
-      mudGeometry.computeVertexNormals();
+      mudGeo.computeVertexNormals();
 
-      const mudMaterial = new THREE.MeshStandardMaterial({
-        color: 0x141517, // Deep charcoal obsidian black
-        roughness: 0.18, // Glistening, wet mineral sheen
-        metalness: 0.12,
+      // Deep jet-black glistening moor mud material with clearcoat sheen
+      const mudMaterial = new THREE.MeshPhysicalMaterial({
+        color: 0x0c0c0e,             // Deep organic jet peat black
+        roughness: 0.14,             // Wet glistening look
+        metalness: 0.12,             // Specular light bounce
+        clearcoat: 1.0,              // Wet shiny moisture glaze
+        clearcoatRoughness: 0.08,
         bumpMap: mudBump,
-        bumpScale: 0.04,
+        bumpScale: 0.045,
+        reflectivity: 0.9,
       });
 
-      mudSurfaceMesh = new THREE.Mesh(mudGeometry, mudMaterial);
-      mudSurfaceMesh.rotation.x = -Math.PI / 2;
-      mudSurfaceMesh.position.y = 1.40;
-      tubGroup.add(mudSurfaceMesh);
+      mudMoundMesh = new THREE.Mesh(mudGeo, mudMaterial);
+      mudMoundMesh.rotation.x = -Math.PI / 2;
+      mudMoundMesh.position.y = 0.725; // Sits right at rim, bulging upwards!
+      tubGroup.add(mudMoundMesh);
 
-      // 4C. DETACHABLE COSMETIC LID
+      // Mud Base Cylinder to ensure the tub interior is solidly packed with dark mud
+      const mudBaseGeo = new THREE.CylinderGeometry(0.93, 0.81, 1.4, 32);
+      const mudBaseMat = new THREE.MeshBasicMaterial({ color: 0x09090b });
+      mudBaseMesh = new THREE.Mesh(mudBaseGeo, mudBaseMat);
+      mudBaseMesh.position.y = -0.02;
+      tubGroup.add(mudBaseMesh);
+
+      // 4C. DETACHABLE WHITE LID (TILTED TO THE SIDE LIKE IN PHOTO)
       lidMesh = new THREE.Group();
 
-      // Outer lid dome
-      const lidOuterGeo = new THREE.CylinderGeometry(1.98, 1.98, 0.32, 64);
-      const lidMaterial = new THREE.MeshStandardMaterial({
-        color: 0xfcfbfa,
-        roughness: 0.26,
-        metalness: 0.05,
+      const lidGeo = new THREE.CylinderGeometry(1.02, 1.02, 0.15, 64);
+      const lidMat = new THREE.MeshStandardMaterial({
+        color: 0xfbf9f6,
+        roughness: 0.28,
+        metalness: 0.02
       });
-      const lidOuter = new THREE.Mesh(lidOuterGeo, lidMaterial);
+      const lidOuter = new THREE.Mesh(lidGeo, lidMat);
+      lidOuter.castShadow = true;
       lidMesh.add(lidOuter);
 
-      // Lid top chamfer lip
-      const lidTopRingGeo = new THREE.TorusGeometry(1.95, 0.06, 16, 64);
-      const lidTopRing = new THREE.Mesh(lidTopRingGeo, lidMaterial);
-      lidTopRing.rotation.x = Math.PI / 2;
-      lidTopRing.position.y = 0.16;
-      lidMesh.add(lidTopRing);
+      // Top chamfer rim on lid
+      const lidRimGeo = new THREE.TorusGeometry(1.01, 0.03, 16, 64);
+      const lidRim = new THREE.Mesh(lidRimGeo, lidMat);
+      lidRim.rotation.x = Math.PI / 2;
+      lidRim.position.y = 0.075;
+      lidMesh.add(lidRim);
 
-      // Recessed inner seal underside
-      const lidUnderGeo = new THREE.CylinderGeometry(1.82, 1.82, 0.08, 48);
-      const lidUnderMat = new THREE.MeshStandardMaterial({ color: 0xeeeeee, roughness: 0.5 });
-      const lidUnder = new THREE.Mesh(lidUnderGeo, lidUnderMat);
-      lidUnder.position.y = -0.16;
-      lidMesh.add(lidUnder);
-
-      lidMesh.position.y = 1.62; // Sitting directly on the jar initially
+      // Position lid leaning beside the jar on ground (photo recreation)
+      lidMesh.position.copy(targetLidPos);
+      lidMesh.rotation.copy(targetLidRot);
       tubGroup.add(lidMesh);
 
       // 4D. SOFT CONTACT SHADOW PLANE
@@ -1324,7 +1182,7 @@
       sCtx.fillRect(0, 0, 256, 256);
       const shadowTexture = new THREE.CanvasTexture(shadowCanvas);
 
-      const shadowGeo = new THREE.PlaneGeometry(6.5, 6.5);
+      const shadowGeo = new THREE.PlaneGeometry(4.2, 4.2);
       const shadowMat = new THREE.MeshBasicMaterial({
         map: shadowTexture,
         transparent: true,
@@ -1333,481 +1191,468 @@
       });
       shadowMesh = new THREE.Mesh(shadowGeo, shadowMat);
       shadowMesh.rotation.x = -Math.PI / 2;
-      shadowMesh.position.y = -1.48;
+      shadowMesh.position.y = -0.73;
       tubGroup.add(shadowMesh);
 
-      // 4E. FLOATING BOTANICAL / GOLD ESSENCE PARTICLES
-      const particleCount = 120;
-      const particleGeo = new THREE.BufferGeometry();
-      const pPositions = new Float32Array(particleCount * 3);
-      const pScales = new Float32Array(particleCount);
+      // 4E. GOLD & PEAT DUST AMBIENT PARTICLES
+      const pCount = 85;
+      const pGeo = new THREE.BufferGeometry();
+      const pPos = new Float32Array(pCount * 3);
 
-      for (let p = 0; p < particleCount; p++) {
-        pPositions[p * 3] = (Math.random() - 0.5) * 8;
-        pPositions[p * 3 + 1] = (Math.random() - 0.5) * 6;
-        pPositions[p * 3 + 2] = (Math.random() - 0.5) * 6;
-        pScales[p] = Math.random();
+      for (let p = 0; p < pCount; p++) {
+        pPos[p * 3] = (Math.random() - 0.5) * 6;
+        pPos[p * 3 + 1] = (Math.random() - 0.5) * 5;
+        pPos[p * 3 + 2] = (Math.random() - 0.5) * 5;
       }
+      pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
 
-      particleGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
+      const ptCanvas = document.createElement('canvas');
+      ptCanvas.width = 32;
+      ptCanvas.height = 32;
+      const ptCtx = ptCanvas.getContext('2d');
+      const ptGrad = ptCtx.createRadialGradient(16, 16, 0, 16, 16, 16);
+      ptGrad.addColorStop(0, 'rgba(212, 175, 55, 1)');
+      ptGrad.addColorStop(0.5, 'rgba(212, 175, 55, 0.35)');
+      ptGrad.addColorStop(1, 'rgba(0,0,0,0)');
+      ptCtx.fillStyle = ptGrad;
+      ptCtx.fillRect(0, 0, 32, 32);
 
-      // Circular particle canvas
-      const pCanvas = document.createElement('canvas');
-      pCanvas.width = 32;
-      pCanvas.height = 32;
-      const pCtx = pCanvas.getContext('2d');
-      const pGrad = pCtx.createRadialGradient(16, 16, 0, 16, 16, 16);
-      pGrad.addColorStop(0, 'rgba(212, 163, 75, 1)');
-      pGrad.addColorStop(0.5, 'rgba(212, 163, 75, 0.5)');
-      pGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-      pCtx.fillStyle = pGrad;
-      pCtx.fillRect(0, 0, 32, 32);
-
-      const pTexture = new THREE.CanvasTexture(pCanvas);
-      const particleMat = new THREE.PointsMaterial({
-        size: 0.12,
-        map: pTexture,
+      const ptTexture = new THREE.CanvasTexture(ptCanvas);
+      const pMat = new THREE.PointsMaterial({
+        size: 0.08,
+        map: ptTexture,
         transparent: true,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
       });
-
-      particleSystem = new THREE.Points(particleGeo, particleMat);
+      particleSystem = new THREE.Points(pGeo, pMat);
       scene.add(particleSystem);
 
-      // Initial tub orientation
-      tubGroup.rotation.y = 0.05;
-      tubGroup.rotation.x = 0.12;
-
-      // Event listeners
-      setupInteractiveEvents();
-
-      // Begin animation loop
+      setupInteractionHandlers();
       animate();
     }
 
-    /* ----------------------------------------------------
-       5. INTERACTIVE EVENTS (Scroll, Mouse, Parallax, Drag)
-    ---------------------------------------------------- */
-    function setupInteractiveEvents() {
-      // Resize handling
-      window.addEventListener('resize', onWindowResize, false);
+    /* --------------------------------------------------------
+       5. INTERACTION & SCROLL CHOREOGRAPHY
+    -------------------------------------------------------- */
+    function setupInteractionHandlers() {
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
 
-      // Mouse Parallax
+      // Mouse Parallax on Desktop
       window.addEventListener('mousemove', (e) => {
         const normX = (e.clientX / window.innerWidth) * 2 - 1;
         const normY = -(e.clientY / window.innerHeight) * 2 + 1;
-        mouseParallax.x = normX * 0.25;
-        mouseParallax.y = normY * 0.2;
+        mouseParallax.x = normX * 0.18;
+        mouseParallax.y = normY * 0.14;
 
-        // Kinetic background subtle parallax
-        const kineticBg = document.getElementById('hero-kinetic-text');
-        if (kineticBg) {
-          kineticBg.style.transform = `translate3d(${normX * 20}px, ${normY * -15}px, 0)`;
+        const kinetic = document.getElementById('hero-kinetic-text');
+        if (kinetic) {
+          kinetic.style.transform = `translate3d(${normX * 16}px, ${normY * -12}px, 0)`;
         }
       });
 
-      // Free Drag & Inspect logic
-      const canvasEl = document.getElementById('webgl-canvas');
-
-      const startDrag = (x, y) => {
-        if (!isFreeInspect) return;
-        isDragging = true;
-        previousMousePosition = { x, y };
+      // 360 Drag Orbiting
+      const onPointerDown = (clientX, clientY) => {
+        if (!isFreeOrbitActive) return;
+        isMouseDown = true;
+        prevMousePos = { x: clientX, y: clientY };
       };
 
-      const moveDrag = (x, y) => {
-        if (!isFreeInspect || !isDragging) return;
-        const deltaX = x - previousMousePosition.x;
-        const deltaY = y - previousMousePosition.y;
+      const onPointerMove = (clientX, clientY) => {
+        if (!isFreeOrbitActive || !isMouseDown) return;
+        const deltaX = clientX - prevMousePos.x;
+        const deltaY = clientY - prevMousePos.y;
 
         tubGroup.rotation.y += deltaX * 0.008;
         tubGroup.rotation.x += deltaY * 0.008;
 
-        previousMousePosition = { x, y };
+        prevMousePos = { x: clientX, y: clientY };
       };
 
-      const endDrag = () => {
-        isDragging = false;
+      const onPointerUp = () => {
+        isMouseDown = false;
       };
 
-      // Mouse drag
-      window.addEventListener('mousedown', (e) => startDrag(e.clientX, e.clientY));
-      window.addEventListener('mousemove', (e) => moveDrag(e.clientX, e.clientY));
-      window.addEventListener('mouseup', endDrag);
+      window.addEventListener('mousedown', (e) => onPointerDown(e.clientX, e.clientY));
+      window.addEventListener('mousemove', (e) => onPointerMove(e.clientX, e.clientY));
+      window.addEventListener('mouseup', onPointerUp);
 
-      // Touch drag for mobile
       window.addEventListener('touchstart', (e) => {
-        if (e.touches.length === 1) {
-          startDrag(e.touches[0].clientX, e.touches[0].clientY);
-        }
+        if (e.touches.length === 1) onPointerDown(e.touches[0].clientX, e.touches[0].clientY);
       });
       window.addEventListener('touchmove', (e) => {
-        if (e.touches.length === 1 && isFreeInspect) {
-          moveDrag(e.touches[0].clientX, e.touches[0].clientY);
-        }
+        if (e.touches.length === 1 && isFreeOrbitActive) onPointerMove(e.touches[0].clientX, e.touches[0].clientY);
       });
-      window.addEventListener('touchend', endDrag);
+      window.addEventListener('touchend', onPointerUp);
 
-      // Scroll-driven camera choreography
-      window.addEventListener('scroll', onScrollChoreography, { passive: true });
+      window.addEventListener('scroll', handleScrollSync, { passive: true });
     }
 
-    function onWindowResize() {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-
-    /* ----------------------------------------------------
-       6. SCROLL CHOREOGRAPHY (Inspired by the showcase video)
-    ---------------------------------------------------- */
     const hotspotsOverlay = document.getElementById('hotspots-overlay');
 
-    function onScrollChoreography() {
-      if (isFreeInspect) return; // Allow manual 360 inspection without scroll lock
+    function handleScrollSync() {
+      if (isFreeOrbitActive) return;
 
       const scrollY = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollRatio = Math.max(0, Math.min(1, scrollY / (docHeight || 1)));
+      const mudSec = document.getElementById('mud-core');
+      const clinicalSec = document.getElementById('clinical');
+      const specsSec = document.getElementById('specs');
+      const ritualSec = document.getElementById('ritual');
 
-      const heroEl = document.getElementById('hero');
-      const anatomyEl = document.getElementById('anatomy');
-      const clinicalEl = document.getElementById('clinical');
-      const specsEl = document.getElementById('specs');
-      const ritualEl = document.getElementById('ritual');
+      const mudTop = mudSec.offsetTop - 260;
+      const clinicalTop = clinicalSec.offsetTop - 260;
+      const specsTop = specsSec.offsetTop - 260;
+      const ritualTop = ritualSec.offsetTop - 260;
 
-      const anatomyTop = anatomyEl.offsetTop - 300;
-      const clinicalTop = clinicalEl.offsetTop - 300;
-      const specsTop = specsEl.offsetTop - 300;
-      const ritualTop = ritualEl.offsetTop - 300;
-
-      if (scrollY < anatomyTop) {
-        // STATE 1: HERO
-        // Upright, subtle tilt, lid resting on jar
-        targetCameraPos.set(0, 0.4, 6.4);
-        targetCameraLookAt.set(0, 0, 0);
-        targetTubPosition.x = window.innerWidth > 1024 ? 0.3 : 0;
-        targetTubPosition.y = -0.15;
-        targetTubRotation.x = 0.12;
-        targetTubRotation.y = 0.05 + scrollRatio * 0.5;
-        targetLidY = 1.62;
-        targetLidX = 0;
-        targetLidRotationZ = 0;
-        targetLidRotationX = 0;
+      if (scrollY < mudTop) {
+        // SECTION 1: HERO
+        // Shows both label and the rich mounded black mud above rim with tilted lid
+        targetCameraPos.set(0, 0.45, 5.6);
+        targetCameraLookAt.set(0, 0.05, 0);
+        targetTubPosition.x = window.innerWidth > 1024 ? 0.45 : 0;
+        targetTubPosition.y = -0.1;
+        targetTubRotation.x = 0.16;
+        targetTubRotation.y = -0.15;
 
         hotspotsOverlay.classList.remove('opacity-100');
         hotspotsOverlay.classList.add('opacity-0');
-        updatePresetButtonHighlight('cam-btn-hero');
       } 
-      else if (scrollY >= anatomyTop && scrollY < clinicalTop) {
-        // STATE 2: ANATOMY (Top-angled macro, lid floats off to side like the real photo!)
-        targetCameraPos.set(0, 2.5, 5.0);
+      else if (scrollY >= mudTop && scrollY < clinicalTop) {
+        // SECTION 2: MUD CORE (Top-down macro angle directly into the mud)
+        targetCameraPos.set(0, 2.2, 4.4);
         targetCameraLookAt.set(0, 0.4, 0);
-        targetTubPosition.x = window.innerWidth > 1024 ? 1.2 : 0;
-        targetTubPosition.y = -0.4;
-        targetTubRotation.x = 0.55; // Tilted toward viewer to reveal black moor mud
-        targetTubRotation.y = -0.25;
-
-        // Lid levitates off to the right and rests tilted (like the real photo)
-        targetLidY = 2.4;
-        targetLidX = 1.5;
-        targetLidRotationZ = -0.45;
-        targetLidRotationX = 0.3;
+        targetTubPosition.x = window.innerWidth > 1024 ? 0.75 : 0;
+        targetTubPosition.y = -0.25;
+        targetTubRotation.x = 0.58; // Tilted toward viewer to reveal glistening peaks
+        targetTubRotation.y = -0.1;
 
         hotspotsOverlay.classList.remove('opacity-0');
         hotspotsOverlay.classList.add('opacity-100');
-        updatePresetButtonHighlight('cam-btn-open');
       } 
       else if (scrollY >= clinicalTop && scrollY < specsTop) {
-        // STATE 3: CLINICAL PROWESS (Dramatic side hero profile, kinetic typography)
-        targetCameraPos.set(-2.0, 0.6, 5.2);
-        targetCameraLookAt.set(0.5, 0.2, 0);
-        targetTubPosition.x = window.innerWidth > 1024 ? -1.4 : 0;
+        // SECTION 3: CLINICAL
+        targetCameraPos.set(-1.6, 0.4, 4.9);
+        targetCameraLookAt.set(0.2, 0.1, 0);
+        targetTubPosition.x = window.innerWidth > 1024 ? -0.85 : 0;
         targetTubPosition.y = -0.1;
-        targetTubRotation.x = 0.2;
-        targetTubRotation.y = 0.85; // Showing jar profile and depth
-
-        targetLidY = 1.62; // Lid resealed
-        targetLidX = 0;
-        targetLidRotationZ = 0;
-        targetLidRotationX = 0;
+        targetTubRotation.x = 0.14;
+        targetTubRotation.y = 0.72;
 
         hotspotsOverlay.classList.remove('opacity-100');
         hotspotsOverlay.classList.add('opacity-0');
-        updatePresetButtonHighlight('cam-btn-top');
       } 
       else if (scrollY >= specsTop && scrollY < ritualTop) {
-        // STATE 4: APOTHECARY SPECS (Spins 180 to reveal back label specifications)
-        targetCameraPos.set(0, 0.3, 5.6);
+        // SECTION 4: SPECS (Rotates to show back dossier)
+        targetCameraPos.set(0, 0.3, 5.1);
         targetCameraLookAt.set(0, 0, 0);
-        targetTubPosition.x = window.innerWidth > 1024 ? 1.1 : 0;
-        targetTubPosition.y = -0.15;
-        targetTubRotation.x = 0.05;
-        targetTubRotation.y = Math.PI - 0.2; // Back label showing Salzburg specs
-
-        targetLidY = 1.62;
-        targetLidX = 0;
-        targetLidRotationZ = 0;
-        targetLidRotationX = 0;
+        targetTubPosition.x = window.innerWidth > 1024 ? 0.8 : 0;
+        targetTubPosition.y = -0.1;
+        targetTubRotation.x = 0.06;
+        targetTubRotation.y = Math.PI - 0.15; // 180 spin to back label
 
         hotspotsOverlay.classList.remove('opacity-100');
         hotspotsOverlay.classList.add('opacity-0');
-        updatePresetButtonHighlight('cam-btn-top');
       } 
       else {
-        // STATE 5: THE RITUAL (Zen overview from top-down 45 degree)
-        targetCameraPos.set(0, 3.2, 4.6);
+        // SECTION 5: RITUAL
+        targetCameraPos.set(0, 2.0, 4.8);
         targetCameraLookAt.set(0, 0.1, 0);
         targetTubPosition.x = 0;
-        targetTubPosition.y = -0.3;
-        targetTubRotation.x = 0.7;
-        targetTubRotation.y = 0.3;
-
-        targetLidY = 2.2;
-        targetLidX = 1.6;
-        targetLidRotationZ = -0.5;
+        targetTubPosition.y = -0.22;
+        targetTubRotation.x = 0.55;
+        targetTubRotation.y = 0.2;
 
         hotspotsOverlay.classList.remove('opacity-100');
         hotspotsOverlay.classList.add('opacity-0');
       }
     }
 
-    function updatePresetButtonHighlight(activeId) {
-      document.querySelectorAll('.cam-preset-btn').forEach(btn => {
-        btn.classList.remove('bg-amberGold-500', 'text-clay-950', 'font-semibold');
-        btn.classList.add('text-clay-400');
-      });
-      const activeBtn = document.getElementById(activeId);
-      if (activeBtn) {
-        activeBtn.classList.remove('text-clay-400');
-        activeBtn.classList.add('bg-amberGold-500', 'text-clay-950', 'font-semibold');
-      }
-    }
-
-    /* ----------------------------------------------------
-       7. MAIN 60FPS THREE.JS RENDER LOOP
-    ---------------------------------------------------- */
+    /* --------------------------------------------------------
+       6. RENDER LOOP (Lerps & Animations)
+    -------------------------------------------------------- */
     let clock = new THREE.Clock();
 
     function animate() {
       requestAnimationFrame(animate);
 
-      const elapsedTime = clock.getElapsedTime();
+      const delta = clock.getDelta();
+      const elapsed = clock.getElapsedTime();
 
-      // Smooth camera interpolation (Lerp)
-      if (!isFreeInspect) {
+      // Smooth jar scaling
+      currentJarScale += (targetJarScale - currentJarScale) * 0.08;
+      tubGroup.scale.set(currentJarScale, currentJarScale, currentJarScale);
+
+      // Camera interpolation
+      if (!isFreeOrbitActive) {
         camera.position.x += (targetCameraPos.x + mouseParallax.x - camera.position.x) * 0.05;
         camera.position.y += (targetCameraPos.y + mouseParallax.y - camera.position.y) * 0.05;
         camera.position.z += (targetCameraPos.z - camera.position.z) * 0.05;
-
         camera.lookAt(targetCameraLookAt);
 
-        // Tub position lerp
+        // Tub position and gentle breathing float
         tubGroup.position.x += (targetTubPosition.x - tubGroup.position.x) * 0.05;
-        tubGroup.position.y += (targetTubPosition.y + Math.sin(elapsedTime * 1.5) * 0.03 - tubGroup.position.y) * 0.05;
+        tubGroup.position.y += (targetTubPosition.y + Math.sin(elapsed * 1.5) * 0.015 - tubGroup.position.y) * 0.05;
 
-        // Tub rotation lerp (Idle breathing rotation)
-        tubGroup.rotation.x += (targetTubRotation.x + mouseParallax.y * 0.3 - tubGroup.rotation.x) * 0.05;
-        tubGroup.rotation.y += (targetTubRotation.y + mouseParallax.x * 0.4 - tubGroup.rotation.y) * 0.05;
-
-        // Lid levitation lerp
-        lidMesh.position.y += (targetLidY - lidMesh.position.y) * 0.06;
-        lidMesh.position.x += (targetLidX - lidMesh.position.x) * 0.06;
-        lidMesh.rotation.z += (targetLidRotationZ - lidMesh.rotation.z) * 0.06;
-        lidMesh.rotation.x += (targetLidRotationX - lidMesh.rotation.x) * 0.06;
-      } else {
-        // Free inspection idle rotation when not dragging
-        if (!isDragging) {
-          tubGroup.rotation.y += 0.003;
+        if (isAutoRotating) {
+          tubGroup.rotation.y += 0.005;
+        } else {
+          tubGroup.rotation.y += (targetTubRotation.y + mouseParallax.x * 0.25 - tubGroup.rotation.y) * 0.05;
         }
+        tubGroup.rotation.x += (targetTubRotation.x + mouseParallax.y * 0.2 - tubGroup.rotation.x) * 0.05;
       }
 
-      // Swirling golden micro-particles
+      // Smooth Lid Pose Interpolation
+      lidMesh.position.lerp(targetLidPos, 0.08);
+      lidMesh.rotation.x += (targetLidRot.x - lidMesh.rotation.x) * 0.08;
+      lidMesh.rotation.y += (targetLidRot.y - lidMesh.rotation.y) * 0.08;
+      lidMesh.rotation.z += (targetLidRot.z - lidMesh.rotation.z) * 0.08;
+
+      // Swirling golden dust
       if (particleSystem) {
-        particleSystem.rotation.y = elapsedTime * 0.04;
-        particleSystem.rotation.x = Math.sin(elapsedTime * 0.05) * 0.1;
+        particleSystem.rotation.y = elapsed * 0.025;
       }
 
-      // Render
       renderer.render(scene, camera);
     }
 
-    /* ----------------------------------------------------
-       8. UI CONTROLS & CAMERA DOCK PRESETS
-    ---------------------------------------------------- */
-    const camBtnHero = document.getElementById('cam-btn-hero');
-    const camBtnOpen = document.getElementById('cam-btn-open');
-    const camBtnTop = document.getElementById('cam-btn-top');
-    const camBtnInspect = document.getElementById('cam-btn-inspect');
-    const heroOpenLidBtn = document.getElementById('hero-open-lid-btn');
+    /* --------------------------------------------------------
+       7. UI INTERACTION CONTROLS
+    -------------------------------------------------------- */
+    // Jar Scale Presets
+    const scaleBtns = document.querySelectorAll('.scale-btn');
+    scaleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = parseFloat(btn.dataset.scale);
+        targetJarScale = val;
+        scaleBtns.forEach(b => {
+          b.classList.remove('bg-amberGold-500', 'text-obsidian-950', 'font-bold');
+          b.classList.add('text-peatClay-400');
+        });
+        btn.classList.add('bg-amberGold-500', 'text-obsidian-950', 'font-bold');
+        btn.classList.remove('text-peatClay-400');
+        playClick();
+        showToast(`Jar Proportions: ${btn.innerText}`);
+      });
+    });
 
-    function setCamPreset(preset) {
-      isFreeInspect = false;
-      document.getElementById('canvas-container').classList.add('pointer-events-none');
-      document.getElementById('canvas-container').classList.remove('pointer-events-auto');
+    // Lid State Presets
+    const lidLeanBtn = document.getElementById('lid-lean-btn');
+    const lidSealBtn = document.getElementById('lid-seal-btn');
+    const lidHoverBtn = document.getElementById('lid-hover-btn');
+    const lidStateBtns = document.querySelectorAll('.lid-state-btn');
 
-      playTactileClick();
-
-      if (preset === 'hero') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (preset === 'open') {
-        const anatomyEl = document.getElementById('anatomy');
-        anatomyEl.scrollIntoView({ behavior: 'smooth' });
-        playSingingBowlChime(432, 2.2);
-      } else if (preset === 'top') {
-        const clinicalEl = document.getElementById('clinical');
-        clinicalEl.scrollIntoView({ behavior: 'smooth' });
-      } else if (preset === 'inspect') {
-        isFreeInspect = true;
-        document.getElementById('canvas-container').classList.remove('pointer-events-none');
-        document.getElementById('canvas-container').classList.add('pointer-events-auto');
-        targetCameraPos.set(0, 0.4, 6.0);
-        targetLidY = 1.62;
-        targetLidX = 0;
-        updatePresetButtonHighlight('cam-btn-inspect');
-        showToast('360° Drag & Inspect Mode Active');
-        playSingingBowlChime(640, 1.8);
-      }
+    function setActiveLidBtn(activeBtn) {
+      lidStateBtns.forEach(b => {
+        b.classList.remove('bg-amberGold-500/20', 'text-amberGold-400', 'font-semibold');
+        b.classList.add('text-peatClay-400');
+      });
+      activeBtn.classList.add('bg-amberGold-500/20', 'text-amberGold-400', 'font-semibold');
+      activeBtn.classList.remove('text-peatClay-400');
     }
 
-    camBtnHero.addEventListener('click', () => setCamPreset('hero'));
-    camBtnOpen.addEventListener('click', () => setCamPreset('open'));
-    camBtnTop.addEventListener('click', () => setCamPreset('top'));
-    camBtnInspect.addEventListener('click', () => setCamPreset('inspect'));
-    heroOpenLidBtn.addEventListener('click', () => setCamPreset('open'));
-
-    // Studio Lighting Toggle
-    const lightSpaBtn = document.getElementById('light-spa-btn');
-    const lightDarkBtn = document.getElementById('light-dark-btn');
-
-    lightSpaBtn.addEventListener('click', () => {
-      pointLightWarm.color.setHex(0xffecd2);
-      pointLightWarm.intensity = 1.9;
-      rimLightGold.color.setHex(0xd4a34b);
-      lightSpaBtn.classList.add('text-amberGold-400');
-      lightDarkBtn.classList.remove('text-amberGold-400');
-      playTactileClick();
+    lidLeanBtn.addEventListener('click', () => {
+      lidState = 'LEAN';
+      targetLidPos.set(1.18, -0.05, 0.25);
+      targetLidRot.set(0.2, -0.3, -1.05);
+      setActiveLidBtn(lidLeanBtn);
+      playClick();
+      showToast('Lid Position: Leaning Beside Jar (Photo Recreation)');
     });
 
-    lightDarkBtn.addEventListener('click', () => {
-      pointLightWarm.color.setHex(0xaaccff);
-      pointLightWarm.intensity = 1.2;
-      rimLightGold.color.setHex(0x5588cc);
-      lightDarkBtn.classList.add('text-amberGold-400');
-      lightSpaBtn.classList.remove('text-amberGold-400');
-      playTactileClick();
+    lidSealBtn.addEventListener('click', () => {
+      lidState = 'SEAL';
+      targetLidPos.set(0, 0.76, 0);
+      targetLidRot.set(0, 0, 0);
+      setActiveLidBtn(lidSealBtn);
+      playClick();
+      showToast('Lid Position: Sealed Shut Over Tub');
     });
 
-    // Clinical slider day changer
-    const clinicalSlider = document.getElementById('clinical-slider');
-    const sliderDayIndicator = document.getElementById('slider-day-indicator');
+    lidHoverBtn.addEventListener('click', () => {
+      lidState = 'FLOAT';
+      targetLidPos.set(0.7, 1.45, 0);
+      targetLidRot.set(0.25, 0, -0.4);
+      setActiveLidBtn(lidHoverBtn);
+      playTone(528, 2.0);
+      showToast('Lid Position: Hovering Levitated');
+    });
 
-    clinicalSlider.addEventListener('input', (e) => {
-      const val = parseInt(e.target.value);
-      if (val < 30) {
-        sliderDayIndicator.innerText = 'Day 3: Initial Thermal Purge';
-        sliderDayIndicator.className = 'font-mono text-xs px-3 py-1 rounded-full bg-clay-800 text-clay-300 border border-white/10 font-bold';
-      } else if (val < 70) {
-        sliderDayIndicator.innerText = 'Day 14: Mid-Cycle Resurfacing';
-        sliderDayIndicator.className = 'font-mono text-xs px-3 py-1 rounded-full bg-amberGold-500/20 text-amberGold-400 border border-amberGold-500/40 font-bold';
+    // Camera Views
+    const camFrontBtn = document.getElementById('cam-front-btn');
+    const camMudMacroBtn = document.getElementById('cam-mud-macro-btn');
+    const camSpecsBtn = document.getElementById('cam-specs-btn');
+    const heroMacroBtn = document.getElementById('hero-macro-btn');
+    const viewSpecs3dBtn = document.getElementById('view-specs-3d-btn');
+
+    camFrontBtn.addEventListener('click', () => {
+      isFreeOrbitActive = false;
+      document.getElementById('canvas-container').classList.add('pointer-events-none');
+      targetCameraPos.set(0, 0.45, 5.6);
+      targetCameraLookAt.set(0, 0.05, 0);
+      targetTubRotation.y = -0.15;
+      targetTubRotation.x = 0.16;
+      playClick();
+    });
+
+    function showMudMacroView() {
+      isFreeOrbitActive = false;
+      document.getElementById('canvas-container').classList.add('pointer-events-none');
+      targetCameraPos.set(0, 1.9, 3.4);
+      targetCameraLookAt.set(0, 0.5, 0);
+      targetTubRotation.x = 0.65; // High tilt directly over glistening mud
+      targetTubRotation.y = -0.1;
+      playTone(528, 2.2);
+      showToast('Mud Macro: Inspecting Rich Jet-Black Peat Peaks');
+    }
+
+    camMudMacroBtn.addEventListener('click', showMudMacroView);
+    heroMacroBtn.addEventListener('click', () => {
+      showMudMacroView();
+      const mudSec = document.getElementById('mud-core');
+      mudSec.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    function showSpecsView() {
+      isFreeOrbitActive = false;
+      document.getElementById('canvas-container').classList.add('pointer-events-none');
+      targetCameraPos.set(0, 0.3, 5.1);
+      targetCameraLookAt.set(0, 0, 0);
+      targetTubRotation.x = 0.06;
+      targetTubRotation.y = Math.PI - 0.15;
+      playClick();
+      showToast('Viewing Batch #884 Specifications');
+    }
+
+    camSpecsBtn.addEventListener('click', showSpecsView);
+    viewSpecs3dBtn.addEventListener('click', showSpecsView);
+
+    // 360 Drag Orbit Switch
+    const orbitToggleBtn = document.getElementById('orbit-toggle-btn');
+    orbitToggleBtn.addEventListener('click', () => {
+      isFreeOrbitActive = !isFreeOrbitActive;
+      const canvasContainer = document.getElementById('canvas-container');
+      if (isFreeOrbitActive) {
+        canvasContainer.classList.remove('pointer-events-none');
+        canvasContainer.classList.add('pointer-events-auto');
+        orbitToggleBtn.classList.add('bg-amberGold-500', 'text-obsidian-950', 'font-bold');
+        orbitToggleBtn.classList.remove('text-peatClay-400', 'bg-white/5');
+        isAutoRotating = false;
+        rotateIcon.classList.remove('animate-spin');
+        showToast('360° Free Drag Orbit: ON (Click & Drag)');
+        playTone(640, 1.4);
       } else {
-        sliderDayIndicator.innerText = 'Day 28: Luminous Porcelain Peak';
-        sliderDayIndicator.className = 'font-mono text-xs px-3 py-1 rounded-full bg-botanical-400/20 text-botanical-400 border border-botanical-400/40 font-bold';
+        canvasContainer.classList.add('pointer-events-none');
+        canvasContainer.classList.remove('pointer-events-auto');
+        orbitToggleBtn.classList.remove('bg-amberGold-500', 'text-obsidian-950', 'font-bold');
+        orbitToggleBtn.classList.add('text-peatClay-400', 'bg-white/5');
+        showToast('Scroll Sync Mode Restored');
       }
     });
 
-    /* ----------------------------------------------------
-       9. FUNCTIONAL LUXURY CART DRAWER ENGINE
-    ---------------------------------------------------- */
+    // Auto-Rotate Button
+    const autoRotateBtn = document.getElementById('autorotate-btn');
+    const rotateIcon = document.getElementById('rotate-icon');
+    autoRotateBtn.addEventListener('click', () => {
+      isAutoRotating = !isAutoRotating;
+      if (isAutoRotating) {
+        rotateIcon.classList.add('animate-spin');
+        showToast('Auto-Spin: ON');
+      } else {
+        rotateIcon.classList.remove('animate-spin');
+        showToast('Auto-Spin: PAUSED');
+      }
+      playClick();
+    });
+
+    /* --------------------------------------------------------
+       8. CART DRAWER & CHECKOUT
+    -------------------------------------------------------- */
+    let cartQuantity = 1;
+    const basePrice = 68.00;
+
     const openCartBtn = document.getElementById('open-cart-btn');
     const closeCartBtn = document.getElementById('close-cart-btn');
-    const cartDrawerBackdrop = document.getElementById('cart-drawer-backdrop');
     const cartDrawer = document.getElementById('cart-drawer');
-    const heroQuickAdd = document.getElementById('hero-quick-add');
-    const cartQtyPlus = document.getElementById('cart-qty-plus');
-    const cartQtyMinus = document.getElementById('cart-qty-minus');
-    const cartQtyVal = document.getElementById('cart-qty-val');
-    const cartSubtotalText = document.getElementById('cart-subtotal-text');
-    const cartTotalText = document.getElementById('cart-total-text');
-    const checkoutBtn = document.getElementById('checkout-btn');
-    const checkoutModal = document.getElementById('checkout-modal');
-    const modalCloseBtn = document.getElementById('modal-close-btn');
-    const navCartCount = document.getElementById('nav-cart-count');
-    const cartBadgeCount = document.getElementById('cart-badge-count');
+    const cartBackdrop = document.getElementById('cart-drawer-backdrop');
+    const heroBuyBtn = document.getElementById('hero-buy-btn');
+    const qtyPlus = document.getElementById('qty-plus');
+    const qtyMinus = document.getElementById('qty-minus');
+    const qtyDisplay = document.getElementById('qty-display');
+    const cartDrawerQty = document.getElementById('cart-drawer-qty');
+    const navCartBadge = document.getElementById('nav-cart-badge');
+    const cartPrice = document.getElementById('cart-price');
+    const cartSubtotal = document.getElementById('cart-subtotal');
+    const cartTotal = document.getElementById('cart-total');
+    const checkoutTriggerBtn = document.getElementById('checkout-trigger-btn');
+    const orderModal = document.getElementById('order-modal');
+    const orderModalClose = document.getElementById('order-modal-close');
 
-    let cartCount = 1;
-    const itemPrice = 64;
-
-    function updateCartUI() {
-      cartQtyVal.innerText = cartCount;
-      navCartCount.innerText = cartCount;
-      cartBadgeCount.innerText = cartCount;
-      const subtotal = cartCount * itemPrice;
-      cartSubtotalText.innerText = `$${subtotal.toFixed(2)}`;
-      cartTotalText.innerText = `$${subtotal.toFixed(2)}`;
-      checkoutBtn.innerHTML = `<i data-lucide="lock" class="w-4 h-4"></i><span>SECURE CHECKOUT — $${subtotal.toFixed(2)}</span>`;
-      lucide.createIcons();
+    function updateCart() {
+      qtyDisplay.innerText = cartQuantity;
+      cartDrawerQty.innerText = cartQuantity;
+      navCartBadge.innerText = cartQuantity;
+      const total = (cartQuantity * basePrice).toFixed(2);
+      cartPrice.innerText = `$${total}`;
+      cartSubtotal.innerText = `$${total}`;
+      cartTotal.innerText = `$${total}`;
     }
 
     function toggleCart(open) {
       if (open) {
-        cartDrawerBackdrop.classList.remove('opacity-0', 'pointer-events-none');
-        cartDrawerBackdrop.classList.add('opacity-100', 'pointer-events-auto');
+        cartBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+        cartBackdrop.classList.add('opacity-100', 'pointer-events-auto');
         cartDrawer.classList.remove('translate-x-full');
-        playTactileClick();
+        playClick();
       } else {
-        cartDrawerBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
-        cartDrawerBackdrop.classList.add('opacity-0', 'pointer-events-none');
+        cartBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
+        cartBackdrop.classList.add('opacity-0', 'pointer-events-none');
         cartDrawer.classList.add('translate-x-full');
       }
     }
 
     openCartBtn.addEventListener('click', () => toggleCart(true));
     closeCartBtn.addEventListener('click', () => toggleCart(false));
-    cartDrawerBackdrop.addEventListener('click', () => toggleCart(false));
+    cartBackdrop.addEventListener('click', () => toggleCart(false));
 
-    heroQuickAdd.addEventListener('click', () => {
-      cartCount++;
-      updateCartUI();
+    heroBuyBtn.addEventListener('click', () => {
+      cartQuantity++;
+      updateCart();
       toggleCart(true);
-      playSingingBowlChime(528, 2.0);
+      playTone(528, 2.0);
     });
 
-    cartQtyPlus.addEventListener('click', () => {
-      cartCount++;
-      updateCartUI();
-      playTactileClick();
+    qtyPlus.addEventListener('click', () => {
+      cartQuantity++;
+      updateCart();
+      playClick();
     });
 
-    cartQtyMinus.addEventListener('click', () => {
-      if (cartCount > 1) {
-        cartCount--;
-        updateCartUI();
-        playTactileClick();
+    qtyMinus.addEventListener('click', () => {
+      if (cartQuantity > 1) {
+        cartQuantity--;
+        updateCart();
+        playClick();
       }
     });
 
-    checkoutBtn.addEventListener('click', () => {
+    checkoutTriggerBtn.addEventListener('click', () => {
       toggleCart(false);
-      checkoutModal.classList.remove('opacity-0', 'pointer-events-none');
-      checkoutModal.classList.add('opacity-100', 'pointer-events-auto');
-      playSingingBowlChime(432, 3.5);
+      orderModal.classList.remove('opacity-0', 'pointer-events-none');
+      orderModal.classList.add('opacity-100', 'pointer-events-auto');
+      playTone(432, 3.0);
     });
 
-    modalCloseBtn.addEventListener('click', () => {
-      checkoutModal.classList.remove('opacity-100', 'pointer-events-auto');
-      checkoutModal.classList.add('opacity-0', 'pointer-events-none');
+    orderModalClose.addEventListener('click', () => {
+      orderModal.classList.remove('opacity-100', 'pointer-events-auto');
+      orderModal.classList.add('opacity-0', 'pointer-events-none');
     });
 
-    // Run lucide icons replacement
-    document.addEventListener('DOMContentLoaded', () => {
-      lucide.createIcons();
-    });
-
-    // Start 3D Engine on window load
-    window.onload = function() {
-      init3DScene();
+    window.onload = function () {
+      init3D();
       lucide.createIcons();
     };
   </script>
