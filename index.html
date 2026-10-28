@@ -4,55 +4,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Earth Glow Essential — Moor Mud Mask 3D Experience</title>
-
-  <!-- Google Fonts: Luxury Editorial Serif & Tech Grotesque -->
+  <title>SKINMIMIC CARE | High-Performance B2B Salon Skincare, Global Import & Formulation</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <!-- Three.js (3D WebGL Engine) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            obsidian: {
-              950: '#070706',
-              900: '#0d0d0c',
-              850: '#131311',
-              800: '#1b1a17',
-              700: '#2a2823',
-              600: '#3e3b34',
+            noir: {
+              950: '#060708',
+              900: '#0B0C0E',
+              850: '#111317',
+              800: '#171920',
+              700: '#222530',
             },
-            amberGold: {
-              300: '#fae3a2',
-              400: '#e5c06e',
-              500: '#d4af37',
-              600: '#b89228',
+            gold: {
+              100: '#FAF4EC',
+              200: '#F0E2CD',
+              300: '#E4CA9E',
+              400: '#D5B47B',
+              500: '#C5A059', /* Primary Champagne Gold */
+              600: '#A98441',
+              700: '#87672D',
             },
-            peatClay: {
-              100: '#f6f4f0',
-              200: '#e8e4dc',
-              400: '#9e998e',
-            },
-            botanicalGreen: {
-              400: '#6ea874',
-              500: '#4a7c50',
+            cashmere: {
+              50: '#FAF8F5',
+              100: '#F4EFEA',
+              200: '#EAE1D6',
+              300: '#D6C8B8',
             }
           },
           fontFamily: {
-            serif: ['Cinzel', 'Georgia', 'serif'],
+            serif: ['"Cormorant Garamond"', 'serif'],
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            mono: ['"Space Grotesk"', 'monospace'],
+          },
+          letterSpacing: {
+            widest2: '0.25em',
+            widest3: '0.35em',
           }
         }
       }
@@ -60,1601 +60,1287 @@
   </script>
 
   <style>
-    /* Sleek Custom Scrollbar */
+    /* Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 5px;
+      width: 7px;
     }
     ::-webkit-scrollbar-track {
-      background: #070706;
+      background: #0B0C0E;
     }
     ::-webkit-scrollbar-thumb {
-      background: #2a2823;
-      border-radius: 9999px;
+      background: #2A261F;
+      border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #d4af37;
+      background: #C5A059;
     }
 
-    /* Kinetic Background Typography Inspired by the Video */
-    .kinetic-outline {
-      -webkit-text-stroke: 1.5px rgba(212, 175, 55, 0.14);
-      color: transparent;
-      user-select: none;
-      pointer-events: none;
-    }
-    .kinetic-solid-glow {
-      color: rgba(255, 255, 255, 0.04);
-      text-shadow: 0 0 60px rgba(212, 175, 55, 0.15);
-      user-select: none;
-      pointer-events: none;
-    }
-
-    /* Luxury Glassmorphism Surfaces */
-    .glass-hud {
-      background: rgba(13, 13, 12, 0.82);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(212, 175, 55, 0.22);
-    }
-    .glass-card {
-      background: rgba(20, 19, 17, 0.74);
+    /* Ambient Gold Shimmer & Glass */
+    .glass-gold {
+      background: rgba(18, 19, 23, 0.72);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(197, 160, 89, 0.18);
     }
-    .glass-card:hover {
-      border-color: rgba(212, 175, 55, 0.4);
+    .glass-gold-hover:hover {
+      background: rgba(26, 27, 34, 0.85);
+      border-color: rgba(197, 160, 89, 0.45);
+      box-shadow: 0 10px 30px -10px rgba(197, 160, 89, 0.15);
     }
 
-    /* Pulsing 3D Hotspot Coordinates */
-    @keyframes pulse-ring {
-      0% { transform: scale(0.9); opacity: 0.95; }
-      50% { transform: scale(1.6); opacity: 0.2; }
-      100% { transform: scale(0.9); opacity: 0.95; }
+    .luxury-gradient-text {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F5E5C9 40%, #C5A059 80%, #9E7D3B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .ring-pulse {
-      animation: pulse-ring 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+    .gold-border-gradient {
+      border-image: linear-gradient(to right, rgba(197, 160, 89, 0.6), rgba(255, 255, 255, 0.1), rgba(197, 160, 89, 0.6)) 1;
+    }
+
+    /* Elegant subtle animation */
+    @keyframes subtlePulse {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.05); opacity: 1; }
+    }
+    .pulse-subtle {
+      animation: subtlePulse 4s infinite ease-in-out;
+    }
+
+    /* Range slider custom thumb */
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 22px;
+      width: 22px;
+      border-radius: 50%;
+      background: #C5A059;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(197, 160, 89, 0.8);
+      border: 2px solid #0B0C0E;
+    }
+    input[type=range]::-moz-range-thumb {
+      height: 22px;
+      width: 22px;
+      border-radius: 50%;
+      background: #C5A059;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(197, 160, 89, 0.8);
+      border: 2px solid #0B0C0E;
     }
   </style>
 </head>
+<body class="bg-noir-950 text-cashmere-100 font-sans antialiased selection:bg-gold-500 selection:text-noir-950 relative overflow-x-hidden">
 
-<body class="bg-obsidian-950 text-peatClay-100 font-sans antialiased overflow-x-hidden selection:bg-amberGold-500 selection:text-obsidian-950">
+  <!-- Reading Progress Bar -->
+  <div id="scrollProgress" class="fixed top-0 left-0 h-[2.5px] bg-gradient-to-r from-gold-600 via-gold-400 to-amber-200 z-50 transition-all duration-150" style="width: 0%;"></div>
 
-  <!-- ======================================================== -->
-  <!-- AUDIO TOAST NOTIFICATION                                 -->
-  <!-- ======================================================== -->
-  <div id="sound-toast" class="fixed top-24 left-1/2 -translate-x-1/2 z-50 glass-hud px-4 py-2 rounded-full text-xs font-mono text-amberGold-400 opacity-0 pointer-events-none transition-all duration-300 flex items-center space-x-2 shadow-2xl">
-    <i data-lucide="bell" class="w-3.5 h-3.5 text-amberGold-400"></i>
-    <span id="sound-toast-text">Zen Spa Soundscape Active</span>
-  </div>
-
-  <!-- ======================================================== -->
-  <!-- FIXED THREE.JS 3D CANVAS VIEWPORT                        -->
-  <!-- ======================================================== -->
-  <div id="canvas-container" class="fixed inset-0 z-0 pointer-events-none">
-    <canvas id="webgl-canvas" class="w-full h-full block"></canvas>
-  </div>
-
-  <!-- ======================================================== -->
-  <!-- 3D ANNOTATION COORDINATE HOTSPOTS                        -->
-  <!-- ======================================================== -->
-  <div id="hotspots-overlay" class="fixed inset-0 z-20 pointer-events-none overflow-hidden transition-opacity duration-500 opacity-0">
-    <!-- Hotspot: Wet Moor Mud Peak -->
-    <div id="hotspot-mud" class="absolute pointer-events-auto transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group" style="top: 36%; left: 52%;">
-      <div class="relative flex items-center justify-center">
-        <span class="absolute w-8 h-8 rounded-full bg-amberGold-400/30 ring-pulse"></span>
-        <span class="w-4 h-4 rounded-full bg-amberGold-500 border-2 border-white shadow-xl flex items-center justify-center">
-          <span class="w-1.5 h-1.5 rounded-full bg-obsidian-950"></span>
+  <!-- Top VIP Salon Trade Strip -->
+  <div class="bg-gradient-to-r from-noir-900 via-noir-850 to-noir-900 border-b border-gold-500/20 text-xs py-2 px-4 relative z-40">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center text-cashmere-200/80 gap-2 font-medium">
+      <div class="flex items-center space-x-3">
+        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-gold-500/10 text-gold-300 text-[10px] tracking-widest uppercase border border-gold-500/20">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold-400 animate-ping"></span> B2B Exclusive
         </span>
+        <span class="hidden sm:inline text-gold-200/90 tracking-wider">Direct Clinical Imports & Bespoke Private Formulation For Top Luxury Salons</span>
       </div>
-      <div class="absolute left-6 top-1/2 -translate-y-1/2 w-64 glass-card p-3.5 rounded-xl border-l-2 border-l-amberGold-500 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none transform translate-x-2 group-hover:translate-x-0 shadow-2xl">
-        <span class="text-[9px] uppercase font-mono text-amberGold-400 tracking-widest">Heaped Peat Core</span>
-        <h4 class="font-serif text-xs font-bold text-white mt-0.5">Glistening Organic Mud Peaks</h4>
-        <p class="text-[11px] text-peatClay-400 mt-1 leading-relaxed">Whipped, rich black moor mud mounded high with natural thermal minerals and active humic polymers.</p>
-      </div>
-    </div>
-
-    <!-- Hotspot: Tilted Tub Lid -->
-    <div id="hotspot-lid" class="absolute pointer-events-auto transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group" style="top: 48%; left: 66%;">
-      <div class="relative flex items-center justify-center">
-        <span class="absolute w-8 h-8 rounded-full bg-white/20 ring-pulse"></span>
-        <span class="w-4 h-4 rounded-full bg-white border-2 border-obsidian-950 shadow-xl flex items-center justify-center">
-          <span class="w-1.5 h-1.5 rounded-full bg-amberGold-500"></span>
-        </span>
-      </div>
-      <div class="absolute left-6 top-1/2 -translate-y-1/2 w-60 glass-card p-3.5 rounded-xl border-l-2 border-l-white opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none transform translate-x-2 group-hover:translate-x-0 shadow-2xl">
-        <span class="text-[9px] uppercase font-mono text-peatClay-400 tracking-widest">Apothecary Seal</span>
-        <h4 class="font-serif text-xs font-bold text-white mt-0.5">Tilted Protective Lid</h4>
-        <p class="text-[11px] text-peatClay-400 mt-1 leading-relaxed">Preserves moisture saturation and living botanical enzymes without chemical parabens.</p>
+      <div class="flex items-center gap-6 ml-auto">
+        <a href="tel:8356902748" class="hover:text-gold-300 transition-colors flex items-center gap-1.5 text-xs">
+          <i class="fa-solid fa-phone text-gold-400 text-[10px]"></i> +91 8356902748
+        </a>
+        <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%20Care,%20we%20are%20a%20salon%20interested%20in%20your%20B2B%20products%20and%20formulation%20services." target="_blank" class="hover:text-emerald-400 transition-colors flex items-center gap-1.5 text-xs">
+          <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i> WhatsApp Trade Desk
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- ======================================================== -->
-  <!-- NAVIGATION BAR (Fixed top)                               -->
-  <!-- ======================================================== -->
-  <header class="fixed top-0 left-0 w-full z-40 px-6 lg:px-12 py-4 flex items-center justify-between pointer-events-none">
-    <!-- Brand -->
-    <a href="#hero" class="pointer-events-auto flex items-center space-x-3 group">
-      <div class="w-8 h-8 rounded-full border border-amberGold-500/50 flex items-center justify-center bg-obsidian-900/90 backdrop-blur-md group-hover:border-amberGold-400 transition-colors">
-        <svg class="w-4 h-4 text-amberGold-400 group-hover:rotate-90 transition-transform duration-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-          <circle cx="12" cy="12" r="4"/>
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
-        </svg>
+  <!-- Main Luxury Header Navigation -->
+  <header id="mainNav" class="sticky top-0 z-40 transition-all duration-300 bg-noir-950/85 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between">
+      
+      <!-- Brand Logo Recreation (Honoring provided logo strictly) -->
+      <a href="#" class="group flex flex-col items-center justify-center text-center select-none py-1">
+        <div class="flex items-baseline tracking-normal text-2xl sm:text-3xl lg:text-[32px] font-serif font-light text-white group-hover:text-gold-200 transition-colors">
+          <span class="tracking-[0.08em] font-medium">SKINMIMIC</span>
+        </div>
+        <div class="flex items-center justify-center w-full mt-0.5">
+          <div class="h-[0.75px] w-6 sm:w-10 bg-gold-400/70"></div>
+          <span class="text-[9px] sm:text-[10px] uppercase font-sans tracking-[0.45em] text-gold-300/95 px-2.5 font-light">C A R E</span>
+          <div class="h-[0.75px] w-6 sm:w-10 bg-gold-400/70"></div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-[0.2em] font-medium text-cashmere-200">
+        <a href="#about" class="hover:text-gold-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-[1px] after:bg-gold-400 after:transition-all">The Philosophy</a>
+        <a href="#capabilities" class="hover:text-gold-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-[1px] after:bg-gold-400 after:transition-all">Import & Design</a>
+        <a href="#catalog" class="hover:text-gold-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-[1px] after:bg-gold-400 after:transition-all">Professional Range</a>
+        <a href="#partners" class="hover:text-gold-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-[1px] after:bg-gold-400 after:transition-all">The 4 Partners</a>
+        <a href="#calculator" class="hover:text-gold-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-[1px] after:bg-gold-400 after:transition-all">ROI Margin Calculator</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <!-- Direct Phone Tap -->
+        <a href="tel:8356902748" class="hidden md:flex items-center gap-2 px-3 py-2 text-xs border border-gold-500/30 rounded-full text-gold-300 hover:bg-gold-500/10 transition-all">
+          <i class="fa-solid fa-phone text-xs"></i>
+          <span>8356902748</span>
+        </a>
+
+        <!-- Trade Inquiry CTA Modal Trigger -->
+        <button onclick="openInquiryModal('Header Request')" class="px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold bg-gradient-to-r from-gold-500 via-gold-400 to-amber-300 text-noir-950 hover:brightness-110 shadow-lg shadow-gold-500/20 transition-all duration-300">
+          Partner With Us
+        </button>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobileMenuBtn" class="lg:hidden text-gold-300 p-2 text-xl focus:outline-none" aria-label="Toggle Mobile Menu">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
       </div>
-      <div>
-        <span class="font-serif text-base tracking-[0.25em] font-bold text-white block leading-none">EARTH GLOW</span>
-        <span class="font-mono text-[8px] tracking-[0.35em] text-amberGold-400 block mt-0.5">ESSENTIAL APOTHECARY</span>
+
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden border-b border-gold-500/20 bg-noir-900/98 px-6 py-8 space-y-5 text-sm uppercase tracking-widest">
+      <a href="#about" onclick="toggleMobileMenu()" class="block text-cashmere-200 hover:text-gold-400 py-1">The Philosophy</a>
+      <a href="#capabilities" onclick="toggleMobileMenu()" class="block text-cashmere-200 hover:text-gold-400 py-1">Global Import & Design</a>
+      <a href="#catalog" onclick="toggleMobileMenu()" class="block text-cashmere-200 hover:text-gold-400 py-1">Professional Range</a>
+      <a href="#partners" onclick="toggleMobileMenu()" class="block text-cashmere-200 hover:text-gold-400 py-1">The 4 Partners</a>
+      <a href="#calculator" onclick="toggleMobileMenu()" class="block text-cashmere-200 hover:text-gold-400 py-1">ROI Margin Calculator</a>
+      <a href="#contact" onclick="toggleMobileMenu()" class="block text-cashmere-200 hover:text-gold-400 py-1">Salon Partnership Form</a>
+      <div class="pt-4 border-t border-white/10 flex flex-col gap-3">
+        <a href="tel:8356902748" class="flex items-center justify-center gap-2 py-3 bg-noir-800 border border-gold-500/40 rounded-xl text-gold-300 text-xs tracking-wider">
+          <i class="fa-solid fa-phone"></i> Call Direct: +91 8356902748
+        </a>
+        <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%20Care,%20we%20want%20to%20partner%20with%20you." target="_blank" class="flex items-center justify-center gap-2 py-3 bg-emerald-950/60 border border-emerald-500/40 rounded-xl text-emerald-400 text-xs tracking-wider">
+          <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp Now: 8356902748
+        </a>
       </div>
-    </a>
-
-    <!-- Nav Links (Desktop) -->
-    <nav class="hidden md:flex items-center space-x-1 glass-card px-5 py-2 rounded-full pointer-events-auto border border-white/10 shadow-xl">
-      <a href="#hero" class="text-xs font-mono tracking-wider px-3 py-1 text-peatClay-400 hover:text-amberGold-400 transition-colors">01. ORIGIN</a>
-      <span class="text-obsidian-700 text-xs">/</span>
-      <a href="#mud-core" class="text-xs font-mono tracking-wider px-3 py-1 text-peatClay-400 hover:text-amberGold-400 transition-colors">02. DEEP MUD</a>
-      <span class="text-obsidian-700 text-xs">/</span>
-      <a href="#clinical" class="text-xs font-mono tracking-wider px-3 py-1 text-peatClay-400 hover:text-amberGold-400 transition-colors">03. CLINICAL</a>
-      <span class="text-obsidian-700 text-xs">/</span>
-      <a href="#specs" class="text-xs font-mono tracking-wider px-3 py-1 text-peatClay-400 hover:text-amberGold-400 transition-colors">04. TECH SPECS</a>
-      <span class="text-obsidian-700 text-xs">/</span>
-      <a href="#ritual" class="text-xs font-mono tracking-wider px-3 py-1 text-peatClay-400 hover:text-amberGold-400 transition-colors">05. RITUAL</a>
-    </nav>
-
-    <!-- Header Actions -->
-    <div class="flex items-center space-x-3 pointer-events-auto">
-      <button id="audio-toggle-btn" class="w-9 h-9 rounded-full glass-card flex items-center justify-center text-peatClay-400 hover:text-amberGold-400 hover:border-amberGold-500/50 transition-all shadow-lg" title="Toggle Spa Audio">
-        <i data-lucide="volume-x" id="audio-icon" class="w-4 h-4"></i>
-      </button>
-
-      <button id="open-cart-btn" class="flex items-center space-x-2 px-4 py-2 rounded-full glass-hud text-amberGold-400 hover:bg-amberGold-500 hover:text-obsidian-950 transition-all duration-300 font-mono text-xs tracking-wider shadow-lg">
-        <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
-        <span class="font-bold">BAG</span>
-        <span id="nav-cart-badge" class="w-4 h-4 rounded-full bg-amberGold-500 text-obsidian-950 text-[10px] font-bold flex items-center justify-center">1</span>
-      </button>
     </div>
   </header>
 
-  <!-- ======================================================== -->
-  <!-- FLOATING 3D VIEW CONTROLLER & JAR SCALER (Fixed Bottom)  -->
-  <!-- ======================================================== -->
-  <div class="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 pointer-events-auto w-[94%] max-w-3xl">
-    <div class="glass-hud p-2.5 rounded-2xl shadow-2xl border border-amberGold-500/30 flex flex-wrap items-center justify-between gap-2">
+  <!-- Hero Section -->
+  <section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-8 pb-16">
+    <!-- Atmospheric Ambient Glows -->
+    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[550px] bg-gold-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute bottom-10 -right-20 w-[450px] h-[450px] bg-amber-600/5 rounded-full blur-[120px] pointer-events-none"></div>
+    
+    <!-- Background Subtle Luxury Grid -->
+    <div class="absolute inset-0 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:40px_40px] opacity-[0.04] pointer-events-none"></div>
 
-      <!-- Jar Scale Presets: Compact, Balanced, Focus -->
-      <div class="flex items-center space-x-1 bg-obsidian-900/90 p-1 rounded-xl border border-white/5">
-        <span class="text-[9px] font-mono uppercase text-peatClay-400 px-1.5 hidden sm:inline-block">JAR SCALE:</span>
-        <button id="scale-mini-btn" class="scale-btn px-2.5 py-1 rounded-lg text-xs font-mono transition-all text-peatClay-400 hover:text-white" data-scale="0.38">
-          MINI
-        </button>
-        <button id="scale-balanced-btn" class="scale-btn px-2.5 py-1 rounded-lg text-xs font-mono transition-all bg-amberGold-500 text-obsidian-950 font-bold" data-scale="0.48">
-          COMPACT
-        </button>
-        <button id="scale-focus-btn" class="scale-btn px-2.5 py-1 rounded-lg text-xs font-mono transition-all text-peatClay-400 hover:text-white" data-scale="0.65">
-          FOCUS
-        </button>
-      </div>
-
-      <!-- Lid Position Controls -->
-      <div class="flex items-center space-x-1 bg-obsidian-900/90 p-1 rounded-xl border border-white/5">
-        <button id="lid-lean-btn" class="lid-state-btn px-2.5 py-1 rounded-lg text-xs font-mono bg-amberGold-500/20 text-amberGold-400 font-semibold transition-all" title="Lid Tilted Beside Jar (Photo Style)">
-          PHOTO LEAN
-        </button>
-        <button id="lid-seal-btn" class="lid-state-btn px-2.5 py-1 rounded-lg text-xs font-mono text-peatClay-400 hover:text-white transition-all" title="Seal Jar Closed">
-          SEAL
-        </button>
-        <button id="lid-hover-btn" class="lid-state-btn px-2.5 py-1 rounded-lg text-xs font-mono text-peatClay-400 hover:text-white transition-all" title="Levitate Lid Above">
-          FLOAT
-        </button>
-      </div>
-
-      <!-- Camera Angles & Orbit Switch -->
-      <div class="flex items-center space-x-1">
-        <button id="cam-front-btn" class="cam-nav-btn px-2.5 py-1 rounded-lg text-xs font-mono bg-white/5 hover:bg-white/10 text-white transition-all" title="Front View">
-          FRONT
-        </button>
-        <button id="cam-mud-macro-btn" class="cam-nav-btn px-2.5 py-1 rounded-lg text-xs font-mono bg-white/5 hover:bg-amberGold-500/20 text-amberGold-400 transition-all font-semibold" title="Macro Mud Surface Zoom">
-          MUD MACRO
-        </button>
-        <button id="cam-specs-btn" class="cam-nav-btn px-2.5 py-1 rounded-lg text-xs font-mono bg-white/5 hover:bg-white/10 text-white transition-all" title="Technical Specs Back View">
-          SPECS
-        </button>
-        <button id="orbit-toggle-btn" class="px-2.5 py-1 rounded-lg text-xs font-mono transition-all flex items-center space-x-1 text-peatClay-400 hover:text-amberGold-400 bg-white/5" title="Free 360° Drag">
-          <i data-lucide="orbit" class="w-3.5 h-3.5"></i>
-          <span class="hidden sm:inline">360°</span>
-        </button>
-        <button id="autorotate-btn" class="w-7 h-7 rounded-lg text-xs font-mono bg-amberGold-500/20 text-amberGold-400 hover:bg-amberGold-500/30 flex items-center justify-center transition-all" title="Auto Rotate On/Off">
-          <i data-lucide="rotate-cw" id="rotate-icon" class="w-3.5 h-3.5 animate-spin"></i>
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ======================================================== -->
-  <!-- SCROLLABLE PAGE CONTENT                                  -->
-  <!-- ======================================================== -->
-  <main class="relative z-10">
-
-    <!-- ============================================ -->
-    <!-- SECTION 1: HERO VIEW                         -->
-    <!-- ============================================ -->
-    <section id="hero" class="min-h-screen relative flex flex-col justify-between pt-24 pb-28 px-6 lg:px-16 overflow-hidden">
-      <!-- Kinetic oversized background typography -->
-      <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-[-1] overflow-hidden">
-        <div id="hero-kinetic-text" class="text-center transform transition-transform duration-300">
-          <div class="kinetic-outline text-[13vw] font-serif font-black tracking-tight leading-none uppercase">
-            AUSTRIAN
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Content (Editorial Typography) -->
+        <div class="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left">
+          
+          <!-- Prestige Pill -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-noir-800/80 border border-gold-500/30 text-gold-300 text-xs tracking-[0.2em] uppercase font-mono shadow-inner">
+            <span class="w-2 h-2 rounded-full bg-gold-400"></span>
+            Professional Salon Formulations & Global Imports
           </div>
-          <div class="kinetic-solid-glow text-[11vw] font-serif font-extrabold tracking-[0.16em] -mt-[3vw] uppercase">
-            MOOR MUD
-          </div>
-        </div>
-      </div>
 
-      <!-- Top Badges Row -->
-      <div class="w-full flex flex-wrap items-center justify-between gap-4">
-        <div class="flex items-center space-x-2">
-          <span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-amberGold-500/10 border border-amberGold-500/30 text-amberGold-400">
-            <span class="w-1.5 h-1.5 rounded-full bg-amberGold-400 mr-2 animate-pulse"></span>
-            Filled with 100% Raw Moor Mud
-          </span>
-          <span class="hidden sm:inline-flex px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase glass-card text-peatClay-400">
-            1 kg / 35.2 oz Salon Format
-          </span>
-        </div>
-
-        <div class="font-mono text-xs text-peatClay-400 flex items-center space-x-3">
-          <span class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 mr-1 text-botanicalGreen-400"></i> Fresh Harvest</span>
-          <span class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 mr-1 text-amberGold-400"></i> Pure Peat Silt</span>
-        </div>
-      </div>
-
-      <!-- Hero Main Content Split -->
-      <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mt-8 mb-6">
-        <!-- Left Side: Editorial Details -->
-        <div class="lg:col-span-6 space-y-4">
-          <div class="inline-block text-[11px] font-mono uppercase tracking-[0.3em] text-amberGold-400">
-            BIOLOGICAL CELLULAR DETOX
-          </div>
-          <h1 class="font-serif text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-[1.08]">
-            Earth Glow <br>
-            <span class="italic font-normal text-amberGold-400">Essential.</span>
+          <!-- Main Headline -->
+          <h1 class="text-4xl sm:text-6xl xl:text-7xl font-serif font-normal leading-[1.08] tracking-tight text-white">
+            Where Biological <br class="hidden sm:inline" />
+            <span class="luxury-gradient-text italic font-normal">Precision</span> Meets 
+            <span class="block text-cashmere-100 font-serif">Salon Supremacy.</span>
           </h1>
-          <p class="max-w-md text-peatClay-400 text-sm leading-relaxed">
-            Formulated from deep Austrian peat bogs. Pure jet-black colloidal moor mud packed with bio-active humic acids, thermal minerals, and natural micronutrients to purify pores and restore skin elasticity.
+
+          <!-- Value Proposition Description -->
+          <p class="text-base sm:text-lg text-cashmere-300/80 font-light max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            <strong class="text-gold-200 font-medium">SKINMIMIC CARE</strong> empowers premier aesthetic salons and clinics through two elite verticals: <span class="text-white">Direct global import</span> of next-gen clinical actives and <span class="text-white">bespoke in-house product formulation</span> tailored for exceptional treatment efficacy and unmatched backbar margins.
           </p>
 
-          <!-- Label Checklist matching reference image -->
-          <div class="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono text-peatClay-200">
-            <div class="flex items-center space-x-2">
-              <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amberGold-400 flex-shrink-0"></i>
-              <span>Detoxifies & purifies pores</span>
+          <!-- Metrics Counter Bar -->
+          <div class="grid grid-cols-3 gap-3 sm:gap-6 py-4 border-y border-white/10 max-w-xl mx-auto lg:mx-0 text-left">
+            <div>
+              <div class="text-2xl sm:text-3xl font-serif text-gold-300">4 Founders</div>
+              <div class="text-[11px] sm:text-xs text-cashmere-300/60 uppercase tracking-widest mt-1">Multi-Domain Mastery</div>
             </div>
-            <div class="flex items-center space-x-2">
-              <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amberGold-400 flex-shrink-0"></i>
-              <span>Rich in organic humic acids</span>
+            <div class="border-l border-white/10 pl-4 sm:pl-6">
+              <div class="text-2xl sm:text-3xl font-serif text-gold-300">Direct Import</div>
+              <div class="text-[11px] sm:text-xs text-cashmere-300/60 uppercase tracking-widest mt-1">Zero Intermediaries</div>
             </div>
-            <div class="flex items-center space-x-2">
-              <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amberGold-400 flex-shrink-0"></i>
-              <span>Reduces fine lines & texture</span>
+            <div class="border-l border-white/10 pl-4 sm:pl-6">
+              <div class="text-2xl sm:text-3xl font-serif text-gold-300">Up to 75%</div>
+              <div class="text-[11px] sm:text-xs text-cashmere-300/60 uppercase tracking-widest mt-1">Salon Profit Margins</div>
             </div>
-            <div class="flex items-center space-x-2">
-              <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amberGold-400 flex-shrink-0"></i>
-              <span>100% natural Moor Mud filled</span>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%20Care,%20we%20want%20to%20review%20your%20Salon%20Professional%20Catalog%20and%20sample%20testers." target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs sm:text-sm tracking-widest uppercase flex items-center justify-center gap-3 transition-all duration-300 shadow-xl shadow-emerald-950/40">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>WhatsApp Salon Desk</span>
+            </a>
+
+            <button onclick="scrollToSection('calculator')" class="w-full sm:w-auto px-8 py-4 rounded-full border border-gold-500/40 text-gold-200 hover:bg-gold-500/10 font-medium text-xs sm:text-sm tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-2">
+              <i class="fa-solid fa-calculator text-gold-400"></i>
+              <span>Calculate Treatment Margins</span>
+            </button>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-5 text-xs text-cashmere-300/50">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-gold-400"></i> Clinical Grade Backbar</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-gold-400"></i> Bespoke Private Labeling</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-gold-400"></i> Pan-India Cold Distribution</span>
+          </div>
+
+        </div>
+
+        <!-- Right Visual Feature (Editorial Showcase Card) -->
+        <div class="lg:col-span-5 relative">
+          <!-- Outer Decorative Glow Ring -->
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            <div class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-gold-500/30 via-white/5 to-gold-400/20 blur-xl"></div>
+            
+            <div class="relative rounded-3xl bg-noir-900 border border-gold-500/25 p-6 sm:p-8 overflow-hidden shadow-2xl">
+              <!-- Header Inside Card -->
+              <div class="flex items-center justify-between pb-6 border-b border-white/10">
+                <div>
+                  <span class="text-[10px] tracking-widest3 uppercase text-gold-400 font-semibold block">Salon Tech Spotlight</span>
+                  <h3 class="text-xl font-serif text-white tracking-wide">Cellular Mimicry Series</h3>
+                </div>
+                <div class="px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/30 text-[10px] text-gold-300 tracking-wider">
+                  K-Bio Import
+                </div>
+              </div>
+
+              <!-- Visual Representation / Product Mock -->
+              <div class="my-6 relative rounded-2xl bg-gradient-to-b from-noir-850 to-noir-950 p-6 border border-white/5 flex flex-col items-center justify-center text-center overflow-hidden group">
+                <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold-500/10 via-transparent to-transparent opacity-80 group-hover:scale-110 transition-transform duration-700"></div>
+                
+                <!-- Bottle / Serum Art Iconography -->
+                <div class="w-32 h-44 relative my-2 flex items-center justify-center">
+                  <!-- Custom Minimalist Serum Bottle SVG -->
+                  <svg viewBox="0 0 100 160" class="w-full h-full drop-shadow-[0_10px_20px_rgba(197,160,89,0.3)]">
+                    <!-- Dropper Top -->
+                    <rect x="42" y="10" width="16" height="18" rx="4" fill="#C5A059" />
+                    <rect x="45" y="2" width="10" height="9" rx="3" fill="#171920" />
+                    <!-- Cap Collar -->
+                    <rect x="36" y="27" width="28" height="9" rx="2" fill="#E4CA9E" />
+                    <!-- Glass Body -->
+                    <rect x="25" y="36" width="50" height="110" rx="14" fill="url(#glassGrad)" stroke="#C5A059" stroke-width="1.5" />
+                    <!-- Inner Liquid -->
+                    <rect x="29" y="65" width="42" height="76" rx="8" fill="url(#liquidGrad)" opacity="0.85" />
+                    <!-- Label Area -->
+                    <rect x="32" y="75" width="36" height="48" rx="2" fill="#0B0C0E" stroke="#C5A059" stroke-width="0.75" />
+                    <text x="50" y="93" font-size="7" font-family="serif" text-anchor="middle" fill="#FFFFFF" letter-spacing="1">SKINMIMIC</text>
+                    <text x="50" y="102" font-size="4" font-family="sans-serif" text-anchor="middle" fill="#C5A059" letter-spacing="1.5">EXOSOME 10X</text>
+                    <text x="50" y="112" font-size="3" font-family="sans-serif" text-anchor="middle" fill="#E4CA9E">SALON BACKBAR</text>
+
+                    <defs>
+                      <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#2D3039" stop-opacity="0.8"/>
+                        <stop offset="100%" stop-color="#0F1014" stop-opacity="0.95"/>
+                      </linearGradient>
+                      <linearGradient id="liquidGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#E4CA9E" stop-opacity="0.3"/>
+                        <stop offset="100%" stop-color="#C5A059" stop-opacity="0.75"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+
+                <div class="relative z-10 mt-2">
+                  <div class="text-sm font-medium text-white tracking-wide">PDRN + Biomimetic Exosomes</div>
+                  <div class="text-xs text-gold-300/80 font-mono mt-0.5">Professional Backbar Ampoule Kit (10x10ml)</div>
+                </div>
+              </div>
+
+              <!-- Rapid Value Points -->
+              <div class="space-y-2.5 text-xs text-cashmere-200/90 font-light">
+                <div class="flex items-center justify-between py-1.5 border-b border-white/5">
+                  <span class="text-cashmere-300/60">Import Origin:</span>
+                  <span class="text-white font-medium">Seoul & Zurich Bio-Labs</span>
+                </div>
+                <div class="flex items-center justify-between py-1.5 border-b border-white/5">
+                  <span class="text-cashmere-300/60">Backbar Cost Per Session:</span>
+                  <span class="text-emerald-400 font-mono font-medium">₹380 - ₹550</span>
+                </div>
+                <div class="flex items-center justify-between py-1.5 border-b border-white/5">
+                  <span class="text-cashmere-300/60">Typical Salon Menu Price:</span>
+                  <span class="text-gold-300 font-mono font-medium">₹2,800 - ₹5,500</span>
+                </div>
+              </div>
+
+              <!-- Quick Action Inside Card -->
+              <div class="mt-6">
+                <a href="https://wa.me/918356902748?text=Hello,%20I%20am%20interested%20in%20the%20Cellular%20Mimicry%20Exosome%20Kit%20for%20my%20salon." target="_blank" class="w-full block py-3 rounded-xl bg-noir-800 hover:bg-gold-500 hover:text-noir-950 text-gold-300 border border-gold-500/40 text-center text-xs uppercase tracking-widest font-semibold transition-all">
+                  Request Backbar Sample Kit &rarr;
+                </a>
+              </div>
+
             </div>
           </div>
         </div>
 
-        <!-- Right Side: Purchase Dock -->
-        <div class="lg:col-span-6 flex flex-col items-start lg:items-end">
-          <div class="glass-card p-6 rounded-2xl w-full max-w-sm border border-white/10 shadow-2xl space-y-4">
-            <div class="flex items-start justify-between">
-              <div>
-                <span class="text-[9px] font-mono tracking-widest text-peatClay-400 uppercase block">1000g Salon Master Tub</span>
-                <h3 class="font-serif text-lg font-bold text-white">Moor Mud Mask</h3>
-              </div>
-              <div class="text-right">
-                <span class="font-serif text-2xl font-bold text-amberGold-400">$68<span class="text-xs text-peatClay-400 font-normal">.00</span></span>
-                <span class="text-[9px] font-mono text-botanicalGreen-400 block">+ Free Bamboo Spatula</span>
-              </div>
-            </div>
-
-            <div class="flex items-center space-x-2 text-xs pt-1 border-t border-white/5">
-              <div class="flex text-amberGold-400">
-                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
-              </div>
-              <span class="font-mono text-white font-bold">4.96</span>
-              <span class="font-mono text-peatClay-400 text-[10px]">(1,840 Salon Reviews)</span>
-            </div>
-
-            <!-- CTAs -->
-            <div class="grid grid-cols-2 gap-2 pt-1">
-              <button id="hero-buy-btn" class="w-full py-3 rounded-xl bg-amberGold-500 hover:bg-amberGold-400 text-obsidian-950 font-bold font-mono text-xs tracking-wider transition-all shadow-lg shadow-amberGold-500/20 flex items-center justify-center space-x-1.5">
-                <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
-                <span>ORDER NOW</span>
-              </button>
-              <button id="hero-macro-btn" class="w-full py-3 rounded-xl glass-hud hover:bg-white/10 text-white font-mono text-xs tracking-wider transition-all border border-white/10 flex items-center justify-center space-x-1.5">
-                <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-amberGold-400"></i>
-                <span>ZOOM MUD</span>
-              </button>
-            </div>
-
-            <div class="text-center pt-1 border-t border-white/5">
-              <span class="text-[10px] font-mono text-peatClay-400">Salzburg Heilmoor Certified • In Stock & Freshly Sealed</span>
-            </div>
-          </div>
-        </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Scroll Hint -->
-      <div class="w-full flex items-center justify-between text-peatClay-400 text-xs font-mono pt-4">
-        <div class="flex items-center space-x-2">
-          <span class="w-2 h-2 rounded-full bg-amberGold-400 animate-ping"></span>
-          <span>FILLED WITH RICH JET-BLACK MOOR MUD • INTERACTIVE 3D</span>
-        </div>
-        <div class="flex items-center space-x-1 animate-bounce">
-          <span>SCROLL DOWN FOR MUD ANATOMY</span>
-          <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- SECTION 2: DEEP MUD CORE & MACRO TEXTURE     -->
-    <!-- ============================================ -->
-    <section id="mud-core" class="min-h-screen relative py-28 px-6 lg:px-16 flex flex-col justify-center">
-      <div class="max-w-xl mb-10">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-obsidian-900 border border-amberGold-500/30 text-amberGold-400 mb-2">
-          <span>02 / BIO-CHEMICAL CORE</span>
-        </div>
-        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
-          Glistening Black Peat, <br>
-          <span class="italic text-amberGold-400">Filled to the Brim</span>
+  <!-- Luxury Brand Philosophy Section -->
+  <section id="about" class="py-24 bg-noir-900 border-t border-b border-white/5 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-mono">The Skinmimic Philosophy</span>
+        <h2 class="text-3xl sm:text-5xl font-serif text-white font-normal">
+          Designed by Four Visionaries. <br/>
+          <span class="italic text-gold-300">Engineered for Salon Mastery.</span>
         </h2>
-        <p class="mt-3 text-peatClay-400 text-sm leading-relaxed">
-          Unlike synthetic clay masks that dry chalky and strip your lipid barrier, our 100% natural moor mud features a rich, whipped, colloidal black texture that stays active and deeply nourishing throughout your treatment.
+        <p class="text-sm sm:text-base text-cashmere-300/70 font-light leading-relaxed">
+          At Skinmimic Care, we recognized the acute void in the salon industry: Indian luxury salons were forced to either settle for diluted mass products with razor-thin margins or endure crippling tariffs on imported brands with erratic supplies.
         </p>
       </div>
 
-      <!-- Feature Grid positioned to keep 3D jar visible -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl">
-        <div class="glass-card p-5 rounded-2xl border border-white/10 group hover:border-amberGold-500/40 transition-all">
-          <div class="w-9 h-9 rounded-xl bg-amberGold-500/10 border border-amberGold-500/30 flex items-center justify-center text-amberGold-400 mb-3 group-hover:scale-105 transition-transform">
-            <i data-lucide="sparkles" class="w-4 h-4"></i>
+      <!-- Philosophy Grid (The Dual Core Engines) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        
+        <!-- Pillar 1: Direct Global Import -->
+        <div class="glass-gold rounded-3xl p-8 sm:p-10 relative overflow-hidden group hover:border-gold-500/40 transition-all duration-500">
+          <div class="absolute -top-10 -right-10 w-36 h-36 bg-gold-500/10 rounded-full blur-3xl group-hover:bg-gold-500/20 transition-all"></div>
+          
+          <div class="w-14 h-14 rounded-2xl bg-noir-800 border border-gold-500/30 flex items-center justify-center text-gold-300 text-2xl mb-8 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-plane-departure"></i>
           </div>
-          <span class="text-[9px] font-mono uppercase tracking-widest text-peatClay-400">Organic Matrix</span>
-          <h3 class="font-serif text-base font-bold text-white mt-0.5">Humic & Fulvic Bio-Peat</h3>
-          <p class="text-xs text-peatClay-400 mt-2 leading-relaxed">Rich micro-humic compounds deeply chelate impurities from within congested pores while providing biocompatible nutrients.</p>
+
+          <span class="text-xs uppercase tracking-widest text-gold-400/90 font-mono">Vertical 01</span>
+          <h3 class="text-2xl sm:text-3xl font-serif text-white mt-2 mb-4">Direct Global Import</h3>
+          <p class="text-cashmere-200/70 text-sm leading-relaxed mb-6 font-light">
+            We bypass overseas brokers and domestic middle-traders to directly source the world's most potent clinical raw materials and finished aesthetic formulations. From K-Beauty exosome ampoules to Swiss peptide complexes, our direct freight channels guarantee 100% authenticity, batch freshness, and unbeatable wholesale pricing.
+          </p>
+
+          <ul class="space-y-3 text-xs text-cashmere-200/80 mb-8 font-light">
+            <li class="flex items-center gap-3"><i class="fa-solid fa-gem text-gold-400"></i> Direct ties with Korean & European biopharma labs</li>
+            <li class="flex items-center gap-3"><i class="fa-solid fa-gem text-gold-400"></i> Climate-controlled international cold-chain imports</li>
+            <li class="flex items-center gap-3"><i class="fa-solid fa-gem text-gold-400"></i> Rigorous CDSCO and dermatological compliances</li>
+          </ul>
+
+          <a href="https://wa.me/918356902748?text=Hello,%20we%20want%20to%20know%20more%20about%20your%20Direct%20Global%20Import%20portfolio." target="_blank" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold-300 hover:text-white transition-colors">
+            Inquire Import Portfolio <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
         </div>
 
-        <div class="glass-card p-5 rounded-2xl border border-white/10 group hover:border-amberGold-500/40 transition-all">
-          <div class="w-9 h-9 rounded-xl bg-botanicalGreen-400/10 border border-botanicalGreen-400/30 flex items-center justify-center text-botanicalGreen-400 mb-3 group-hover:scale-105 transition-transform">
-            <i data-lucide="droplets" class="w-4 h-4"></i>
+        <!-- Pillar 2: Bespoke Product Design & Formulation -->
+        <div class="glass-gold rounded-3xl p-8 sm:p-10 relative overflow-hidden group hover:border-gold-500/40 transition-all duration-500">
+          <div class="absolute -top-10 -right-10 w-36 h-36 bg-amber-500/10 rounded-full blur-3xl group-hover:bg-amber-500/20 transition-all"></div>
+          
+          <div class="w-14 h-14 rounded-2xl bg-noir-800 border border-gold-500/30 flex items-center justify-center text-gold-300 text-2xl mb-8 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-flask-vial"></i>
           </div>
-          <span class="text-[9px] font-mono uppercase tracking-widest text-peatClay-400">Specular Sheen</span>
-          <h3 class="font-serif text-base font-bold text-white mt-0.5">Non-Drying Wet Glaze</h3>
-          <p class="text-xs text-peatClay-400 mt-2 leading-relaxed">Retains osmotic moisture for a full 20 minutes without hardening or cracking, ensuring your facial capillaries stay calm.</p>
+
+          <span class="text-xs uppercase tracking-widest text-gold-400/90 font-mono">Vertical 02</span>
+          <h3 class="text-2xl sm:text-3xl font-serif text-white mt-2 mb-4">Bespoke Product Design</h3>
+          <p class="text-cashmere-200/70 text-sm leading-relaxed mb-6 font-light">
+            We don't merely distribute; we craft. Skinmimic Care specializes in bespoke product engineering for elite salon brands. Whether your chain requires a signature backbar facial ritual with private aromatic notes or high-end white-label retail serums, our chemists and four partners formulate your vision from concept to packaging.
+          </p>
+
+          <ul class="space-y-3 text-xs text-cashmere-200/80 mb-8 font-light">
+            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gold-400"></i> Custom texture, active potency & fragrance profiling</li>
+            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gold-400"></i> High-margin salon retail lines with your salon branding</li>
+            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-gold-400"></i> Complete turnkey packaging & safety dossiers</li>
+          </ul>
+
+          <a href="https://wa.me/918356902748?text=Hello,%20we%20want%20to%20develop%20a%20Bespoke%20Salon%20Product%20Line%20with%20Skinmimic%20Care." target="_blank" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-gold-300 hover:text-white transition-colors">
+            Start Custom Formulation <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
         </div>
 
-        <div class="glass-card p-5 rounded-2xl border border-white/10 group hover:border-amberGold-500/40 transition-all">
-          <div class="w-9 h-9 rounded-xl bg-obsidian-700/50 border border-white/20 flex items-center justify-center text-white mb-3 group-hover:scale-105 transition-transform">
-            <i data-lucide="package" class="w-4 h-4"></i>
-          </div>
-          <span class="text-[9px] font-mono uppercase tracking-widest text-peatClay-400">Generous Vessel</span>
-          <h3 class="font-serif text-base font-bold text-white mt-0.5">1 kg Professional Capacity</h3>
-          <p class="text-xs text-peatClay-400 mt-2 leading-relaxed">Filled to the rim with over 60 facial applications or 12 full-body therapeutic peat wraps for master spa rituals.</p>
-        </div>
       </div>
-    </section>
 
-    <!-- ============================================ -->
-    <!-- SECTION 3: CLINICAL LABORATORY BENCHMARKS    -->
-    <!-- ============================================ -->
-    <section id="clinical" class="min-h-screen relative py-28 px-6 lg:px-16 flex flex-col justify-center overflow-hidden">
-      <!-- Kinetic background typography -->
-      <div class="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none z-[-1] opacity-20 hidden lg:block">
-        <div class="kinetic-outline text-[11vw] font-serif font-black uppercase text-right leading-none">
-          CLINICAL<br>EFFICACY
-        </div>
-      </div>
+    </div>
+  </section>
 
-      <div class="max-w-xl mb-10">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-obsidian-900 border border-botanicalGreen-400/30 text-botanicalGreen-400 mb-2">
-          <span>03 / LABORATORY BENCHMARKS</span>
+  <!-- The 4 Partners Leadership Section -->
+  <section id="partners" class="py-24 bg-noir-950 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-20">
+        <div class="inline-block px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 text-gold-300 text-xs tracking-widest uppercase">
+          The 4 Pillars of Excellence
         </div>
-        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
-          Clinically Validated <br>
-          <span class="italic text-amberGold-400">Radiance Metrics</span>
+        <h2 class="text-3xl sm:text-5xl font-serif text-white font-normal">
+          Driven by Four Partners. <br />
+          <span class="italic text-gold-300">United in Aesthetic Distinction.</span>
         </h2>
-        <p class="mt-3 text-peatClay-400 text-sm">
-          Results from 14-day double-blind clinical evaluations across all skin phototypes.
+        <p class="text-sm text-cashmere-300/70 font-light leading-relaxed">
+          Skinmimic Care was founded by four industry veterans, each spearheading a decisive pillar of our enterprise to deliver end-to-end reliability for every salon partner across the nation.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mb-8">
-        <div class="glass-card p-6 rounded-2xl border-l-4 border-l-amberGold-500">
-          <span class="text-4xl sm:text-5xl font-serif font-extrabold text-white block">98<span class="text-amberGold-400">%</span></span>
-          <span class="font-mono text-xs uppercase text-amberGold-400 tracking-wider font-semibold mt-1 block">Sebum & Pore Purification</span>
-          <p class="text-xs text-peatClay-400 mt-1">Dissolves oxidized follicular debris and diminishes noticeable pore diameter in 2 rituals.</p>
+      <!-- 4 Pillars Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Partner Pillar 1 -->
+        <div class="bg-noir-900/80 border border-white/10 hover:border-gold-500/40 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl mb-5">
+              <i class="fa-solid fa-earth-americas"></i>
+            </div>
+            <span class="text-[10px] tracking-widest uppercase text-gold-400 font-mono block mb-1">Partner Pillar I</span>
+            <h4 class="text-xl font-serif text-white mb-2">Global Sourcing & Import Strategy</h4>
+            <p class="text-xs text-cashmere-300/70 font-light leading-relaxed mb-4">
+              Direct liaison with biotech laboratories in South Korea, Switzerland, and Italy. Oversees international regulatory clearance, customs logistics, and raw active acquisition.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/5 text-[11px] text-gold-300/90 font-medium">
+            &bull; Global Bio-Supply Integrity
+          </div>
         </div>
 
-        <div class="glass-card p-6 rounded-2xl border-l-4 border-l-botanicalGreen-400">
-          <span class="text-4xl sm:text-5xl font-serif font-extrabold text-white block">24<span class="text-botanicalGreen-400">HR</span></span>
-          <span class="font-mono text-xs uppercase text-botanicalGreen-400 tracking-wider font-semibold mt-1 block">Hydration Retention</span>
-          <p class="text-xs text-peatClay-400 mt-1">Trans-epidermal water loss (TEWL) is drastically diminished thanks to natural humic matrix binding.</p>
+        <!-- Partner Pillar 2 -->
+        <div class="bg-noir-900/80 border border-white/10 hover:border-gold-500/40 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl mb-5">
+              <i class="fa-solid fa-atom"></i>
+            </div>
+            <span class="text-[10px] tracking-widest uppercase text-gold-400 font-mono block mb-1">Partner Pillar II</span>
+            <h4 class="text-xl font-serif text-white mb-2">Formulation & Biomimetic Science</h4>
+            <p class="text-xs text-cashmere-300/70 font-light leading-relaxed mb-4">
+              Directs cosmetic chemistry, micro-emulsification protocols, and skin barrier mimicry. Ensures zero comedogenic fillers and maximum transdermal bioavailability.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/5 text-[11px] text-gold-300/90 font-medium">
+            &bull; Clinical Efficacy & Safety
+          </div>
         </div>
 
-        <div class="glass-card p-6 rounded-2xl border-l-4 border-l-white">
-          <span class="text-4xl sm:text-5xl font-serif font-extrabold text-white block">100<span class="text-white">%</span></span>
-          <span class="font-mono text-xs uppercase text-peatClay-200 tracking-wider font-semibold mt-1 block">Natural Austrian Peat</span>
-          <p class="text-xs text-peatClay-400 mt-1">Zero synthetic fragrance, parabens, fillers, or microplastics. 100% pure organic moor mud.</p>
+        <!-- Partner Pillar 3 -->
+        <div class="bg-noir-900/80 border border-white/10 hover:border-gold-500/40 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl mb-5">
+              <i class="fa-solid fa-spa"></i>
+            </div>
+            <span class="text-[10px] tracking-widest uppercase text-gold-400 font-mono block mb-1">Partner Pillar III</span>
+            <h4 class="text-xl font-serif text-white mb-2">Salon Architecture & Protocols</h4>
+            <p class="text-xs text-cashmere-300/70 font-light leading-relaxed mb-4">
+              Designs exclusive treatment sequences, therapist backbar manual kits, and aesthetic machine integration (Hydrafacial, Micro-needling, Ultrasound & LED).
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/5 text-[11px] text-gold-300/90 font-medium">
+            &bull; Therapist Training & Menu Setup
+          </div>
+        </div>
+
+        <!-- Partner Pillar 4 -->
+        <div class="bg-noir-900/80 border border-white/10 hover:border-gold-500/40 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl mb-5">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <span class="text-[10px] tracking-widest uppercase text-gold-400 font-mono block mb-1">Partner Pillar IV</span>
+            <h4 class="text-xl font-serif text-white mb-2">Trade Relations & Supply Chain</h4>
+            <p class="text-xs text-cashmere-300/70 font-light leading-relaxed mb-4">
+              Guarantees express 48-hour replenishment for salons nationwide, flexible wholesale credit terms, dedicated account managers, and rapid order processing.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-white/5 text-[11px] text-gold-300/90 font-medium">
+            &bull; Pan-India Dispatch & B2B Care
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Partner Direct Hotline Banner -->
+      <div class="mt-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-noir-900 via-noir-850 to-noir-900 border border-gold-500/30 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+          <div>
+            <h5 class="text-white font-medium text-base">Direct Founder & Partner Access for High-Volume Salons</h5>
+            <p class="text-xs text-cashmere-300/70">Connect with the founding team directly for bespoke formulations & regional distribution.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="tel:8356902748" class="text-xs uppercase tracking-widest font-mono text-cashmere-200 hover:text-gold-300">
+            <i class="fa-solid fa-phone text-gold-400 mr-1"></i> 8356902748
+          </a>
+          <a href="https://wa.me/918356902748?text=Hello%20Founders,%20we%20are%20a%20luxury%20salon%20chain%20seeking%20a%20direct%20partnership%20discussion." target="_blank" class="px-5 py-2.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-noir-950 font-bold text-xs uppercase tracking-wider transition-colors shadow">
+            Direct WhatsApp Chat
+          </a>
         </div>
       </div>
-    </section>
 
-    <!-- ============================================ -->
-    <!-- SECTION 4: TECHNICAL SPECS HUD               -->
-    <!-- ============================================ -->
-    <section id="specs" class="min-h-screen relative py-28 px-6 lg:px-16 flex flex-col justify-center">
-      <div class="max-w-xl mb-10">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-obsidian-900 border border-amberGold-500/30 text-amberGold-400 mb-2">
-          <span>04 / APOTHECARY DOSSIER</span>
-        </div>
-        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
-          Technical Specs & <br>
-          <span class="italic text-amberGold-400">Salzburg Origin</span>
-        </h2>
-        <p class="mt-3 text-peatClay-400 text-sm">
-          Technical cosmetic dossier calibrated for elite salon treatments.
-        </p>
-      </div>
+    </div>
+  </section>
 
-      <!-- Spec Cards Grid -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mb-6">
-        <div class="glass-card p-5 rounded-2xl">
-          <span class="font-mono text-[9px] uppercase tracking-wider text-peatClay-400 block mb-1">NET WEIGHT</span>
-          <div class="font-mono text-xl sm:text-2xl font-bold text-white">1,000 g</div>
-          <span class="font-mono text-xs text-amberGold-400">35.2 oz / 2.2 lbs</span>
-        </div>
-
-        <div class="glass-card p-5 rounded-2xl">
-          <span class="font-mono text-[9px] uppercase tracking-wider text-peatClay-400 block mb-1">VISCOSITY</span>
-          <div class="font-mono text-xl sm:text-2xl font-bold text-white">Rich Cream</div>
-          <span class="font-mono text-xs text-peatClay-400">Thick Wet Peat</span>
-        </div>
-
-        <div class="glass-card p-5 rounded-2xl">
-          <span class="font-mono text-[9px] uppercase tracking-wider text-peatClay-400 block mb-1">PROVENANCE</span>
-          <div class="font-mono text-xl sm:text-2xl font-bold text-white">Austria</div>
-          <span class="font-mono text-xs text-botanicalGreen-400">Salzburg Alpine Peat</span>
-        </div>
-
-        <div class="glass-card p-5 rounded-2xl">
-          <span class="font-mono text-[9px] uppercase tracking-wider text-peatClay-400 block mb-1">pH BALANCE</span>
-          <div class="font-mono text-xl sm:text-2xl font-bold text-white">5.5 - 5.8</div>
-          <span class="font-mono text-xs text-amberGold-400">Dermal Equilibrium</span>
-        </div>
-      </div>
-
-      <!-- Full Ingredient Card -->
-      <div class="max-w-5xl glass-hud p-6 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+  <!-- Interactive B2B Product Range Showcase -->
+  <section id="catalog" class="py-24 bg-noir-900 border-t border-b border-white/5 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header & Filter Tabs -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
-          <span class="text-[9px] font-mono uppercase tracking-widest text-amberGold-400 block">Single Ingredient Guarantee</span>
-          <h4 class="font-serif text-lg font-bold text-white">100% Austrian Moor Mud (Peat Water Extract)</h4>
-          <p class="text-xs text-peatClay-400 mt-1">Preservative-free. Bottled fresh under aseptic salon laboratory protocols.</p>
+          <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-mono">Curated Backbar & Retail Lines</span>
+          <h2 class="text-3xl sm:text-5xl font-serif text-white font-normal mt-1">
+            Clinical Portfolio.
+          </h2>
         </div>
-        <button id="view-specs-3d-btn" class="px-4 py-2 rounded-xl bg-amberGold-500 hover:bg-amberGold-400 text-obsidian-950 font-bold font-mono text-xs tracking-wider transition-all flex items-center space-x-1.5 flex-shrink-0">
-          <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
-          <span>SPIN TO 3D SPECS</span>
-        </button>
-      </div>
-    </section>
 
-    <!-- ============================================ -->
-    <!-- SECTION 5: THE 4-STEP SPA RITUAL             -->
-    <!-- ============================================ -->
-    <section id="ritual" class="min-h-screen relative py-28 px-6 lg:px-16 flex flex-col justify-center">
-      <div class="max-w-xl mb-10">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-obsidian-900 border border-amberGold-500/30 text-amberGold-400 mb-2">
-          <span>05 / CEREMONY</span>
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap gap-2 text-xs">
+          <button onclick="filterProducts('all')" class="cat-btn active px-4 py-2 rounded-full border border-gold-500/50 bg-gold-500/20 text-gold-200 hover:bg-gold-500 hover:text-noir-950 transition-all font-medium" data-cat="all">
+            All Products
+          </button>
+          <button onclick="filterProducts('backbar')" class="cat-btn px-4 py-2 rounded-full border border-white/10 text-cashmere-300 hover:border-gold-500/40 hover:text-gold-300 transition-all font-medium" data-cat="backbar">
+            Salon Backbar (500ml/1L)
+          </button>
+          <button onclick="filterProducts('ampoules')" class="cat-btn px-4 py-2 rounded-full border border-white/10 text-cashmere-300 hover:border-gold-500/40 hover:text-gold-300 transition-all font-medium" data-cat="ampoules">
+            Clinical Ampoules & Peels
+          </button>
+          <button onclick="filterProducts('bespoke')" class="cat-btn px-4 py-2 rounded-full border border-white/10 text-cashmere-300 hover:border-gold-500/40 hover:text-gold-300 transition-all font-medium" data-cat="bespoke">
+            Bespoke Custom OEM
+          </button>
         </div>
-        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
-          The 4-Step <br>
-          <span class="italic text-amberGold-400">Moor Mud Ritual</span>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Product 1 -->
+        <div class="product-card bg-noir-950/70 border border-white/10 hover:border-gold-500/40 rounded-2xl overflow-hidden group transition-all duration-300 flex flex-col justify-between" data-category="ampoules">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <span class="px-2.5 py-1 rounded bg-gold-500/10 border border-gold-500/20 text-gold-300 text-[10px] tracking-wider uppercase font-mono">Direct Korea Import</span>
+              <span class="text-xs text-cashmere-300/60 font-mono">SKU: SM-EX10</span>
+            </div>
+            <h3 class="text-xl font-serif text-white group-hover:text-gold-200 transition-colors">Exosome PDRN Cellular Ampoules</h3>
+            <p class="text-xs text-cashmere-300/70 mt-2 font-light line-clamp-2">
+              Sterile salmon DNA + high-purity exosomes for intense skin regeneration, microneedling, and post-laser recovery protocols.
+            </p>
+            <div class="mt-4 pt-4 border-t border-white/5 space-y-2 text-xs">
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Packaging:</span> <span class="text-white font-mono">10 Vials &times; 10ml</span></div>
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Salon Yield:</span> <span class="text-white">20-30 Clients</span></div>
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Est. Treatment Charge:</span> <span class="text-emerald-400 font-mono">₹3,500 - ₹6,000</span></div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="requestTester('Exosome PDRN Cellular Ampoules')" class="w-full py-2.5 rounded-xl bg-noir-800 hover:bg-gold-500 hover:text-noir-950 text-gold-300 border border-gold-500/30 text-xs uppercase tracking-widest font-semibold transition-all">
+              Request Tester & Trade Price
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card bg-noir-950/70 border border-white/10 hover:border-gold-500/40 rounded-2xl overflow-hidden group transition-all duration-300 flex flex-col justify-between" data-category="backbar">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <span class="px-2.5 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-amber-300 text-[10px] tracking-wider uppercase font-mono">Skinmimic Backbar Lab</span>
+              <span class="text-xs text-cashmere-300/60 font-mono">SKU: SM-BB01</span>
+            </div>
+            <h3 class="text-xl font-serif text-white group-hover:text-gold-200 transition-colors">Biomimetic Ceramide Massage Butter</h3>
+            <p class="text-xs text-cashmere-300/70 mt-2 font-light line-clamp-2">
+              Ultra-velvet professional facial emulsion that melts at body temperature. Enriched with skin-identical lipids, phytosphingosine, and squalane.
+            </p>
+            <div class="mt-4 pt-4 border-t border-white/5 space-y-2 text-xs">
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Salon Size:</span> <span class="text-white font-mono">500ml / 1000ml</span></div>
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Salon Yield:</span> <span class="text-white">80-100 Facials</span></div>
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Cost Per Service:</span> <span class="text-emerald-400 font-mono">~₹42 per client</span></div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="requestTester('Biomimetic Ceramide Massage Butter')" class="w-full py-2.5 rounded-xl bg-noir-800 hover:bg-gold-500 hover:text-noir-950 text-gold-300 border border-gold-500/30 text-xs uppercase tracking-widest font-semibold transition-all">
+              Request Tester & Trade Price
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card bg-noir-950/70 border border-white/10 hover:border-gold-500/40 rounded-2xl overflow-hidden group transition-all duration-300 flex flex-col justify-between" data-category="ampoules">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 text-blue-300 text-[10px] tracking-wider uppercase font-mono">Clinical Resurfacing</span>
+              <span class="text-xs text-cashmere-300/60 font-mono">SKU: SM-PL04</span>
+            </div>
+            <h3 class="text-xl font-serif text-white group-hover:text-gold-200 transition-colors">Lacto-Bio Glass Peel (PHA + Mandelic)</h3>
+            <p class="text-xs text-cashmere-300/70 mt-2 font-light line-clamp-2">
+              Gentle zero-downtime lunchtime peel suitable for sensitive Indian skin types. Imparts instant glassy luminosity without post-inflammatory pigmentation.
+            </p>
+            <div class="mt-4 pt-4 border-t border-white/5 space-y-2 text-xs">
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Packaging:</span> <span class="text-white font-mono">100ml Dropper Bottle</span></div>
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Neutralizer:</span> <span class="text-white">Included in Trade Kit</span></div>
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Service Margin:</span> <span class="text-emerald-400 font-mono">82% Net Margin</span></div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="requestTester('Lacto-Bio Glass Peel')" class="w-full py-2.5 rounded-xl bg-noir-800 hover:bg-gold-500 hover:text-noir-950 text-gold-300 border border-gold-500/30 text-xs uppercase tracking-widest font-semibold transition-all">
+              Request Tester & Trade Price
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card bg-noir-950/70 border border-white/10 hover:border-gold-500/40 rounded-2xl overflow-hidden group transition-all duration-300 flex flex-col justify-between" data-category="backbar">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <span class="px-2.5 py-1 rounded bg-purple-500/10 border border-purple-500/20 text-purple-300 text-[10px] tracking-wider uppercase font-mono">Hydro-Machine Safe</span>
+              <span class="text-xs text-cashmere-300/60 font-mono">SKU: SM-SOL02</span>
+            </div>
+            <h3 class="text-xl font-serif text-white group-hover:text-gold-200 transition-colors">Triple Hydro-Dermabrasion Solutions</h3>
+            <p class="text-xs text-cashmere-300/70 mt-2 font-light line-clamp-2">
+              Pre-mixed, non-clogging clinical solutions: AHA clarifying (S1), BHA pore vortex (S2), and Oligopeptide deep infusion (S3) for machine facials.
+            </p>
+            <div class="mt-4 pt-4 border-t border-white/5 space-y-2 text-xs">
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Compatibility:</span> <span class="text-white">All Hydro/Aqua Machines</span></div>
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Volume:</span> <span class="text-white font-mono">Set of 3 &times; 500ml</span></div>
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Salon Feedback:</span> <span class="text-gold-300">5.0 ★ Rated by 60+ Salons</span></div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="requestTester('Triple Hydro-Dermabrasion Solutions')" class="w-full py-2.5 rounded-xl bg-noir-800 hover:bg-gold-500 hover:text-noir-950 text-gold-300 border border-gold-500/30 text-xs uppercase tracking-widest font-semibold transition-all">
+              Request Tester & Trade Price
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card bg-noir-950/70 border border-white/10 hover:border-gold-500/40 rounded-2xl overflow-hidden group transition-all duration-300 flex flex-col justify-between" data-category="bespoke">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <span class="px-2.5 py-1 rounded bg-gold-500/20 border border-gold-500/40 text-gold-200 text-[10px] tracking-wider uppercase font-mono">Bespoke Design</span>
+              <span class="text-xs text-cashmere-300/60 font-mono">Custom Batch</span>
+            </div>
+            <h3 class="text-xl font-serif text-white group-hover:text-gold-200 transition-colors">Private Label Retail Serum Range</h3>
+            <p class="text-xs text-cashmere-300/70 mt-2 font-light line-clamp-2">
+              Your salon's name embossed on Italian dropper bottles. We formulate, test, bottle, and box turnkey homecare products for your clients.
+            </p>
+            <div class="mt-4 pt-4 border-t border-white/5 space-y-2 text-xs">
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Low Minimums:</span> <span class="text-white font-mono">From 100 units</span></div>
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Formulation Time:</span> <span class="text-white">14 Business Days</span></div>
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Retail Profit:</span> <span class="text-emerald-400 font-mono">Up to 300% Markup</span></div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="requestTester('Private Label Retail Serum Range (Custom)')" class="w-full py-2.5 rounded-xl bg-noir-800 hover:bg-gold-500 hover:text-noir-950 text-gold-300 border border-gold-500/30 text-xs uppercase tracking-widest font-semibold transition-all">
+              Discuss Custom Private Label
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card bg-noir-950/70 border border-white/10 hover:border-gold-500/40 rounded-2xl overflow-hidden group transition-all duration-300 flex flex-col justify-between" data-category="bespoke">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <span class="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[10px] tracking-wider uppercase font-mono">Signature Ritual Kit</span>
+              <span class="text-xs text-cashmere-300/60 font-mono">SKU: SM-RITUAL</span>
+            </div>
+            <h3 class="text-xl font-serif text-white group-hover:text-gold-200 transition-colors">The 24K Gold Mimicry Bridal Box</h3>
+            <p class="text-xs text-cashmere-300/70 mt-2 font-light line-clamp-2">
+              A 7-step single-dose ultra-luxury box for high-ticket bridal and red-carpet facial menus with genuine 24K gold foil and copper peptides.
+            </p>
+            <div class="mt-4 pt-4 border-t border-white/5 space-y-2 text-xs">
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Form:</span> <span class="text-white">Single-Client Monodose Kit</span></div>
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Recommended Menu:</span> <span class="text-gold-300 font-mono">₹4,999 - ₹8,500</span></div>
+              <div class="flex justify-between"><span class="text-cashmere-300/50">Theatrical Experience:</span> <span class="text-white">Golden Peel-Off Mask</span></div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="requestTester('24K Gold Mimicry Bridal Box')" class="w-full py-2.5 rounded-xl bg-noir-800 hover:bg-gold-500 hover:text-noir-950 text-gold-300 border border-gold-500/30 text-xs uppercase tracking-widest font-semibold transition-all">
+              Request Tester & Trade Price
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Trade Catalog Download Strip -->
+      <div class="mt-14 p-8 rounded-2xl bg-noir-950 border border-gold-500/30 text-center flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-left">
+          <h4 class="text-xl font-serif text-white">Need the Complete 2026-2027 Professional B2B Price Matrix?</h4>
+          <p class="text-xs text-cashmere-300/70 mt-1">Get our comprehensive 38-page trade catalog with confidential salon trade pricing, active monographs, and backbar usage manuals.</p>
+        </div>
+        <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%20Care,%20please%20send%20us%20the%20complete%20B2B%20Trade%20Price%20Matrix%20and%20Product%20Catalog%20PDF." target="_blank" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-gold-500 to-amber-400 text-noir-950 font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all flex items-center gap-2 whitespace-nowrap shadow-lg shadow-gold-500/20">
+          <i class="fa-solid fa-file-pdf"></i> Download via WhatsApp (8356902748)
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Salon Profit & ROI Margin Estimator -->
+  <section id="calculator" class="py-24 bg-noir-950 relative overflow-hidden">
+    <!-- Ambient Aura -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-mono">B2B Profitability Engine</span>
+        <h2 class="text-3xl sm:text-5xl font-serif text-white font-normal">
+          Salon Profit & ROI Margin Estimator
         </h2>
-        <p class="mt-3 text-peatClay-400 text-sm">
-          Optimize humic absorption with this time-honored Austrian salon protocol.
+        <p class="text-sm text-cashmere-300/70 font-light leading-relaxed">
+          See the tangible financial impact of switching to <strong class="text-white">Skinmimic Care</strong>. Our direct import model eliminates markups and delivers high efficacy at unmatched backbar economics.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl">
-        <div class="glass-card p-5 rounded-2xl border border-white/10 relative overflow-hidden group">
-          <span class="font-serif text-4xl font-bold text-white/10 absolute right-3 top-2">01</span>
-          <span class="text-[9px] font-mono uppercase tracking-widest text-amberGold-400">Prepare</span>
-          <h3 class="font-serif text-base font-bold text-white mt-1">Warm Steam</h3>
-          <p class="text-xs text-peatClay-400 mt-2 leading-relaxed">Warm your face with a damp organic towel for 60 seconds to prime pore permeability.</p>
-        </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Controls Column -->
+        <div class="lg:col-span-7 bg-noir-900/90 border border-white/10 rounded-3xl p-6 sm:p-10 space-y-8 shadow-xl">
+          <h3 class="text-xl font-serif text-white pb-3 border-b border-white/10">Configure Your Salon Volume</h3>
 
-        <div class="glass-card p-5 rounded-2xl border border-white/10 relative overflow-hidden group">
-          <span class="font-serif text-4xl font-bold text-white/10 absolute right-3 top-2">02</span>
-          <span class="text-[9px] font-mono uppercase tracking-widest text-amberGold-400">Sculpt</span>
-          <h3 class="font-serif text-base font-bold text-white mt-1">Apply Mud</h3>
-          <p class="text-xs text-peatClay-400 mt-2 leading-relaxed">Using the carved spatula, smooth a thick 2-3mm layer over face and neck, avoiding the eye contour.</p>
-        </div>
-
-        <div class="glass-card p-5 rounded-2xl border border-white/10 relative overflow-hidden group">
-          <span class="font-serif text-4xl font-bold text-white/10 absolute right-3 top-2">03</span>
-          <span class="text-[9px] font-mono uppercase tracking-widest text-amberGold-400">Stillness</span>
-          <h3 class="font-serif text-base font-bold text-white mt-1">15-Min Infusion</h3>
-          <p class="text-xs text-peatClay-400 mt-2 leading-relaxed">Rest quietly as active humic acids draw out cellular impurities while delivering trace minerals.</p>
-        </div>
-
-        <div class="glass-card p-5 rounded-2xl border border-white/10 relative overflow-hidden group">
-          <span class="font-serif text-4xl font-bold text-white/10 absolute right-3 top-2">04</span>
-          <span class="text-[9px] font-mono uppercase tracking-widest text-amberGold-400">Reveal</span>
-          <h3 class="font-serif text-base font-bold text-white mt-1">Warm Rinse</h3>
-          <p class="text-xs text-peatClay-400 mt-2 leading-relaxed">Rinse gently with circular motions. Pat dry to unveil velvety, revived, glowing skin.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- FOOTER                                       -->
-    <!-- ============================================ -->
-    <footer class="border-t border-white/10 py-12 px-6 lg:px-16 bg-obsidian-950">
-      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-peatClay-400 font-mono">
-        <div class="flex items-center space-x-3">
-          <div class="w-6 h-6 rounded-full border border-amberGold-500/50 flex items-center justify-center">
-            <span class="w-1.5 h-1.5 rounded-full bg-amberGold-400"></span>
-          </div>
-          <span class="text-white font-serif font-bold tracking-wider">EARTH GLOW ESSENTIAL</span>
-          <span>• 100% NATURAL HEILMOOR</span>
-        </div>
-        <div class="text-center md:text-right">
-          © 2026 Earth Glow Essential. Salon Format 1 kg / 35.2 oz.
-        </div>
-      </div>
-    </footer>
-  </main>
-
-  <!-- ======================================================== -->
-  <!-- LUXURY APOTHECARY CART DRAWER                            -->
-  <!-- ======================================================== -->
-  <div id="cart-drawer-backdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
-
-  <div id="cart-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-obsidian-900 border-l border-white/10 z-50 p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-out shadow-2xl">
-    <div>
-      <div class="flex items-center justify-between pb-5 border-b border-white/10">
-        <div class="flex items-center space-x-2">
-          <i data-lucide="shopping-bag" class="w-4 h-4 text-amberGold-400"></i>
-          <h3 class="font-serif text-base font-bold text-white tracking-wide">Apothecary Cart</h3>
-          <span class="font-mono text-xs text-peatClay-400">(<span id="cart-drawer-qty">1</span>)</span>
-        </div>
-        <button id="close-cart-btn" class="w-8 h-8 rounded-full glass-card flex items-center justify-center text-peatClay-400 hover:text-white transition-colors">
-          <i data-lucide="x" class="w-4 h-4"></i>
-        </button>
-      </div>
-
-      <div class="mt-4 p-3 rounded-xl bg-amberGold-500/10 border border-amberGold-500/30 flex items-center space-x-3">
-        <i data-lucide="sparkles" class="w-4 h-4 text-amberGold-400 flex-shrink-0"></i>
-        <span class="text-xs font-mono text-amberGold-300">Complimentary Carved Wooden Spatula Included</span>
-      </div>
-
-      <!-- Item Row -->
-      <div class="mt-6 flex space-x-4 pb-6 border-b border-white/10">
-        <div class="w-16 h-16 rounded-xl bg-obsidian-800 border border-white/10 flex items-center justify-center flex-shrink-0">
-          <span class="font-serif text-xs font-bold text-amberGold-400">1 KG</span>
-        </div>
-        <div class="flex-1">
-          <div class="flex justify-between">
-            <h4 class="font-serif text-sm font-bold text-white">Moor Mud Mask</h4>
-            <span class="font-mono text-sm font-bold text-amberGold-400" id="cart-price">$68.00</span>
-          </div>
-          <span class="font-mono text-[10px] text-peatClay-400 block mt-0.5">1 kg / 35.2 oz Salon Format</span>
-
-          <div class="flex items-center space-x-3 mt-3">
-            <div class="flex items-center glass-card rounded-lg border border-white/10">
-              <button id="qty-minus" class="px-2.5 py-1 text-xs text-peatClay-400 hover:text-white">-</button>
-              <span id="qty-display" class="font-mono text-xs px-2 text-white font-bold">1</span>
-              <button id="qty-plus" class="px-2.5 py-1 text-xs text-peatClay-400 hover:text-white">+</button>
+          <!-- Slider 1: Monthly Facial / Treatment Clients -->
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <label for="clientSlider" class="text-sm text-cashmere-200 font-medium">Monthly Facial & Skin Clients:</label>
+              <span id="clientDisplay" class="text-lg font-mono text-gold-300 font-semibold bg-noir-950 px-3 py-1 rounded-lg border border-gold-500/30">120 Clients</span>
             </div>
-            <span class="text-[11px] font-mono text-botanicalGreen-400">In Stock</span>
+            <input type="range" id="clientSlider" min="20" max="600" step="10" value="120" class="w-full h-2 bg-noir-800 rounded-lg appearance-none cursor-pointer accent-gold-500">
+            <div class="flex justify-between text-[11px] text-cashmere-300/40 font-mono">
+              <span>Boutique Salon (20)</span>
+              <span>Mid-Tier (300)</span>
+              <span>Multi-Chair Mega Salon (600+)</span>
+            </div>
+          </div>
+
+          <!-- Slider 2: Average Menu Ticket Size -->
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <label for="ticketSlider" class="text-sm text-cashmere-200 font-medium">Average Menu Charge Per Facial:</label>
+              <span id="ticketDisplay" class="text-lg font-mono text-gold-300 font-semibold bg-noir-950 px-3 py-1 rounded-lg border border-gold-500/30">₹3,000</span>
+            </div>
+            <input type="range" id="ticketSlider" min="1200" max="10000" step="200" value="3000" class="w-full h-2 bg-noir-800 rounded-lg appearance-none cursor-pointer accent-gold-500">
+            <div class="flex justify-between text-[11px] text-cashmere-300/40 font-mono">
+              <span>₹1,200 (Express)</span>
+              <span>₹5,000 (Clinical)</span>
+              <span>₹10,000 (VIP Bridal / Exosome)</span>
+            </div>
+          </div>
+
+          <!-- Product Formulation Tier Choice -->
+          <div class="space-y-3">
+            <label class="text-sm text-cashmere-200 font-medium block">Select Skinmimic Treatment Protocol:</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button type="button" onclick="setProtocol('standard')" id="btnProtoStandard" class="p-3.5 rounded-xl border border-gold-500/50 bg-gold-500/10 text-left transition-all">
+                <div class="text-white text-xs font-semibold">Cellular Mimicry Backbar</div>
+                <div class="text-[11px] text-cashmere-300/60 mt-0.5">Avg backbar cost: ~₹320 / client</div>
+              </button>
+              <button type="button" onclick="setProtocol('advanced')" id="btnProtoAdv" class="p-3.5 rounded-xl border border-white/10 bg-noir-950 text-left hover:border-gold-500/30 transition-all">
+                <div class="text-white text-xs font-semibold">Exosome & Peptide Infusion</div>
+                <div class="text-[11px] text-cashmere-300/60 mt-0.5">Avg backbar cost: ~₹550 / client</div>
+              </button>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-noir-950/70 border border-gold-500/20 text-xs text-cashmere-300/80 flex items-start gap-3">
+            <i class="fa-solid fa-lightbulb text-gold-400 text-sm mt-0.5"></i>
+            <span><strong>Why Skinmimic margins are higher:</strong> We import key active ingredients directly from South Korea and Europe and formulate in-house, eliminating the standard 45-60% distributor markup.</span>
+          </div>
+
+        </div>
+
+        <!-- Output Metric Summary Card -->
+        <div class="lg:col-span-5 bg-gradient-to-br from-noir-900 via-noir-850 to-noir-900 border border-gold-500/40 rounded-3xl p-6 sm:p-10 flex flex-col justify-between shadow-2xl relative overflow-hidden">
+          <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-gold-500/10 rounded-full blur-2xl"></div>
+
+          <div>
+            <div class="flex items-center justify-between pb-4 border-b border-white/10">
+              <span class="text-xs uppercase tracking-widest text-gold-400 font-mono">Calculated Salon Margin</span>
+              <span id="marginPercent" class="text-sm font-mono text-emerald-400 font-semibold">89.3% Margin</span>
+            </div>
+
+            <!-- Big Revenue Number -->
+            <div class="my-6">
+              <div class="text-xs text-cashmere-300/60 uppercase tracking-widest">Monthly Treatment Revenue</div>
+              <div id="monthlyRevenueDisplay" class="text-3xl sm:text-4xl font-serif text-white font-medium mt-1">₹3,60,000</div>
+            </div>
+
+            <!-- Net Profit Breakdown -->
+            <div class="space-y-4 py-4 border-y border-white/10 text-xs">
+              <div class="flex justify-between items-center">
+                <span class="text-cashmere-300/60">Estimated Backbar Product Cost:</span>
+                <span id="monthlyCostDisplay" class="text-rose-300 font-mono">₹38,400</span>
+              </div>
+              <div class="flex justify-between items-center text-sm font-medium">
+                <span class="text-cashmere-100">Net Monthly Treatment Profit:</span>
+                <span id="monthlyProfitDisplay" class="text-emerald-400 font-mono text-base font-bold">₹3,21,600</span>
+              </div>
+              <div class="flex justify-between items-center pt-2 border-t border-white/5">
+                <span class="text-gold-300">Projected Annual Salon Profit:</span>
+                <span id="annualProfitDisplay" class="text-gold-300 font-mono font-bold text-lg">₹38,59,200</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 space-y-3">
+            <button onclick="shareCalculatedROI()" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-all shadow-lg shadow-emerald-950/40">
+              <i class="fa-brands fa-whatsapp text-base"></i>
+              <span>Send This Profit Plan to WhatsApp</span>
+            </button>
+            <p class="text-[11px] text-center text-cashmere-300/50">Direct consultation with Skinmimic Salon Commercial Team</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- B2B Salon Partnership Inquiry Form & Direct Connect -->
+  <section id="contact" class="py-24 bg-noir-900 border-t border-white/5 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Editorial Callout -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-mono">Direct Trade Enrollment</span>
+          <h2 class="text-3xl sm:text-5xl font-serif text-white font-normal leading-tight">
+            Elevate Your Salon's Standard.
+          </h2>
+          <p class="text-sm text-cashmere-300/80 font-light leading-relaxed">
+            Join premier salons, dermatology clinics, and aesthetic spa chains partnering with <strong class="text-white">SKINMIMIC CARE</strong>. Whether you seek imported ampoules or a completely custom-formulated salon backbar, our four founding partners are at your service.
+          </p>
+
+          <!-- Contact Essentials -->
+          <div class="space-y-4 pt-4 border-t border-white/10 text-xs">
+            <a href="tel:8356902748" class="flex items-center gap-3 p-3.5 rounded-xl bg-noir-950 border border-white/5 hover:border-gold-500/30 transition-colors">
+              <div class="w-9 h-9 rounded-lg bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <div class="text-[10px] text-cashmere-300/50 uppercase tracking-widest">Direct Salon Hotline</div>
+                <div class="text-white font-medium text-sm">+91 8356902748</div>
+              </div>
+            </a>
+
+            <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%20Care,%20we%20want%20to%20apply%20for%20a%20B2B%20Salon%20Account." target="_blank" class="flex items-center gap-3 p-3.5 rounded-xl bg-noir-950 border border-white/5 hover:border-emerald-500/30 transition-colors">
+              <div class="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+              </div>
+              <div>
+                <div class="text-[10px] text-cashmere-300/50 uppercase tracking-widest">Instant WhatsApp Trade Desk</div>
+                <div class="text-white font-medium text-sm">+91 8356902748</div>
+              </div>
+            </a>
+
+            <div class="flex items-center gap-3 p-3.5 rounded-xl bg-noir-950 border border-white/5">
+              <div class="w-9 h-9 rounded-lg bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400">
+                <i class="fa-solid fa-truck-fast"></i>
+              </div>
+              <div>
+                <div class="text-[10px] text-cashmere-300/50 uppercase tracking-widest">Pan-India Dispatch</div>
+                <div class="text-white font-medium text-sm">Express 24 to 48 Hours Dispatch</div>
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- Right: Modern Luxury Form -->
+        <div class="lg:col-span-7 bg-noir-950 border border-gold-500/30 rounded-3xl p-6 sm:p-10 shadow-2xl relative">
+          <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+            <div>
+              <h3 class="text-xl font-serif text-white">Salon Partnership Application</h3>
+              <p class="text-xs text-cashmere-300/60 mt-0.5">Submit to receive confidential sample testers and price list.</p>
+            </div>
+            <span class="px-2.5 py-1 rounded bg-gold-500/10 text-gold-300 text-[10px] tracking-widest uppercase border border-gold-500/20">
+              Verified Salons Only
+            </span>
+          </div>
+
+          <form id="salonInquiryForm" onsubmit="handleInquirySubmit(event)" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-cashmere-200/80 mb-1.5 font-medium">Salon / Clinic Name *</label>
+                <input type="text" id="formSalonName" required placeholder="e.g. Aura Luxury Salon & Spa" class="w-full px-4 py-3 rounded-xl bg-noir-900 border border-white/10 focus:border-gold-400 text-white text-xs outline-none transition-colors">
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-cashmere-200/80 mb-1.5 font-medium">Contact Person *</label>
+                <input type="text" id="formContactPerson" required placeholder="e.g. Rahul Sharma (Owner/Director)" class="w-full px-4 py-3 rounded-xl bg-noir-900 border border-white/10 focus:border-gold-400 text-white text-xs outline-none transition-colors">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-cashmere-200/80 mb-1.5 font-medium">City & State *</label>
+                <input type="text" id="formCity" required placeholder="e.g. Mumbai, Maharashtra" class="w-full px-4 py-3 rounded-xl bg-noir-900 border border-white/10 focus:border-gold-400 text-white text-xs outline-none transition-colors">
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-cashmere-200/80 mb-1.5 font-medium">Phone / WhatsApp Number *</label>
+                <input type="tel" id="formPhone" required placeholder="e.g. 98200XXXXX" class="w-full px-4 py-3 rounded-xl bg-noir-900 border border-white/10 focus:border-gold-400 text-white text-xs outline-none transition-colors">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-cashmere-200/80 mb-1.5 font-medium">Primary Area of Interest *</label>
+              <select id="formInterest" class="w-full px-4 py-3 rounded-xl bg-noir-900 border border-white/10 focus:border-gold-400 text-white text-xs outline-none transition-colors">
+                <option value="Direct Global Imports (Korean/European Ampoules & Peels)">Direct Global Imports (Korean/European Ampoules & Peels)</option>
+                <option value="Bespoke Product Formulation & Custom White Label">Bespoke Product Formulation & Custom White Label</option>
+                <option value="Backbar Facial Range (500ml / 1000ml bulk)">Backbar Facial Range (500ml / 1000ml bulk)</option>
+                <option value="Hydro-Machine Solutions & Clinical Serums">Hydro-Machine Solutions & Clinical Serums</option>
+                <option value="Complete Salon Menu & Therapist Protocol Setup">Complete Salon Menu & Therapist Protocol Setup</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-cashmere-200/80 mb-1.5 font-medium">Current Monthly Client Volume</label>
+              <select id="formVolume" class="w-full px-4 py-3 rounded-xl bg-noir-900 border border-white/10 focus:border-gold-400 text-white text-xs outline-none transition-colors">
+                <option value="Under 50 Clients / Month">Under 50 Clients / Month</option>
+                <option value="50 - 150 Clients / Month">50 - 150 Clients / Month</option>
+                <option value="150 - 400 Clients / Month">150 - 400 Clients / Month</option>
+                <option value="400+ Clients / Multiple Branches">400+ Clients / Multiple Branches</option>
+              </select>
+            </div>
+
+            <div class="pt-2">
+              <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-500 via-gold-400 to-amber-300 hover:brightness-110 text-noir-950 font-bold text-xs uppercase tracking-widest transition-all shadow-xl shadow-gold-500/20 flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-base"></i>
+                <span>Submit & Connect to WhatsApp (+91 8356902748)</span>
+              </button>
+            </div>
+
+            <p class="text-[10px] text-center text-cashmere-300/50 mt-2">
+              Your details remain confidential. Exclusively for registered salons, dermatologists, and aesthetic providers.
+            </p>
+          </form>
+
+        </div>
+
       </div>
+
+    </div>
+  </section>
+
+  <!-- Luxury Minimalist Footer -->
+  <footer class="bg-noir-950 border-t border-white/10 pt-16 pb-12 text-cashmere-300/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-white/10">
+        
+        <!-- Brand identity col -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="flex flex-col items-start select-none">
+            <span class="tracking-[0.12em] text-2xl font-serif font-medium text-white">SKINMIMIC</span>
+            <div class="flex items-center mt-0.5">
+              <div class="h-[0.75px] w-6 bg-gold-400/80"></div>
+              <span class="text-[9px] uppercase font-sans tracking-[0.45em] text-gold-300/90 px-2 font-light">C A R E</span>
+              <div class="h-[0.75px] w-6 bg-gold-400/80"></div>
+            </div>
+          </div>
+          <p class="text-xs text-cashmere-300/60 font-light leading-relaxed max-w-sm">
+            India's foremost B2B salon professional enterprise. Directed by 4 partners integrating international active ingredient import and bespoke clinical formulation engineering.
+          </p>
+          <div class="text-xs font-mono text-gold-300 flex items-center gap-2">
+            <i class="fa-solid fa-phone text-xs"></i> Trade Inquiries: <a href="tel:8356902748" class="hover:underline font-bold">+91 8356902748</a>
+          </div>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="lg:col-span-2 space-y-3 text-xs">
+          <div class="text-white uppercase tracking-widest font-mono text-xs font-semibold">Architecture</div>
+          <ul class="space-y-2">
+            <li><a href="#about" class="hover:text-gold-300 transition-colors">Philosophy</a></li>
+            <li><a href="#capabilities" class="hover:text-gold-300 transition-colors">Direct Import</a></li>
+            <li><a href="#capabilities" class="hover:text-gold-300 transition-colors">Bespoke Design</a></li>
+            <li><a href="#partners" class="hover:text-gold-300 transition-colors">The 4 Partners</a></li>
+          </ul>
+        </div>
+
+        <!-- Products Quick Links -->
+        <div class="lg:col-span-2 space-y-3 text-xs">
+          <div class="text-white uppercase tracking-widest font-mono text-xs font-semibold">Solutions</div>
+          <ul class="space-y-2">
+            <li><a href="#catalog" class="hover:text-gold-300 transition-colors">Clinical Ampoules</a></li>
+            <li><a href="#catalog" class="hover:text-gold-300 transition-colors">Backbar (1000ml)</a></li>
+            <li><a href="#catalog" class="hover:text-gold-300 transition-colors">Hydro-Solutions</a></li>
+            <li><a href="#calculator" class="hover:text-gold-300 transition-colors">ROI Calculator</a></li>
+          </ul>
+        </div>
+
+        <!-- Direct Trade Desk info -->
+        <div class="lg:col-span-3 space-y-3 text-xs">
+          <div class="text-white uppercase tracking-widest font-mono text-xs font-semibold">Trade Desk</div>
+          <p class="text-[11px] leading-relaxed text-cashmere-300/60">
+            For sample orders, wholesale distribution inquiries, or formulation consulting:
+          </p>
+          <div class="pt-1">
+            <a href="https://wa.me/918356902748" target="_blank" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 font-mono text-xs hover:bg-emerald-900/40 transition-colors">
+              <i class="fa-brands fa-whatsapp text-sm"></i> +91 8356902748
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright & Disclaimer -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-cashmere-300/40 gap-4">
+        <div>
+          &copy; <span id="currentYear"></span> SKINMIMIC CARE. All Rights Reserved. Engineered for Salon Professionals.
+        </div>
+        <div class="flex items-center space-x-6">
+          <span>B2B Wholesale Only</span>
+          <span>CDSCO & Dermatologically Certified</span>
+          <a href="#" class="hover:text-gold-300">Privacy Policy</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Instant Connect Widget -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <!-- Pop-up Tooltip on Hover/Auto -->
+    <div id="waTooltip" class="mb-3 hidden sm:flex items-center gap-3 bg-noir-900 border border-gold-500/40 py-2.5 px-4 rounded-2xl shadow-2xl transition-all">
+      <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></div>
+      <div class="text-left text-xs">
+        <div class="text-white font-medium">Skinmimic Trade Desk Online</div>
+        <div class="text-cashmere-300/60 text-[10px]">Chat directly on WhatsApp: <strong class="text-gold-300">8356902748</strong></div>
+      </div>
+      <button onclick="document.getElementById('waTooltip').style.display='none'" class="text-cashmere-300/40 hover:text-white text-xs ml-1">
+        &times;
+      </button>
     </div>
 
-    <!-- Drawer Footer -->
-    <div class="pt-5 border-t border-white/10 space-y-4">
-      <div class="space-y-1 font-mono text-xs">
-        <div class="flex justify-between text-peatClay-400">
-          <span>Subtotal</span>
-          <span id="cart-subtotal" class="text-white font-bold">$68.00</span>
-        </div>
-        <div class="flex justify-between text-peatClay-400">
-          <span>Express Shipping</span>
-          <span class="text-botanicalGreen-400 font-bold">FREE</span>
-        </div>
-        <div class="flex justify-between text-sm font-bold text-white pt-2 border-t border-white/10">
-          <span class="font-serif">Total</span>
-          <span id="cart-total" class="text-amberGold-400 font-mono text-base">$68.00</span>
-        </div>
+    <!-- WhatsApp Floating Trigger Button -->
+    <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%20Care,%20we%20are%20a%20salon%20seeking%20product%20catalogs%20and%20partnership%20details." target="_blank" class="group relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-500 text-white shadow-2xl hover:scale-105 transition-all duration-300 shadow-emerald-500/30">
+      <!-- Outer pulsing ring -->
+      <span class="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-25"></span>
+      <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl relative z-10"></i>
+    </a>
+  </div>
+
+  <!-- Reusable Trade Tester Modal -->
+  <div id="testerModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md items-center justify-center p-4">
+    <div class="bg-noir-900 border border-gold-500/40 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
+      <button onclick="closeInquiryModal()" class="absolute top-5 right-5 text-cashmere-300/60 hover:text-white text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="mb-5">
+        <span class="text-[10px] uppercase tracking-widest text-gold-400 font-mono">B2B Trade Request</span>
+        <h3 id="modalTitle" class="text-2xl font-serif text-white mt-1">Request Product Tester</h3>
+        <p class="text-xs text-cashmere-300/70 mt-1">Direct shipping to licensed salons and aesthetic clinics.</p>
       </div>
 
-      <button id="checkout-trigger-btn" class="w-full py-3.5 rounded-xl bg-amberGold-500 hover:bg-amberGold-400 text-obsidian-950 font-bold font-mono text-xs tracking-widest transition-all shadow-xl shadow-amberGold-500/20 flex items-center justify-center space-x-2">
-        <i data-lucide="lock" class="w-3.5 h-3.5"></i>
-        <span>SECURE APOTHECARY CHECKOUT</span>
-      </button>
+      <form onsubmit="handleModalSubmit(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block text-cashmere-200 uppercase tracking-wider mb-1">Product Inquired</label>
+          <input type="text" id="modalProductName" readonly class="w-full px-3.5 py-2.5 rounded-xl bg-noir-950 border border-gold-500/30 text-gold-300 font-mono outline-none">
+        </div>
+        <div>
+          <label class="block text-cashmere-200 uppercase tracking-wider mb-1">Your Salon Name *</label>
+          <input type="text" id="modalSalonName" required placeholder="Salon or Clinic Name" class="w-full px-3.5 py-2.5 rounded-xl bg-noir-950 border border-white/10 text-white outline-none focus:border-gold-400">
+        </div>
+        <div>
+          <label class="block text-cashmere-200 uppercase tracking-wider mb-1">City / Location *</label>
+          <input type="text" id="modalCity" required placeholder="City, State" class="w-full px-3.5 py-2.5 rounded-xl bg-noir-950 border border-white/10 text-white outline-none focus:border-gold-400">
+        </div>
+        <div>
+          <label class="block text-cashmere-200 uppercase tracking-wider mb-1">WhatsApp Mobile *</label>
+          <input type="tel" id="modalPhone" required placeholder="Mobile Number" class="w-full px-3.5 py-2.5 rounded-xl bg-noir-950 border border-white/10 text-white outline-none focus:border-gold-400">
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-gold-500 to-amber-400 text-noir-950 font-bold uppercase tracking-widest hover:brightness-110 transition-all flex items-center justify-center gap-2 mt-2">
+          <i class="fa-brands fa-whatsapp text-sm"></i> Send Request via WhatsApp (8356902748)
+        </button>
+      </form>
     </div>
   </div>
 
-  <!-- ORDER SUCCESS MODAL -->
-  <div id="order-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
-    <div class="glass-hud max-w-sm w-full p-6 rounded-2xl border border-amberGold-500/40 text-center space-y-3 shadow-2xl">
-      <div class="w-12 h-12 rounded-full bg-amberGold-500/20 border border-amberGold-500/40 text-amberGold-400 flex items-center justify-center mx-auto">
-        <i data-lucide="check" class="w-6 h-6"></i>
-      </div>
-      <h3 class="font-serif text-xl font-bold text-white">Order Received</h3>
-      <p class="text-xs text-peatClay-400 leading-relaxed font-mono">
-        Your fresh batch of Earth Glow Essential 100% Moor Mud Mask has been scheduled for priority dispatch.
-      </p>
-      <button id="order-modal-close" class="mt-2 px-5 py-2 rounded-xl bg-amberGold-500 text-obsidian-950 font-mono text-xs font-bold hover:bg-amberGold-400 transition-colors">
-        RETURN
-      </button>
-    </div>
+  <!-- Toast Notification Box -->
+  <div id="toastNotification" class="fixed top-6 right-6 z-50 hidden bg-noir-900 border border-gold-400 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 text-xs">
+    <i class="fa-solid fa-circle-check text-gold-400 text-base"></i>
+    <span id="toastMessage">Your inquiry has been formulated. Redirecting...</span>
   </div>
 
-  <!-- ======================================================== -->
-  <!-- THREE.JS ENGINE & INTERACTIVITY                          -->
-  <!-- ======================================================== -->
+  <!-- JavaScript Application Logic -->
   <script>
-    /* --------------------------------------------------------
-       1. SYNTHESIZED SPA SOUND EFFECTS (Web Audio API)
-    -------------------------------------------------------- */
-    let audioCtx = null;
-    let isSoundActive = false;
+    // Current Year Setter
+    document.getElementById('currentYear').innerText = new Date().getFullYear();
 
-    function initAudioEngine() {
-      if (!audioCtx) {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        audioCtx = new AudioContext();
-      }
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-    }
-
-    function playTone(freq = 432, duration = 2.0) {
-      if (!isSoundActive) return;
-      try {
-        initAudioEngine();
-        const now = audioCtx.currentTime;
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, now);
-
-        gain.gain.setValueAtTime(0.001, now);
-        gain.gain.exponentialRampToValueAtTime(0.12, now + 0.04);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
-
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start(now);
-        osc.stop(now + duration);
-      } catch (e) {}
-    }
-
-    function playClick() {
-      if (!isSoundActive) return;
-      try {
-        initAudioEngine();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(700, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + 0.03);
-        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.03);
-      } catch (e) {}
-    }
-
-    const audioToggleBtn = document.getElementById('audio-toggle-btn');
-    const audioIcon = document.getElementById('audio-icon');
-    const soundToast = document.getElementById('sound-toast');
-    const soundToastText = document.getElementById('sound-toast-text');
-
-    audioToggleBtn.addEventListener('click', () => {
-      isSoundActive = !isSoundActive;
-      if (isSoundActive) {
-        initAudioEngine();
-        playTone(528, 2.4);
-        audioIcon.setAttribute('data-lucide', 'volume-2');
-        audioToggleBtn.classList.add('text-amberGold-400', 'border-amberGold-500/50');
-        showToast('Spa Soundscape: ACTIVE');
-      } else {
-        audioIcon.setAttribute('data-lucide', 'volume-x');
-        audioToggleBtn.classList.remove('text-amberGold-400', 'border-amberGold-500/50');
-        showToast('Spa Soundscape: MUTED');
-      }
-      lucide.createIcons();
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scrollProgress').style.width = scrolled + '%';
     });
 
-    function showToast(msg) {
-      soundToastText.innerText = msg;
-      soundToast.classList.remove('opacity-0');
-      soundToast.classList.add('opacity-100');
-      setTimeout(() => {
-        soundToast.classList.remove('opacity-100');
-        soundToast.classList.add('opacity-0');
-      }, 2000);
+    // Mobile Menu Toggle
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('hidden');
     }
-
-    /* --------------------------------------------------------
-       2. PROCEDURAL HIGH-RES LABEL TEXTURE (2048 x 1024)
-       Accurately reproducing the user's reference image
-    -------------------------------------------------------- */
-    function generateJarLabelTexture() {
-      const canvas = document.createElement('canvas');
-      canvas.width = 2048;
-      canvas.height = 1024;
-      const ctx = canvas.getContext('2d');
-
-      // Cosmetic off-white tub background
-      ctx.fillStyle = '#faf8f5';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Fine cosmetic stipple texture
-      for (let i = 0; i < 4000; i++) {
-        ctx.fillStyle = Math.random() > 0.5 ? 'rgba(0,0,0,0.015)' : 'rgba(255,255,255,0.025)';
-        ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 2, 2);
-      }
-
-      // FRONT LABEL PANEL (Centered on front)
-      const labelW = 920;
-      const labelH = 800;
-      const labelX = (canvas.width - labelW) / 2;
-      const labelY = (canvas.height - labelH) / 2;
-
-      // Label background card
-      ctx.fillStyle = '#ffffff';
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.07)';
-      ctx.shadowBlur = 12;
-      ctx.fillRect(labelX, labelY, labelW, labelH);
-      ctx.shadowColor = 'transparent';
-
-      // Inner hairline border
-      ctx.strokeStyle = 'rgba(0, 0, 0, 0.08)';
-      ctx.lineWidth = 2;
-      ctx.strokeRect(labelX + 16, labelY + 16, labelW - 32, labelH - 32);
-
-      const centerX = canvas.width / 2;
-      let y = labelY + 95;
-
-      // RADIANT SUNBURST LOGO (From reference photo)
-      ctx.strokeStyle = '#222222';
-      ctx.lineWidth = 3.5;
-      ctx.beginPath();
-      ctx.arc(centerX, y + 2, 9, Math.PI, 0, false);
-      ctx.stroke();
-
-      for (let a = 190; a <= 350; a += 20) {
-        const rad = (a * Math.PI) / 180;
-        const x1 = centerX + Math.cos(rad) * 14;
-        const y1 = y + 2 + Math.sin(rad) * 14;
-        const x2 = centerX + Math.cos(rad) * 23;
-        const y2 = y + 2 + Math.sin(rad) * 23;
-        ctx.beginPath();
-        ctx.moveTo(x1, y1);
-        ctx.lineTo(x2, y2);
-        ctx.stroke();
-      }
-
-      y += 56;
-
-      // "Earth Glow" Serif Title
-      ctx.textAlign = 'center';
-      ctx.fillStyle = '#1e1c19';
-      ctx.font = '500 66px "Cinzel", Georgia, serif';
-      ctx.letterSpacing = '5px';
-      ctx.fillText('Earth Glow', centerX, y);
-
-      y += 34;
-
-      // "— Essential —"
-      ctx.font = '300 30px "Plus Jakarta Sans", sans-serif';
-      ctx.letterSpacing = '8px';
-      ctx.fillStyle = '#444444';
-      ctx.fillText('— ESSENTIAL —', centerX, y);
-
-      y += 42;
-
-      // DARK CHARCOAL RECTANGLE BANNER: "MOOR MUD MASK"
-      const badgeW = 620;
-      const badgeH = 74;
-      ctx.fillStyle = '#292b2a';
-      ctx.fillRect(centerX - badgeW / 2, y, badgeW, badgeH);
-
-      ctx.fillStyle = '#faf8f5';
-      ctx.font = '700 36px "Plus Jakarta Sans", sans-serif';
-      ctx.letterSpacing = '6px';
-      ctx.fillText('MOOR MUD MASK', centerX, y + 50);
-
-      y += badgeH + 60;
-
-      // 5 BULLET POINTS FROM REFERENCE PHOTO
-      const bulletList = [
-        "Detoxifies & purifies pores",
-        "Rich in organic humic acids",
-        "Reduces fine lines & improves texture",
-        "Soothes and hydrates all skin types",
-        "Formulated with 100% natural Moor Mud"
-      ];
-
-      ctx.textAlign = 'left';
-      ctx.font = '500 24px "Plus Jakarta Sans", sans-serif';
-      ctx.fillStyle = '#2d2b27';
-
-      const bulletX = centerX - 230;
-
-      bulletList.forEach((text) => {
-        ctx.fillStyle = '#292b2a';
-        ctx.beginPath();
-        ctx.arc(bulletX - 18, y - 8, 4.5, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillText(text, bulletX, y);
-        y += 42;
-      });
-
-      y += 30;
-
-      // WEIGHT INDICATION: "1 kg / 35.2 oz"
-      ctx.textAlign = 'center';
-      ctx.font = '600 24px "Space Grotesk", monospace';
-      ctx.fillStyle = '#444444';
-      ctx.letterSpacing = '2px';
-      ctx.fillText('1 kg / 35.2 oz', centerX, y);
-
-      // BACK OF TUB DOSSIER & BARCODE
-      const backX = 260;
-      ctx.textAlign = 'center';
-      ctx.fillStyle = '#222222';
-      ctx.font = '700 20px "Plus Jakarta Sans", sans-serif';
-      ctx.fillText('TECHNICAL SPECIFICATIONS', backX, 320);
-
-      ctx.font = '400 16px "Plus Jakarta Sans", sans-serif';
-      ctx.fillStyle = '#555555';
-      ctx.fillText('Pure Austrian Heilmoor Clay Extract', backX, 360);
-      ctx.fillText('Net Weight: 1000g / 35.2 oz', backX, 395);
-      ctx.fillText('Salzburg Peat Reserve Harvested', backX, 430);
-      ctx.fillText('pH 5.6 Balanced • Biodegradable Vessel', backX, 465);
-
-      ctx.font = '600 18px "Space Grotesk", monospace';
-      ctx.fillStyle = '#1e1c19';
-      ctx.fillText('BATCH: #884-SALZBURG', backX, 540);
-
-      // Barcode
-      ctx.fillStyle = '#222222';
-      for (let b = backX - 90; b < backX + 90; b += 4 + Math.random() * 5) {
-        ctx.fillRect(b, 590, 2 + Math.random() * 2, 45);
-      }
-
-      const texture = new THREE.CanvasTexture(canvas);
-      texture.anisotropy = 16;
-      texture.needsUpdate = true;
-      return texture;
-    }
-
-    /* --------------------------------------------------------
-       3. PROCEDURAL WET MUD BUMP MAP (Swirling Mud Texture)
-    -------------------------------------------------------- */
-    function generateMudBumpMap() {
-      const canvas = document.createElement('canvas');
-      canvas.width = 512;
-      canvas.height = 512;
-      const ctx = canvas.getContext('2d');
-
-      ctx.fillStyle = '#808080';
-      ctx.fillRect(0, 0, 512, 512);
-
-      // Organic ripples and circular swirls
-      for (let i = 0; i < 400; i++) {
-        const x = Math.random() * 512;
-        const y = Math.random() * 512;
-        const radius = 10 + Math.random() * 45;
-        const grad = ctx.createRadialGradient(x, y, 2, x, y, radius);
-        const intensity = (Math.random() - 0.5) * 60;
-        grad.addColorStop(0, `rgb(${128 + intensity}, ${128 + intensity}, ${128 + intensity})`);
-        grad.addColorStop(1, 'rgb(128, 128, 128)');
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      const texture = new THREE.CanvasTexture(canvas);
-      texture.wrapS = THREE.RepeatWrapping;
-      texture.wrapT = THREE.RepeatWrapping;
-      texture.repeat.set(2, 2);
-      texture.needsUpdate = true;
-      return texture;
-    }
-
-    /* --------------------------------------------------------
-       4. THREE.JS 3D SCENE & RICH BLACK MUD MESH BUILDER
-    -------------------------------------------------------- */
-    let scene, camera, renderer;
-    let tubGroup, jarMesh, lidMesh, mudMoundMesh, mudBaseMesh, shadowMesh, particleSystem;
-    let dirLightKey, goldRimLight;
-
-    // SCALING & PROPORTION VARIABLES
-    let currentJarScale = 0.48; // Compact and well-proportioned
-    let targetJarScale = 0.48;
-
-    // LID STATES:
-    // 'LEAN': Resting tilted to the side on the stone (just like reference image!)
-    // 'SEAL': Clamped shut on top of the tub
-    // 'FLOAT': Hovering gracefully in the air above the mud
-    let lidState = 'LEAN';
-    let targetLidPos = new THREE.Vector3(1.18, -0.05, 0.25);
-    let targetLidRot = new THREE.Euler(0.2, -0.3, -1.05);
-
-    // CAMERA & ORBIT STATE
-    let targetCameraPos = new THREE.Vector3(0, 0.45, 5.6);
-    let targetCameraLookAt = new THREE.Vector3(0, 0.05, 0);
-    let targetTubRotation = { x: 0.16, y: -0.15, z: 0 };
-    let targetTubPosition = { x: 0.45, y: -0.1, z: 0 };
-
-    let isAutoRotating = false;
-    let isFreeOrbitActive = false;
-    let isMouseDown = false;
-    let prevMousePos = { x: 0, y: 0 };
-    let mouseParallax = { x: 0, y: 0 };
-
-    function init3D() {
-      const canvas = document.getElementById('webgl-canvas');
-
-      // 1. Scene & Perspective Camera
-      scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(36, window.innerWidth / window.innerHeight, 0.1, 100);
-      camera.position.copy(targetCameraPos);
-
-      // 2. High Performance WebGL Renderer
-      renderer = new THREE.WebGLRenderer({
-        canvas: canvas,
-        antialias: true,
-        alpha: true,
-        powerPreference: 'high-performance'
-      });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.25;
-      renderer.shadowMap.enabled = true;
-      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-      // 3. Studio Lighting
-      const ambientLight = new THREE.AmbientLight(0xfff8ee, 1.2);
-      scene.add(ambientLight);
-
-      // Key Warm Light
-      dirLightKey = new THREE.DirectionalLight(0xffeed9, 2.3);
-      dirLightKey.position.set(4, 5, 5);
-      dirLightKey.castShadow = true;
-      scene.add(dirLightKey);
-
-      // Amber Gold Specular Rim Light
-      goldRimLight = new THREE.PointLight(0xd4af37, 2.5, 12);
-      goldRimLight.position.set(-3.5, 2.5, -2);
-      scene.add(goldRimLight);
-
-      // Overhead Mud Specular Highlight Light (Makes the wet peaks pop)
-      const mudHighlightLight = new THREE.DirectionalLight(0xffffff, 1.4);
-      mudHighlightLight.position.set(-1, 6, 2);
-      scene.add(mudHighlightLight);
-
-      // 4. MAIN PRODUCT GROUP (Holds jar, mud mound, lid, and shadow)
-      tubGroup = new THREE.Group();
-      tubGroup.scale.set(currentJarScale, currentJarScale, currentJarScale);
-      scene.add(tubGroup);
-
-      // 4A. WHITE COSMETIC TUB
-      const labelTexture = generateJarLabelTexture();
-      const jarGeometry = new THREE.CylinderGeometry(0.96, 0.82, 1.45, 64, 1, false);
-      const jarMaterial = new THREE.MeshStandardMaterial({
-        map: labelTexture,
-        roughness: 0.28,
-        metalness: 0.04,
-      });
-
-      jarMesh = new THREE.Mesh(jarGeometry, jarMaterial);
-      jarMesh.castShadow = true;
-      jarMesh.receiveShadow = true;
-      tubGroup.add(jarMesh);
-
-      // Beveled White Lip Ring
-      const lipGeo = new THREE.TorusGeometry(0.96, 0.045, 16, 64);
-      const lipMat = new THREE.MeshStandardMaterial({ color: 0xfaf8f5, roughness: 0.3 });
-      const topLip = new THREE.Mesh(lipGeo, lipMat);
-      topLip.rotation.x = Math.PI / 2;
-      topLip.position.y = 0.725;
-      tubGroup.add(topLip);
-
-      // 4B. RICH GLISTENING BLACK MOOR MUD (FILLED TO THE BRIM WITH MOUNDED PEAKS)
-      const mudBump = generateMudBumpMap();
-
-      // We use a high-density circular disc with sculpted organic heights
-      const mudGeo = new THREE.CircleGeometry(0.94, 96);
-      const pos = mudGeo.attributes.position;
-
-      // Sculpt rich natural mud peaks, swirls, and overflowing mounds (like reference photo)
-      for (let i = 0; i < pos.count; i++) {
-        const u = pos.getX(i);
-        const v = pos.getY(i);
-        const dist = Math.sqrt(u * u + v * v);
-        const normDist = dist / 0.94;
-
-        if (normDist < 1.0) {
-          // Base dome: mounded high above the rim
-          const domeHeight = Math.cos(normDist * (Math.PI / 2)) * 0.16;
-
-          // Natural organic peaks and ripples like whipped peat
-          const ripple1 = Math.sin(u * 9 + v * 8) * 0.035 * (1 - normDist * 0.4);
-          const ripple2 = Math.cos(Math.atan2(v, u) * 4 + dist * 14) * 0.03;
-          const dollopPeak = Math.exp(-Math.pow(dist - 0.28, 2) * 16) * 0.06;
-          const centerSwirl = Math.sin(dist * 16 - Math.atan2(v, u) * 2) * 0.025;
-
-          pos.setZ(i, domeHeight + ripple1 + ripple2 + dollopPeak + centerSwirl);
-        }
-      }
-      mudGeo.computeVertexNormals();
-
-      // Deep jet-black glistening moor mud material with clearcoat sheen
-      const mudMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0x0c0c0e,             // Deep organic jet peat black
-        roughness: 0.14,             // Wet glistening look
-        metalness: 0.12,             // Specular light bounce
-        clearcoat: 1.0,              // Wet shiny moisture glaze
-        clearcoatRoughness: 0.08,
-        bumpMap: mudBump,
-        bumpScale: 0.045,
-        reflectivity: 0.9,
-      });
-
-      mudMoundMesh = new THREE.Mesh(mudGeo, mudMaterial);
-      mudMoundMesh.rotation.x = -Math.PI / 2;
-      mudMoundMesh.position.y = 0.725; // Sits right at rim, bulging upwards!
-      tubGroup.add(mudMoundMesh);
-
-      // Mud Base Cylinder to ensure the tub interior is solidly packed with dark mud
-      const mudBaseGeo = new THREE.CylinderGeometry(0.93, 0.81, 1.4, 32);
-      const mudBaseMat = new THREE.MeshBasicMaterial({ color: 0x09090b });
-      mudBaseMesh = new THREE.Mesh(mudBaseGeo, mudBaseMat);
-      mudBaseMesh.position.y = -0.02;
-      tubGroup.add(mudBaseMesh);
-
-      // 4C. DETACHABLE WHITE LID (TILTED TO THE SIDE LIKE IN PHOTO)
-      lidMesh = new THREE.Group();
-
-      const lidGeo = new THREE.CylinderGeometry(1.02, 1.02, 0.15, 64);
-      const lidMat = new THREE.MeshStandardMaterial({
-        color: 0xfbf9f6,
-        roughness: 0.28,
-        metalness: 0.02
-      });
-      const lidOuter = new THREE.Mesh(lidGeo, lidMat);
-      lidOuter.castShadow = true;
-      lidMesh.add(lidOuter);
-
-      // Top chamfer rim on lid
-      const lidRimGeo = new THREE.TorusGeometry(1.01, 0.03, 16, 64);
-      const lidRim = new THREE.Mesh(lidRimGeo, lidMat);
-      lidRim.rotation.x = Math.PI / 2;
-      lidRim.position.y = 0.075;
-      lidMesh.add(lidRim);
-
-      // Position lid leaning beside the jar on ground (photo recreation)
-      lidMesh.position.copy(targetLidPos);
-      lidMesh.rotation.copy(targetLidRot);
-      tubGroup.add(lidMesh);
-
-      // 4D. SOFT CONTACT SHADOW PLANE
-      const shadowCanvas = document.createElement('canvas');
-      shadowCanvas.width = 256;
-      shadowCanvas.height = 256;
-      const sCtx = shadowCanvas.getContext('2d');
-      const sGrad = sCtx.createRadialGradient(128, 128, 10, 128, 128, 120);
-      sGrad.addColorStop(0, 'rgba(0, 0, 0, 0.75)');
-      sGrad.addColorStop(0.5, 'rgba(0, 0, 0, 0.3)');
-      sGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-      sCtx.fillStyle = sGrad;
-      sCtx.fillRect(0, 0, 256, 256);
-      const shadowTexture = new THREE.CanvasTexture(shadowCanvas);
-
-      const shadowGeo = new THREE.PlaneGeometry(4.2, 4.2);
-      const shadowMat = new THREE.MeshBasicMaterial({
-        map: shadowTexture,
-        transparent: true,
-        depthWrite: false,
-        opacity: 0.85
-      });
-      shadowMesh = new THREE.Mesh(shadowGeo, shadowMat);
-      shadowMesh.rotation.x = -Math.PI / 2;
-      shadowMesh.position.y = -0.73;
-      tubGroup.add(shadowMesh);
-
-      // 4E. GOLD & PEAT DUST AMBIENT PARTICLES
-      const pCount = 85;
-      const pGeo = new THREE.BufferGeometry();
-      const pPos = new Float32Array(pCount * 3);
-
-      for (let p = 0; p < pCount; p++) {
-        pPos[p * 3] = (Math.random() - 0.5) * 6;
-        pPos[p * 3 + 1] = (Math.random() - 0.5) * 5;
-        pPos[p * 3 + 2] = (Math.random() - 0.5) * 5;
-      }
-      pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-
-      const ptCanvas = document.createElement('canvas');
-      ptCanvas.width = 32;
-      ptCanvas.height = 32;
-      const ptCtx = ptCanvas.getContext('2d');
-      const ptGrad = ptCtx.createRadialGradient(16, 16, 0, 16, 16, 16);
-      ptGrad.addColorStop(0, 'rgba(212, 175, 55, 1)');
-      ptGrad.addColorStop(0.5, 'rgba(212, 175, 55, 0.35)');
-      ptGrad.addColorStop(1, 'rgba(0,0,0,0)');
-      ptCtx.fillStyle = ptGrad;
-      ptCtx.fillRect(0, 0, 32, 32);
-
-      const ptTexture = new THREE.CanvasTexture(ptCanvas);
-      const pMat = new THREE.PointsMaterial({
-        size: 0.08,
-        map: ptTexture,
-        transparent: true,
-        blending: THREE.AdditiveBlending,
-        depthWrite: false,
-      });
-      particleSystem = new THREE.Points(pGeo, pMat);
-      scene.add(particleSystem);
-
-      setupInteractionHandlers();
-      animate();
-    }
-
-    /* --------------------------------------------------------
-       5. INTERACTION & SCROLL CHOREOGRAPHY
-    -------------------------------------------------------- */
-    function setupInteractionHandlers() {
-      window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-
-      // Mouse Parallax on Desktop
-      window.addEventListener('mousemove', (e) => {
-        const normX = (e.clientX / window.innerWidth) * 2 - 1;
-        const normY = -(e.clientY / window.innerHeight) * 2 + 1;
-        mouseParallax.x = normX * 0.18;
-        mouseParallax.y = normY * 0.14;
-
-        const kinetic = document.getElementById('hero-kinetic-text');
-        if (kinetic) {
-          kinetic.style.transform = `translate3d(${normX * 16}px, ${normY * -12}px, 0)`;
-        }
-      });
-
-      // 360 Drag Orbiting
-      const onPointerDown = (clientX, clientY) => {
-        if (!isFreeOrbitActive) return;
-        isMouseDown = true;
-        prevMousePos = { x: clientX, y: clientY };
-      };
-
-      const onPointerMove = (clientX, clientY) => {
-        if (!isFreeOrbitActive || !isMouseDown) return;
-        const deltaX = clientX - prevMousePos.x;
-        const deltaY = clientY - prevMousePos.y;
-
-        tubGroup.rotation.y += deltaX * 0.008;
-        tubGroup.rotation.x += deltaY * 0.008;
-
-        prevMousePos = { x: clientX, y: clientY };
-      };
-
-      const onPointerUp = () => {
-        isMouseDown = false;
-      };
-
-      window.addEventListener('mousedown', (e) => onPointerDown(e.clientX, e.clientY));
-      window.addEventListener('mousemove', (e) => onPointerMove(e.clientX, e.clientY));
-      window.addEventListener('mouseup', onPointerUp);
-
-      window.addEventListener('touchstart', (e) => {
-        if (e.touches.length === 1) onPointerDown(e.touches[0].clientX, e.touches[0].clientY);
-      });
-      window.addEventListener('touchmove', (e) => {
-        if (e.touches.length === 1 && isFreeOrbitActive) onPointerMove(e.touches[0].clientX, e.touches[0].clientY);
-      });
-      window.addEventListener('touchend', onPointerUp);
-
-      window.addEventListener('scroll', handleScrollSync, { passive: true });
-    }
-
-    const hotspotsOverlay = document.getElementById('hotspots-overlay');
-
-    function handleScrollSync() {
-      if (isFreeOrbitActive) return;
-
-      const scrollY = window.scrollY;
-      const mudSec = document.getElementById('mud-core');
-      const clinicalSec = document.getElementById('clinical');
-      const specsSec = document.getElementById('specs');
-      const ritualSec = document.getElementById('ritual');
-
-      const mudTop = mudSec.offsetTop - 260;
-      const clinicalTop = clinicalSec.offsetTop - 260;
-      const specsTop = specsSec.offsetTop - 260;
-      const ritualTop = ritualSec.offsetTop - 260;
-
-      if (scrollY < mudTop) {
-        // SECTION 1: HERO
-        // Shows both label and the rich mounded black mud above rim with tilted lid
-        targetCameraPos.set(0, 0.45, 5.6);
-        targetCameraLookAt.set(0, 0.05, 0);
-        targetTubPosition.x = window.innerWidth > 1024 ? 0.45 : 0;
-        targetTubPosition.y = -0.1;
-        targetTubRotation.x = 0.16;
-        targetTubRotation.y = -0.15;
-
-        hotspotsOverlay.classList.remove('opacity-100');
-        hotspotsOverlay.classList.add('opacity-0');
-      } 
-      else if (scrollY >= mudTop && scrollY < clinicalTop) {
-        // SECTION 2: MUD CORE (Top-down macro angle directly into the mud)
-        targetCameraPos.set(0, 2.2, 4.4);
-        targetCameraLookAt.set(0, 0.4, 0);
-        targetTubPosition.x = window.innerWidth > 1024 ? 0.75 : 0;
-        targetTubPosition.y = -0.25;
-        targetTubRotation.x = 0.58; // Tilted toward viewer to reveal glistening peaks
-        targetTubRotation.y = -0.1;
-
-        hotspotsOverlay.classList.remove('opacity-0');
-        hotspotsOverlay.classList.add('opacity-100');
-      } 
-      else if (scrollY >= clinicalTop && scrollY < specsTop) {
-        // SECTION 3: CLINICAL
-        targetCameraPos.set(-1.6, 0.4, 4.9);
-        targetCameraLookAt.set(0.2, 0.1, 0);
-        targetTubPosition.x = window.innerWidth > 1024 ? -0.85 : 0;
-        targetTubPosition.y = -0.1;
-        targetTubRotation.x = 0.14;
-        targetTubRotation.y = 0.72;
-
-        hotspotsOverlay.classList.remove('opacity-100');
-        hotspotsOverlay.classList.add('opacity-0');
-      } 
-      else if (scrollY >= specsTop && scrollY < ritualTop) {
-        // SECTION 4: SPECS (Rotates to show back dossier)
-        targetCameraPos.set(0, 0.3, 5.1);
-        targetCameraLookAt.set(0, 0, 0);
-        targetTubPosition.x = window.innerWidth > 1024 ? 0.8 : 0;
-        targetTubPosition.y = -0.1;
-        targetTubRotation.x = 0.06;
-        targetTubRotation.y = Math.PI - 0.15; // 180 spin to back label
-
-        hotspotsOverlay.classList.remove('opacity-100');
-        hotspotsOverlay.classList.add('opacity-0');
-      } 
-      else {
-        // SECTION 5: RITUAL
-        targetCameraPos.set(0, 2.0, 4.8);
-        targetCameraLookAt.set(0, 0.1, 0);
-        targetTubPosition.x = 0;
-        targetTubPosition.y = -0.22;
-        targetTubRotation.x = 0.55;
-        targetTubRotation.y = 0.2;
-
-        hotspotsOverlay.classList.remove('opacity-100');
-        hotspotsOverlay.classList.add('opacity-0');
+    mobileBtn.addEventListener('click', toggleMobileMenu);
+
+    // Smooth Scroll Helper
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
       }
     }
 
-    /* --------------------------------------------------------
-       6. RENDER LOOP (Lerps & Animations)
-    -------------------------------------------------------- */
-    let clock = new THREE.Clock();
-
-    function animate() {
-      requestAnimationFrame(animate);
-
-      const delta = clock.getDelta();
-      const elapsed = clock.getElapsedTime();
-
-      // Smooth jar scaling
-      currentJarScale += (targetJarScale - currentJarScale) * 0.08;
-      tubGroup.scale.set(currentJarScale, currentJarScale, currentJarScale);
-
-      // Camera interpolation
-      if (!isFreeOrbitActive) {
-        camera.position.x += (targetCameraPos.x + mouseParallax.x - camera.position.x) * 0.05;
-        camera.position.y += (targetCameraPos.y + mouseParallax.y - camera.position.y) * 0.05;
-        camera.position.z += (targetCameraPos.z - camera.position.z) * 0.05;
-        camera.lookAt(targetCameraLookAt);
-
-        // Tub position and gentle breathing float
-        tubGroup.position.x += (targetTubPosition.x - tubGroup.position.x) * 0.05;
-        tubGroup.position.y += (targetTubPosition.y + Math.sin(elapsed * 1.5) * 0.015 - tubGroup.position.y) * 0.05;
-
-        if (isAutoRotating) {
-          tubGroup.rotation.y += 0.005;
+    // Category Filtering for Products
+    function filterProducts(category) {
+      const buttons = document.querySelectorAll('.cat-btn');
+      buttons.forEach(btn => {
+        if(btn.getAttribute('data-cat') === category) {
+          btn.classList.add('bg-gold-500/20', 'border-gold-500/50', 'text-gold-200');
+          btn.classList.remove('border-white/10', 'text-cashmere-300');
         } else {
-          tubGroup.rotation.y += (targetTubRotation.y + mouseParallax.x * 0.25 - tubGroup.rotation.y) * 0.05;
+          btn.classList.remove('bg-gold-500/20', 'border-gold-500/50', 'text-gold-200');
+          btn.classList.add('border-white/10', 'text-cashmere-300');
         }
-        tubGroup.rotation.x += (targetTubRotation.x + mouseParallax.y * 0.2 - tubGroup.rotation.x) * 0.05;
-      }
-
-      // Smooth Lid Pose Interpolation
-      lidMesh.position.lerp(targetLidPos, 0.08);
-      lidMesh.rotation.x += (targetLidRot.x - lidMesh.rotation.x) * 0.08;
-      lidMesh.rotation.y += (targetLidRot.y - lidMesh.rotation.y) * 0.08;
-      lidMesh.rotation.z += (targetLidRot.z - lidMesh.rotation.z) * 0.08;
-
-      // Swirling golden dust
-      if (particleSystem) {
-        particleSystem.rotation.y = elapsed * 0.025;
-      }
-
-      renderer.render(scene, camera);
-    }
-
-    /* --------------------------------------------------------
-       7. UI INTERACTION CONTROLS
-    -------------------------------------------------------- */
-    // Jar Scale Presets
-    const scaleBtns = document.querySelectorAll('.scale-btn');
-    scaleBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const val = parseFloat(btn.dataset.scale);
-        targetJarScale = val;
-        scaleBtns.forEach(b => {
-          b.classList.remove('bg-amberGold-500', 'text-obsidian-950', 'font-bold');
-          b.classList.add('text-peatClay-400');
-        });
-        btn.classList.add('bg-amberGold-500', 'text-obsidian-950', 'font-bold');
-        btn.classList.remove('text-peatClay-400');
-        playClick();
-        showToast(`Jar Proportions: ${btn.innerText}`);
       });
-    });
 
-    // Lid State Presets
-    const lidLeanBtn = document.getElementById('lid-lean-btn');
-    const lidSealBtn = document.getElementById('lid-seal-btn');
-    const lidHoverBtn = document.getElementById('lid-hover-btn');
-    const lidStateBtns = document.querySelectorAll('.lid-state-btn');
-
-    function setActiveLidBtn(activeBtn) {
-      lidStateBtns.forEach(b => {
-        b.classList.remove('bg-amberGold-500/20', 'text-amberGold-400', 'font-semibold');
-        b.classList.add('text-peatClay-400');
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
       });
-      activeBtn.classList.add('bg-amberGold-500/20', 'text-amberGold-400', 'font-semibold');
-      activeBtn.classList.remove('text-peatClay-400');
     }
 
-    lidLeanBtn.addEventListener('click', () => {
-      lidState = 'LEAN';
-      targetLidPos.set(1.18, -0.05, 0.25);
-      targetLidRot.set(0.2, -0.3, -1.05);
-      setActiveLidBtn(lidLeanBtn);
-      playClick();
-      showToast('Lid Position: Leaning Beside Jar (Photo Recreation)');
-    });
+    // Interactive ROI Calculator Logic
+    let currentCostPerClient = 320; // Default for standard protocol
 
-    lidSealBtn.addEventListener('click', () => {
-      lidState = 'SEAL';
-      targetLidPos.set(0, 0.76, 0);
-      targetLidRot.set(0, 0, 0);
-      setActiveLidBtn(lidSealBtn);
-      playClick();
-      showToast('Lid Position: Sealed Shut Over Tub');
-    });
+    const clientSlider = document.getElementById('clientSlider');
+    const ticketSlider = document.getElementById('ticketSlider');
+    const clientDisplay = document.getElementById('clientDisplay');
+    const ticketDisplay = document.getElementById('ticketDisplay');
+    const monthlyRevenueDisplay = document.getElementById('monthlyRevenueDisplay');
+    const monthlyCostDisplay = document.getElementById('monthlyCostDisplay');
+    const monthlyProfitDisplay = document.getElementById('monthlyProfitDisplay');
+    const annualProfitDisplay = document.getElementById('annualProfitDisplay');
+    const marginPercent = document.getElementById('marginPercent');
 
-    lidHoverBtn.addEventListener('click', () => {
-      lidState = 'FLOAT';
-      targetLidPos.set(0.7, 1.45, 0);
-      targetLidRot.set(0.25, 0, -0.4);
-      setActiveLidBtn(lidHoverBtn);
-      playTone(528, 2.0);
-      showToast('Lid Position: Hovering Levitated');
-    });
-
-    // Camera Views
-    const camFrontBtn = document.getElementById('cam-front-btn');
-    const camMudMacroBtn = document.getElementById('cam-mud-macro-btn');
-    const camSpecsBtn = document.getElementById('cam-specs-btn');
-    const heroMacroBtn = document.getElementById('hero-macro-btn');
-    const viewSpecs3dBtn = document.getElementById('view-specs-3d-btn');
-
-    camFrontBtn.addEventListener('click', () => {
-      isFreeOrbitActive = false;
-      document.getElementById('canvas-container').classList.add('pointer-events-none');
-      targetCameraPos.set(0, 0.45, 5.6);
-      targetCameraLookAt.set(0, 0.05, 0);
-      targetTubRotation.y = -0.15;
-      targetTubRotation.x = 0.16;
-      playClick();
-    });
-
-    function showMudMacroView() {
-      isFreeOrbitActive = false;
-      document.getElementById('canvas-container').classList.add('pointer-events-none');
-      targetCameraPos.set(0, 1.9, 3.4);
-      targetCameraLookAt.set(0, 0.5, 0);
-      targetTubRotation.x = 0.65; // High tilt directly over glistening mud
-      targetTubRotation.y = -0.1;
-      playTone(528, 2.2);
-      showToast('Mud Macro: Inspecting Rich Jet-Black Peat Peaks');
+    function formatINR(number) {
+      return new Intl.NumberFormat('en-IN', {
+        style: 'currency',
+        currency: 'INR',
+        maximumFractionDigits: 0
+      }).format(number);
     }
 
-    camMudMacroBtn.addEventListener('click', showMudMacroView);
-    heroMacroBtn.addEventListener('click', () => {
-      showMudMacroView();
-      const mudSec = document.getElementById('mud-core');
-      mudSec.scrollIntoView({ behavior: 'smooth' });
-    });
+    function recalculateROI() {
+      const clients = parseInt(clientSlider.value);
+      const ticket = parseInt(ticketSlider.value);
 
-    function showSpecsView() {
-      isFreeOrbitActive = false;
-      document.getElementById('canvas-container').classList.add('pointer-events-none');
-      targetCameraPos.set(0, 0.3, 5.1);
-      targetCameraLookAt.set(0, 0, 0);
-      targetTubRotation.x = 0.06;
-      targetTubRotation.y = Math.PI - 0.15;
-      playClick();
-      showToast('Viewing Batch #884 Specifications');
+      clientDisplay.innerText = `${clients} Clients`;
+      ticketDisplay.innerText = formatINR(ticket);
+
+      const totalRevenue = clients * ticket;
+      const totalCost = clients * currentCostPerClient;
+      const netProfit = totalRevenue - totalCost;
+      const annualProfit = netProfit * 12;
+      const margin = ((netProfit / totalRevenue) * 100).toFixed(1);
+
+      monthlyRevenueDisplay.innerText = formatINR(totalRevenue);
+      monthlyCostDisplay.innerText = formatINR(totalCost);
+      monthlyProfitDisplay.innerText = formatINR(netProfit);
+      annualProfitDisplay.innerText = formatINR(annualProfit);
+      marginPercent.innerText = `${margin}% Net Margin`;
     }
 
-    camSpecsBtn.addEventListener('click', showSpecsView);
-    viewSpecs3dBtn.addEventListener('click', showSpecsView);
+    function setProtocol(type) {
+      const btnStd = document.getElementById('btnProtoStandard');
+      const btnAdv = document.getElementById('btnProtoAdv');
 
-    // 360 Drag Orbit Switch
-    const orbitToggleBtn = document.getElementById('orbit-toggle-btn');
-    orbitToggleBtn.addEventListener('click', () => {
-      isFreeOrbitActive = !isFreeOrbitActive;
-      const canvasContainer = document.getElementById('canvas-container');
-      if (isFreeOrbitActive) {
-        canvasContainer.classList.remove('pointer-events-none');
-        canvasContainer.classList.add('pointer-events-auto');
-        orbitToggleBtn.classList.add('bg-amberGold-500', 'text-obsidian-950', 'font-bold');
-        orbitToggleBtn.classList.remove('text-peatClay-400', 'bg-white/5');
-        isAutoRotating = false;
-        rotateIcon.classList.remove('animate-spin');
-        showToast('360° Free Drag Orbit: ON (Click & Drag)');
-        playTone(640, 1.4);
+      if (type === 'standard') {
+        currentCostPerClient = 320;
+        btnStd.className = "p-3.5 rounded-xl border border-gold-500/50 bg-gold-500/10 text-left transition-all";
+        btnAdv.className = "p-3.5 rounded-xl border border-white/10 bg-noir-950 text-left hover:border-gold-500/30 transition-all";
       } else {
-        canvasContainer.classList.add('pointer-events-none');
-        canvasContainer.classList.remove('pointer-events-auto');
-        orbitToggleBtn.classList.remove('bg-amberGold-500', 'text-obsidian-950', 'font-bold');
-        orbitToggleBtn.classList.add('text-peatClay-400', 'bg-white/5');
-        showToast('Scroll Sync Mode Restored');
+        currentCostPerClient = 550;
+        btnAdv.className = "p-3.5 rounded-xl border border-gold-500/50 bg-gold-500/10 text-left transition-all";
+        btnStd.className = "p-3.5 rounded-xl border border-white/10 bg-noir-950 text-left hover:border-gold-500/30 transition-all";
       }
-    });
-
-    // Auto-Rotate Button
-    const autoRotateBtn = document.getElementById('autorotate-btn');
-    const rotateIcon = document.getElementById('rotate-icon');
-    autoRotateBtn.addEventListener('click', () => {
-      isAutoRotating = !isAutoRotating;
-      if (isAutoRotating) {
-        rotateIcon.classList.add('animate-spin');
-        showToast('Auto-Spin: ON');
-      } else {
-        rotateIcon.classList.remove('animate-spin');
-        showToast('Auto-Spin: PAUSED');
-      }
-      playClick();
-    });
-
-    /* --------------------------------------------------------
-       8. CART DRAWER & CHECKOUT
-    -------------------------------------------------------- */
-    let cartQuantity = 1;
-    const basePrice = 68.00;
-
-    const openCartBtn = document.getElementById('open-cart-btn');
-    const closeCartBtn = document.getElementById('close-cart-btn');
-    const cartDrawer = document.getElementById('cart-drawer');
-    const cartBackdrop = document.getElementById('cart-drawer-backdrop');
-    const heroBuyBtn = document.getElementById('hero-buy-btn');
-    const qtyPlus = document.getElementById('qty-plus');
-    const qtyMinus = document.getElementById('qty-minus');
-    const qtyDisplay = document.getElementById('qty-display');
-    const cartDrawerQty = document.getElementById('cart-drawer-qty');
-    const navCartBadge = document.getElementById('nav-cart-badge');
-    const cartPrice = document.getElementById('cart-price');
-    const cartSubtotal = document.getElementById('cart-subtotal');
-    const cartTotal = document.getElementById('cart-total');
-    const checkoutTriggerBtn = document.getElementById('checkout-trigger-btn');
-    const orderModal = document.getElementById('order-modal');
-    const orderModalClose = document.getElementById('order-modal-close');
-
-    function updateCart() {
-      qtyDisplay.innerText = cartQuantity;
-      cartDrawerQty.innerText = cartQuantity;
-      navCartBadge.innerText = cartQuantity;
-      const total = (cartQuantity * basePrice).toFixed(2);
-      cartPrice.innerText = `$${total}`;
-      cartSubtotal.innerText = `$${total}`;
-      cartTotal.innerText = `$${total}`;
+      recalculateROI();
     }
 
-    function toggleCart(open) {
-      if (open) {
-        cartBackdrop.classList.remove('opacity-0', 'pointer-events-none');
-        cartBackdrop.classList.add('opacity-100', 'pointer-events-auto');
-        cartDrawer.classList.remove('translate-x-full');
-        playClick();
-      } else {
-        cartBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
-        cartBackdrop.classList.add('opacity-0', 'pointer-events-none');
-        cartDrawer.classList.add('translate-x-full');
-      }
+    clientSlider.addEventListener('input', recalculateROI);
+    ticketSlider.addEventListener('input', recalculateROI);
+    recalculateROI();
+
+    function shareCalculatedROI() {
+      const clients = clientSlider.value;
+      const ticket = ticketSlider.value;
+      const netProfit = monthlyProfitDisplay.innerText;
+      const margin = marginPercent.innerText;
+
+      const message = `Hello Skinmimic Care team (+91 8356902748), I calculated our salon ROI on your portal:%0A- Monthly Skin Clients: ${clients}%0A- Avg Facial Price: Rs. ${ticket}%0A- Expected Monthly Profit: ${netProfit} (${margin})%0AWe would like to discuss implementing Skinmimic Backbar & Imports in our salon.`;
+      window.open(`https://wa.me/918356902748?text=${message}`, '_blank');
     }
 
-    openCartBtn.addEventListener('click', () => toggleCart(true));
-    closeCartBtn.addEventListener('click', () => toggleCart(false));
-    cartBackdrop.addEventListener('click', () => toggleCart(false));
+    // Modal Control
+    const testerModal = document.getElementById('testerModal');
+    const modalProductName = document.getElementById('modalProductName');
+    const modalTitle = document.getElementById('modalTitle');
 
-    heroBuyBtn.addEventListener('click', () => {
-      cartQuantity++;
-      updateCart();
-      toggleCart(true);
-      playTone(528, 2.0);
-    });
+    function requestTester(productName) {
+      modalProductName.value = productName;
+      modalTitle.innerText = "Request Tester Kit";
+      testerModal.classList.remove('hidden');
+      testerModal.classList.add('flex');
+    }
 
-    qtyPlus.addEventListener('click', () => {
-      cartQuantity++;
-      updateCart();
-      playClick();
-    });
+    function openInquiryModal(context) {
+      modalProductName.value = context || "General B2B Partnership";
+      modalTitle.innerText = "Partner With Skinmimic";
+      testerModal.classList.remove('hidden');
+      testerModal.classList.add('flex');
+    }
 
-    qtyMinus.addEventListener('click', () => {
-      if (cartQuantity > 1) {
-        cartQuantity--;
-        updateCart();
-        playClick();
-      }
-    });
+    function closeInquiryModal() {
+      testerModal.classList.add('hidden');
+      testerModal.classList.remove('flex');
+    }
 
-    checkoutTriggerBtn.addEventListener('click', () => {
-      toggleCart(false);
-      orderModal.classList.remove('opacity-0', 'pointer-events-none');
-      orderModal.classList.add('opacity-100', 'pointer-events-auto');
-      playTone(432, 3.0);
-    });
+    // Modal Form Submit
+    function handleModalSubmit(e) {
+      e.preventDefault();
+      const product = modalProductName.value;
+      const salon = document.getElementById('modalSalonName').value;
+      const city = document.getElementById('modalCity').value;
+      const phone = document.getElementById('modalPhone').value;
 
-    orderModalClose.addEventListener('click', () => {
-      orderModal.classList.remove('opacity-100', 'pointer-events-auto');
-      orderModal.classList.add('opacity-0', 'pointer-events-none');
-    });
+      const text = `Hello Skinmimic Care (+91 8356902748),%0AI would like to request a trade tester / quote for:%0A- Product: ${product}%0A- Salon: ${salon}%0A- City: ${city}%0A- Phone: ${phone}`;
+      closeInquiryModal();
+      showToast("Redirecting your tester inquiry to WhatsApp...");
+      setTimeout(() => {
+        window.open(`https://wa.me/918356902748?text=${text}`, '_blank');
+      }, 700);
+    }
 
-    window.onload = function () {
-      init3D();
-      lucide.createIcons();
-    };
+    // Main Contact Form Submission
+    function handleInquirySubmit(e) {
+      e.preventDefault();
+      const salon = document.getElementById('formSalonName').value;
+      const person = document.getElementById('formContactPerson').value;
+      const city = document.getElementById('formCity').value;
+      const phone = document.getElementById('formPhone').value;
+      const interest = document.getElementById('formInterest').value;
+      const volume = document.getElementById('formVolume').value;
+
+      const message = `Hello Skinmimic Care Partners (+91 8356902748),%0ANew B2B Salon Application:%0A- Salon Name: ${salon}%0A- Contact Person: ${person}%0A- City: ${city}%0A- Contact Phone: ${phone}%0A- Primary Interest: ${interest}%0A- Monthly Client Count: ${volume}%0APlease share your catalog and sample tester dispatch details.`;
+
+      showToast("Opening WhatsApp with your filled salon dossier...");
+      setTimeout(() => {
+        window.open(`https://wa.me/918356902748?text=${message}`, '_blank');
+      }, 800);
+    }
+
+    // Toast Notification Utility
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotification');
+      const text = document.getElementById('toastMessage');
+      text.innerText = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 4000);
+    }
   </script>
 </body>
 </html>
