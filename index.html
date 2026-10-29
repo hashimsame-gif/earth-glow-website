@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -9,10 +8,10 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Google Fonts: Cormorant Garamond, Cinzel & Plus Jakarta Sans -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,33 +21,27 @@
       theme: {
         extend: {
           colors: {
-            // Rich Luxury Velvet Red Spectrum
             luxred: {
               400: '#A81827',
               500: '#91111E',
-              600: '#7E0C18', /* Vivid Velvet Crimson */
-              700: '#690813', /* Rich Deep Velvet Red */
-              800: '#56050E', /* Royal Deep Red */
-              900: '#3D0208', /* Wine Velvet Accent */
+              600: '#7E0C18',
+              700: '#690813',
+              800: '#56050E',
+              900: '#43030A',
             },
-            // Pure Pearl, Ivory & Butter Creams (Replacing All Black Containers)
             cream: {
-              25:  '#FFFCF7',
-              50:  '#FAF6EE', /* Ultra-Clean Cream Surface */
-              100: '#F5EDE0', /* Signature Pearl Cream Container */
-              200: '#ECE1CF', /* Deep Cream Card Accents */
-              300: '#DDD0BC',
-              400: '#C7B9A3',
-              500: '#B0A087',
+              50: '#FFFEFA',
+              100: '#FAF6EE',
+              200: '#F5EDE0',
+              300: '#ECE1CF',
+              400: '#DDD0BC',
+              500: '#C7B9A3',
             },
-            // Deep Ink Black Typography & Elements
-            ink: {
-              950: '#000000', /* True Black */
-              900: '#0A0A0C', /* Crisp Text Black */
-              850: '#141418',
-              800: '#1F1F24',
-              700: '#2D2D35',
-              600: '#464652',
+            darktxt: {
+              900: '#0F0F12',
+              800: '#1A1A22',
+              700: '#2A2A36',
+              600: '#424252',
             }
           },
           fontFamily: {
@@ -62,258 +55,291 @@
   </script>
 
   <style>
-    /* Custom Scrollbar in Luxury Red & Cream */
+    /* Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 9px;
+      width: 8px;
     }
     ::-webkit-scrollbar-track {
       background: #56050E;
     }
     ::-webkit-scrollbar-thumb {
-      background: #FAF6EE;
+      background: #F5EDE0;
       border-radius: 4px;
-      border: 2px solid #690813;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #ECE1CF;
+      background: #DDD0BC;
     }
 
-    /* Ambient Ruby Background Aura */
-    .ruby-glow {
-      background: radial-gradient(circle, rgba(168, 24, 39, 0.45) 0%, rgba(105, 8, 19, 0) 70%);
-    }
-
-    /* Pearl Cream Architectural Cards (Replacing Former Obsidian Black) */
     .cream-card {
-      background: rgba(250, 246, 238, 0.96);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(105, 8, 19, 0.16);
-      color: #0A0A0C;
-      box-shadow: 0 12px 30px -8px rgba(61, 2, 8, 0.28), 0 0 16px rgba(250, 246, 238, 0.2);
-    }
-    .cream-card:hover {
-      border-color: rgba(105, 8, 19, 0.4);
-      box-shadow: 0 20px 40px -10px rgba(61, 2, 8, 0.38), 0 0 22px rgba(250, 246, 238, 0.35);
-    }
-
-    /* Range Slider Styling with Pearl Cream Track & Velvet Red Thumb */
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 24px;
-      width: 24px;
-      border-radius: 50%;
-      background: #7E0C18;
-      cursor: pointer;
-      box-shadow: 0 0 12px rgba(126, 12, 24, 0.8), 0 0 2px #0A0A0C;
-      border: 3px solid #FAF6EE;
-    }
-    input[type=range]::-moz-range-thumb {
-      height: 24px;
-      width: 24px;
-      border-radius: 50%;
-      background: #7E0C18;
-      cursor: pointer;
-      box-shadow: 0 0 12px rgba(126, 12, 24, 0.8), 0 0 2px #0A0A0C;
-      border: 3px solid #FAF6EE;
+      background: #FAF6EE;
+      border: 1px solid rgba(245, 237, 224, 0.4);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.45);
     }
   </style>
 </head>
-<body class="bg-luxred-700 text-ink-900 font-sans antialiased selection:bg-cream-100 selection:text-luxred-800 relative overflow-x-hidden min-h-screen">
+<body class="bg-luxred-700 text-darktxt-900 font-sans antialiased selection:bg-luxred-600 selection:text-white relative overflow-x-hidden min-h-screen">
 
-  <!-- Interactive Scroll Progress Bar -->
-  <div id="scrollProgress" class="fixed top-0 left-0 h-[3.5px] bg-gradient-to-r from-cream-300 via-cream-50 to-white z-50 transition-all duration-150" style="width: 0%;"></div>
+  <!-- Scroll Progress Bar -->
+  <div id="scrollProgress" class="fixed top-0 left-0 h-[3px] bg-cream-200 z-50 transition-all duration-150" style="width: 0%;"></div>
 
-  <!-- Top VIP Trade Notification Strip (Previously Black, Now Luxurious Cream) -->
-  <div class="bg-cream-100 border-b border-luxred-700/20 text-xs py-2.5 px-4 relative z-40 text-ink-900 shadow-sm">
+  <!-- Top VIP Trade Notification Strip (Cream Background, Dark Text) -->
+  <div class="bg-cream-100 border-b border-cream-300 text-xs py-2 px-4 relative z-40 text-darktxt-900">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2 font-medium">
       <div class="flex items-center space-x-3">
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-luxred-700 text-cream-50 text-[10px] tracking-widest uppercase font-semibold border border-luxred-800">
-          <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span> B2B Exclusive Salon Portal
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-luxred-700 text-cream-50 text-[10px] tracking-widest uppercase font-semibold">
+          <span class="w-1.5 h-1.5 rounded-full bg-cream-100 animate-ping"></span> B2B Exclusive Salon Portal
         </span>
-        <span class="hidden md:inline text-ink-800 text-xs tracking-wider font-semibold">Direct Global Bio-Imports & Bespoke Backbar Formulation for Salons & Aesthetic Clinics</span>
+        <span class="hidden md:inline text-darktxt-700 text-xs tracking-wider">Direct Global Bio-Imports & Bespoke Backbar Formulation for Salons & Aesthetic Clinics</span>
       </div>
-      <div class="flex items-center gap-5 ml-auto text-xs font-semibold">
-        <a href="tel:8356902748" class="hover:text-luxred-700 text-ink-900 transition-colors flex items-center gap-1.5">
+      <div class="flex items-center gap-5 ml-auto text-xs">
+        <a href="tel:8356902748" class="hover:text-luxred-600 text-darktxt-800 transition-colors flex items-center gap-1.5 font-semibold">
           <i class="fa-solid fa-phone text-luxred-700 text-[11px]"></i> +91 8356902748
         </a>
-        <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%20Care%2C%20I%20am%20interested%20in%20a%20B2B%20salon%20partnership" target="_blank" class="hover:text-emerald-800 text-emerald-700 font-bold transition-colors flex items-center gap-1.5 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-300">
+        <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%20Care%2C%20I%20am%20interested%20in%20a%20B2B%20salon%20partnership" target="_blank" class="hover:text-emerald-800 text-emerald-700 font-bold transition-colors flex items-center gap-1.5">
           <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Trade Desk
         </a>
       </div>
     </div>
   </div>
 
-  <!-- Main Luxury Header Navigation (Previously Black Obsidian, Now Pure Cream) -->
-  <header id="mainNav" class="sticky top-0 z-40 transition-all duration-300 bg-cream-50/98 backdrop-blur-xl border-b border-luxred-700/20 shadow-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between">
+  <!-- Main Header Navigation (Cream Background, Dark Text) -->
+  <header id="mainNav" class="sticky top-0 z-40 transition-all duration-300 bg-cream-100/98 backdrop-blur-xl border-b border-cream-300 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- Exact Brand Logo with Crisp Black Typography & Velvet Accent -->
+      <!-- Brand Logo -->
       <a href="#" class="group flex flex-col items-center justify-center text-center select-none py-1">
-        <div class="flex items-baseline tracking-normal text-2xl sm:text-3xl lg:text-[34px] font-serif font-bold text-ink-950 group-hover:text-luxred-700 transition-colors">
+        <div class="flex items-baseline tracking-normal text-2xl sm:text-3xl lg:text-[32px] font-serif font-bold text-darktxt-900 group-hover:text-luxred-700 transition-colors">
           <span class="tracking-[0.08em]">SKINMIMIC</span>
         </div>
         <div class="flex items-center justify-center w-full mt-0.5">
-          <div class="h-[1px] w-6 sm:w-10 bg-luxred-700"></div>
-          <span class="text-[9px] sm:text-[10px] uppercase font-sans tracking-[0.45em] text-ink-950 px-2.5 font-bold">C A R E</span>
-          <div class="h-[1px] w-6 sm:w-10 bg-luxred-700"></div>
+          <div class="h-[1px] w-6 sm:w-8 bg-darktxt-900/60"></div>
+          <span class="text-[9px] sm:text-[10px] uppercase font-sans tracking-[0.45em] text-darktxt-800 px-2 font-semibold">C A R E</span>
+          <div class="h-[1px] w-6 sm:w-8 bg-darktxt-900/60"></div>
         </div>
       </a>
 
-      <!-- Desktop Navigation Menu (Black text with Luxury Red hover) -->
-      <nav class="hidden lg:flex items-center space-x-7 text-xs uppercase tracking-[0.2em] font-bold text-ink-900">
-        <a href="#philosophy" class="hover:text-luxred-700 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-[2px] after:bg-luxred-700 after:transition-all">Philosophy</a>
-        <a href="#capabilities" class="hover:text-luxred-700 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-[2px] after:bg-luxred-700 after:transition-all">Import & Formulation</a>
-        <a href="#partners" class="hover:text-luxred-700 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-[2px] after:bg-luxred-700 after:transition-all">4 Partners</a>
-        <a href="#catalog" class="hover:text-luxred-700 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-[2px] after:bg-luxred-700 after:transition-all">Salon Backbar</a>
-        <a href="#calculator" class="hover:text-luxred-700 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-[2px] after:bg-luxred-700 after:transition-all">Margin Estimator</a>
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center space-x-7 text-xs uppercase tracking-[0.2em] font-semibold text-darktxt-800">
+        <a href="#philosophy" class="hover:text-luxred-700 transition-colors py-1">Philosophy</a>
+        <a href="#capabilities" class="hover:text-luxred-700 transition-colors py-1">Import & Formulation</a>
+        <a href="#partners" class="hover:text-luxred-700 transition-colors py-1">4 Partners</a>
+        <a href="#catalog" class="hover:text-luxred-700 transition-colors py-1">Salon Backbar</a>
+        <a href="#calculator" class="hover:text-luxred-700 transition-colors py-1">Margin Estimator</a>
       </nav>
 
       <!-- Action Buttons -->
       <div class="flex items-center gap-3">
-        <!-- Direct Phone Tap -->
-        <a href="tel:8356902748" class="hidden sm:flex items-center gap-2 px-4 py-2 text-xs border border-ink-900/30 rounded-full text-ink-950 hover:bg-cream-200 transition-all font-mono font-bold">
+        <a href="tel:8356902748" class="hidden sm:flex items-center gap-2 px-3.5 py-2 text-xs border border-darktxt-900/30 rounded-full text-darktxt-900 hover:bg-cream-200 transition-all font-mono font-medium">
           <i class="fa-solid fa-phone text-xs text-luxred-700"></i>
           <span>8356902748</span>
         </a>
 
-        <!-- Trade Inquiry CTA Modal Trigger -->
-        <button onclick="openTesterModal('Trade VIP Backbar Sample Kit')" class="px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-bold bg-luxred-700 text-cream-50 hover:bg-luxred-800 hover:shadow-lg transition-all duration-300">
+        <button onclick="openTesterModal()" class="px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold bg-luxred-700 text-white hover:bg-luxred-800 shadow-md transition-all">
           Request Sample Kit
         </button>
 
-        <!-- Mobile Menu Hamburger -->
-        <button id="mobileMenuBtn" class="lg:hidden text-ink-950 p-2 text-2xl focus:outline-none" aria-label="Toggle Mobile Menu">
-          <i class="fa-solid fa-bars-staggered"></i>
+        <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="lg:hidden text-darktxt-900 p-2 text-xl focus:outline-none">
+          <i class="fa-solid fa-bars"></i>
         </button>
       </div>
 
     </div>
 
-    <!-- Mobile Drawer (Cream Container with Black Text) -->
-    <div id="mobileMenu" class="hidden lg:hidden border-b border-luxred-700/20 bg-cream-50 px-6 py-8 space-y-4 text-sm uppercase tracking-widest font-bold text-ink-950">
-      <a href="#philosophy" onclick="toggleMobileMenu()" class="block hover:text-luxred-700 py-1.5">Philosophy</a>
-      <a href="#capabilities" onclick="toggleMobileMenu()" class="block hover:text-luxred-700 py-1.5">Global Import & Bespoke Design</a>
-      <a href="#partners" onclick="toggleMobileMenu()" class="block hover:text-luxred-700 py-1.5">The 4 Partners</a>
-      <a href="#catalog" onclick="toggleMobileMenu()" class="block hover:text-luxred-700 py-1.5">Salon Catalog</a>
-      <a href="#calculator" onclick="toggleMobileMenu()" class="block hover:text-luxred-700 py-1.5">Salon Margin Calculator</a>
-      <div class="pt-4 border-t border-ink-900/15 flex flex-col gap-3">
-        <a href="tel:8356902748" class="flex items-center justify-center gap-2 py-3 bg-cream-200 border border-luxred-700/30 rounded-xl text-ink-950 text-xs tracking-wider font-bold">
-          <i class="fa-solid fa-phone text-luxred-700"></i> Call Direct: +91 8356902748
-        </a>
-        <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%20Care%2C%20I%20am%20interested%20in%20a%20B2B%20salon%20partnership" target="_blank" class="flex items-center justify-center gap-2 py-3 bg-emerald-700 rounded-xl text-white text-xs tracking-wider font-bold shadow-md">
-          <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp Desk: 8356902748
-        </a>
+    <!-- Mobile Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden border-b border-cream-300 bg-cream-50 px-6 py-6 space-y-3 text-sm uppercase tracking-wider font-semibold text-darktxt-900">
+      <a href="#philosophy" onclick="toggleMobileMenu()" class="block hover:text-luxred-700 py-1">Philosophy</a>
+      <a href="#capabilities" onclick="toggleMobileMenu()" class="block hover:text-luxred-700 py-1">Import & Formulation</a>
+      <a href="#partners" onclick="toggleMobileMenu()" class="block hover:text-luxred-700 py-1">4 Partners</a>
+      <a href="#catalog" onclick="toggleMobileMenu()" class="block hover:text-luxred-700 py-1">Salon Catalog</a>
+      <a href="#calculator" onclick="toggleMobileMenu()" class="block hover:text-luxred-700 py-1">Margin Calculator</a>
+      <div class="pt-3 border-t border-cream-300 flex flex-col gap-2">
+        <a href="tel:8356902748" class="text-center py-2.5 bg-cream-200 rounded-lg text-darktxt-900 text-xs">Call: +91 8356902748</a>
+        <a href="https://wa.me/918356902748" target="_blank" class="text-center py-2.5 bg-emerald-700 text-white rounded-lg text-xs">WhatsApp Desk</a>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section: Rich Luxury Velvet Red Canvas -->
-  <section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-12 pb-24 bg-gradient-to-b from-luxred-600 via-luxred-700 to-luxred-800">
-    <!-- Ruby Atmospheric Lighting -->
-    <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[800px] h-[550px] ruby-glow rounded-full blur-[130px] pointer-events-none"></div>
-    <div class="absolute bottom-0 right-0 w-[550px] h-[550px] bg-luxred-500/35 rounded-full blur-[140px] pointer-events-none"></div>
-    
-    <!-- Pattern Overlay -->
-    <div class="absolute inset-0 bg-[radial-gradient(#FAF6EE_1.2px,transparent_1.2px)] [background-size:36px_36px] opacity-10 pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+  <!-- Hero Section: Velvet Red Background -->
+  <section class="relative min-h-[90vh] flex items-center justify-center pt-10 pb-20 bg-gradient-to-b from-luxred-700 via-luxred-800 to-luxred-900 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         
-        <!-- Left Editorial Section -->
-        <div class="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left">
+        <!-- Left Hero Content (Cream Card Container with Dark Text) -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
           
-          <!-- Prestige Pill in Cream Surface with Crisp Black Text -->
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cream-50 border border-luxred-900/30 text-ink-950 text-xs tracking-[0.2em] uppercase font-mono font-bold shadow-lg">
-            <span class="w-2 h-2 rounded-full bg-luxred-700 animate-pulse"></span>
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cream-100 border border-cream-300 text-darktxt-900 text-xs tracking-[0.2em] uppercase font-mono font-semibold shadow-md">
+            <span class="w-2 h-2 rounded-full bg-luxred-600"></span>
             Direct Global Bio-Imports & Salon Chemistry
           </div>
 
-          <!-- Main Headline in Pure Black on Luxury Canvas -->
-          <div class="bg-cream-50/95 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-luxred-700/20 shadow-2xl">
-            <h1 class="text-3xl sm:text-5xl xl:text-6xl font-serif font-bold leading-[1.12] tracking-tight text-ink-950">
-              Cellular Mimicry. <br class="hidden sm:inline" />
+          <!-- Main Card in Pearl Cream -->
+          <div class="cream-card rounded-3xl p-6 sm:p-10 space-y-5 text-darktxt-900">
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold leading-[1.1] text-darktxt-900">
+              Cellular Mimicry. <br />
               <span class="text-luxred-700 italic font-medium">Direct Bio-Import.</span> <br />
-              <span class="text-ink-900 font-serif">Unrivaled Salon Efficacy.</span>
+              Unrivaled Salon Efficacy.
             </h1>
 
-            <p class="mt-4 text-sm sm:text-base text-ink-800 font-medium leading-relaxed">
-              <strong class="text-ink-950 font-extrabold">SKINMIMIC CARE</strong> is a B2B professional salon powerhouse founded by 4 partners. We bypass conventional distributors to bring your salon <span class="text-luxred-700 font-bold underline decoration-luxred-700/40">direct clinical imports</span> (PDRN, Exosomes, sterile ampoules) and <span class="text-luxred-700 font-bold underline decoration-luxred-700/40">bespoke formulation design</span> that escalates treatment margins up to 85%.
+            <p class="text-sm sm:text-base text-darktxt-700 font-normal leading-relaxed">
+              <strong class="text-darktxt-900 font-semibold">SKINMIMIC CARE</strong> is a B2B professional salon powerhouse founded by 4 partners. We bypass conventional distributors to bring your salon <span class="font-semibold text-luxred-700 underline">direct clinical imports</span> (PDRN, Exosomes, sterile ampoules) and <span class="font-semibold text-luxred-700 underline">bespoke formulation design</span> that elevates treatment margins up to 85%.
             </p>
 
-            <!-- Metrics Counter Bar (Pearl Cream Container with Crisp Black Typography) -->
-            <div class="grid grid-cols-3 gap-3 sm:gap-6 py-4 mt-6 border-t border-ink-900/15 text-left">
+            <!-- Metrics inside Cream Card -->
+            <div class="grid grid-cols-3 gap-2 sm:gap-4 py-4 border-y border-cream-300 text-left">
               <div>
-                <div class="text-2xl sm:text-3xl font-serif text-ink-950 font-extrabold">4 Partners</div>
-                <div class="text-[11px] sm:text-xs text-ink-800 font-bold uppercase tracking-wider mt-0.5">Single Vision</div>
+                <div class="text-xl sm:text-3xl font-serif text-darktxt-900 font-bold">4 Partners</div>
+                <div class="text-[10px] sm:text-xs text-darktxt-600 uppercase tracking-wider font-semibold">Single Vision</div>
               </div>
-              <div class="border-l border-ink-900/15 pl-4 sm:pl-6">
-                <div class="text-2xl sm:text-3xl font-serif text-ink-950 font-extrabold">0% Markups</div>
-                <div class="text-[11px] sm:text-xs text-ink-800 font-bold uppercase tracking-wider mt-0.5">Direct Import</div>
+              <div class="border-l border-cream-300 pl-3 sm:pl-4">
+                <div class="text-xl sm:text-3xl font-serif text-darktxt-900 font-bold">0% Markups</div>
+                <div class="text-[10px] sm:text-xs text-darktxt-600 uppercase tracking-wider font-semibold">Direct Import</div>
               </div>
-              <div class="border-l border-ink-900/15 pl-4 sm:pl-6">
-                <div class="text-2xl sm:text-3xl font-serif text-luxred-700 font-extrabold">75% - 85%</div>
-                <div class="text-[11px] sm:text-xs text-ink-800 font-bold uppercase tracking-wider mt-0.5">Salon Margins</div>
+              <div class="border-l border-cream-300 pl-3 sm:pl-4">
+                <div class="text-xl sm:text-3xl font-serif text-luxred-700 font-bold">75% - 85%</div>
+                <div class="text-[10px] sm:text-xs text-darktxt-600 uppercase tracking-wider font-semibold">Salon Margins</div>
               </div>
             </div>
-          </div>
 
-          <!-- Action Buttons -->
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-            <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%20Care%2C%20I%20am%20interested%20in%20a%20B2B%20salon%20partnership" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full bg-cream-50 hover:bg-white text-ink-950 font-bold text-xs sm:text-sm tracking-widest uppercase flex items-center justify-center gap-3 transition-all duration-300 shadow-xl border border-cream-200">
-              <i class="fa-brands fa-whatsapp text-emerald-600 text-lg"></i>
-              <span>WhatsApp Trade Desk</span>
-            </a>
+            <!-- Buttons Inside Card -->
+            <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+              <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%20Care%2C%20I%20am%20interested%20in%20a%20B2B%20salon%20partnership" target="_blank" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-md">
+                <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp Trade Desk
+              </a>
 
-            <button onclick="scrollToSection('calculator')" class="w-full sm:w-auto px-8 py-4 rounded-full bg-cream-100 hover:bg-cream-200 text-ink-950 border border-luxred-900/40 font-bold text-xs sm:text-sm tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
-              <i class="fa-solid fa-calculator text-luxred-700"></i>
-              <span>Estimate Salon Profit Margin</span>
-            </button>
-          </div>
+              <a href="#calculator" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-cream-200 border border-cream-400 hover:bg-cream-300 text-darktxt-900 font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
+                <i class="fa-solid fa-calculator text-luxred-700"></i> Estimate Salon Profit Margin
+              </a>
+            </div>
 
-          <!-- Trust Badges in Pearl Cream Surface with Black Text -->
-          <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 text-xs font-bold text-ink-950">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-cream-50 rounded-full border border-cream-200 shadow-sm"><i class="fa-solid fa-check text-luxred-700"></i> Clinical Salon Backbars</span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-cream-50 rounded-full border border-cream-200 shadow-sm"><i class="fa-solid fa-check text-luxred-700"></i> Bespoke Private Labelling</span>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-cream-50 rounded-full border border-cream-200 shadow-sm"><i class="fa-solid fa-check text-luxred-700"></i> 48-Hour Pan-India Dispatch</span>
+            <!-- Badges -->
+            <div class="pt-2 flex flex-wrap items-center gap-4 text-xs text-darktxt-700 font-medium">
+              <span class="flex items-center gap-1.5"><i class="fa-solid fa-check-circle text-luxred-700"></i> Clinical Salon Backbars</span>
+              <span class="flex items-center gap-1.5"><i class="fa-solid fa-check-circle text-luxred-700"></i> Bespoke Private Labelling</span>
+              <span class="flex items-center gap-1.5"><i class="fa-solid fa-check-circle text-luxred-700"></i> 48-Hour Pan-India Dispatch</span>
+            </div>
+
           </div>
 
         </div>
 
-        <!-- Right Visual Showcase: Luxury Pearl Cream Card (Was Previously Obsidian Black) -->
-        <div class="lg:col-span-5 relative">
-          <div class="relative mx-auto max-w-md lg:max-w-none">
-            <div class="absolute -inset-1 rounded-3xl bg-cream-100/40 blur-xl"></div>
-            
-            <div class="relative rounded-3xl cream-card p-6 sm:p-8 overflow-hidden">
-              <!-- Header Inside Card -->
-              <div class="flex items-center justify-between pb-5 border-b border-ink-900/15">
-                <div>
-                  <span class="text-[10px] tracking-widest uppercase text-luxred-700 font-extrabold block">Salon Tech Spotlight</span>
-                  <h3 class="text-xl font-serif text-ink-950 font-bold tracking-wide">Biomimetic Exosome Ampoule</h3>
-                </div>
-                <div class="px-3 py-1 rounded-full bg-luxred-700 text-[10px] text-cream-50 font-bold tracking-wider">
-                  Direct Import
-                </div>
+        <!-- Right Visual Showcase (Cream Card, Dark Text) -->
+        <div class="lg:col-span-5">
+          <div class="cream-card rounded-3xl p-6 sm:p-8 space-y-6">
+            <div class="flex items-center justify-between pb-4 border-b border-cream-300">
+              <div>
+                <span class="text-[10px] tracking-widest uppercase text-luxred-700 font-bold block">Salon Tech Spotlight</span>
+                <h3 class="text-xl font-serif text-darktxt-900 font-bold tracking-wide">Biomimetic Exosome Ampoule</h3>
               </div>
+              <span class="px-3 py-1 rounded-full bg-luxred-700 text-cream-50 text-[10px] font-semibold tracking-wider">
+                Direct Import
+              </span>
+            </div>
 
-              <!-- Product Graphic Card in Cream & Ruby Liquid -->
-              <div class="my-6 relative rounded-2xl bg-gradient-to-b from-cream-100 to-cream-200 p-6 border border-luxred-700/20 flex flex-col items-center justify-center text-center overflow-hidden group shadow-inner">
-                
-                <!-- Bottle / Serum Art Iconography in Pearl Cream & Velvet Red -->
-                <div class="w-36 h-48 relative my-2 flex items-center justify-center">
-                  <svg viewBox="0 0 100 160" class="w-full h-full drop-shadow-[0_10px_20px_rgba(105,8,19,0.3)]">
-                    <!-- Dropper Bulb in Velvet Red -->
-                    <rect x="42" y="10" width="16" height="18" rx="4" fill="#7E0C18" />
-                    <rect x="45" y="2" width="10" height="9" rx="3" fill="#FAF6EE" stroke="#7E0C18" stroke-width="1.5" />
-                    <!-- Cap Collar in Gold/Cream -->
-                    <rect x="36" y="27" width="28" height="9" rx="2" fill="#ECE1CF" stroke="#0A0A0C" stroke-width="1" />
-                    <!-- Glass Body in Pearl Ivory -->
-                    <rect x="25" y="36" width="50" height="110" rx="14" fill="#FFFFFF" stroke="#0A0A0C" stroke-width="2" />
-                    <!-- Inner Active Liquid in Ruby Crimson -->
-                    <rect x="29" y="65" width="42" height="76" rx="8" fill="#91111E" opacity="0.9" />
-                    <!-- Cream Label Area -->
-                    <rect x="32" y="75" width="36" height="48" rx="2" fill="#FAF6EE" stroke="#0A0A0C" stroke-width="1" />
-                    <text x="50" y="93" font-size="7" font-family="serif" text-anchor="middle" fill="#0A0A0C" font-weight="bold" letter-spacing="0.5">SKINMIMIC</text>
-                    <text x="50" y="102" font-size="4" font-family="sans-serif" text-anchor="middle" fill="#7E0C18" font-weight="bold" letter-spacing="1">BIO-EXOSOME</text>
-                    <text x="5
+            <!-- Graphic Display Area -->
+            <div class="rounded-2xl bg-cream-200/60 p-8 border border-cream-300 flex flex-col items-center justify-center text-center">
+              <div class="w-32 h-44 relative my-2 flex items-center justify-center">
+                <svg viewBox="0 0 100 160" class="w-full h-full drop-shadow-md">
+                  <rect x="42" y="10" width="16" height="18" rx="4" fill="#C7B9A3" />
+                  <rect x="45" y="2" width="10" height="9" rx="3" fill="#690813" />
+                  <rect x="36" y="27" width="28" height="9" rx="2" fill="#FAF6EE" stroke="#A81827" stroke-width="1" />
+                  <rect x="25" y="36" width="50" height="110" rx="14" fill="#FAF6EE" stroke="#690813" stroke-width="2" />
+                  <rect x="29" y="65" width="42" height="76" rx="8" fill="#7E0C18" />
+                  <rect x="33" y="75" width="34" height="48" rx="2" fill="#FAF6EE" />
+                  <text x="50" y="92" font-size="6" font-family="serif" font-weight="bold" text-anchor="middle" fill="#0F0F12">SKINMIMIC</text>
+                  <text x="50" y="102" font-size="4" font-family="sans-serif" font-weight="bold" text-anchor="middle" fill="#7E0C18">EXOSOME</text>
+                  <text x="50" y="112" font-size="3" font-family="sans-serif" text-anchor="middle" fill="#424252">CLINICAL</text>
+                </svg>
+              </div>
+              <p class="text-xs text-darktxt-600 mt-2 font-medium">99.8% Pure Lyophilized Bio-Exosome Formula</p>
+            </div>
+
+            <div class="space-y-2 text-xs text-darktxt-700">
+              <div class="flex justify-between py-1 border-b border-cream-300">
+                <span class="font-semibold">Concentration:</span>
+                <span>15 Billion Active Particles / Vial</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-cream-300">
+                <span class="font-semibold">Treatment Target:</span>
+                <span>Deep Cellular Rejuvenation & Barrier Repair</span>
+              </div>
+              <div class="flex justify-between py-1">
+                <span class="font-semibold">Est. Salon Profit:</span>
+                <span class="text-luxred-700 font-bold">82% Per Procedure</span>
+              </div>
+            </div>
+
+            <button onclick="openTesterModal()" class="w-full py-3 rounded-xl bg-darktxt-900 hover:bg-luxred-700 text-cream-50 font-semibold text-xs tracking-wider uppercase transition-colors">
+              Inquire Backbar Pricing
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Philosophy (Red Background with Cream Cards) -->
+  <section id="philosophy" class="py-20 bg-luxred-800 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto space-y-12">
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="text-xs uppercase font-mono tracking-widest text-cream-200 font-semibold">Our Scientific Philosophy</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-cream-50 mt-2">Cellular Bio-Mimicry for Salons</h2>
+        <div class="w-16 h-1 bg-cream-200 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="cream-card rounded-2xl p-8 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-luxred-700 text-cream-100 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-dna"></i>
+          </div>
+          <h3 class="text-xl font-serif font-bold text-darktxt-900">Direct Cellular Import</h3>
+          <p class="text-sm text-darktxt-700 leading-relaxed">
+            Hum directly global clinical labs se PDRN, Salmon DNA, aur High-Titer Exosomes direct import karte hain, taaki middleman commission khatam ho aur quality top-tier mile.
+          </p>
+        </div>
+
+        <div class="cream-card rounded-2xl p-8 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-luxred-700 text-cream-100 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-flask-vial"></i>
+          </div>
+          <h3 class="text-xl font-serif font-bold text-darktxt-900">Custom Backbar Formulations</h3>
+          <p class="text-sm text-darktxt-700 leading-relaxed">
+            Salons aur aesthetics clinics ke liye customized treatments aur peels create karte hain jo first session se instant client visible glow deliver karti hain.
+          </p>
+        </div>
+
+        <div class="cream-card rounded-2xl p-8 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-luxred-700 text-cream-100 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <h3 class="text-xl font-serif font-bold text-darktxt-900">Higher ROI & Profit Margins</h3>
+          <p class="text-sm text-darktxt-700 leading-relaxed">
+            B2B model ke tehat hum salons ko 75% se 85% tak ka profit margin provide karte hain jisse aapka treatment revenue double speed se grow hota hai.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: 4 Partners Section -->
+  <section id="partners" class="py-20 bg-luxred-700 px-4 sm:px-6 border-t border-luxred-600">
+    <div class="max-w-7xl mx-auto space-y-12">
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="text-xs uppercase font-mono tracking-widest text-cream-200 font-semibold">Leadership & Trust</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-cream-50 mt-2">The 4 Founding Partners</h2>
+        <p class="text-cream-200 text-sm mt-3 font-light">4 minds uniting global chemistry, sourcing logistics, clinic treatments, and business growth.</p>
+        <div class="w-16 h-1 bg-cream-200 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="cream-card rounded-2xl p-6 text-center space-y-3">
+          <div class="w-16 h-16 rounded-full bg-luxred-700 text-cream-100 flex items-center justify-center mx-auto text-2xl font-serif font-bold">1</div>
+          <h4 class="text-lg font-serif font-bold text-darktxt-900">Global Bio-Import</h4>
+          <p class="text-xs text-darktxt-600 font-semibold uppercase tracking-wider">International Sourcing</p>
+          <p class="text-xs text-darktxt-700">Direct South Korea, Europe & Japan lab sourcing with strict cold-chain compliance.</p>
+        </div>
+
+        <div class="cream-card rounded-2xl p-6 text-center space-y-3">
+          <div class="w-16 h-16 rounded-full bg-luxred-700 text-cream-100 flex items-center justify-center mx-auto text-2xl font-serif font-bold">2</div>
+          <h4 class="text-lg font-serif font-bold text-darktxt-900">Formulation Head</h4>
+          <p class="text-xs text-darktxt-600 font-semibold uppercase tracking-wider">Bioc
