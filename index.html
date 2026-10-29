@@ -38,6 +38,7 @@
               500: '#C7B9A3',
             },
             darktxt: {
+              950: '#060608',
               900: '#0F0F12',
               800: '#1A1A22',
               700: '#2A2A36',
@@ -70,20 +71,41 @@
       background: #DDD0BC;
     }
 
+    /* Pearl Cream Luxury Cards */
     .cream-card {
       background: #FAF6EE;
       border: 1px solid rgba(245, 237, 224, 0.4);
       box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.45);
     }
+    .cream-card:hover {
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Ambient Ruby Background Aura */
+    .ruby-glow {
+      background: radial-gradient(circle, rgba(220, 38, 38, 0.35) 0%, rgba(105, 8, 19, 0) 70%);
+    }
+
+    /* Smooth Slider Styling */
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 22px;
+      width: 22px;
+      border-radius: 50%;
+      background: #690813;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      border: 3px solid #FAF6EE;
+    }
   </style>
 </head>
 <body class="bg-luxred-700 text-darktxt-900 font-sans antialiased selection:bg-luxred-600 selection:text-white relative overflow-x-hidden min-h-screen">
 
-  <!-- Scroll Progress Bar -->
+  <!-- Scroll Progress Indicator -->
   <div id="scrollProgress" class="fixed top-0 left-0 h-[3px] bg-cream-200 z-50 transition-all duration-150" style="width: 0%;"></div>
 
-  <!-- Top VIP Trade Notification Strip (Cream Background, Dark Text) -->
-  <div class="bg-cream-100 border-b border-cream-300 text-xs py-2 px-4 relative z-40 text-darktxt-900">
+  <!-- Top VIP Trade Strip (Cream Background, Black Text) -->
+  <div class="bg-cream-100 border-b border-cream-300 text-xs py-2 px-4 relative z-40 text-darktxt-900 shadow-sm">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2 font-medium">
       <div class="flex items-center space-x-3">
         <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-luxred-700 text-cream-50 text-[10px] tracking-widest uppercase font-semibold">
@@ -92,7 +114,7 @@
         <span class="hidden md:inline text-darktxt-700 text-xs tracking-wider">Direct Global Bio-Imports & Bespoke Backbar Formulation for Salons & Aesthetic Clinics</span>
       </div>
       <div class="flex items-center gap-5 ml-auto text-xs">
-        <a href="tel:8356902748" class="hover:text-luxred-600 text-darktxt-800 transition-colors flex items-center gap-1.5 font-semibold">
+        <a href="tel:8356902748" class="hover:text-luxred-700 text-darktxt-900 transition-colors flex items-center gap-1.5 font-bold">
           <i class="fa-solid fa-phone text-luxred-700 text-[11px]"></i> +91 8356902748
         </a>
         <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%20Care%2C%20I%20am%20interested%20in%20a%20B2B%20salon%20partnership" target="_blank" class="hover:text-emerald-800 text-emerald-700 font-bold transition-colors flex items-center gap-1.5">
@@ -102,7 +124,7 @@
     </div>
   </div>
 
-  <!-- Main Header Navigation (Cream Background, Dark Text) -->
+  <!-- Main Sticky Header (Cream Background, Black Text) -->
   <header id="mainNav" class="sticky top-0 z-40 transition-all duration-300 bg-cream-100/98 backdrop-blur-xl border-b border-cream-300 shadow-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
@@ -125,6 +147,7 @@
         <a href="#partners" class="hover:text-luxred-700 transition-colors py-1">4 Partners</a>
         <a href="#catalog" class="hover:text-luxred-700 transition-colors py-1">Salon Backbar</a>
         <a href="#calculator" class="hover:text-luxred-700 transition-colors py-1">Margin Estimator</a>
+        <a href="#faq" class="hover:text-luxred-700 transition-colors py-1">FAQ</a>
       </nav>
 
       <!-- Action Buttons -->
@@ -146,12 +169,13 @@
     </div>
 
     <!-- Mobile Drawer -->
-    <div id="mobileMenu" class="hidden lg:hidden border-b border-cream-300 bg-cream-50 px-6 py-6 space-y-3 text-sm uppercase tracking-wider font-semibold text-darktxt-900">
+    <div id="mobileMenu" class="hidden lg:hidden border-b border-cream-300 bg-cream-50 px-6 py-6 space-y-3 text-sm uppercase tracking-wider font-semibold text-darktxt-900 shadow-lg">
       <a href="#philosophy" onclick="toggleMobileMenu()" class="block hover:text-luxred-700 py-1">Philosophy</a>
       <a href="#capabilities" onclick="toggleMobileMenu()" class="block hover:text-luxred-700 py-1">Import & Formulation</a>
       <a href="#partners" onclick="toggleMobileMenu()" class="block hover:text-luxred-700 py-1">4 Partners</a>
       <a href="#catalog" onclick="toggleMobileMenu()" class="block hover:text-luxred-700 py-1">Salon Catalog</a>
       <a href="#calculator" onclick="toggleMobileMenu()" class="block hover:text-luxred-700 py-1">Margin Calculator</a>
+      <a href="#faq" onclick="toggleMobileMenu()" class="block hover:text-luxred-700 py-1">FAQ</a>
       <div class="pt-3 border-t border-cream-300 flex flex-col gap-2">
         <a href="tel:8356902748" class="text-center py-2.5 bg-cream-200 rounded-lg text-darktxt-900 text-xs">Call: +91 8356902748</a>
         <a href="https://wa.me/918356902748" target="_blank" class="text-center py-2.5 bg-emerald-700 text-white rounded-lg text-xs">WhatsApp Desk</a>
@@ -159,29 +183,30 @@
     </div>
   </header>
 
-  <!-- Hero Section: Velvet Red Background -->
-  <section class="relative min-h-[90vh] flex items-center justify-center pt-10 pb-20 bg-gradient-to-b from-luxred-700 via-luxred-800 to-luxred-900 px-4 sm:px-6">
-    <div class="max-w-7xl mx-auto w-full">
+  <!-- Hero Section: Velvet Red Canvas -->
+  <section class="relative min-h-[92vh] flex items-center justify-center pt-10 pb-20 bg-gradient-to-b from-luxred-600 via-luxred-700 to-luxred-800 px-4 sm:px-6">
+    <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[800px] h-[550px] ruby-glow rounded-full blur-[130px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto w-full relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         
-        <!-- Left Hero Content (Cream Card Container with Dark Text) -->
+        <!-- Left Hero Content: Cream Card with Black Text -->
         <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
           
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cream-100 border border-cream-300 text-darktxt-900 text-xs tracking-[0.2em] uppercase font-mono font-semibold shadow-md">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cream-100 border border-cream-300 text-darktxt-900 text-xs tracking-[0.2em] uppercase font-mono font-bold shadow-md">
             <span class="w-2 h-2 rounded-full bg-luxred-600"></span>
             Direct Global Bio-Imports & Salon Chemistry
           </div>
 
-          <!-- Main Card in Pearl Cream -->
-          <div class="cream-card rounded-3xl p-6 sm:p-10 space-y-5 text-darktxt-900">
-            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold leading-[1.1] text-darktxt-900">
+          <div class="cream-card rounded-3xl p-6 sm:p-10 space-y-6 text-darktxt-900">
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold leading-[1.08] text-darktxt-900">
               Cellular Mimicry. <br />
               <span class="text-luxred-700 italic font-medium">Direct Bio-Import.</span> <br />
               Unrivaled Salon Efficacy.
             </h1>
 
             <p class="text-sm sm:text-base text-darktxt-700 font-normal leading-relaxed">
-              <strong class="text-darktxt-900 font-semibold">SKINMIMIC CARE</strong> is a B2B professional salon powerhouse founded by 4 partners. We bypass conventional distributors to bring your salon <span class="font-semibold text-luxred-700 underline">direct clinical imports</span> (PDRN, Exosomes, sterile ampoules) and <span class="font-semibold text-luxred-700 underline">bespoke formulation design</span> that elevates treatment margins up to 85%.
+              <strong class="text-darktxt-900 font-semibold">SKINMIMIC CARE</strong> is a B2B professional salon powerhouse founded by 4 partners. We bypass conventional distributors to bring your salon <span class="font-semibold text-luxred-700 underline">direct clinical imports</span> (PDRN, Exosomes, sterile ampoules) and <span class="font-semibold text-luxred-700 underline">bespoke formulation design</span> that escalates treatment margins up to 85%.
             </p>
 
             <!-- Metrics inside Cream Card -->
@@ -200,7 +225,7 @@
               </div>
             </div>
 
-            <!-- Buttons Inside Card -->
+            <!-- CTA Buttons -->
             <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
               <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%20Care%2C%20I%20am%20interested%20in%20a%20B2B%20salon%20partnership" target="_blank" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-md">
                 <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp Trade Desk
@@ -222,7 +247,7 @@
 
         </div>
 
-        <!-- Right Visual Showcase (Cream Card, Dark Text) -->
+        <!-- Right Visual Showcase: Cream Card with Spotlight Serum Graphic -->
         <div class="lg:col-span-5">
           <div class="cream-card rounded-3xl p-6 sm:p-8 space-y-6">
             <div class="flex items-center justify-between pb-4 border-b border-cream-300">
@@ -235,19 +260,19 @@
               </span>
             </div>
 
-            <!-- Graphic Display Area -->
-            <div class="rounded-2xl bg-cream-200/60 p-8 border border-cream-300 flex flex-col items-center justify-center text-center">
-              <div class="w-32 h-44 relative my-2 flex items-center justify-center">
+            <!-- Complete SVG Bottle Graphic -->
+            <div class="rounded-2xl bg-cream-200/70 p-8 border border-cream-300 flex flex-col items-center justify-center text-center">
+              <div class="w-36 h-48 relative my-2 flex items-center justify-center">
                 <svg viewBox="0 0 100 160" class="w-full h-full drop-shadow-md">
-                  <rect x="42" y="10" width="16" height="18" rx="4" fill="#C7B9A3" />
-                  <rect x="45" y="2" width="10" height="9" rx="3" fill="#690813" />
-                  <rect x="36" y="27" width="28" height="9" rx="2" fill="#FAF6EE" stroke="#A81827" stroke-width="1" />
-                  <rect x="25" y="36" width="50" height="110" rx="14" fill="#FAF6EE" stroke="#690813" stroke-width="2" />
-                  <rect x="29" y="65" width="42" height="76" rx="8" fill="#7E0C18" />
-                  <rect x="33" y="75" width="34" height="48" rx="2" fill="#FAF6EE" />
-                  <text x="50" y="92" font-size="6" font-family="serif" font-weight="bold" text-anchor="middle" fill="#0F0F12">SKINMIMIC</text>
-                  <text x="50" y="102" font-size="4" font-family="sans-serif" font-weight="bold" text-anchor="middle" fill="#7E0C18">EXOSOME</text>
-                  <text x="50" y="112" font-size="3" font-family="sans-serif" text-anchor="middle" fill="#424252">CLINICAL</text>
+                  <rect x="42" y="8" width="16" height="20" rx="4" fill="#C7B9A3" />
+                  <rect x="45" y="2" width="10" height="8" rx="2" fill="#690813" />
+                  <rect x="36" y="28" width="28" height="9" rx="2" fill="#FAF6EE" stroke="#A81827" stroke-width="1" />
+                  <rect x="25" y="37" width="50" height="110" rx="14" fill="#FAF6EE" stroke="#690813" stroke-width="2" />
+                  <rect x="29" y="66" width="42" height="76" rx="8" fill="#7E0C18" />
+                  <rect x="33" y="76" width="34" height="48" rx="2" fill="#FAF6EE" />
+                  <text x="50" y="93" font-size="6" font-family="serif" font-weight="bold" text-anchor="middle" fill="#0F0F12">SKINMIMIC</text>
+                  <text x="50" y="103" font-size="4" font-family="sans-serif" font-weight="bold" text-anchor="middle" fill="#7E0C18">EXOSOME</text>
+                  <text x="50" y="113" font-size="3" font-family="sans-serif" text-anchor="middle" fill="#424252">CLINICAL</text>
                 </svg>
               </div>
               <p class="text-xs text-darktxt-600 mt-2 font-medium">99.8% Pure Lyophilized Bio-Exosome Formula</p>
@@ -268,8 +293,8 @@
               </div>
             </div>
 
-            <button onclick="openTesterModal()" class="w-full py-3 rounded-xl bg-darktxt-900 hover:bg-luxred-700 text-cream-50 font-semibold text-xs tracking-wider uppercase transition-colors">
-              Inquire Backbar Pricing
+            <button onclick="openTesterModal()" class="w-full py-3.5 rounded-xl bg-darktxt-900 hover:bg-luxred-700 text-cream-50 font-semibold text-xs tracking-wider uppercase transition-colors">
+              Request Backbar Sample & Pricing
             </button>
           </div>
         </div>
@@ -278,8 +303,64 @@
     </div>
   </section>
 
-  <!-- Section 1: Philosophy (Red Background with Cream Cards) -->
-  <section id="philosophy" class="py-20 bg-luxred-800 px-4 sm:px-6">
+  <!-- Section 1: Capabilities & Import Infrastructure (#capabilities) -->
+  <section id="capabilities" class="py-20 bg-luxred-800 px-4 sm:px-6 border-t border-luxred-600">
+    <div class="max-w-7xl mx-auto space-y-12">
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="text-xs uppercase font-mono tracking-widest text-cream-200 font-semibold">Global Supply Line</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-cream-50 mt-2">Direct Import & Formulation Capabilities</h2>
+        <p class="text-cream-200 text-sm mt-3 font-light">Eliminating 3 tiers of distributor markups so salons get clinical grade actives at factory costs.</p>
+        <div class="w-16 h-1 bg-cream-200 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="cream-card rounded-2xl p-8 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-luxred-700 text-cream-100 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-plane-departure"></i>
+          </div>
+          <h3 class="text-xl font-serif font-bold text-darktxt-900">Direct From Source (Seoul, Geneva, Tokyo)</h3>
+          <p class="text-sm text-darktxt-700 leading-relaxed">
+            Hum South Korea aur Switzerland ke certified biotechnology labs se sterile meso-ampoules aur lyophilized powders direct import karte hain. Har shipment cold-chain tested hoti hai.
+          </p>
+          <ul class="text-xs text-darktxt-800 space-y-1.5 pt-2 border-t border-cream-300 font-medium">
+            <li><i class="fa-solid fa-check text-luxred-700 mr-1.5"></i> 0% Middleman Distributor Commissions</li>
+            <li><i class="fa-solid fa-check text-luxred-700 mr-1.5"></i> Certificate of Analysis (CoA) with Every Batch</li>
+          </ul>
+        </div>
+
+        <div class="cream-card rounded-2xl p-8 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-luxred-700 text-cream-100 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-mortar-pestle"></i>
+          </div>
+          <h3 class="text-xl font-serif font-bold text-darktxt-900">Bespoke Backbar Formulation</h3>
+          <p class="text-sm text-darktxt-700 leading-relaxed">
+            Agar aapke salon chain ko apna signature treatment menu banana hai, toh hamari lab bespoke concentrations, unique textures, aur customised facial peel protocols formulation design karti hai.
+          </p>
+          <ul class="text-xs text-darktxt-800 space-y-1.5 pt-2 border-t border-cream-300 font-medium">
+            <li><i class="fa-solid fa-check text-luxred-700 mr-1.5"></i> Custom Fragrance & Peptide Ratio Tuning</li>
+            <li><i class="fa-solid fa-check text-luxred-700 mr-1.5"></i> Exclusive City Rights for Premium Salons</li>
+          </ul>
+        </div>
+
+        <div class="cream-card rounded-2xl p-8 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-luxred-700 text-cream-100 flex items-center justify-center text-xl">
+            <i class="fa-solid fa-tags"></i>
+          </div>
+          <h3 class="text-xl font-serif font-bold text-darktxt-900">White-Label & Private Labelling</h3>
+          <p class="text-sm text-darktxt-700 leading-relaxed">
+            Aapke salon brand ke logo aur custom bottle packagi
+                      </p>
+          <ul class="text-xs text-darktxt-800 space-y-1.5 pt-2 border-t border-cream-300 font-medium">
+            <li><i class="fa-solid fa-check text-luxred-700 mr-1.5"></i> High Client Retention & Repeat Sales</li>
+            <li><i class="fa-solid fa-check text-luxred-700 mr-1.5"></i> Low MOQ for Tier-1 Salon Owners</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Philosophy (#philosophy) -->
+  <section id="philosophy" class="py-20 bg-luxred-700 px-4 sm:px-6">
     <div class="max-w-7xl mx-auto space-y-12">
       <div class="text-center max-w-2xl mx-auto">
         <span class="text-xs uppercase font-mono tracking-widest text-cream-200 font-semibold">Our Scientific Philosophy</span>
@@ -292,9 +373,9 @@
           <div class="w-12 h-12 rounded-xl bg-luxred-700 text-cream-100 flex items-center justify-center text-xl">
             <i class="fa-solid fa-dna"></i>
           </div>
-          <h3 class="text-xl font-serif font-bold text-darktxt-900">Direct Cellular Import</h3>
+          <h3 class="text-xl font-serif font-bold text-darktxt-900">Cellular Bio-Identical Actives</h3>
           <p class="text-sm text-darktxt-700 leading-relaxed">
-            Hum directly global clinical labs se PDRN, Salmon DNA, aur High-Titer Exosomes direct import karte hain, taaki middleman commission khatam ho aur quality top-tier mile.
+            Hum synthetic chemicals ke bajaye bio-identical peptides aur salmon DNA molecules use karte hain jo skin ke human cellular structure ke 98% saman hoti hain, jisse instant deep absorption milta hai.
           </p>
         </div>
 
@@ -302,9 +383,9 @@
           <div class="w-12 h-12 rounded-xl bg-luxred-700 text-cream-100 flex items-center justify-center text-xl">
             <i class="fa-solid fa-flask-vial"></i>
           </div>
-          <h3 class="text-xl font-serif font-bold text-darktxt-900">Custom Backbar Formulations</h3>
+          <h3 class="text-xl font-serif font-bold text-darktxt-900">Lyophilized Active Potency</h3>
           <p class="text-sm text-darktxt-700 leading-relaxed">
-            Salons aur aesthetics clinics ke liye customized treatments aur peels create karte hain jo first session se instant client visible glow deliver karti hain.
+            Hamare exosomes freeze-dried lyophilized state mein aate hain. Normal liquid serums store hone par degrade ho jaate hain, par hamari formulation treatment ke waqt activate hoti hai.
           </p>
         </div>
 
@@ -312,34 +393,278 @@
           <div class="w-12 h-12 rounded-xl bg-luxred-700 text-cream-100 flex items-center justify-center text-xl">
             <i class="fa-solid fa-chart-line"></i>
           </div>
-          <h3 class="text-xl font-serif font-bold text-darktxt-900">Higher ROI & Profit Margins</h3>
+          <h3 class="text-xl font-serif font-bold text-darktxt-900">Maximum Backbar Margin</h3>
           <p class="text-sm text-darktxt-700 leading-relaxed">
-            B2B model ke tehat hum salons ko 75% se 85% tak ka profit margin provide karte hain jisse aapka treatment revenue double speed se grow hota hai.
+            Har ek treatment vial par salon ko 75% se 85% ka clear profit margin milta hai. Salon treatments ki real value service aur result mein hai, overpriced product bills mein nahi.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 2: 4 Partners Section -->
-  <section id="partners" class="py-20 bg-luxred-700 px-4 sm:px-6 border-t border-luxred-600">
+  <!-- Section 3: The 4 Founding Partners (#partners) -->
+  <section id="partners" class="py-20 bg-luxred-800 px-4 sm:px-6 border-t border-luxred-600">
     <div class="max-w-7xl mx-auto space-y-12">
       <div class="text-center max-w-2xl mx-auto">
         <span class="text-xs uppercase font-mono tracking-widest text-cream-200 font-semibold">Leadership & Trust</span>
         <h2 class="text-3xl sm:text-4xl font-serif font-bold text-cream-50 mt-2">The 4 Founding Partners</h2>
-        <p class="text-cream-200 text-sm mt-3 font-light">4 minds uniting global chemistry, sourcing logistics, clinic treatments, and business growth.</p>
+        <p class="text-cream-200 text-sm mt-3 font-light">Char alag-alag pillars ka sangam: Global Sourcing, Formulation R&D, Clinic Backbar Mastery aur Rapid Logistics.</p>
         <div class="w-16 h-1 bg-cream-200 mx-auto mt-4 rounded-full"></div>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="cream-card rounded-2xl p-6 text-center space-y-3">
-          <div class="w-16 h-16 rounded-full bg-luxred-700 text-cream-100 flex items-center justify-center mx-auto text-2xl font-serif font-bold">1</div>
+          <div class="w-16 h-16 rounded-full bg-luxred-700 text-cream-100 flex items-center justify-center mx-auto text-2xl font-serif font-bold shadow-md">1</div>
           <h4 class="text-lg font-serif font-bold text-darktxt-900">Global Bio-Import</h4>
-          <p class="text-xs text-darktxt-600 font-semibold uppercase tracking-wider">International Sourcing</p>
-          <p class="text-xs text-darktxt-700">Direct South Korea, Europe & Japan lab sourcing with strict cold-chain compliance.</p>
+          <p class="text-xs text-luxred-700 font-bold uppercase tracking-wider">International Sourcing</p>
+          <p class="text-xs text-darktxt-700 leading-relaxed">Direct South Korea, Europe & Japan lab sourcing with strict cold-chain and clinical customs clearance protocols.</p>
         </div>
 
         <div class="cream-card rounded-2xl p-6 text-center space-y-3">
-          <div class="w-16 h-16 rounded-full bg-luxred-700 text-cream-100 flex items-center justify-center mx-auto text-2xl font-serif font-bold">2</div>
+          <div class="w-16 h-16 rounded-full bg-luxred-700 text-cream-100 flex items-center justify-center mx-auto text-2xl font-serif font-bold shadow-md">2</div>
           <h4 class="text-lg font-serif font-bold text-darktxt-900">Formulation Head</h4>
-          <p class="text-xs text-darktxt-600 font-semibold uppercase tracking-wider">Bioc
+          <p class="text-xs text-luxred-700 font-bold uppercase tracking-wider">Biochemical R&D</p>
+          <p class="text-xs text-darktxt-700 leading-relaxed">Advanced molecular biology, peptide complexes, amino acids, and sterile clinic-grade buffering and active stabilization.</p>
+        </div>
+
+        <div class="cream-card rounded-2xl p-6 text-center space-y-3">
+          <div class="w-16 h-16 rounded-full bg-luxred-700 text-cream-100 flex items-center justify-center mx-auto text-2xl font-serif font-bold shadow-md">3</div>
+          <h4 class="text-lg font-serif font-bold text-darktxt-900">Clinical Protocol</h4>
+          <p class="text-xs text-luxred-700 font-bold uppercase tracking-wider">Backbar Mastery</p>
+          <p class="text-xs text-darktxt-700 leading-relaxed">Creating standard operating procedures (SOPs) for salon aestheticians to ensure instant client transformation from session one.</p>
+        </div>
+
+        <div class="cream-card rounded-2xl p-6 text-center space-y-3">
+          <div class="w-16 h-16 rounded-full bg-luxred-700 text-cream-100 flex items-center justify-center mx-auto text-2xl font-serif font-bold shadow-md">4</div>
+          <h4 class="text-lg font-serif font-bold text-darktxt-900">Salon Operations</h4>
+          <p class="text-xs text-luxred-700 font-bold uppercase tracking-wider">Pan-India Logistics</p>
+          <p class="text-xs text-darktxt-700 leading-relaxed">Guaranteed 48-hour order dispatches, salon profit counseling, B2B billing, and backbar staff training modules.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Comprehensive Salon Backbar Catalog (#catalog) -->
+  <section id="catalog" class="py-20 bg-luxred-700 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto space-y-12">
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="text-xs uppercase font-mono tracking-widest text-cream-200 font-semibold">Direct Clinical Imports</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-cream-50 mt-2">B2B Salon Backbar Catalog</h2>
+        <p class="text-cream-200 text-sm mt-3 font-light">Clinically dosed actives crafted for hydra-facials, meso-needling, and intensive luxury skin therapy.</p>
+        <div class="w-16 h-1 bg-cream-200 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Product 1 -->
+        <div class="cream-card rounded-2xl p-6 flex flex-col justify-between space-y-5">
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="px-2.5 py-1 rounded bg-luxred-700 text-white text-[10px] uppercase font-bold">DNA Therapy</span>
+              <span class="text-xs font-mono font-bold text-luxred-700">PDRN 5.2%</span>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-darktxt-900">PDRN Salmon DNA Infusion Ampoules</h3>
+            <p class="text-xs text-darktxt-700 leading-relaxed">
+              Medical grade sodium DNA for cellular tissue repair, collagen induction, and deep glass-skin hydration. Ideal for microneedling and ultrasound infusion.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-cream-300 flex justify-between items-center">
+            <div>
+              <span class="text-[10px] text-darktxt-600 uppercase block font-semibold">Salon Margin</span>
+              <span class="text-lg font-bold text-luxred-700">82% Margin</span>
+            </div>
+            <button onclick="openTesterModal()" class="px-4 py-2 bg-darktxt-900 hover:bg-luxred-700 text-white rounded-lg text-xs font-semibold transition-colors">
+              Get Backbar Price
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="cream-card rounded-2xl p-6 flex flex-col justify-between space-y-5">
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="px-2.5 py-1 rounded bg-luxred-700 text-white text-[10px] uppercase font-bold">Lyophilized Active</span>
+              <span class="text-xs font-mono font-bold text-luxred-700">15 Billion Titer</span>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-darktxt-900">Lyophilized Bio-Exosome Kit</h3>
+            <p class="text-xs text-darktxt-700 leading-relaxed">
+              Freeze-dried cellular signal vesicles with activating diluent. Reverses barrier damage, repairs stubborn pigmentation, and resets dull skin texture.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-cream-300 flex justify-between items-center">
+            <div>
+              <span class="text-[10px] text-darktxt-600 uppercase block font-semibold">Salon Margin</span>
+              <span class="text-lg font-bold text-luxred-700">85% Margin</span>
+            </div>
+            <button onclick="openTesterModal()" class="px-4 py-2 bg-darktxt-900 hover:bg-luxred-700 text-white rounded-lg text-xs font-semibold transition-colors">
+              Get Backbar Price
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="cream-card rounded-2xl p-6 flex flex-col justify-between space-y-5">
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="px-2.5 py-1 rounded bg-luxred-700 text-white text-[10px] uppercase font-bold">Clinic Resurfacing</span>
+              <span class="text-xs font-mono font-bold text-luxred-700">pH 3.4 Balanced</span>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-darktxt-900">Cellular Biomimetic Acid Solution</h3>
+            <p class="text-xs text-darktxt-700 leading-relaxed">
+              Gentle buffered multi-acid peel (Mandelic, Lactic, Lactobionic) designed for zero downtime, delivering high-sheen radiance for luxury bridal facials.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-cream-300 flex justify-between items-center">
+            <div>
+              <span class="text-[10px] text-darktxt-600 uppercase block font-semibold">Salon Margin</span>
+              <span class="text-lg font-bold text-luxred-700">79% Margin</span>
+            </div>
+            <button onclick="openTesterModal()" class="px-4 py-2 bg-darktxt-900 hover:bg-luxred-700 text-white rounded-lg text-xs font-semibold transition-colors">
+              Get Backbar Price
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="cream-card rounded-2xl p-6 flex flex-col justify-between space-y-5">
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="px-2.5 py-1 rounded bg-luxred-700 text-white text-[10px] uppercase font-bold">Post-Procedure</span>
+              <span class="text-xs font-mono font-bold text-luxred-700">Copper Tripeptide-1</span>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-darktxt-900">Sterile Oligopeptide Soothing Mask</h3>
+            <p class="text-xs text-darktxt-700 leading-relaxed">
+              Medical grade biocellulose sheet saturated with copper peptides, panthenol, and madecassoside to eliminate redness in under 15 minutes post-facial.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-cream-300 flex justify-between items-center">
+            <div>
+              <span class="text-[10px] text-darktxt-600 uppercase block font-semibold">Salon Margin</span>
+              <span class="text-lg font-bold text-luxred-700">80% Margin</span>
+            </div>
+            <button onclick="openTesterModal()" class="px-4 py-2 bg-darktxt-900 hover:bg-luxred-700 text-white rounded-lg text-xs font-semibold transition-colors">
+              Get Backbar Price
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="cream-card rounded-2xl p-6 flex flex-col justify-between space-y-5">
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="px-2.5 py-1 rounded bg-luxred-700 text-white text-[10px] uppercase font-bold">Spot Correction</span>
+              <span class="text-xs font-mono font-bold text-luxred-700">Liposomal 15%</span>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-darktxt-900">Glutathione & Vit-C Booster Vials</h3>
+            <p class="text-xs text-darktxt-700 leading-relaxed">
+              Sterile liposomal whitening concentrate that targets melasma, dark spots, and photo-damage without irritation or photosensitivity.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-cream-300 flex justify-between items-center">
+            <div>
+              <span class="text-[10px] text-darktxt-600 uppercase block font-semibold">Salon Margin</span>
+              <span class="text-lg font-bold text-luxred-700">83% Margin</span>
+            </div>
+            <button onclick="openTesterModal()" class="px-4 py-2 bg-darktxt-900 hover:bg-luxred-700 text-white rounded-lg text-xs font-semibold transition-colors">
+              Get Backbar Price
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="cream-card rounded-2xl p-6 flex flex-col justify-between space-y-5">
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="px-2.5 py-1 rounded bg-luxred-700 text-white text-[10px] uppercase font-bold">Deep Moisture</span>
+              <span class="text-xs font-mono font-bold text-luxred-700">8-Molecular Weights</span>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-darktxt-900">Hyaluronic Biomimetic Plumper</h3>
+            <p class="text-xs text-darktxt-700 leading-relaxed">
+              Cross-linked multi-molecular weight hyaluronic acid backbar matrix that hydrates all skin layers simultaneously for long-lasting plumpness.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-cream-300 flex justify-between items-center">
+            <div>
+              <span class="text-[10px] text-darktxt-600 uppercase block font-semibold">Salon Margin</span>
+              <span class="text-lg font-bold text-luxred-700">84% Margin</span>
+            </div>
+            <button onclick="openTesterModal()" class="px-4 py-2 bg-darktxt-900 hover:bg-luxred-700 text-white rounded-lg text-xs font-semibold transition-colors">
+              Get Backbar Price
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Interactive Salon Profit Margin Calculator (#calculator) -->
+  <section id="calculator" class="py-20 bg-luxred-800 px-4 sm:px-6 border-t border-luxred-600">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <span class="text-xs uppercase font-mono tracking-widest text-cream-200 font-semibold">Profit Simulator</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-cream-50 mt-2">Salon Margin Estimator</h2>
+        <p class="text-cream-200 text-xs sm:text-sm mt-2">Apne monthly client volume aur treatment charges select karke monthly profit estimate karein:</p>
+      </div>
+
+      <div class="cream-card rounded-3xl p-6 sm:p-10 space-y-8">
+        
+        <div class="space-y-6">
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <label class="text-xs font-bold uppercase tracking-wider text-darktxt-800">Monthly Treatment Clients / Sessions:</label>
+              <span id="sessionsVal" class="text-base font-bold text-luxred-700 font-mono">50 Sessions</span>
+            </div>
+            <input id="sessionsInput" type="range" min="10" max="300" value="50" step="5" class="w-full accent-luxred-700 cursor-pointer" oninput="updateCalculator()">
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <label class="text-xs font-bold uppercase tracking-wider text-darktxt-800">Your Facial / Treatment Fee per Client (₹):</label>
+              <span id="priceVal" class="text-base font-bold text-luxred-700 font-mono">₹ 4,000</span>
+            </div>
+            <input id="priceInput" type="range" min="1500" max="20000" value="4000" step="250" class="w-full accent-luxred-700 cursor-pointer" oninput="updateCalculator()">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-cream-300 text-center">
+          <div class="p-4 bg-cream-200 rounded-2xl border border-cream-300">
+            <span class="text-[10px] uppercase tracking-wider text-darktxt-600 font-semibold block">Total Client Billing</span>
+            <div id="totalRevenue" class="text-xl sm:text-2xl font-serif font-bold text-darktxt-900 mt-1">₹ 2,00,000</div>
+          </div>
+
+          <div class="p-4 bg-cream-200 rounded-2xl border border-cream-300">
+            <span class="text-[10px] uppercase tracking-wider text-darktxt-600 font-semibold block">Direct Product Cost (~18%)</span>
+            <div id="totalCost" class="text-xl sm:text-2xl font-serif font-bold text-darktxt-700 mt-1">₹ 35,000</div>
+          </div>
+
+          <div class="p-4 bg-luxred-700 text-cream-50 rounded-2xl shadow-md">
+            <span class="text-[10px] uppercase tracking-wider text-cream-200 font-semibold block">Net Salon Profit (82%+)</span>
+            <div id="netProfit" class="text-xl sm:text-2xl font-serif font-bold text-white mt-1">₹ 1,65,000</div>
+          </div>
+        </div>
+
+        <div class="text-center pt-2">
+          <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%2C%20I%20calculated%20my%20salon%20margins%20and%20want%20to%20place%20an%20order" target="_blank" class="inline-flex items-center gap-2 px-8 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full font-semibold text-xs tracking-wider uppercase transition-all shadow-md">
+            <i class="fa-brands fa-whatsapp text-base"></i> Lock In These Margins via WhatsApp
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Frequently Asked Questions (#faq) -->
+  <section id="faq" class="py-20 bg-luxred-700 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto space-y-12">
+      <div class="text-center max-w-xl mx-auto">
+        <span class="text-xs uppercase font-mono tracking-widest text-cream-200 font-semibold">Clarity & Confidence</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-cream-50 mt-2">B2B Salon Partnerships FAQ</h2>
+        <div class="w-16 h-1 bg-cream-200 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="space-y-4">
+        <div class="cream-card rounded-2xl p-6 text-darktxt-900">
+          <h4 class="font-serif font-bold text-lg text-darktxt-900">1. How can Skinmimic Care offer up to 85% margins compared to other brands?</h4>
+          <p class="text-xs sm:text-sm text-darktxt-700 mt-2 leading-relaxed">
+            Conventional brands work with national distributors, regional stockists, and local sales agents—each adding a 20-30% 
