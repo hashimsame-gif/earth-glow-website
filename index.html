@@ -1,38 +1,41 @@
+```html
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SKINMIMIC CARE | Next-Gen Bio-Cellular Skincare & Global Backbar Imports</title>
-  
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Skinmimic Care | Biomimetic Epidermal Science</title>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            synth: {
-              950: '#030712',
-              900: '#080D1A',
-              850: '#0B132B',
-              800: '#111C38',
-              700: '#1E293B',
-            },
-            neon: {
-              cyan: '#06B6D4',
-              teal: '#14B8A6',
-              violet: '#8B5CF6',
-              emerald: '#10B981',
-            }
-          },
           fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif'],
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            mimic: {
+              bone: '#FAF8F5',
+              sand: '#F3EFE8',
+              surface: '#EBE5DC',
+              charcoal: '#1A1C1A',
+              slate: '#363A36',
+              sage: '#4B6B5B',
+              sageSoft: '#E6EEE9',
+              amber: '#BD8A58',
+              accent: '#8C5E3C',
+              rosegold: '#C99182',
+              roseSoft: '#F8ECE8',
+              porcelain: '#FBF9F6'
+            }
           }
         }
       }
@@ -40,798 +43,1497 @@
   </script>
 
   <style>
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #030712; }
-    ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: #06B6D4; }
-
-    .ai-glass {
-      background: rgba(11, 19, 43, 0.65);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    /* Custom refined animations & utilities */
+    body {
+      background-color: #FAF8F5;
+      color: #1A1C1A;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
     }
-    .ai-glass:hover {
-      border-color: rgba(6, 182, 212, 0.35);
-      box-shadow: 0 20px 50px rgba(6, 182, 212, 0.08);
+    .serif-title {
+      font-family: 'Cormorant Garamond', serif;
     }
-    .text-glow {
-      text-shadow: 0 0 25px rgba(6, 182, 212, 0.45);
+    .glass-nav {
+      background: rgba(250, 248, 245, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
-    .gradient-border {
-      position: relative;
-      border: 1px solid transparent;
-      background-clip: padding-box;
+    .subtle-shadow {
+      box-shadow: 0 16px 36px -12px rgba(26, 28, 26, 0.08);
     }
-    .gradient-border::before {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      z-index: -1;
-      border-radius: inherit;
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.6), rgba(139, 92, 246, 0.3), transparent 70%);
+    .halo-glow {
+      background: radial-gradient(circle at 50% 50%, rgba(201, 145, 130, 0.12) 0%, rgba(250, 248, 245, 0) 70%);
     }
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 20px;
-      width: 20px;
-      border-radius: 50%;
-      background: #06B6D4;
-      cursor: pointer;
-      box-shadow: 0 0 15px #06B6D4;
-      border: 2px solid #FFFFFF;
+    /* Pulse glow for bio-fusion badge */
+    @keyframes subtlePulse {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.03); }
+    }
+    .pulse-glow {
+      animation: subtlePulse 4s infinite ease-in-out;
+    }
+    /* Smooth transitions */
+    .partner-card {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .partner-card:hover {
+      transform: translateY(-6px);
+    }
+    /* Hide scrollbar for tabs */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   </style>
 </head>
-<body class="bg-synth-950 text-slate-200 font-sans antialiased selection:bg-cyan-500/20 selection:text-cyan-300 relative overflow-x-hidden min-h-screen">
 
-  <div id="scrollProgress" class="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-neon-cyan via-neon-violet to-neon-emerald z-50 transition-all duration-150" style="width: 0%;"></div>
+<body class="selection:bg-mimic-sageSoft selection:text-mimic-sage">
 
-  <!-- Top VIP Status Bar -->
-  <div class="bg-synth-950/80 border-b border-white/[0.06] text-xs py-2 px-4 relative z-40 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-      <div class="flex items-center space-x-3">
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-[10px] uppercase font-semibold">
-          <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span> Bio-Intelligent Portal
-        </span>
-        <span class="hidden md:inline text-slate-400 text-xs">Direct Bio-Synthesis & Backbar Exosome Supply for Premium Clinics</span>
-      </div>
-      <div class="flex items-center gap-5 ml-auto text-xs font-mono">
-        <a href="tel:8356902748" class="text-slate-300 hover:text-cyan-400 transition-colors flex items-center gap-1.5">
-          <i class="fa-solid fa-phone text-cyan-400 text-[10px]"></i> +91 8356902748
-        </a>
-        <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%20Care%2C%20I%20am%20interested%20in%20a%20B2B%20salon%20partnership" target="_blank" class="text-neon-emerald hover:text-emerald-300 transition-colors flex items-center gap-1.5 font-medium">
-          <i class="fa-brands fa-whatsapp text-sm"></i> Instant Trade Desk
-        </a>
-      </div>
+  <!-- Toast Notification Box (Zero Alert() policy) -->
+  <div id="toastBox" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-mimic-charcoal text-mimic-bone px-5 py-3.5 rounded-2xl shadow-xl flex items-center space-x-3 border border-white/10">
+      <div id="toastIcon" class="w-6 h-6 rounded-full bg-mimic-sage text-white flex items-center justify-center text-xs">✓</div>
+      <p id="toastMessage" class="text-sm font-medium">Notification message</p>
     </div>
   </div>
 
-  <!-- Main AI-Grade Header -->
-  <header class="sticky top-0 z-40 bg-synth-950/70 backdrop-blur-2xl border-b border-white/[0.06]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+  <!-- Top Announcement Bar -->
+  <div class="bg-mimic-charcoal text-mimic-bone text-xs py-2 px-4 text-center tracking-wider uppercase font-medium flex items-center justify-center space-x-3">
+    <span>Crafted on Biomimetic Science</span>
+    <span class="inline-block w-1 h-1 rounded-full bg-mimic-amber"></span>
+    <span>Formulations that mirror your living skin barrier</span>
+    <span class="hidden md:inline-block w-1 h-1 rounded-full bg-mimic-amber"></span>
+    <a href="tel:8653902748" class="hidden md:inline-flex items-center text-mimic-amber hover:underline ml-1">
+      Call: 8653902748
+    </a>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-40 w-full glass-nav border-b border-mimic-surface transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
       
-      <!-- Logo -->
-      <a href="#" class="flex flex-col select-none group">
-        <div class="flex items-center gap-2">
-          <span class="w-2.5 h-2.5 rounded-sm bg-gradient-to-tr from-cyan-400 to-violet-500 shadow-[0_0_12px_rgba(6,182,212,0.8)]"></span>
-          <span class="text-2xl font-bold tracking-tight text-white font-sans group-hover:text-cyan-400 transition-colors">
-            SKINMIMIC<span class="text-cyan-400">.</span>
-          </span>
+      <!-- Brand Logo -->
+      <a href="#" class="group flex items-center space-x-3 focus:outline-none">
+        <div class="w-9 h-9 rounded-full bg-mimic-sage text-mimic-bone flex items-center justify-center font-serif text-xl tracking-tighter shadow-sm group-hover:scale-105 transition-transform">
+          S
         </div>
-        <span class="text-[9px] font-mono tracking-[0.35em] text-slate-400 uppercase font-medium pl-4">BIO-CARE LABS</span>
+        <div>
+          <span class="serif-title text-2xl font-semibold tracking-tight text-mimic-charcoal block leading-none">Skinmimic</span>
+          <span class="text-[9px] uppercase tracking-[0.28em] text-mimic-slate/70 font-semibold block mt-0.5">Biomimetic Care</span>
+        </div>
       </a>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden lg:flex items-center space-x-8 text-xs font-medium uppercase tracking-widest text-slate-300">
-        <a href="#capabilities" class="hover:text-cyan-400 transition-colors">Bio-Import</a>
-        <a href="#philosophy" class="hover:text-cyan-400 transition-colors">Architecture</a>
-        <a href="#partners" class="hover:text-cyan-400 transition-colors">4 Founding Core</a>
-        <a href="#catalog" class="hover:text-cyan-400 transition-colors">Active Matrix</a>
-        <a href="#calculator" class="hover:text-cyan-400 transition-colors">Profit Engine</a>
-        <a href="#faq" class="hover:text-cyan-400 transition-colors">Terminal</a>
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-mimic-slate">
+        <a href="#biomimetic-fusion" class="text-mimic-rosegold font-semibold hover:text-mimic-accent transition-colors flex items-center space-x-1.5">
+          <span class="w-2 h-2 rounded-full bg-mimic-rosegold animate-ping"></span>
+          <span>Biomimetic Fusion</span>
+        </a>
+        <a href="#what-is-biomimic" class="hover:text-mimic-sage transition-colors">What Is Biomimetic?</a>
+        <a href="#philosophy" class="hover:text-mimic-sage transition-colors">Our Philosophy</a>
+        <a href="#origin-story" class="hover:text-mimic-sage transition-colors">How We Started</a>
+        <a href="#partners" class="hover:text-mimic-sage transition-colors">The 4 Partners</a>
+        <a href="#barrier-quiz" class="hover:text-mimic-sage transition-colors">Skin Check</a>
       </nav>
 
-      <!-- Action -->
-      <div class="flex items-center gap-3">
-        <button onclick="openTesterModal()" class="px-5 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-cyan-500 to-violet-600 hover:from-cyan-400 hover:to-violet-500 text-white shadow-[0_0_25px_rgba(6,182,212,0.3)] transition-all">
-          Request Backbar Protocol
+      <!-- Contact CTA -->
+      <div class="hidden sm:flex items-center space-x-4">
+        <button onclick="copyPhoneNumber()" title="Click to copy number" class="text-xs px-3 py-2 rounded-xl border border-mimic-charcoal/20 text-mimic-slate hover:bg-mimic-sand transition-colors flex items-center space-x-1.5">
+          <svg class="w-3.5 h-3.5 text-mimic-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          <span class="font-mono">8653902748</span>
         </button>
-        <button onclick="toggleMobileMenu()" class="lg:hidden text-slate-300 p-2 text-xl focus:outline-none">
-          <i class="fa-solid fa-bars-staggered"></i>
-        </button>
+        <a href="#contact" class="bg-mimic-charcoal text-mimic-bone text-xs font-semibold px-5 py-2.5 rounded-full hover:bg-mimic-sage transition-all shadow-sm">
+          Get in Touch
+        </a>
       </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobileMenuBtn" aria-label="Toggle Navigation Menu" class="lg:hidden p-2 text-mimic-charcoal focus:outline-none">
+        <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
 
     </div>
 
-    <!-- Mobile Drawer -->
-    <div id="mobileMenu" class="hidden lg:hidden border-b border-white/[0.08] bg-synth-900/95 backdrop-blur-3xl px-6 py-6 space-y-3 text-xs uppercase tracking-wider font-mono">
-      <a href="#capabilities" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-cyan-400 py-1.5">Bio-Import</a>
-      <a href="#philosophy" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-cyan-400 py-1.5">Architecture</a>
-      <a href="#partners" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-cyan-400 py-1.5">4 Founding Core</a>
-      <a href="#catalog" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-cyan-400 py-1.5">Active Matrix</a>
-      <a href="#calculator" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-cyan-400 py-1.5">Profit Engine</a>
-      <a href="#faq" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-cyan-400 py-1.5">Terminal FAQ</a>
-      <div class="pt-4 border-t border-white/[0.08] flex flex-col gap-2">
-        <a href="tel:8356902748" class="text-center py-2.5 rounded-lg bg-white/5 border border-white/10 text-cyan-400">Call: +91 8356902748</a>
-        <a href="https://wa.me/918356902748" target="_blank" class="text-center py-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">WhatsApp Desk</a>
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-mimic-bone border-b border-mimic-surface px-6 pt-4 pb-8 space-y-4 shadow-lg">
+      <a href="#what-is-biomimic" onclick="toggleMobileMenu()" class="block text-base font-medium text-mimic-slate hover:text-mimic-sage py-1 border-b border-mimic-surface/60">What Is Biomimetic?</a>
+      <a href="#philosophy" onclick="toggleMobileMenu()" class="block text-base font-medium text-mimic-slate hover:text-mimic-sage py-1 border-b border-mimic-surface/60">Our Philosophy</a>
+      <a href="#origin-story" onclick="toggleMobileMenu()" class="block text-base font-medium text-mimic-slate hover:text-mimic-sage py-1 border-b border-mimic-surface/60">How We Started</a>
+      <a href="#partners" onclick="toggleMobileMenu()" class="block text-base font-medium text-mimic-slate hover:text-mimic-sage py-1 border-b border-mimic-surface/60">The 4 Partners</a>
+      <a href="#barrier-quiz" onclick="toggleMobileMenu()" class="block text-base font-medium text-mimic-slate hover:text-mimic-sage py-1 border-b border-mimic-surface/60">Skin Check</a>
+      <a href="#contact" onclick="toggleMobileMenu()" class="block text-base font-medium text-mimic-sage py-1">Contact & Inquiries</a>
+      
+      <div class="pt-3 flex flex-col space-y-2">
+        <a href="tel:8653902748" class="w-full text-center py-2.5 rounded-xl bg-mimic-charcoal text-mimic-bone font-medium text-sm flex items-center justify-center space-x-2">
+          <svg class="w-4 h-4 text-mimic-amber" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z"/></svg>
+          <span>Call 8653902748</span>
+        </a>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="relative min-h-[92vh] flex items-center justify-center pt-12 pb-24 px-4 sm:px-6 overflow-hidden">
-    <!-- Ambient Aurora Mesh Background -->
-    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-gradient-to-tr from-cyan-500/15 via-violet-600/15 to-emerald-500/10 blur-[130px] rounded-full pointer-events-none"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:28px_28px] opacity-25 pointer-events-none"></div>
+  <section class="relative pt-10 pb-20 md:pt-16 md:pb-28 overflow-hidden">
+    <!-- Subtle Background Ambient Blobs -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] halo-glow rounded-full pointer-events-none -z-10"></div>
+    <div class="absolute -top-24 right-0 w-96 h-96 bg-mimic-roseSoft/60 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
-    <div class="max-w-7xl mx-auto w-full relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      
+      <!-- Split Hero Grid: Brand Proposition & Molecular Merge Visual -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
         
-        <!-- Left Content -->
-        <div class="lg:col-span-7 space-y-7 text-center lg:text-left">
+        <!-- Hero Text Column -->
+        <div class="lg:col-span-7 text-left">
           
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-cyan-300 text-xs font-mono">
-            <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#06B6D4]"></span>
-            Next-Gen Bio-Identical Cellular Synthesis
+          <!-- Pill Badge -->
+          <div class="inline-flex items-center space-x-2 bg-mimic-sand border border-mimic-surface px-4 py-1.5 rounded-full mb-6 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-mimic-rosegold animate-pulse"></span>
+            <span class="text-xs uppercase tracking-widest font-semibold text-mimic-slate">Skin-Identical Epidermal Science</span>
           </div>
 
-          <h1 class="text-4xl sm:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-[1.05]">
-            Synthetic Biology. <br />
-            <span class="bg-gradient-to-r from-cyan-400 via-teal-300 to-violet-400 bg-clip-text text-transparent text-glow">Direct Clinical Import.</span> <br />
-            Exponential Salon ROI.
+          <!-- Main Headline with Updated Official Tagline -->
+          <h1 class="serif-title text-4xl sm:text-6xl md:text-6.5xl font-normal text-mimic-charcoal tracking-tight leading-[1.08]">
+            Formulations engineered to <span class="italic font-light text-mimic-rosegold">mimic your real skin.</span>
           </h1>
 
-          <p class="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
-            <span class="text-white font-semibold">SKINMIMIC CARE</span> bridges international bio-nanotechnology directly into high-tier Indian salon backbars. By eliminating multi-tier distributor taxations, we deliver hospital-grade PDRN, Exosomes, and sterile mesotherapy actives designed to deliver <span class="text-cyan-300 font-mono font-medium">75%–85%</span> treatment margins.
+          <!-- Brand Mission Definition -->
+          <p class="mt-6 text-base sm:text-lg text-mimic-slate/90 max-w-2xl font-light leading-relaxed">
+            <strong class="font-semibold text-mimic-charcoal">Skinmimic Care</strong> is founded on a singular biological truth: your skin should never have to fight your skincare. By replicating your exact cellular lipid matrix—ceramides, cholesterol, and biomimetic peptides—our formulas dissolve seamlessly into your skin barrier like matching puzzle pieces.
           </p>
-
-          <!-- Metrics HUD -->
-          <div class="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-md max-w-xl mx-auto lg:mx-0 text-left">
-            <div class="p-2">
-              <div class="text-2xl sm:text-3xl font-extrabold text-white font-mono">04</div>
-              <div class="text-[10px] text-slate-400 uppercase tracking-widest font-mono mt-1">Founding Pillars</div>
-            </div>
-            <div class="p-2 border-l border-white/[0.08] pl-4">
-              <div class="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono">0%</div>
-              <div class="text-[10px] text-slate-400 uppercase tracking-widest font-mono mt-1">Middleman Tax</div>
-            </div>
-            <div class="p-2 border-l border-white/[0.08] pl-4">
-              <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">85%</div>
-              <div class="text-[10px] text-slate-400 uppercase tracking-widest font-mono mt-1">Salon Profit Ceiling</div>
-            </div>
-          </div>
 
           <!-- CTAs -->
-          <div class="flex flex-col sm:flex-row items-center gap-4 pt-1">
-            <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%20Care%2C%20I%20am%20interested%20in%20a%20B2B%20salon%20partnership" target="_blank" class="w-full sm:w-auto px-7 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(16,185,129,0.25)] transition-all">
-              <i class="fa-brands fa-whatsapp text-base"></i> Deploy WhatsApp Desk
+          <div class="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <a href="#biomimetic-fusion" class="px-8 py-4 rounded-full bg-mimic-charcoal text-mimic-bone text-sm font-semibold hover:bg-mimic-rosegold hover:text-white transition-all duration-300 shadow-md text-center flex items-center justify-center space-x-2">
+              <svg class="w-4 h-4 text-mimic-rosegold group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              <span>Explore The Molecular Fusion</span>
             </a>
-
-            <a href="#calculator" class="w-full sm:w-auto px-7 py-4 rounded-xl bg-white/[0.04] border border-white/10 hover:border-cyan-400/40 text-slate-200 hover:text-white font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-all">
-              <i class="fa-solid fa-calculator text-cyan-400"></i> Open Margin Terminal
+            <a href="tel:8653902748" class="px-7 py-4 rounded-full bg-mimic-bone border border-mimic-charcoal/20 text-mimic-charcoal text-sm font-semibold hover:bg-mimic-sand transition-all duration-300 text-center flex items-center justify-center space-x-2">
+              <svg class="w-4 h-4 text-mimic-sage" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z"/></svg>
+              <span>Call: 8653902748</span>
             </a>
           </div>
 
+          <!-- Quick Trust Metrics -->
+          <div class="mt-12 pt-8 border-t border-mimic-surface grid grid-cols-3 gap-4">
+            <div>
+              <p class="text-2xl sm:text-3xl font-serif text-mimic-rosegold font-medium">1 : 1</p>
+              <p class="text-[11px] font-semibold uppercase tracking-wider text-mimic-slate/80 mt-1">Bio-Identical Ratio</p>
+              <p class="text-[11px] text-mimic-slate/60">Mirrors natural stratum corneum</p>
+            </div>
+            <div>
+              <p class="text-2xl sm:text-3xl font-serif text-mimic-sage font-medium">0%</p>
+              <p class="text-[11px] font-semibold uppercase tracking-wider text-mimic-slate/80 mt-1">Foreign Silicones</p>
+              <p class="text-[11px] text-mimic-slate/60">Zero pore-suffocating film</p>
+            </div>
+            <div>
+              <p class="text-2xl sm:text-3xl font-serif text-mimic-amber font-medium">4 Minds</p>
+              <p class="text-xs font-semibold uppercase tracking-wider text-mimic-slate/80 mt-1">Partnership</p>
+              <p class="text-[11px] text-mimic-slate/60">Lab, clinic, supply & vision</p>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Right Visual Showcase: Holographic AI Ampoule Card -->
-        <div class="lg:col-span-5">
-          <div class="ai-glass gradient-border rounded-3xl p-6 sm:p-8 space-y-6">
-            <div class="flex items-center justify-between pb-4 border-b border-white/[0.08]">
-              <div>
-                <span class="text-[10px] font-mono tracking-widest uppercase text-cyan-400 font-semibold block">MATRIX ASSET 01</span>
-                <h3 class="text-lg font-bold text-white tracking-wide">Biomimetic Exosome Ampoule</h3>
+        <!-- Hero Visual Column: Biomimetic Molecular Merge Showcase -->
+        <div class="lg:col-span-5 relative">
+          
+          <!-- Outer Decorative Glow Ring -->
+          <div class="absolute -inset-2 bg-gradient-to-tr from-mimic-rosegold/30 via-mimic-sand/40 to-mimic-sage/20 rounded-[2.5rem] blur-xl opacity-70"></div>
+          
+          <!-- Visual Container -->
+          <div class="relative bg-mimic-bone rounded-[2rem] p-3 sm:p-4 border border-mimic-surface subtle-shadow overflow-hidden group">
+            
+            <div class="relative w-full aspect-[4/3] sm:aspect-square rounded-2xl overflow-hidden bg-mimic-sand">
+              <!-- Official Skinmimic Biomimetic Visual -->
+              <img 
+                src="watermarked_img_3803370270756467499.png" 
+                alt="Biomimetic skincare lipid molecules and peptides seamlessly merging into the cellular human skin barrier" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                loading="eager"
+              />
+
+              <!-- Overlay Gradient for Depth -->
+              <div class="absolute inset-0 bg-gradient-to-t from-mimic-charcoal/80 via-mimic-charcoal/20 to-transparent"></div>
+
+              <!-- Top Floating Badge -->
+              <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/40 shadow-sm flex items-center space-x-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-[11px] font-medium tracking-wide text-mimic-charcoal">Cellular Assimilation in Progress</span>
               </div>
-              <span class="px-2.5 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-[10px]">
-                Active Batch V.26
-              </span>
-            </div>
 
-            <!-- Sleek Tech Graphic Container -->
-            <div class="rounded-2xl bg-synth-900/90 p-8 border border-white/[0.06] flex flex-col items-center justify-center relative overflow-hidden group">
-              <div class="absolute inset-0 bg-gradient-to-b from-cyan-500/10 via-transparent to-violet-500/10 pointer-events-none"></div>
-              
-              <div class="w-36 h-48 relative my-2 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
-                <svg viewBox="0 0 100 160" class="w-full h-full drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]">
-                  <rect x="42" y="8" width="16" height="20" rx="3" fill="#1E293B" stroke="#06B6D4" stroke-width="1" />
-                  <rect x="45" y="2" width="10" height="8" rx="2" fill="#06B6D4" />
-                  <rect x="36" y="28" width="28" height="9" rx="2" fill="#0F172A" stroke="#06B6D4" stroke-width="1.2" />
-                  <rect x="25" y="37" width="50" height="110" rx="12" fill="#0B132B" stroke="#38BDF8" stroke-width="1.5" />
-                  <rect x="29" y="66" width="42" height="76" rx="6" fill="#06B6D4" fill-opacity="0.25" />
-                  <!-- Bio Scan Line -->
-                  <line x1="29" y1="85" x2="71" y2="85" stroke="#38BDF8" stroke-width="1" stroke-dasharray="3,2" />
-                  <rect x="33" y="92" width="34" height="40" rx="2" fill="#030712" stroke="#06B6D4" stroke-width="0.75" />
-                  <text x="50" y="106" font-size="5" font-family="sans-serif" font-weight="800" text-anchor="middle" fill="#FFFFFF">SKINMIMIC</text>
-                  <text x="50" y="115" font-size="4" font-family="monospace" font-weight="600" text-anchor="middle" fill="#06B6D4">EXOSOME</text>
-                  <text x="50" y="123" font-size="3" font-family="monospace" text-anchor="middle" fill="#94A3B8">15B TITER</text>
-                </svg>
+              <!-- Bottom Molecular Legend Card -->
+              <div class="absolute bottom-4 inset-x-4 bg-mimic-charcoal/90 backdrop-blur-md p-4 rounded-xl border border-white/10 text-mimic-bone">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono uppercase tracking-widest text-mimic-rosegold">Stratum Corneum Grid</span>
+                  <span class="text-[11px] font-mono text-emerald-400">100% Bio-Recognized</span>
+                </div>
+                <p class="text-xs text-mimic-bone/80 mt-1.5 leading-snug">
+                  Active lipids and peptide micro-spheres fusing directly with keratinocyte bilayers without triggering inflammatory response.
+                </p>
+                <!-- Micro Indicators -->
+                <div class="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] text-mimic-bone/60 font-mono">
+                  <span>● Ceramides: Fused</span>
+                  <span>● Fatty Acids: Locked</span>
+                  <span>● Squalane: Native</span>
+                </div>
               </div>
-              <p class="text-xs font-mono text-slate-400 mt-2">Lyophilized High-Titer Bio-Signals</p>
+
             </div>
 
-            <div class="space-y-2 text-xs font-mono text-slate-300">
-              <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
-                <span class="text-slate-400">Particle Density:</span>
-                <span class="text-cyan-400 font-semibold">15,000,000,000 / mL</span>
-              </div>
-              <div class="flex justify-between py-1.5 border-b border-white/[0.06]">
-                <span class="text-slate-400">Mechanism:</span>
-                <span>Cellular Signal Mimicry</span>
-              </div>
-              <div class="flex justify-between py-1.5">
-                <span class="text-slate-400">Net Treatment Yield:</span>
-                <span class="text-emerald-400 font-semibold">82% Margin Factor</span>
-              </div>
+            <!-- Callout Under Image -->
+            <div class="mt-3 px-2 py-1 flex items-center justify-between text-xs text-mimic-slate/70">
+              <span class="italic">Macro visualization of skin-identical penetration</span>
+              <a href="#biomimetic-fusion" class="text-mimic-rosegold font-semibold hover:underline flex items-center space-x-1">
+                <span>Test Interactive Lab</span>
+                <span>→</span>
+              </a>
             </div>
 
-            <button onclick="openTesterModal()" class="w-full py-3.5 rounded-xl bg-white/[0.05] hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 text-cyan-300 font-mono text-xs font-semibold uppercase tracking-wider transition-all">
-              Initialize Backbar Quote
-            </button>
           </div>
+
         </div>
 
       </div>
+
     </div>
   </section>
 
-  <!-- Section 1: Bio-Import Capabilities -->
-  <section id="capabilities" class="py-24 bg-synth-900/60 px-4 sm:px-6 border-t border-white/[0.06] relative">
-    <div class="max-w-7xl mx-auto space-y-12">
-      <div class="text-center max-w-2xl mx-auto">
-        <span class="text-xs uppercase font-mono tracking-widest text-cyan-400 font-semibold">Global Bio-Supply Infrastructure</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Direct Import & Formulation Capabilities</h2>
-        <div class="w-16 h-0.5 bg-gradient-to-r from-cyan-400 to-violet-500 mx-auto mt-4"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="ai-glass rounded-2xl p-8 space-y-4">
-          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center text-xl font-mono">
-            <i class="fa-solid fa-satellite-dish"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white">Direct Clinical Lab Pipeline</h3>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Direct acquisition from Seoul and Zurich biotechnology laboratories under sterile cold-chain customs clearance. Total elimination of local intermediary markups.
-          </p>
-          <div class="text-xs font-mono text-cyan-300 pt-2 border-t border-white/[0.06]">
-            ✓ Direct CoA Batch Validation Included
-          </div>
-        </div>
-
-        <div class="ai-glass rounded-2xl p-8 space-y-4">
-          <div class="w-12 h-12 rounded-xl bg-violet-500/10 border border-violet-500/30 text-violet-400 flex items-center justify-center text-xl font-mono">
-            <i class="fa-solid fa-microchip"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white">Bespoke Backbar Architecture</h3>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Custom peptide concentrations and acid peels tuned precisely to your salon's clinical hardware (microneedling, hydro-infusion, ultrasound).
-          </p>
-          <div class="text-xs font-mono text-violet-300 pt-2 border-t border-white/[0.06]">
-            ✓ Signature Protocol Design
-          </div>
-        </div>
-
-        <div class="ai-glass rounded-2xl p-8 space-y-4">
-          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-xl font-mono">
-            <i class="fa-solid fa-fingerprint"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white">Private Label Bio-Synthesis</h3>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Take-home serums synthesized under your salon brand name. Prevents your VIP clients from repurchasing standard retail products online.
-          </p>
-          <div class="text-xs font-mono text-emerald-300 pt-2 border-t border-white/[0.06]">
-            ✓ 100% Retained Retail Revenue
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 2: Architecture & Philosophy -->
-  <section id="philosophy" class="py-24 bg-synth-950 px-4 sm:px-6">
-    <div class="max-w-7xl mx-auto space-y-12">
-      <div class="text-center max-w-2xl mx-auto">
-        <span class="text-xs uppercase font-mono tracking-widest text-violet-400 font-semibold">Underlying Engine</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Cellular Bio-Mimicry Architecture</h2>
-        <div class="w-16 h-0.5 bg-gradient-to-r from-violet-500 to-cyan-400 mx-auto mt-4"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="ai-glass rounded-2xl p-8 space-y-3">
-          <span class="font-mono text-xs text-cyan-400">#01 // BIOLOGY</span>
-          <h3 class="text-lg font-bold text-white">Bio-Identical Compatibility</h3>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Our active molecules share 98% structural homology with human dermal structures, accelerating transdermal uptake without allergic barrier rejections.
-          </p>
-        </div>
-
-        <div class="ai-glass rounded-2xl p-8 space-y-3">
-          <span class="font-mono text-xs text-violet-400">#02 // STABILITY</span>
-          <h3 class="text-lg font-bold text-white">Lyophilized Vacuum Lock</h3>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Unlike pre-diluted store serums that oxidize in inventory, our exosomes remain cryo-stable until the exact moment of treatment reconstitution.
-          </p>
-        </div>
-
-        <div class="ai-glass rounded-2xl p-8 space-y-3">
-          <span class="font-mono text-xs text-emerald-400">#03 // ECONOMICS</span>
-          <h3 class="text-lg font-bold text-white">Direct Backbar Margins</h3>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            By shifting financial capital away from distributor middlemen directly into product potency, salons retain up to 85% of treatment fees as net profit.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 3: 4 Founding Pillars -->
-  <section id="partners" class="py-24 bg-synth-900/40 px-4 sm:px-6 border-t border-white/[0.06]">
-    <div class="max-w-7xl mx-auto space-y-12">
-      <div class="text-center max-w-2xl mx-auto">
-        <span class="text-xs uppercase font-mono tracking-widest text-cyan-400 font-semibold">Governance & Execution</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">The 4 Founding Pillars</h2>
-        <div class="w-16 h-0.5 bg-gradient-to-r from-cyan-400 to-emerald-400 mx-auto mt-4"></div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="ai-glass rounded-2xl p-6 space-y-3 text-left">
-          <div class="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center font-mono font-bold">01</div>
-          <h4 class="text-base font-bold text-white">Global Bio-Import</h4>
-          <p class="text-[11px] font-mono text-cyan-400">INTERNATIONAL SOURCING</p>
-          <p class="text-xs text-slate-300 leading-relaxed">Regulatory clearing, international lab connections, cold-chain assurance.</p>
-        </div>
-
-        <div class="ai-glass rounded-2xl p-6 space-y-3 text-left">
-          <div class="w-10 h-10 rounded-lg bg-violet-500/10 border border-violet-500/30 text-violet-400 flex items-center justify-center font-mono font-bold">02</div>
-          <h4 class="text-base font-bold text-white">Formulation R&D</h4>
-          <p class="text-[11px] font-mono text-violet-400">MOLECULAR CHEMISTRY</p>
-          <p class="text-xs text-slate-300 leading-relaxed">Cellular stability, peptide buffering, physiological pH precision.</p>
-        </div>
-
-        <div class="ai-glass rounded-2xl p-6 space-y-3 text-left">
-          <div class="w-10 h-10 rounded-lg bg-teal-500/10 border border-teal-500/30 text-teal-400 flex items-center justify-center font-mono font-bold">03</div>
-          <h4 class="text-base font-bold text-white">Clinical Protocol</h4>
-          <p class="text-[11px] font-mono text-teal-400">BACKBAR MASTERY</p>
-          <p class="text-xs text-slate-300 leading-relaxed">Designing SOPs, hardware calibration, aesthetician certification.</p>
-        </div>
-
-        <div class="ai-glass rounded-2xl p-6 space-y-3 text-left">
-          <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center font-mono font-bold">04</div>
-          <h4 class="text-base font-bold text-white">Salon Operations</h4>
-          <p class="text-[11px] font-mono text-emerald-400">PAN-INDIA LOGISTICS</p>
-          <p class="text-xs text-slate-300 leading-relaxed">Guaranteed 48-hour air dispatch, B2B billing, automated restock cycles.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 4: Active Matrix Catalog -->
-  <section id="catalog" class="py-24 bg-synth-950 px-4 sm:px-6">
-    <div class="max-w-7xl mx-auto space-y-12">
-      <div class="text-center max-w-2xl mx-auto">
-        <span class="text-xs uppercase font-mono tracking-widest text-cyan-400 font-semibold">Active Matrix</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">B2B Salon Backbar Catalog</h2>
-        <div class="w-16 h-0.5 bg-gradient-to-r from-cyan-400 to-violet-500 mx-auto mt-4"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <!-- Item 1 -->
-        <div class="ai-glass rounded-2xl p-6 flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
-            <div class="flex justify-between items-center font-mono text-[10px]">
-              <span class="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">DNA THERAPY</span>
-              <span class="text-slate-400">PDRN 5.2%</span>
-            </div>
-            <h3 class="text-lg font-bold text-white">PDRN Salmon DNA Infusion Ampoules</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Medical grade sodium DNA for cellular tissue repair, collagen induction, and deep glass-skin hydration. Ideal for microneedling and ultrasound infusion.
-            </p>
-          </div>
-          <div class="pt-4 border-t border-white/[0.06] flex justify-between items-center">
-            <div>
-              <span class="text-[10px] font-mono text-slate-400 block">PROFIT MARGIN</span>
-              <span class="text-base font-bold text-emerald-400 font-mono">82% Yield</span>
-            </div>
-            <button onclick="openTesterModal()" class="px-3.5 py-1.5 rounded-lg bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 text-cyan-300 font-mono text-xs transition-colors">
-              Get Quote
-            </button>
-          </div>
-        </div>
-
-        <!-- Item 2 -->
-        <div class="ai-glass rounded-2xl p-6 flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
-            <div class="flex justify-between items-center font-mono text-[10px]">
-              <span class="px-2 py-0.5 rounded bg-violet-500/10 text-violet-400 border border-violet-500/20">EXOSOME TECH</span>
-              <span class="text-slate-400">15B TITER</span>
-            </div>
-            <h3 class="text-lg font-bold text-white">Lyophilized Bio-Exosome Kit</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Freeze-dried cellular signal vesicles with activating diluent. Reverses barrier damage, repairs stubborn pigmentation, and resets dull skin texture.
-            </p>
-          </div>
-          <div class="pt-4 border-t border-white/[0.06] flex justify-between items-center">
-            <div>
-              <span class="text-[10px] font-mono text-slate-400 block">PROFIT MARGIN</span>
-              <span class="text-base font-bold text-emerald-400 font-mono">85% Yield</span>
-            </div>
-            <button onclick="openTesterModal()" class="px-3.5 py-1.5 rounded-lg bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 text-cyan-300 font-mono text-xs transition-colors">
-              Get Quote
-            </button>
-          </div>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="ai-glass rounded-2xl p-6 flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
-            <div class="flex justify-between items-center font-mono text-[10px]">
-              <span class="px-2 py-0.5 rounded bg-teal-500/10 text-teal-400 border border-teal-500/20">PEEL PROTOCOL</span>
-              <span class="text-slate-400">pH 3.4</span>
-            </div>
-            <h3 class="text-lg font-bold text-white">Cellular Biomimetic Acid Solution</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Gentle buffered multi-acid peel (Mandelic, Lactic, Lactobionic) designed for zero downtime, delivering high-sheen radiance for luxury bridal facials.
-            </p>
-          </div>
-          <div class="pt-4 border-t border-white/[0.06] flex justify-between items-center">
-            <div>
-              <span class="text-[10px] font-mono text-slate-400 block">PROFIT MARGIN</span>
-              <span class="text-base font-bold text-emerald-400 font-mono">79% Yield</span>
-            </div>
-            <button onclick="openTesterModal()" class="px-3.5 py-1.5 rounded-lg bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 text-cyan-300 font-mono text-xs transition-colors">
-              Get Quote
-            </button>
-          </div>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="ai-glass rounded-2xl p-6 flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
-            <div class="flex justify-between items-center font-mono text-[10px]">
-              <span class="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">POST-PROCEDURE</span>
-              <span class="text-slate-400">COPPER GHK-CU</span>
-            </div>
-            <h3 class="text-lg font-bold text-white">Sterile Oligopeptide Soothing Mask</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Medical grade biocellulose sheet saturated with copper peptides, panthenol, and madecassoside to eliminate redness in under 15 minutes post-facial.
-            </p>
-          </div>
-          <div class="pt-4 border-t border-white/[0.06] flex justify-between items-center">
-            <div>
-              <span class="text-[10px] font-mono text-slate-400 block">PROFIT MARGIN</span>
-              <span class="text-base font-bold text-emerald-400 font-mono">80% Yield</span>
-            </div>
-            <button onclick="openTesterModal()" class="px-3.5 py-1.5 rounded-lg bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 text-cyan-300 font-mono text-xs transition-colors">
-              Get Quote
-            </button>
-          </div>
-        </div>
-
-        <!-- Item 5 -->
-        <div class="ai-glass rounded-2xl p-6 flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
-            <div class="flex justify-between items-center font-mono text-[10px]">
-              <span class="px-2 py-0.5 rounded bg-violet-500/10 text-violet-400 border border-violet-500/20">RADIANCE</span>
-              <span class="text-slate-400">LIPOSOMAL 15%</span>
-            </div>
-            <h3 class="text-lg font-bold text-white">Glutathione & Vit-C Booster Vials</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Sterile liposomal whitening concentrate that targets melasma, dark spots, and photo-damage without irritation or photosensitivity.
-            </p>
-          </div>
-          <div class="pt-4 border-t border-white/[0.06] flex justify-between items-center">
-            <div>
-              <span class="text-[10px] font-mono text-slate-400 block">PROFIT MARGIN</span>
-              <span class="text-base font-bold text-emerald-400 font-mono">83% Yield</span>
-            </div>
-            <button onclick="openTesterModal()" class="px-3.5 py-1.5 rounded-lg bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 text-cyan-300 font-mono text-xs transition-colors">
-              Get Quote
-            </button>
-          </div>
-        </div>
-
-        <!-- Item 6 -->
-        <div class="ai-glass rounded-2xl p-6 flex flex-col justify-between space-y-5">
-          <div class="space-y-3">
-            <div class="flex justify-between items-center font-mono text-[10px]">
-              <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">HYDRATION</span>
-              <span class="text-slate-400">8-MW MATRIX</span>
-            </div>
-            <h3 class="text-lg font-bold text-white">Hyaluronic Biomimetic Plumper</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              Cross-linked multi-molecular weight hyaluronic acid backbar matrix that hydrates all skin layers simultaneously for long-lasting plumpness.
-            </p>
-          </div>
-          <div class="pt-4 border-t border-white/[0.06] flex justify-between items-center">
-            <div>
-              <span class="text-[10px] font-mono text-slate-400 block">PROFIT MARGIN</span>
-              <span class="text-base font-bold text-emerald-400 font-mono">84% Yield</span>
-            </div>
-            <button onclick="openTesterModal()" class="px-3.5 py-1.5 rounded-lg bg-white/5 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 text-cyan-300 font-mono text-xs transition-colors">
-              Get Quote
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 5: Profit Engine (Calculator) -->
-  <section id="calculator" class="py-24 bg-synth-900/60 px-4 sm:px-6 border-t border-white/[0.06]">
-    <div class="max-w-4xl mx-auto space-y-10">
-      <div class="text-center max-w-xl mx-auto">
-        <span class="text-xs uppercase font-mono tracking-widest text-cyan-400 font-semibold">Yield Simulator</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Salon Margin Terminal</h2>
-        <p class="text-slate-400 text-xs sm:text-sm mt-2 font-mono">Simulate your clinic's monthly net profitability under direct import costing:</p>
-      </div>
-
-      <div class="ai-glass rounded-3xl p-6 sm:p-10 space-y-8">
-        
-        <div class="space-y-6">
-          <div>
-            <div class="flex justify-between items-center mb-2 font-mono text-xs">
-              <label class="text-slate-300">MONTHLY CLIENT PROTOCOLS:</label>
-              <span id="sessionsVal" class="text-cyan-400 font-bold">50 Sessions</span>
-            </div>
-            <input id="sessionsInput" type="range" min="10" max="300" value="50" step="5" class="w-full cursor-pointer" oninput="updateCalculator()">
-          </div>
-
-          <div>
-            <div class="flex justify-between items-center mb-2 font-mono text-xs">
-              <label class="text-slate-300">SALON BILLING PER FACIAL (₹):</label>
-              <span id="priceVal" class="text-cyan-400 font-bold">₹ 4,000</span>
-            </div>
-            <input id="priceInput" type="range" min="1500" max="20000" value="4000" step="250" class="w-full cursor-pointer" oninput="updateCalculator()">
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-white/[0.08] text-center font-mono">
-          <div class="p-4 bg-synth-950/80 rounded-2xl border border-white/[0.06]">
-            <span class="text-[10px] uppercase text-slate-400 block">Total Billing</span>
-            <div id="totalRevenue" class="text-xl sm:text-2xl font-bold text-white mt-1">₹ 2,00,000</div>
-          </div>
-
-          <div class="p-4 bg-synth-950/80 rounded-2xl border border-white/[0.06]">
-            <span class="text-[10px] uppercase text-slate-400 block">Direct Product Cost (~18%)</span>
-            <div id="totalCost" class="text-xl sm:text-2xl font-bold text-slate-400 mt-1">₹ 35,000</div>
-          </div>
-
-          <div class="p-4 bg-gradient-to-br from-emerald-500/20 to-cyan-500/10 border border-emerald-500/40 rounded-2xl shadow-[0_0_20px_rgba(16,185,129,0.15)]">
-            <span class="text-[10px] uppercase text-emerald-400 block font-semibold">Net Retained Profit</span>
-            <div id="netProfit" class="text-xl sm:text-2xl font-bold text-emerald-300 mt-1">₹ 1,65,000</div>
-          </div>
-        </div>
-
-        <div class="text-center pt-2">
-          <a href="https://wa.me/918356902748?text=Hello%20Skinmimic%2C%20I%20calculated%20my%20salon%20margins%20and%20want%20to%20place%20an%20order" target="_blank" class="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white rounded-xl font-semibold text-xs tracking-wider uppercase font-mono shadow-[0_0_25px_rgba(16,185,129,0.3)] transition-all">
-            <i class="fa-brands fa-whatsapp text-base"></i> Lock In These Margins on WhatsApp
-          </a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 6: FAQ -->
-  <section id="faq" class="py-24 bg-synth-950 px-4 sm:px-6">
-    <div class="max-w-4xl mx-auto space-y-12">
-      <div class="text-center max-w-xl mx-auto">
-        <span class="text-xs uppercase font-mono tracking-widest text-cyan-400 font-semibold">Information Terminal</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">B2B Protocols & FAQ</h2>
-        <div class="w-16 h-0.5 bg-gradient-to-r from-cyan-400 to-violet-500 mx-auto mt-4"></div>
-      </div>
-
-      <div class="space-y-4">
-        <div class="ai-glass rounded-2xl p-6">
-          <h4 class="font-bold text-base text-white">How does direct bio-importing provide 85% backbar margins?</h4>
-          <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
-            Conventional brands work with national distributors, regional stockists, and local sales agents—each adding a 20-30% markup before reaching your salon. Skinmimic Care imports active raw formulas directly from source labs and ships straight to your salon backbar, eliminating unnecessary middlemen commissions.
-          </p>
-        </div>
-
-        <div class="ai-glass rounded-2xl p-6">
-          <h4 class="font-bold text-base text-white">Is there an initial Minimum Order Quantity (MOQ)?</h4>
-          <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
-            No massive stock commitments are required for verified salons. You can start with our VIP Sample Trial Kit or a single backbar box (10 vials) to test on your premium clients before placing bulk orders.
-          </p>
-        </div>
-
-        <div class="ai-glass rounded-2xl p-6">
-          <h4 class="font-bold text-base text-white">Do you supply aesthetician protocols and clinical SOPs?</h4>
-          <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
-            Yes! Every salon partner receives video masterclasses, printed clinical protocol cards, and step-by-step aesthetician guidance to ensure safe and visible results on Indian skin tones.
-          </p>
-        </div>
-
-        <div class="ai-glass rounded-2xl p-6">
-          <h4 class="font-bold text-base text-white">How fast is Pan-India logistics dispatched?</h4>
-          <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
-            All orders placed before 2:00 PM are dispatched same-day via express air courier with 24 to 48-hour delivery across metro cities in India.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 7: B2B Registration Form -->
-  <section id="contact" class="py-24 bg-synth-900/60 px-4 sm:px-6 border-t border-white/[0.06]">
-    <div class="max-w-3xl mx-auto space-y-10">
-      <div class="text-center max-w-xl mx-auto">
-        <span class="text-xs uppercase font-mono tracking-widest text-cyan-400 font-semibold">Direct Collaboration</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Partner With Skinmimic Care</h2>
-        <p class="text-slate-400 text-xs sm:text-sm mt-2 font-mono">Register your facility to receive clinical backbar access:</p>
-      </div>
-
-      <div class="ai-glass rounded-3xl p-6 sm:p-10">
-        <form onsubmit="handleSampleSubmit(event)" class="space-y-4 text-xs font-mono">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-slate-300 mb-1">CLINIC / SALON NAME</label>
-              <input required type="text" placeholder="e.g. Elegance Skin Studio" class="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-synth-950/80 text-white focus:outline-none focus:border-cyan-400">
-            </div>
-            <div>
-              <label class="block text-slate-300 mb-1">DIRECTOR / PRACTITIONER NAME</label>
-              <input required type="text" placeholder="e.g. Dr. Pooja / Mr. Aasim" class="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-synth-950/80 text-white focus:outline-none focus:border-cyan-400">
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-slate-300 mb-1">WHATSAPP TERMINAL NUMBER</label>
-              <input required type="tel" placeholder="+91 98765 43210" class="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-synth-950/80 text-white focus:outline-none focus:border-cyan-400">
-            </div>
-            <div>
-              <label class="block text-slate-300 mb-1">FACILITY LOCATION / CITY</label>
-              <input required type="text" placeholder="e.g. Mumbai, Maharashtra" class="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-synth-950/80 text-white focus:outline-none focus:border-cyan-400">
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-slate-300 mb-1">DESIRED BACKBAR FORMULATION</label>
-            <select class="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-synth-950 text-white focus:outline-none focus:border-cyan-400">
-              <option>PDRN Salmon DNA Infusion Ampoules</option>
-              <option>Lyophilized Bio-Exosome Kit</option>
-              <option>Biomimetic Acid Solution Peels</option>
-              <option>Complete Backbar Starter Kit (All Products)</option>
-              <option>Custom Private Label / White Label Formulation</option>
-            </select>
-          </div>
-
-          <button type="submit" class="w-full py-4 bg-gradient-to-r from-cyan-500 via-teal-500 to-violet-600 hover:from-cyan-400 hover:to-violet-500 text-white font-bold rounded-xl text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(6,182,212,0.3)] transition-all mt-4">
-            Authorize B2B Partnership Protocol
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-synth-950 border-t border-white/[0.08] text-slate-400 py-12 px-4 sm:px-6">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 font-sans">
+  <!-- Dedicated 'Biomimetic Fusion' Science Spotlight & Interactive Canvas -->
+  <section id="biomimetic-fusion" class="py-20 md:py-28 bg-mimic-porcelain border-y border-mimic-surface relative">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
       
-      <div class="space-y-3 md:col-span-2">
-        <div class="flex items-center gap-2">
-          <span class="w-2.5 h-2.5 rounded-sm bg-cyan-400 shadow-[0_0_8px_#06B6D4]"></span>
-          <span class="text-xl font-bold tracking-tight text-white">SKINMIMIC CARE</span>
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center space-x-2 bg-mimic-roseSoft border border-mimic-rosegold/30 px-3.5 py-1 rounded-full mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-mimic-rosegold"></span>
+          <span class="text-[11px] uppercase tracking-widest text-mimic-accent font-bold">Interactive Science Spotlight</span>
         </div>
-        <p class="text-xs text-slate-400 max-w-md leading-relaxed">
-          Autonomous bio-cellular synthesis, salmon DNA infusions, and lyophilized exosome formulations designed exclusively for aesthetic clinics and luxury salon backbars.
-        </p>
-        <p class="text-xs text-slate-400 font-mono pt-2">
-          Direct Trade Hotline: <a href="tel:8356902748" class="text-cyan-400 underline">+91 8356902748</a>
+        <h2 class="serif-title text-3xl sm:text-5xl font-medium text-mimic-charcoal">
+          The Biomimetic Fusion in Real Time
+        </h2>
+        <p class="mt-4 text-base text-mimic-slate leading-relaxed">
+          Synthetic lotions sit atop your skin like grease on glass. <strong class="text-mimic-charcoal">Skinmimic</strong> matches the exact crystalline lipid composition of your skin's inter-cellular cement. Hover or touch anywhere on the matrix below to release and assimilate bio-identical molecules.
         </p>
       </div>
 
-      <div class="space-y-2 font-mono text-xs">
-        <h4 class="uppercase tracking-widest font-bold text-white">Index</h4>
-        <ul class="space-y-1.5 text-slate-400">
-          <li><a href="#capabilities" class="hover:text-cyan-400">Bio-Import</a></li>
-          <li><a href="#philosophy" class="hover:text-cyan-400">Architecture</a></li>
-          <li><a href="#partners" class="hover:text-cyan-400">4 Founding Core</a></li>
-          <li><a href="#catalog" class="hover:text-cyan-400">Active Matrix</a></li>
-          <li><a href="#calculator" class="hover:text-cyan-400">Profit Engine</a></li>
-        </ul>
+      <!-- Interactive Canvas Lab Container -->
+      <div class="bg-mimic-bone rounded-3xl border border-mimic-surface subtle-shadow overflow-hidden">
+        
+        <!-- Lab Header Toolbar -->
+        <div class="px-6 py-4 bg-mimic-sand/70 border-b border-mimic-surface flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center space-x-3">
+            <span class="w-3 h-3 rounded-full bg-mimic-rosegold animate-pulse"></span>
+            <div>
+              <span class="text-xs font-mono uppercase tracking-wider text-mimic-charcoal font-bold">Live Stratum Corneum Chamber</span>
+              <span class="text-[11px] text-mimic-slate block">Move cursor or tap screen to guide bio-molecules into cellular channels</span>
+            </div>
+          </div>
+
+          <!-- Real-Time Metrics -->
+          <div class="flex items-center space-x-6 text-xs font-mono">
+            <div class="bg-white/80 px-3 py-1.5 rounded-lg border border-mimic-surface">
+              <span class="text-mimic-slate/70">Molecules Assimilated:</span>
+              <span id="assimilationCount" class="font-bold text-mimic-rosegold ml-1.5">0</span>
+            </div>
+            <div class="bg-white/80 px-3 py-1.5 rounded-lg border border-mimic-surface hidden sm:block">
+              <span class="text-mimic-slate/70">Barrier Integrity:</span>
+              <span id="integrityPct" class="font-bold text-emerald-600 ml-1.5">92%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Canvas Workspace -->
+        <div class="relative w-full h-[420px] sm:h-[480px] bg-gradient-to-b from-[#FAF5F0] via-[#F6EFEA] to-[#F2E8E0] overflow-hidden cursor-crosshair" id="canvasContainer">
+          <canvas id="fusionCanvas" class="w-full h-full block"></canvas>
+
+          <!-- Interaction Hint Overlay -->
+          <div id="canvasHint" class="absolute bottom-5 left-1/2 -translate-x-1/2 pointer-events-none bg-mimic-charcoal/80 text-mimic-bone backdrop-blur-sm px-4 py-2 rounded-full text-xs font-medium flex items-center space-x-2 transition-opacity duration-500 shadow-lg">
+            <svg class="w-4 h-4 text-mimic-rosegold animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>
+            <span>Touch or move cursor across the cells to trigger bio-absorption</span>
+          </div>
+        </div>
+
+        <!-- Lab Controls and Molecule Legend -->
+        <div class="p-6 bg-mimic-sand/40 border-t border-mimic-surface flex flex-col md:flex-row items-center justify-between gap-6">
+          
+          <!-- Legend Items -->
+          <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-medium">
+            <div class="flex items-center space-x-2">
+              <span class="w-3.5 h-3.5 rounded-full bg-[#E0A899] shadow-sm"></span>
+              <span class="text-mimic-slate">Ceramide NP (50%)</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="w-3.5 h-3.5 rounded-full bg-[#D4AF37] shadow-sm"></span>
+              <span class="text-mimic-slate">Cholesterol Ester (25%)</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="w-3.5 h-3.5 rounded-full bg-[#4B6B5B] shadow-sm"></span>
+              <span class="text-mimic-slate">Free Fatty Acids (15%)</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="w-3.5 h-3.5 rounded-full bg-[#8C5E3C] shadow-sm"></span>
+              <span class="text-mimic-slate">Bio-Peptides (10%)</span>
+            </div>
+          </div>
+
+          <!-- Interactive Action Triggers -->
+          <div class="flex items-center space-x-3">
+            <button onclick="injectMolecules(20)" class="px-4 py-2 rounded-xl bg-mimic-rosegold text-white text-xs font-semibold hover:bg-mimic-accent transition-all shadow-sm">
+              + Inject Bio-Lipid Burst
+            </button>
+            <button onclick="resetSimulation()" class="px-4 py-2 rounded-xl border border-mimic-surface bg-white text-mimic-slate text-xs font-semibold hover:bg-mimic-sand transition-all">
+              Reset Cells
+            </button>
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="space-y-2 font-mono text-xs">
-        <h4 class="uppercase tracking-widest font-bold text-white">Pan-India Transit</h4>
-        <p class="text-slate-400">Express Air Transit (48-Hour Guarantee).</p>
-        <a href="https://wa.me/918356902748" target="_blank" class="inline-flex items-center gap-1.5 text-emerald-400 font-bold hover:underline mt-2">
-          <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Trade Desk
+      <!-- Explanatory Comparative Callout -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-2xl bg-mimic-roseSoft/70 border border-mimic-rosegold/20">
+          <h4 class="font-serif text-xl font-semibold text-mimic-charcoal flex items-center space-x-2">
+            <span class="text-mimic-rosegold">●</span>
+            <span>Why "Real Skin" Geometry Matters</span>
+          </h4>
+          <p class="text-xs sm:text-sm text-mimic-slate mt-2 leading-relaxed">
+            Human skin cells (corneocytes) sit like bricks surrounded by lipid mortar. When skincare provides random synthetic oils, the mortar rejects them, leading to dryness underneath an oily shine. Skinmimic Care aligns with the exact molecular spacing of human bilayers.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-mimic-sageSoft/70 border border-mimic-sage/20">
+          <h4 class="font-serif text-xl font-semibold text-mimic-charcoal flex items-center space-x-2">
+            <span class="text-mimic-sage">●</span>
+            <span>Immediate Bio-Recognition</span>
+          </h4>
+          <p class="text-xs sm:text-sm text-mimic-slate mt-2 leading-relaxed">
+            Because our compounds are chemically indistinguishable from endogenous sebum and ceramides, your skin's cellular receptors immediately open lipid gateways, absorbing hydration deep into the stratum spinosum without barrier resistance.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- What Does Skinmimic Mean Section -->
+  <section id="what-is-biomimic" class="py-20 md:py-28 bg-mimic-sand/60 border-y border-mimic-surface relative">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-widest text-mimic-sage font-semibold">The Meaning Behind Our Name</span>
+        <h2 class="serif-title text-3xl sm:text-5xl font-medium text-mimic-charcoal mt-2">
+          What does <span class="italic text-mimic-accent">"Skinmimic"</span> really mean?
+        </h2>
+        <p class="mt-4 text-base text-mimic-slate leading-relaxed">
+          Biomimicry in skincare is not a marketing buzzword—it is a physiological reality. Human skin is an intricate biological shield. When skincare introduces foreign, harsh molecules, your skin spends energy defending itself. When you apply <span class="font-semibold text-mimic-charcoal">Skinmimic</span>, your cells recognize it instantly.
+        </p>
+      </div>
+
+      <!-- Interactive 3-Pillar Molecular Architecture Breakdown -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Pillar 1 -->
+        <div class="bg-mimic-bone p-8 rounded-3xl border border-mimic-surface subtle-shadow flex flex-col justify-between hover:border-mimic-sage/40 transition-colors">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-mimic-sageSoft flex items-center justify-center text-mimic-sage mb-6">
+              <!-- Lipid Matrix Icon -->
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            </div>
+            <h3 class="serif-title text-2xl font-semibold text-mimic-charcoal">1. Lipid Equivalence</h3>
+            <p class="text-sm text-mimic-slate/80 mt-3 leading-relaxed">
+              Your skin’s intercellular cement is composed of a precise ratio of <strong class="text-mimic-charcoal">Ceramides, Cholesterol, and Free Fatty Acids</strong>. Skinmimic recreates this exact lipid architecture so it assimilates instantly without triggering micro-inflammation.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-mimic-surface text-xs font-mono text-mimic-sage">
+            // Natural Mortar Alignment
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="bg-mimic-bone p-8 rounded-3xl border border-mimic-surface subtle-shadow flex flex-col justify-between hover:border-mimic-sage/40 transition-colors">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-mimic-sageSoft flex items-center justify-center text-mimic-sage mb-6">
+              <!-- NMF Icon -->
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            </div>
+            <h3 class="serif-title text-2xl font-semibold text-mimic-charcoal">2. NMF Bio-Harmony</h3>
+            <p class="text-sm text-mimic-slate/80 mt-3 leading-relaxed">
+              Natural Moisturizing Factor (NMF) consists of amino acids, urea, and sodium PCA that bind water deep inside corneocytes. Skinmimic delivers these bio-identical moisture reservoirs, preventing Trans-Epidermal Water Loss (TEWL) from within.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-mimic-surface text-xs font-mono text-mimic-sage">
+            // Endogenous Hydration
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="bg-mimic-bone p-8 rounded-3xl border border-mimic-surface subtle-shadow flex flex-col justify-between hover:border-mimic-sage/40 transition-colors">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-mimic-sageSoft flex items-center justify-center text-mimic-sage mb-6">
+              <!-- Shield Icon -->
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <h3 class="serif-title text-2xl font-semibold text-mimic-charcoal">3. Zero Disruption</h3>
+            <p class="text-sm text-mimic-slate/80 mt-3 leading-relaxed">
+              Most formulas rely on harsh penetration enhancers that punch holes in the skin barrier. Skinmimic utilizes physiological transport: our lipids blend seamlessly into your cellular membranes like matching puzzle pieces.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-mimic-surface text-xs font-mono text-mimic-sage">
+            // Non-Invasive Delivery
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Biological Quote Banner -->
+      <div class="mt-14 p-8 rounded-3xl bg-mimic-charcoal text-mimic-bone flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-2">
+          <p class="serif-title text-2xl md:text-3xl italic font-light">"When skincare mimics human biology, healing is no longer an uphill battle."</p>
+          <p class="text-xs uppercase tracking-widest text-mimic-amber">Skinmimic Scientific Advisory Council</p>
+        </div>
+        <a href="#partners" class="shrink-0 px-6 py-3 rounded-full bg-mimic-bone text-mimic-charcoal text-xs font-semibold hover:bg-mimic-sand transition-colors">
+          Read Founder Manifesto
         </a>
       </div>
 
     </div>
+  </section>
 
-    <div class="max-w-7xl mx-auto border-t border-white/[0.06] mt-8 pt-6 flex flex-wrap justify-between items-center text-[10px] font-mono text-slate-500 gap-4">
-      <span>© 2026 SKINMIMIC CARE. ALL RIGHTS RESERVED. CLINICAL BACKBAR USE ONLY.</span>
-      <span>DIRECT BIO-SYNTHESIS & IMPORT PROTOCOLS</span>
+  <!-- The Contrast: Conventional vs Skinmimic Care -->
+  <section id="philosophy" class="py-20 md:py-28 max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-xs uppercase tracking-widest text-mimic-sage font-semibold">The Shift In Perspective</span>
+      <h2 class="serif-title text-3xl sm:text-5xl font-medium text-mimic-charcoal mt-2">
+        Why Skinmimic Care?
+      </h2>
+      <p class="mt-4 text-base text-mimic-slate">
+        We rejected the conventional cycle of stripping the skin raw only to sell a band-aid moisturizer. Here is how our biomimetic philosophy fundamentally rewrites daily skincare.
+      </p>
+    </div>
+
+    <!-- Comparison Table / Card Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+      
+      <!-- Conventional Approach -->
+      <div class="bg-mimic-sand/40 p-8 sm:p-10 rounded-3xl border border-red-200/50 flex flex-col justify-between">
+        <div>
+          <div class="inline-flex items-center space-x-2 text-xs uppercase tracking-wider font-semibold text-red-800 bg-red-100/70 px-3 py-1 rounded-full mb-6">
+            <span>✕ Conventional Skincare</span>
+          </div>
+          <h3 class="serif-title text-2xl font-semibold text-mimic-charcoal mb-4">The Aggressive Fix</h3>
+          
+          <ul class="space-y-4 text-sm text-mimic-slate">
+            <li class="flex items-start space-x-3">
+              <span class="text-red-500 font-bold">―</span>
+              <span><strong>Harsh Chemical Actives:</strong> Over-exfoliates the stratum corneum, compromising natural defenses.</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <span class="text-red-500 font-bold">―</span>
+              <span><strong>Occlusive Masking:</strong> Heavy petroleum or silicones sit on top of skin without integrating into the lipid bilayers.</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <span class="text-red-500 font-bold">―</span>
+              <span><strong>Cyclical Dependency:</strong> Strips moisture, causing rebound oiliness, chronic redness, and premature barrier breakdown.</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <span class="text-red-500 font-bold">―</span>
+              <span><strong>Sensory Fillers:</strong> Synthetic fragrance and texturizers that feel luxurious but inflame sensitive skin.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-mimic-surface text-xs text-mimic-slate/70 italic">
+          Result: Chronic barrier sensitivity & inflammation fatigue.
+        </div>
+      </div>
+
+      <!-- The Skinmimic Method -->
+      <div class="bg-mimic-sageSoft/60 p-8 sm:p-10 rounded-3xl border border-mimic-sage/30 flex flex-col justify-between relative shadow-sm">
+        <div class="absolute top-6 right-6">
+          <span class="text-xs uppercase tracking-widest font-bold px-3 py-1 rounded-full bg-mimic-sage text-white">The Mimic Code</span>
+        </div>
+
+        <div>
+          <div class="inline-flex items-center space-x-2 text-xs uppercase tracking-wider font-semibold text-mimic-sage bg-mimic-bone px-3 py-1 rounded-full mb-6">
+            <span>✓ Skinmimic Care Approach</span>
+          </div>
+          <h3 class="serif-title text-2xl font-semibold text-mimic-charcoal mb-4">Endogenous Bio-Regeneration</h3>
+
+          <ul class="space-y-4 text-sm text-mimic-slate">
+            <li class="flex items-start space-x-3">
+              <span class="text-mimic-sage font-bold">✓</span>
+              <span><strong>Skin-Identical Lipids:</strong> Pure Ceramides (NP, AP, EOP), Phytosphingosine, and pure plant Squalane.</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <span class="text-mimic-sage font-bold">✓</span>
+              <span><strong>Cellular Acceptance:</strong> Ingredients fuse directly with your natural membranes rather than acting as a suffocating film.</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <span class="text-mimic-sage font-bold">✓</span>
+              <span><strong>Long-Term Autonomy:</strong> Teaches your skin barrier to retain moisture and defend itself autonomously.</span>
+            </li>
+            <li class="flex items-start space-x-3">
+              <span class="text-mimic-sage font-bold">✓</span>
+              <span><strong>Zero Empty Filler:</strong> Every drop is biochemically purposeful, gentle, and microbiome-preserving.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-mimic-sage/20 text-xs text-mimic-sage font-medium italic">
+          Result: Resilient, calm, luminous skin operating at its biological peak.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- How & Why We Started (The Origin Story) -->
+  <section id="origin-story" class="py-20 md:py-28 bg-mimic-sand/40 border-y border-mimic-surface">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <span class="text-xs uppercase tracking-widest text-mimic-sage font-semibold">The Journey & Motivation</span>
+        <h2 class="serif-title text-3xl sm:text-5xl font-medium text-mimic-charcoal mt-2">
+          How & Why We Started
+        </h2>
+        <p class="mt-4 text-base text-mimic-slate">
+          The story of Skinmimic Care began not in a corporate boardroom, but inside clinical treatment rooms where skin was crying for help.
+        </p>
+      </div>
+
+      <!-- Story Narrative Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Story Text -->
+        <div class="lg:col-span-7 space-y-6 text-mimic-slate leading-relaxed">
+          <div class="border-l-2 border-mimic-sage pl-5 space-y-2">
+            <h3 class="serif-title text-2xl font-medium text-mimic-charcoal">The Epidemic of Burned Out Skin</h3>
+            <p class="text-sm">
+              Across clinics, salons, and consultation chairs, we watched a heartbreaking pattern: clients were using 10-step routines, heavy peeling solutions, and synthetic concentrates. Yet their faces were red, burning, sensitized, and constantly dehydrated. Their natural skin barriers were completely wiped out.
+            </p>
+          </div>
+
+          <div class="border-l-2 border-mimic-amber pl-5 space-y-2">
+            <h3 class="serif-title text-2xl font-medium text-mimic-charcoal">The Simple Question That Sparked a Revolution</h3>
+            <p class="text-sm">
+              One evening, four friends and professionals gathered: a formulation chemist, a master aesthetician, a bio-sourcing expert, and a wellness strategist. We asked ourselves one fundamental question:
+              <br><em class="text-mimic-charcoal font-serif text-lg font-normal">"Why are we always trying to fight or force the skin, instead of simply giving it back what it is made of?"</em>
+            </p>
+          </div>
+
+          <div class="border-l-2 border-mimic-charcoal pl-5 space-y-2">
+            <h3 class="serif-title text-2xl font-medium text-mimic-charcoal">Building Skinmimic Care</h3>
+            <p class="text-sm">
+              We united our expertise to create a brand that abandons the synthetic arms race. We spent years researching lipid ratios, cellular compatibility, and non-irritating plant-derived ceramides. Our mission became singular: <strong class="text-mimic-charcoal">to formulate skincare that mimics your own living tissue</strong>. No shortcuts, no aggressive disruptions—just pure epidermal symbiosis.
+            </p>
+          </div>
+        </div>
+
+        <!-- Visual Milestone Card -->
+        <div class="lg:col-span-5 bg-mimic-bone p-8 sm:p-10 rounded-3xl border border-mimic-surface subtle-shadow">
+          <div class="space-y-6">
+            <div class="flex items-center space-x-3">
+              <span class="w-3 h-3 rounded-full bg-mimic-sage"></span>
+              <span class="text-xs font-mono uppercase tracking-wider text-mimic-slate">Our Collective Oath</span>
+            </div>
+
+            <h4 class="serif-title text-3xl font-medium text-mimic-charcoal leading-snug">
+              "We do not engineer skincare to overpower nature. We engineer it to honor nature's master architecture."
+            </h4>
+
+            <div class="pt-6 border-t border-mimic-surface space-y-3">
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-mimic-slate/70">Founded by</span>
+                <span class="font-semibold text-mimic-charcoal">4 Passionate Partners</span>
+              </div>
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-mimic-slate/70">Core Purpose</span>
+                <span class="font-semibold text-mimic-charcoal">Skin-Identical Barrier Health</span>
+              </div>
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-mimic-slate/70">Direct Line</span>
+                <a href="tel:8653902748" class="font-mono text-mimic-sage font-bold hover:underline">8653902748</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- The 4 Partners Section -->
+  <section id="partners" class="py-20 md:py-32 max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-xs uppercase tracking-widest text-mimic-sage font-semibold">The Collective Expertise</span>
+      <h2 class="serif-title text-3xl sm:text-5xl font-medium text-mimic-charcoal mt-2">
+        Meet The 4 Partners
+      </h2>
+      <p class="mt-4 text-base text-mimic-slate">
+        Skinmimic Care was built on the intersection of cosmetic chemistry, clinical aesthetic practice, sustainable sourcing, and strategic skin wellness.
+      </p>
+    </div>
+
+    <!-- 4 Partners Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Partner 1 -->
+      <div class="partner-card bg-mimic-bone rounded-3xl p-6 border border-mimic-surface subtle-shadow flex flex-col justify-between">
+        <div>
+          <!-- Avatar Icon Placeholder -->
+          <div class="w-16 h-16 rounded-2xl bg-mimic-sand flex items-center justify-center text-mimic-sage mb-6 border border-mimic-surface">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          </div>
+          <span class="text-[11px] font-mono uppercase tracking-wider text-mimic-sage font-bold block mb-1">Partner 01 • The Scientist</span>
+          <h3 class="serif-title text-2xl font-semibold text-mimic-charcoal">Formulation & Biomimetic Chemistry</h3>
+          <p class="text-xs text-mimic-slate/60 mt-1 mb-4 font-medium">Molecular Lipid Synthesis</p>
+          <p class="text-sm text-mimic-slate leading-relaxed">
+            Leading the laboratory research into identical lipid fractions. Specializes in mimicking human sebum, squalene profiles, and non-disruptive vesicular delivery systems.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-mimic-surface">
+          <p class="text-xs italic text-mimic-slate/75">"Your cells already know what to do; we simply give them the exact building blocks."</p>
+        </div>
+      </div>
+
+      <!-- Partner 2 -->
+      <div class="partner-card bg-mimic-bone rounded-3xl p-6 border border-mimic-surface subtle-shadow flex flex-col justify-between">
+        <div>
+          <!-- Practitioner Icon -->
+          <div class="w-16 h-16 rounded-2xl bg-mimic-sand flex items-center justify-center text-mimic-amber mb-6 border border-mimic-surface">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <span class="text-[11px] font-mono uppercase tracking-wider text-mimic-amber font-bold block mb-1">Partner 02 • The Practitioner</span>
+          <h3 class="serif-title text-2xl font-semibold text-mimic-charcoal">Clinical Aesthetics & Skin Health</h3>
+          <p class="text-xs text-mimic-slate/60 mt-1 mb-4 font-medium">Hands-On Dermal Therapy</p>
+          <p class="text-sm text-mimic-slate leading-relaxed">
+            Brings over a decade of firsthand clinical salon experience treating severe barrier impairment, post-laser sensitivity, and irritated complexion conditions.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-mimic-surface">
+          <p class="text-xs italic text-mimic-slate/75">"I saw hundreds of compromised faces every year. Skinmimic is the sanctuary their skin needed."</p>
+        </div>
+      </div>
+
+      <!-- Partner 3 -->
+      <div class="partner-card bg-mimic-bone rounded-3xl p-6 border border-mimic-surface subtle-shadow flex flex-col justify-between">
+        <div>
+          <!-- Visionary Icon -->
+          <div class="w-16 h-16 rounded-2xl bg-mimic-sand flex items-center justify-center text-mimic-accent mb-6 border border-mimic-surface">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <span class="text-[11px] font-mono uppercase tracking-wider text-mimic-accent font-bold block mb-1">Partner 03 • The Visionary</span>
+          <h3 class="serif-title text-2xl font-semibold text-mimic-charcoal">Brand Architecture & Strategy</h3>
+          <p class="text-xs text-mimic-slate/60 mt-1 mb-4 font-medium">Consumer Skin Education</p>
+          <p class="text-sm text-mimic-slate leading-relaxed">
+            Transforms dense biochemical science into clear, transparent education. Dedicated to liberating customers from deceptive marketing and trend-chasing.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-mimic-surface">
+          <p class="text-xs italic text-mimic-slate/75">"True luxury is not gold packaging. It is knowing every ingredient honors your biology."</p>
+        </div>
+      </div>
+
+      <!-- Partner 4 -->
+      <div class="partner-card bg-mimic-bone rounded-3xl p-6 border border-mimic-surface subtle-shadow flex flex-col justify-between">
+        <div>
+          <!-- Sourcing Icon -->
+          <div class="w-16 h-16 rounded-2xl bg-mimic-sand flex items-center justify-center text-mimic-slate mb-6 border border-mimic-surface">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <span class="text-[11px] font-mono uppercase tracking-wider text-mimic-slate font-bold block mb-1">Partner 04 • The Craftsman</span>
+          <h3 class="serif-title text-2xl font-semibold text-mimic-charcoal">Bio-Sourcing & Supply Integrity</h3>
+          <p class="text-xs text-mimic-slate/60 mt-1 mb-4 font-medium">Ethical Actives & Quality Control</p>
+          <p class="text-sm text-mimic-slate leading-relaxed">
+            Secures ultra-pure, cold-extracted plant bio-lipids and biocompatible amino complexes. Guarantees stringent stability, batch consistency, and ethical purity.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-mimic-surface">
+          <p class="text-xs italic text-mimic-slate/75">"We never compromise on purity. If a compound isn't biocompatible, it never enters our lab."</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Joint Statement Card -->
+    <div class="mt-14 p-8 rounded-3xl bg-mimic-sand/70 border border-mimic-surface text-center">
+      <p class="text-xs uppercase tracking-widest text-mimic-slate/80 font-semibold mb-2">Our Unified Promise</p>
+      <p class="serif-title text-2xl sm:text-3xl text-mimic-charcoal font-medium max-w-2xl mx-auto">
+        "Four distinct disciplines. One shared belief: skincare should never fight the skin."
+      </p>
+    </div>
+
+  </section>
+
+  <!-- Interactive Skin Barrier Self-Discovery / Assessment -->
+  <section id="barrier-quiz" class="py-20 md:py-28 bg-mimic-sand/30 border-y border-mimic-surface">
+    <div class="max-w-4xl mx-auto px-5 sm:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="text-xs uppercase tracking-widest text-mimic-sage font-semibold">Self-Discovery Check</span>
+        <h2 class="serif-title text-3xl sm:text-4xl font-medium text-mimic-charcoal mt-2">
+          Does Your Skin Need Biomimetic Care?
+        </h2>
+        <p class="text-sm text-mimic-slate mt-2 max-w-xl mx-auto">
+          Answer 3 quick questions about how your skin feels on a daily basis to see if your natural lipid matrix is compromised.
+        </p>
+      </div>
+
+      <!-- Quiz Card -->
+      <div class="bg-mimic-bone p-6 sm:p-10 rounded-3xl border border-mimic-surface subtle-shadow">
+        
+        <!-- Step 1 -->
+        <div class="space-y-4 mb-8">
+          <p class="text-sm font-semibold text-mimic-charcoal">
+            1. After washing your face with water, how does your skin feel within 5 minutes?
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="q1-group">
+            <button onclick="selectAnswer('q1', 1, this)" class="quiz-btn text-left p-3.5 rounded-xl border border-mimic-surface text-xs text-mimic-slate hover:bg-mimic-sand/60 transition-all">
+              Tight, dry, or itching to put on cream immediately.
+            </button>
+            <button onclick="selectAnswer('q1', 0, this)" class="quiz-btn text-left p-3.5 rounded-xl border border-mimic-surface text-xs text-mimic-slate hover:bg-mimic-sand/60 transition-all">
+              Comfortable, balanced, and calm without product.
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="space-y-4 mb-8">
+          <p class="text-sm font-semibold text-mimic-charcoal">
+            2. When you apply regular moisturizers or serums, do you experience slight stinging or redness?
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="q2-group">
+            <button onclick="selectAnswer('q2', 1, this)" class="quiz-btn text-left p-3.5 rounded-xl border border-mimic-surface text-xs text-mimic-slate hover:bg-mimic-sand/60 transition-all">
+              Yes, frequently or occasionally when changing products.
+            </button>
+            <button onclick="selectAnswer('q2', 0, this)" class="quiz-btn text-left p-3.5 rounded-xl border border-mimic-surface text-xs text-mimic-slate hover:bg-mimic-sand/60 transition-all">
+              Rarely to never; my skin tolerates most things.
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="space-y-4 mb-8">
+          <p class="text-sm font-semibold text-mimic-charcoal">
+            3. Do you struggle with dullness or rough texture despite drinking plenty of water?
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="q3-group">
+            <button onclick="selectAnswer('q3', 1, this)" class="quiz-btn text-left p-3.5 rounded-xl border border-mimic-surface text-xs text-mimic-slate hover:bg-mimic-sand/60 transition-all">
+              Yes, moisture doesn't seem to stay inside my skin.
+            </button>
+            <button onclick="selectAnswer('q3', 0, this)" class="quiz-btn text-left p-3.5 rounded-xl border border-mimic-surface text-xs text-mimic-slate hover:bg-mimic-sand/60 transition-all">
+              No, my skin retains moisture well throughout the day.
+            </button>
+          </div>
+        </div>
+
+        <!-- Calculate Button -->
+        <div class="pt-4 border-t border-mimic-surface flex flex-col sm:flex-row items-center justify-between gap-4">
+          <button onclick="calculateBarrierHealth()" class="w-full sm:w-auto px-6 py-3 rounded-full bg-mimic-charcoal text-mimic-bone text-xs font-semibold hover:bg-mimic-sage transition-colors">
+            Evaluate My Barrier Health
+          </button>
+          <span class="text-xs text-mimic-slate/60">Takes 10 seconds • No data stored</span>
+        </div>
+
+        <!-- Result Box (Hidden by default) -->
+        <div id="quizResult" class="hidden mt-6 p-6 rounded-2xl bg-mimic-sand border border-mimic-surface animate-fade">
+          <h4 id="resultTitle" class="serif-title text-2xl font-semibold text-mimic-charcoal"></h4>
+          <p id="resultDesc" class="text-xs sm:text-sm text-mimic-slate mt-2 leading-relaxed"></p>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a href="#contact" class="px-4 py-2 rounded-xl bg-mimic-sage text-white text-xs font-semibold hover:bg-mimic-charcoal transition-colors">
+              Speak With Our Aesthetic Partner
+            </a>
+            <a href="tel:8653902748" class="px-4 py-2 rounded-xl border border-mimic-charcoal/20 text-mimic-charcoal text-xs font-semibold hover:bg-mimic-bone transition-colors flex items-center space-x-1.5">
+              <span>Call 8653902748</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Core Philosophy Pillars -->
+  <section class="py-20 md:py-28 max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-xs uppercase tracking-widest text-mimic-sage font-semibold">Our Formulating Creed</span>
+      <h2 class="serif-title text-3xl sm:text-5xl font-medium text-mimic-charcoal mt-2">
+        The Four Pillars of Skinmimic Care
+      </h2>
+      <p class="mt-4 text-base text-mimic-slate">
+        Every formula in development is bound by four non-negotiable scientific laws.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- Pillar 1 -->
+      <div class="p-8 rounded-3xl bg-mimic-bone border border-mimic-surface subtle-shadow">
+        <span class="text-xs font-mono text-mimic-sage font-bold tracking-widest">PILLAR 01</span>
+        <h3 class="serif-title text-2xl font-medium text-mimic-charcoal mt-2 mb-3">Skin Bio-Compatibility</h3>
+        <p class="text-sm text-mimic-slate leading-relaxed">
+          We will never include ingredients foreign to human biology simply to satisfy texture aesthetics. Every single component must possess an endogenous counterpart that the skin recognizes as its own.
+        </p>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="p-8 rounded-3xl bg-mimic-bone border border-mimic-surface subtle-shadow">
+        <span class="text-xs font-mono text-mimic-amber font-bold tracking-widest">PILLAR 02</span>
+        <h3 class="serif-title text-2xl font-medium text-mimic-charcoal mt-2 mb-3">Barrier Integrity First</h3>
+        <p class="text-sm text-mimic-slate leading-relaxed">
+          No quick fix is worth barrier sacrifice. We deliberately avoid stripping acids or aggressive alcohol-based vehicles. Healing the stratum corneum is our non-negotiable priority.
+        </p>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="p-8 rounded-3xl bg-mimic-bone border border-mimic-surface subtle-shadow">
+        <span class="text-xs font-mono text-mimic-accent font-bold tracking-widest">PILLAR 03</span>
+        <h3 class="serif-title text-2xl font-medium text-mimic-charcoal mt-2 mb-3">Physiological Dosing</h3>
+        <p class="text-sm text-mimic-slate leading-relaxed">
+          More is not better in biology; correct ratio is everything. We align active concentrations with the natural molecular density of young, vibrant human epidermis.
+        </p>
+      </div>
+
+      <!-- Pillar 4 -->
+      <div class="p-8 rounded-3xl bg-mimic-bone border border-mimic-surface subtle-shadow">
+        <span class="text-xs font-mono text-mimic-slate font-bold tracking-widest">PILLAR 04</span>
+        <h3 class="serif-title text-2xl font-medium text-mimic-charcoal mt-2 mb-3">Transparent Clean Formulation</h3>
+        <p class="text-sm text-mimic-slate leading-relaxed">
+          No hidden fragrance masks, no parabens, no endocrine disrupting stabilizers. We believe consumers deserve uncompromised honesty regarding what interacts with their cellular structure.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact & Direct Founder Inquiries Section -->
+  <section id="contact" class="py-20 md:py-32 bg-mimic-charcoal text-mimic-bone relative overflow-hidden">
+    <!-- Subtle background accent -->
+    <div class="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-mimic-sage/20 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 relative z-10">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Contact Details & Direct Call Highlight -->
+        <div class="lg:col-span-5 space-y-8">
+          <div>
+            <span class="text-xs uppercase tracking-widest text-mimic-amber font-semibold">Direct Communication</span>
+            <h2 class="serif-title text-3xl sm:text-5xl font-medium text-mimic-bone mt-2">
+              Speak With Skinmimic Care
+            </h2>
+            <p class="mt-4 text-sm text-mimic-bone/70 leading-relaxed">
+              Whether you are a dermatologist, aesthetic salon owner interested in biomimetic protocols, or an individual dealing with damaged skin—we welcome direct conversation.
+            </p>
+          </div>
+
+          <!-- Highlight Phone Box -->
+          <div class="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-4">
+            <p class="text-xs uppercase tracking-wider text-mimic-bone/60 font-medium">Direct Telephone & WhatsApp Line</p>
+            
+            <div class="flex items-center justify-between flex-wrap gap-3">
+              <a href="tel:8653902748" class="text-2xl sm:text-3xl font-mono font-bold text-mimic-bone hover:text-mimic-amber transition-colors flex items-center space-x-3">
+                <svg class="w-6 h-6 text-mimic-amber" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z"/></svg>
+                <span>8653902748</span>
+              </a>
+
+              <button onclick="copyPhoneNumber()" class="text-xs px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-mimic-bone transition-colors flex items-center space-x-1">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+
+            <div class="pt-2 flex flex-wrap gap-3">
+              <a href="tel:8653902748" class="inline-flex items-center space-x-2 text-xs font-semibold px-4 py-2.5 rounded-xl bg-mimic-sage text-white hover:bg-mimic-amber transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                <span>Call Directly</span>
+              </a>
+
+              <a href="https://wa.me/918653902748?text=Hello%20Skinmimic%20Care%20team,%20I%20would%20like%20to%20learn%20more%20about%20your%20biomimetic%20philosophy." target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-xs font-semibold px-4 py-2.5 rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 transition-colors">
+                <span>Chat on WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="space-y-2 text-xs text-mimic-bone/60">
+            <p>✓ Available for clinical consultations & aesthetic partnerships.</p>
+            <p>✓ Direct contact with the founding team & formulation advisors.</p>
+          </div>
+
+        </div>
+
+        <!-- Right: Inquiry Form -->
+        <div class="lg:col-span-7 bg-white/5 border border-white/10 p-8 sm:p-10 rounded-3xl">
+          <h3 class="serif-title text-2xl text-mimic-bone mb-2">Send an Inquiry to the Partners</h3>
+          <p class="text-xs text-mimic-bone/60 mb-6">Leave your details below and our team will get back to you promptly.</p>
+
+          <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-mimic-bone/70 mb-1.5 font-medium">Your Name</label>
+                <input type="text" id="senderName" required placeholder="Full Name" class="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-sm text-mimic-bone placeholder-white/30 focus:outline-none focus:border-mimic-amber transition-colors">
+              </div>
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-mimic-bone/70 mb-1.5 font-medium">Your Phone / WhatsApp</label>
+                <input type="tel" id="senderPhone" required placeholder="Phone Number" class="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-sm text-mimic-bone placeholder-white/30 focus:outline-none focus:border-mimic-amber transition-colors">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-mimic-bone/70 mb-1.5 font-medium">Interest / Collaboration Type</label>
+              <select id="senderRole" class="w-full bg-mimic-slate border border-white/10 rounded-xl px-4 py-3 text-sm text-mimic-bone focus:outline-none focus:border-mimic-amber transition-colors">
+                <option value="Personal Skin Consultation">Personal Skin Barrier Advice</option>
+                <option value="Salon / Aesthetic Clinic Partnership">Salon or Aesthetic Clinic Collaboration</option>
+                <option value="Dermatology / Scientific Inquiry">Dermatology or Scientific Inquiry</option>
+                <option value="General Brand Inquiry">General Brand Inquiry</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-mimic-bone/70 mb-1.5 font-medium">Your Message or Skin Concern</label>
+              <textarea id="senderMessage" rows="4" required placeholder="Tell us about your skin history, salon, or questions for our 4 partners..." class="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-sm text-mimic-bone placeholder-white/30 focus:outline-none focus:border-mimic-amber transition-colors"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 rounded-xl bg-mimic-bone text-mimic-charcoal font-semibold text-sm hover:bg-mimic-amber hover:text-white transition-colors duration-200">
+              Submit Inquiry
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-mimic-bone border-t border-mimic-surface py-12">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center space-x-3">
+        <div class="w-7 h-7 rounded-full bg-mimic-sage text-white flex items-center justify-center font-serif text-sm">
+          S
+        </div>
+        <span class="serif-title text-xl font-semibold text-mimic-charcoal">Skinmimic Care</span>
+        <span class="text-xs text-mimic-slate/60">| Biomimetic Epidermal Restoration</span>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-mimic-slate">
+        <a href="#what-is-biomimic" class="hover:text-mimic-sage transition-colors">About Biomimicry</a>
+        <a href="#philosophy" class="hover:text-mimic-sage transition-colors">Philosophy</a>
+        <a href="#partners" class="hover:text-mimic-sage transition-colors">The 4 Partners</a>
+        <a href="tel:8653902748" class="font-mono text-mimic-charcoal font-semibold hover:text-mimic-sage">Tel: 8653902748</a>
+      </div>
+
+      <div class="text-xs text-mimic-slate/60 text-center md:text-right">
+        &copy; <span id="currentYear"></span> Skinmimic Care. All rights reserved.
+      </div>
+
     </div>
   </footer>
 
-  <!-- Sample Kit Modal Popup -->
-  <div id="sampleModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden items-center justify-center p-4">
-    <div class="ai-glass max-w-md w-full rounded-3xl p-6 sm:p-8 space-y-5 relative">
-      <button onclick="closeTesterModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-
-      <div class="space-y-1">
-        <span class="text-[10px] font-mono tracking-widest text-cyan-400 font-bold uppercase">VIP Trial Protocol</span>
-        <h3 class="text-xl font-bold text-white">Request Backbar Trial</h3>
-        <p class="text-xs text-slate-400">Deploy a clinical verification sample directly to your aesthetic facility.</p>
-      </div>
-
-      <form onsubmit="handleSampleSubmit(event)" class="space-y-3 text-xs font-mono">
-        <div>
-          <label class="block text-slate-300 mb-1">CLINIC / SALON NAME</label>
-          <input required type="text" placeholder="e.g. Elegance Salon & Spa" class="w-full px-3 py-2 rounded-lg border border-white/10 bg-synth-950 text-white focus:outline-none focus:border-cyan-400">
-        </div>
-        <div>
-          <label class="block text-slate-300 mb-1">WHATSAPP CONTACT</label>
-          <input required type="tel" placeholder="+91 98765 43210" class="w-full px-3 py-2 rounded-lg border border-white/10 bg-synth-950 text-white focus:outline-none focus:border-cyan-400">
-        </div>
-        <div>
-          <label class="block text-slate-300 mb-1">DELIVERY METRO</label>
-          <input required type="text" placeholder="e.g. Mumbai, Delhi, Bengaluru" class="w-full px-3 py-2 rounded-lg border border-white/10 bg-synth-950 text-white focus:outline-none focus:border-cyan-400">
-        </div>
-
-        <button type="submit" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-violet-600 hover:from-cyan-400 hover:to-violet-500 text-white font-bold rounded-xl text-xs uppercase tracking-wider transition-all mt-2">
-          Dispatch VIP Backbar Sample
-        </button>
-      </form>
-    </div>
-  </div>
-
+  <!-- JavaScript for Interactions -->
   <script>
-    window.addEventListener('scroll', () => {
-      const winScroll = document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      document.getElementById('scrollProgress').style.width = scrolled + '%';
-    });
+    // Set Current Year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Mobile Navigation Drawer Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
 
     function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('hidden');
+      if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+      }
+    }
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+    // Toast Notification Utility (strictly replaces alert())
+    function showToast(message, isSuccess = true) {
+      const toast = document.getElementById('toastBox');
+      const toastMessage = document.getElementById('toastMessage');
+      const toastIcon = document.getElementById('toastIcon');
+
+      toastMessage.textContent = message;
+      if (isSuccess) {
+        toastIcon.textContent = '✓';
+        toastIcon.className = 'w-6 h-6 rounded-full bg-mimic-sage text-white flex items-center justify-center text-xs';
+      } else {
+        toastIcon.textContent = 'i';
+        toastIcon.className = 'w-6 h-6 rounded-full bg-mimic-amber text-white flex items-center justify-center text-xs';
+      }
+
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3500);
     }
 
-    function openTesterModal() {
-      const modal = document.getElementById('sampleModal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
+    // Copy Phone Number to Clipboard via fallback
+    function copyPhoneNumber() {
+      const phoneNumber = "8653902748";
+      const dummyInput = document.createElement("input");
+      document.body.appendChild(dummyInput);
+      dummyInput.value = phoneNumber;
+      dummyInput.select();
+      try {
+        document.execCommand("copy");
+        showToast("Phone number copied: 8653902748");
+      } catch (err) {
+        showToast("Direct dial: 8653902748", false);
+      }
+      document.body.removeChild(dummyInput);
     }
 
-    function closeTesterModal() {
-      const modal = document.getElementById('sampleModal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
+    // Interactive Quiz State
+    const quizState = {
+      q1: null,
+      q2: null,
+      q3: null
+    };
+
+    function selectAnswer(question, value, element) {
+      quizState[question] = value;
+      const group = element.parentElement;
+      const buttons = group.querySelectorAll('.quiz-btn');
+      
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-mimic-sageSoft', 'border-mimic-sage', 'text-mimic-sage', 'font-semibold');
+        btn.classList.add('border-mimic-surface', 'text-mimic-slate');
+      });
+
+      element.classList.remove('border-mimic-surface', 'text-mimic-slate');
+      element.classList.add('bg-mimic-sageSoft', 'border-mimic-sage', 'text-mimic-sage', 'font-semibold');
     }
 
-    function handleSampleSubmit(e) {
+    function calculateBarrierHealth() {
+      const { q1, q2, q3 } = quizState;
+      if (q1 === null || q2 === null || q3 === null) {
+        showToast("Please choose an answer for all 3 questions first.", false);
+        return;
+      }
+
+      const score = (q1 || 0) + (q2 || 0) + (q3 || 0);
+      const resultBox = document.getElementById('quizResult');
+      const resultTitle = document.getElementById('resultTitle');
+      const resultDesc = document.getElementById('resultDesc');
+
+      resultBox.classList.remove('hidden');
+
+      if (score >= 2) {
+        resultTitle.textContent = "High Barrier Vulnerability Detected";
+        resultDesc.textContent = "Your responses indicate lipid depletion and elevated trans-epidermal water loss. Conventional harsh treatments and high-foaming products will likely aggravate this. Skinmimic Care’s bio-identical ceramides and squalane complex are formulated specifically to restore your natural stratum corneum without provoking redness.";
+      } else if (score === 1) {
+        resultTitle.textContent = "Mild Barrier Fatigue";
+        resultDesc.textContent = "Your skin maintains baseline defense, but is showing initial signs of lipid barrier instability during product switches or seasonal shifts. Gentle biomimetic support will reinforce your natural acid mantle before chronic sensitivity takes hold.";
+      } else {
+        resultTitle.textContent = "Healthy Lipid Mantle";
+        resultDesc.textContent = "Your skin’s natural lipid matrix is currently resilient! Biomimetic care can help you preserve this homeostasis by protecting against environmental oxidation and synthetic disruption.";
+      }
+
+      resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Contact Form Handler
+    function handleContactSubmit(e) {
       e.preventDefault();
-      alert('Sample dispatch protocol initialized. Our trade desk will connect with you via WhatsApp.');
-      closeTesterModal();
+      const name = document.getElementById('senderName').value;
+      const phone = document.getElementById('senderPhone').value;
+      const role = document.getElementById('senderRole').value;
+      const message = document.getElementById('senderMessage').value;
+
+      // Reset form
+      document.getElementById('contactForm').reset();
+      showToast(`Thank you, ${name}! The Skinmimic partners will contact you shortly at ${phone}.`);
     }
 
-    function updateCalculator() {
-      const sessions = parseInt(document.getElementById('sessionsInput').value);
-      const price = parseInt(document.getElementById('priceInput').value);
+    /* -------------------------------------------------------------
+       HTML5 CANVAS: BIOMIMETIC MOLECULAR FUSION SIMULATION
+       Visualizes lipid droplets and peptides fusing into skin cells
+    ------------------------------------------------------------- */
+    const canvas = document.getElementById('fusionCanvas');
+    const ctx = canvas.getContext('2d');
+    const canvasContainer = document.getElementById('canvasContainer');
+    const assimilationCounter = document.getElementById('assimilationCount');
+    const integrityPct = document.getElementById('integrityPct');
+    const canvasHint = document.getElementById('canvasHint');
 
-      document.getElementById('sessionsVal').innerText = sessions + ' Sessions';
-      document.getElementById('priceVal').innerText = '₹ ' + price.toLocaleString('en-IN');
+    let totalAssimilated = 0;
+    let width = 0;
+    let height = 0;
+    let mouse = { x: -1000, y: -1000, isHovering: false };
+    let cells = [];
+    let particles = [];
+    let ripples = [];
+    let floatingTexts = [];
 
-      const revenue = sessions * price;
-      const costPerSession = 700;
-      const totalCost = sessions * costPerSession;
-      const netProfit = revenue - totalCost;
+    // Distinct bio-molecule types
+    const MOLECULE_TYPES = [
+      { name: 'Ceramide NP', color: '#E0A899', glow: 'rgba(224, 168, 153, 0.45)', radius: 7 },
+      { name: 'Cholesterol Ester', color: '#D4AF37', glow: 'rgba(212, 175, 55, 0.4)', radius: 6 },
+      { name: 'Free Fatty Acid', color: '#4B6B5B', glow: 'rgba(75, 107, 91, 0.4)', radius: 5.5 },
+      { name: 'Bio-Peptide', color: '#8C5E3C', glow: 'rgba(140, 94, 60, 0.4)', radius: 6.5 }
+    ];
 
-      document.getElementById('totalRevenue').innerText = '₹ ' + revenue.toLocaleString('en-IN');
-      document.getElementById('totalCost').innerText = '₹ ' + totalCost.toLocaleString('en-IN');
-      document.getElementById('netProfit').innerText = '₹ ' + netProfit.toLocaleString('en-IN');
+    // Responsive Canvas Resizing
+    function resizeCanvas() {
+      width = canvasContainer.clientWidth;
+      height = canvasContainer.clientHeight;
+      canvas.width = width;
+      canvas.height = height;
+      initCells();
+      if (particles.length === 0) {
+        initParticles(35);
+      }
     }
+
+    // Initialize Corneocyte Skin Grid (Staggered Brick & Mortar Structure)
+    function initCells() {
+      cells = [];
+      const cellW = 85;
+      const cellH = 50;
+      const gap = 12; // Intercellular lipid mortar channel
+      const cols = Math.ceil(width / (cellW + gap)) + 2;
+      const rows = Math.ceil(height / (cellH + gap)) + 2;
+
+      for (let r = 0; r < rows; r++) {
+        const xOffset = (r % 2 === 0) ? 0 : (cellW + gap) / 2;
+        for (let c = 0; c < cols; c++) {
+          const x = c * (cellW + gap) - 30 + xOffset;
+          const y = r * (cellH + gap) - 20;
+          cells.push({
+            x: x,
+            y: y,
+            w: cellW,
+            h: cellH,
+            health: 0.65, // Base hydration state
+            glowEnergy: 0
+          });
+        }
+      }
+    }
+
+    // Initialize Floating Biomimetic Particles
+    function initParticles(count) {
+      for (let i = 0; i < count; i++) {
+        spawnParticle();
+      }
+    }
+
+    function spawnParticle(originX, originY) {
+      const type = MOLECULE_TYPES[Math.floor(Math.random() * MOLECULE_TYPES.length)];
+      particles.push({
+        x: originX !== undefined ? originX : Math.random() * width,
+        y: originY !== undefined ? originY : Math.random() * height,
+        vx: (Math.random() - 0.5) * 1.2,
+        vy: (Math.random() - 0.5) * 1.2,
+        radius: type.radius + (Math.random() * 2 - 1),
+        type: type,
+        phase: Math.random() * Math.PI * 2,
+        isMerging: false
+      });
+    }
+
+    function injectMolecules(amount) {
+      for (let i = 0; i < amount; i++) {
+        spawnParticle(width / 2 + (Math.random() - 0.5) * 180, height / 2 + (Math.random() - 0.5) * 120);
+      }
+      showToast(`Injected ${amount} biomimetic micro-molecules into matrix`);
+    }
+
+    function resetSimulation() {
+      totalAssimilated = 0;
+      assimilationCounter.textContent = '0';
+      integrityPct.textContent = '92%';
+      initCells();
+      particles = [];
+      initParticles(35);
+      ripples = [];
+      floatingTexts = [];
+      showToast("Epidermal matrix recalibrated to baseline");
+    }
+
+    // User Interaction Listeners
+    canvas.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+      mouse.isHovering = true;
+      if (canvasHint) canvasHint.style.opacity = '0';
+    });
+
+    canvas.addEventListener('mouseleave', () => {
+      mouse.isHovering = false;
+      mouse.x = -1000;
+      mouse.y = -1000;
+    });
+
+    canvas.addEventListener('click', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
+      for (let i = 0; i < 6; i++) {
+        spawnParticle(clickX + (Math.random() - 0.5) * 20, clickY + (Math.random() - 0.5) * 20);
+      }
+    });
+
+    // Touch Event Handlers for Mobile screens
+    canvas.addEventListener('touchstart', (e) => {
+      if (e.touches.length > 0) {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.touches[0].clientX - rect.left;
+        mouse.y = e.touches[0].clientY - rect.top;
+        mouse.isHovering = true;
+        if (canvasHint) canvasHint.style.opacity = '0';
+        for (let i = 0; i < 4; i++) {
+          spawnParticle(mouse.x + (Math.random() - 0.5) * 30, mouse.y + (Math.random() - 0.5) * 30);
+        }
+      }
+    }, { passive: true });
+
+    canvas.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.touches[0].clientX - rect.left;
+        mouse.y = e.touches[0].clientY - rect.top;
+      }
+    }, { passive: true });
+
+    canvas.addEventListener('touchend', () => {
+      mouse.isHovering = false;
+      mouse.x = -1000;
+      mouse.y = -1000;
+    });
+
+    // Particle Absorption Trigger
+    function absorbParticle(p, index) {
+      totalAssimilated++;
+      assimilationCounter.textContent = totalAssimilated;
+      const calcPct = Math.min(100, 92 + Math.floor(totalAssimilated / 6));
+      integrityPct.textContent = `${calcPct}%`;
+
+      // Trigger ripple in cellular mortar
+      ripples.push({
+        x: p.x,
+        y: p.y,
+        radius: p.radius,
+        maxRadius: 28,
+        color: p.type.color,
+        alpha: 0.8
+      });
+
+      // Energize nearest cells
+      cells.forEach(cell => {
+        const cx = cell.x + cell.w / 2;
+        const cy = cell.y + cell.h / 2;
+        const dist = Math.hypot(p.x - cx, p.y - cy);
+        if (dist < 60) {
+          cell.glowEnergy = Math.min(1.0, cell.glowEnergy + 0.35);
+          cell.health = Math.min(1.0, cell.health + 0.05);
+        }
+      });
+
+      // Occasionally show floating "+ Bio-Identical" label
+      if (Math.random() < 0.4 || totalAssimilated <= 3) {
+        floatingTexts.push({
+          text: `+ ${p.type.name}`,
+          x: p.x,
+          y: p.y - 10,
+          alpha: 1.0,
+          color: p.type.color
+        });
+      }
+
+      // Remove and respawn from edge to sustain ecosystem
+      particles.splice(index, 1);
+      setTimeout(() => {
+        if (particles.length < 45) {
+          const spawnX = Math.random() < 0.5 ? 0 : width;
+          const spawnY = Math.random() * height;
+          spawnParticle(spawnX, spawnY);
+        }
+      }, 700);
+    }
+
+    // Main Simulation Animation Loop
+    function animateFusionSimulation() {
+      ctx.clearRect(0, 0, width, height);
+
+      // 1. Draw Stratum Corneum Corneocytes (Skin Cells)
+      cells.forEach(cell => {
+        // Natural cellular decay of glow
+        if (cell.glowEnergy > 0) cell.glowEnergy *= 0.96;
+
+        ctx.save();
+        const baseAlpha = 0.55 + cell.health * 0.35;
+        // Warm peach & porcelain lipid tone
+        ctx.fillStyle = cell.glowEnergy > 0.05 
+          ? `rgba(224, 168, 153, ${0.4 + cell.glowEnergy * 0.4})` 
+          : `rgba(247, 241, 235, ${baseAlpha})`;
+        
+        ctx.strokeStyle = cell.glowEnergy > 0.05 
+          ? `rgba(201, 145, 130, ${0.6 + cell.glowEnergy * 0.4})` 
+          : `rgba(224, 214, 204, 0.7)`;
+        ctx.lineWidth = 1.5;
+
+        // Draw rounded rectangle for corneocyte
+        const radius = 10;
+        ctx.beginPath();
+        ctx.roundRect(cell.x, cell.y, cell.w, cell.h, radius);
+        ctx.fill();
+        ctx.stroke();
+
+        // Subtle keratin grain center
+        ctx.fillStyle = 'rgba(215, 195, 185, 0.2)';
+        ctx.beginPath();
+        ctx.arc(cell.x + cell.w / 2, cell.y + cell.h / 2, 8, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.restore();
+      });
+
+      // 2. Draw Cellular Mortar Channels (Intercellular Lipid Matrix Lines)
+      ctx.save();
+      ctx.strokeStyle = 'rgba(201, 145, 130, 0.15)';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([4, 6]);
+      for (let y = 10; y < height; y += 62) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
+      }
+      ctx.restore();
+
+      // 3. Process & Draw Active Ripples
+      for (let i = ripples.length - 1; i >= 0; i--) {
+        const r = ripples[i];
+        r.radius += 0.8;
+        r.alpha *= 0.94;
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+        ctx.strokeStyle = r.color;
+        ctx.globalAlpha = r.alpha;
+        ctx.lineWidth = 1.8;
+        ctx.stroke();
+        ctx.restore();
+
+        if (r.alpha < 0.02) {
+          ripples.splice(i, 1);
+        }
+      }
+
+      // 4. Update and Draw Floating Bio-Molecules
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.phase += 0.03;
+        
+        // Gentle undulating float
+        p.x += p.vx + Math.cos(p.phase) * 0.25;
+        p.y += p.vy + Math.sin(p.phase) * 0.25;
+
+        // Attract toward mouse if user is interacting
+        if (mouse.isHovering) {
+          const dx = mouse.x - p.x;
+          const dy = mouse.y - p.y;
+          const dist = Math.hypot(dx, dy);
+
+          if (dist < 150) {
+            const pull = (150 - dist) / 150 * 0.08;
+            p.x += dx * pull;
+            p.y += dy * pull;
+
+            // When very close to user touch/cursor, assimilate into lipid channel
+            if (dist < 32) {
+              absorbParticle(p, i);
+              continue;
+            }
+          }
+        }
+
+        // Bounce gently off canvas perimeters
+        if (p.x < p.radius) { p.x = p.radius; p.vx *= -1; }
+        if (p.x > width - p.radius) { p.x = width - p.radius; p.vx *= -1; }
+        if (p.y < p.radius) { p.y = p.radius; p.vy *= -1; }
+        if (p.y > height - p.radius) { p.y = height - p.radius; p.vy *= -1; }
+
+        // Render Molecule with Glow
+        ctx.save();
+        // Ambient Radial Glow
+        const grad = ctx.createRadialGradient(p.x, p.y, p.radius * 0.2, p.x, p.y, p.radius * 2.2);
+        grad.addColorStop(0, p.type.color);
+        grad.addColorStop(0.5, p.type.glow);
+        grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius * 2.2, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Solid Core droplet with light refraction specular highlight
+        ctx.fillStyle = p.type.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Specular sheen dot
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+        ctx.beginPath();
+        ctx.arc(p.x - p.radius * 0.35, p.y - p.radius * 0.35, p.radius * 0.3, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.restore();
+      }
+
+      // 5. Draw Floating Absorption Labels
+      for (let i = floatingTexts.length - 1; i >= 0; i--) {
+        const ft = floatingTexts[i];
+        ft.y -= 0.6;
+        ft.alpha -= 0.015;
+
+        ctx.save();
+        ctx.font = '500 11px "Plus Jakarta Sans", sans-serif';
+        ctx.fillStyle = ft.color;
+        ctx.globalAlpha = Math.max(0, ft.alpha);
+        ctx.fillText(ft.text, ft.x - 20, ft.y);
+        ctx.restore();
+
+        if (ft.alpha <= 0) {
+          floatingTexts.splice(i, 1);
+        }
+      }
+
+      requestAnimationFrame(animateFusionSimulation);
+    }
+
+    // Initialize Simulation on Window Load & Resize
+    window.addEventListener('load', () => {
+      resizeCanvas();
+      animateFusionSimulation();
+    });
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+    });
   </script>
 </body>
 </html>
+```
