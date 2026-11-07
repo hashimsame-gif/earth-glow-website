@@ -1,586 +1,532 @@
-
 export default {
-  async fetch(request) {
-    const html = `<!DOCTYPE html>
+ async fetch(request) {
+  const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#ffffff">
-<title>SKIN MIMIC CARE | Professional Clinical Skincare</title>
-<meta name="description" content="SKIN MIMIC CARE — Professional skincare inspired by skin barrier science, pigmentation research and biomimicry.">
+<title>SKIN MIMIC CARE | The Science of Skin</title>
+<meta name="description" content="Discover SKIN MIMIC CARE, a professional skincare house inspired by biomimicry, skin science and purposeful formulations.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --black:#171717;
-  --grey:#777;
-  --light:#f5f5f3;
-  --line:#e6e6e3;
-  --gold:#aa987a;
+ --black:#191919;
+ --grey:#777;
+ --gold:#a99778;
+ --cream:#f6f6f3;
+ --line:#e9e8e4;
+ --serif:'Cormorant Garamond',serif;
+ --sans:'DM Sans',sans-serif;
 }
-* {box-sizing:border-box;margin:0;padding:0}
-html {scroll-behavior:smooth}
-body {
-  font-family:'DM Sans',sans-serif;
-  color:var(--black);
-  background:#fff;
-  line-height:1.7;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--black);background:white}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;object-fit:cover}
+.container{width:min(1160px,90%);margin:auto}
+.eyebrow{font-size:10px;letter-spacing:3px;color:var(--gold);font-weight:600}
+.serif{font-family:var(--serif)}
+.announcement{background:#171717;color:#fff;text-align:center;padding:9px;font-size:9px;letter-spacing:2.5px}
+header{position:sticky;top:0;background:#fff;z-index:100;border-bottom:1px solid var(--line)}
+.nav{height:88px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{text-align:center;line-height:1;white-space:nowrap}
+.logo-main{font:italic 500 33px var(--serif);letter-spacing:-1.5px}
+.logo-sub{font:12px var(--serif);letter-spacing:9px;padding-left:9px;margin-top:7px}
+.links{display:flex;align-items:center;gap:27px}
+.links a{font-size:10px;letter-spacing:1px}
+.links a:hover{color:var(--gold)}
+.btn{display:inline-block;background:var(--black);color:white;padding:14px 25px;font-size:10px;letter-spacing:1.5px;border:1px solid var(--black);transition:.3s}
+.btn:hover{background:white;color:var(--black)}
+.btn-outline{background:transparent;color:var(--black)}
+.menu{display:none;background:none;border:0;font-size:25px}
+.hero{background:#f2f2ef;min-height:650px;display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:55px}
+.hero-copy{padding:65px 0}
+.hero h1{font:400 clamp(54px,6vw,82px)/.98 var(--serif);margin:23px 0}
+.hero-copy p{font-size:13px;line-height:2;color:#686868;max-width:470px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-image{height:510px;position:relative}
+.hero-image img{height:100%;object-position:center}
+.image-caption{position:absolute;bottom:0;left:0;background:#fff;padding:13px 18px;font-size:9px;letter-spacing:2px}
+section{padding:100px 0}
+.heading{text-align:center;max-width:690px;margin:0 auto 50px}
+.heading h2{font:400 52px/1.08 var(--serif);margin:14px 0}
+.heading p{font-size:13px;line-height:2;color:var(--grey)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center}
+.split-image{height:430px}
+.split-image img{height:100%}
+.split-copy h2{font:400 49px/1.1 var(--serif);margin:15px 0 22px}
+.split-copy p{font-size:13px;line-height:2;color:var(--grey);margin-bottom:17px}
+.text-link{display:inline-block;font-size:10px;letter-spacing:2px;border-bottom:1px solid;padding-bottom:6px;margin-top:10px}
+.science{background:var(--cream)}
+.science-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-top:50px}
+.science-card{background:white;padding:35px;min-height:220px}
+.science-card .number{font:34px var(--serif);color:var(--gold)}
+.science-card h3{font:29px var(--serif);margin:12px 0}
+.science-card p{font-size:12px;color:var(--grey);line-height:1.9}
+.collection{background:#fff}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.product{border:1px solid var(--line);background:white}
+.product-image{height:290px;background:#f0f0ed;overflow:hidden}
+.product-image img{height:100%;transition:transform .6s}
+.product:hover img{transform:scale(1.04)}
+.product-info{padding:22px}
+.product-info small{color:var(--gold);font-size:9px;letter-spacing:2px}
+.product-info h3{font:30px var(--serif);margin:7px 0}
+.product-info p{font-size:11px;color:var(--grey);line-height:1.8}
+.product-info a{display:inline-block;margin-top:15px;font-size:9px;letter-spacing:1.5px;border-bottom:1px solid}
+.product-note{text-align:center;font-size:10px;color:var(--grey);margin-top:25px}
+.mud{background:#222;color:white}
+.mud-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:55px}
+.mud-image{height:440px}
+.mud-image img{height:100%}
+.mud-copy h2{font:400 52px/1.05 var(--serif);margin:15px 0}
+.mud-copy p{font-size:13px;color:#ccc;line-height:2;margin-bottom:20px}
+.mud-copy .eyebrow{color:#c2ad8c}
+.mud-copy .btn{background:white;color:#171717;border-color:white}
+.professional{background:var(--cream)}
+.professional-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+.professional-image{height:410px}
+.professional-image img{height:100%}
+.professional-copy h2{font:400 49px/1.1 var(--serif);margin:15px 0}
+.professional-copy p{font-size:13px;line-height:2;color:var(--grey);margin-bottom:18px}
+.about{text-align:center}
+.about-inner{max-width:780px;margin:auto}
+.about h2{font:400 52px var(--serif);margin:15px 0}
+.about p{font-size:13px;color:var(--grey);line-height:2}
+.partner{background:#f5f5f2}
+.partner-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.partner-copy h2{font:400 51px/1.1 var(--serif);margin:15px 0}
+.partner-copy p{font-size:13px;color:var(--grey);line-height:2}
+.form{background:white;padding:32px}
+.field{margin-bottom:17px}
+.field label{display:block;font-size:9px;letter-spacing:1.5px;margin-bottom:7px}
+.field input,.field textarea,.field select{width:100%;padding:13px;border:1px solid #deded9;background:white;font-size:12px;outline:none}
+.field textarea{height:90px;resize:vertical}
+.field input:focus,.field textarea:focus{border-color:#888}
+.form-message{font-size:11px;margin-top:12px}
+footer{background:#171717;color:white;padding:65px 0 22px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+footer p{font-size:11px;color:#aaa;max-width:300px;margin-top:20px}
+footer h4{font-size:10px;letter-spacing:2px;margin-bottom:17px}
+.footer-links{display:flex;flex-direction:column;gap:12px}
+.footer-links a{font-size:11px;color:#aaa}
+.copyright{border-top:1px solid #383838;margin-top:45px;padding-top:20px;text-align:center;font-size:10px;color:#888}
+.whatsapp{position:fixed;bottom:20px;right:18px;z-index:90;background:#191919;color:white;padding:13px 19px;border-radius:30px;font-size:10px;letter-spacing:1px}
+@media(max-width:800px){
+ .menu{display:block}
+ .links{display:none;position:absolute;top:88px;left:0;width:100%;background:white;padding:25px;flex-direction:column;border-bottom:1px solid var(--line)}
+ .links.open{display:flex}
+ .nav{height:75px}
+ .hero-grid,.split,.mud-grid,.professional-grid,.partner-grid{grid-template-columns:1fr}
+ .hero-copy{padding:65px 0 10px}
+ .hero-image{height:400px}
+ .science-grid{grid-template-columns:1fr 1fr}
+ .products{grid-template-columns:1fr 1fr}
+ .footer-grid{grid-template-columns:1fr 1fr}
 }
-a {text-decoration:none;color:inherit}
-button,input,textarea,select {font:inherit}
-button {cursor:pointer}
-.container {width:min(1160px,90%);margin:auto}
-.serif {font-family:'Cormorant Garamond',serif}
-.announcement {
-  background:#171717;color:white;text-align:center;
-  padding:8px;font-size:10px;letter-spacing:2px;
-}
-header {
-  background:#fff;border-bottom:1px solid var(--line);
-  position:sticky;top:0;z-index:100;
-}
-.nav {
-  min-height:85px;display:flex;align-items:center;
-  justify-content:space-between;gap:20px;
-}
-.brand {display:flex;flex-direction:column;align-items:center;line-height:1}
-.brand-main {
-  font-family:'Cormorant Garamond',serif;
-  font-size:29px;letter-spacing:1px;font-weight:500;
-}
-.brand-sub {font-size:9px;letter-spacing:6px;margin-top:7px}
-.navlinks {display:flex;gap:27px;align-items:center}
-.navlinks a {font-size:11px;letter-spacing:1px}
-.navlinks a:hover {color:var(--gold)}
-.nav-cta,.btn {
-  display:inline-block;background:var(--black);color:#fff;
-  padding:13px 23px;font-size:10px;letter-spacing:1.5px;
-  border:1px solid var(--black);transition:.25s;
-}
-.btn:hover,.nav-cta:hover {background:#fff;color:var(--black)}
-.menu-btn {display:none;background:none;border:0;font-size:25px}
-.hero {
-  min-height:640px;display:flex;align-items:center;
-  background:linear-gradient(90deg,#f5f5f2 0%,#f5f5f2 48%,#e9e8e3 100%);
-  overflow:hidden;
-}
-.hero-grid {
-  display:grid;grid-template-columns:1fr 1fr;
-  align-items:center;gap:45px;
-}
-.eyebrow {
-  font-size:10px;letter-spacing:3px;
-  color:var(--gold);font-weight:600;
-}
-.hero h1 {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(48px,6vw,78px);
-  font-weight:400;line-height:1.02;margin:22px 0;
-}
-.hero p {font-size:14px;color:#666;max-width:460px}
-.hero-actions {display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
-.btn-outline {
-  background:transparent;color:var(--black);
-}
-.hero-art {
-  min-height:460px;display:flex;align-items:center;
-  justify-content:center;position:relative;
-}
-.hero-art:before {
-  content:"";position:absolute;width:340px;height:340px;
-  border:1px solid #c9c5bb;border-radius:50%;
-}
-.hero-art:after {
-  content:"";position:absolute;width:270px;height:270px;
-  border:1px solid #d3cec3;border-radius:50%;
-}
-.product-visual {
-  width:230px;height:270px;background:linear-gradient(145deg,#292929,#080808);
-  border-radius:10px 10px 24px 24px;
-  box-shadow:0 30px 60px #0003;z-index:2;
-  display:flex;flex-direction:column;align-items:center;
-  justify-content:center;color:white;text-align:center;
-  padding:20px;position:relative;
-}
-.product-visual:before {
-  content:"";position:absolute;top:-22px;left:0;width:100%;
-  height:28px;background:#292929;border-radius:5px 5px 2px 2px;
-}
-.product-visual strong {
-  font-family:'Cormorant Garamond',serif;
-  font-size:22px;letter-spacing:2px;font-weight:400;
-}
-.product-visual span {font-size:8px;letter-spacing:3px;margin-top:10px}
-section {padding:95px 0}
-.section-head {text-align:center;max-width:680px;margin:0 auto 48px}
-.section-head h2 {
-  font-family:'Cormorant Garamond',serif;
-  font-size:48px;line-height:1.1;font-weight:400;margin:13px 0;
-}
-.section-head p {color:var(--grey);font-size:13px}
-.science {background:var(--light)}
-.science-grid {
-  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
-}
-.science-art {
-  min-height:360px;background:#e8e7e2;
-  display:flex;align-items:center;justify-content:center;
-  padding:35px;text-align:center;
-}
-.science-circle {
-  width:240px;height:240px;border:1px solid #aaa;
-  border-radius:50%;display:flex;align-items:center;
-  justify-content:center;position:relative;
-}
-.science-circle:before,.science-circle:after {
-  content:"";position:absolute;border:1px solid #aaa;
-  border-radius:50%;width:170px;height:170px;
-}
-.science-circle:after {width:100px;height:100px}
-.science-circle span {z-index:2;font-size:10px;letter-spacing:2px}
-.science-copy h2 {
-  font:400 48px/1.1 'Cormorant Garamond',serif;
-  margin:15px 0 20px;
-}
-.science-copy p {font-size:13px;color:#666;margin-bottom:18px}
-.text-link {
-  font-size:10px;letter-spacing:2px;
-  border-bottom:1px solid var(--black);padding-bottom:7px;
-}
-.focus-grid {
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-  background:var(--line);border:1px solid var(--line);
-}
-.focus-card {background:white;padding:30px 25px;min-height:190px}
-.focus-number {font:30px 'Cormorant Garamond',serif;color:var(--gold)}
-.focus-card h3 {font:26px 'Cormorant Garamond',serif;margin:8px 0}
-.focus-card p {font-size:11px;color:#777}
-.products {background:#f7f7f5}
-.product-grid {
-  display:grid;grid-template-columns:repeat(3,1fr);gap:25px;
-}
-.product-card {background:white;padding:15px}
-.product-image {
-  background:#ecece8;height:260px;
-  display:flex;align-items:center;justify-content:center;
-}
-.product-image .product-visual {
-  width:130px;height:160px;border-radius:7px 7px 15px 15px;
-}
-.product-image .product-visual:before {height:18px;top:-14px}
-.product-image .product-visual strong {font-size:14px}
-.product-image .product-visual span {font-size:6px}
-.product-info {padding:20px 5px}
-.product-info small {color:var(--gold);letter-spacing:2px;font-size:9px}
-.product-info h3 {font:26px 'Cormorant Garamond',serif;margin:5px 0}
-.product-info p {font-size:11px;color:#777}
-.product-info a {
-  display:inline-block;margin-top:15px;
-  font-size:10px;letter-spacing:1px;border-bottom:1px solid;
-}
-.product-note {text-align:center;font-size:11px;color:#777;margin-top:30px}
-.professional {
-  background:#1c1c1c;color:white;text-align:center;
-}
-.professional .section-head p {color:#bbb}
-.professional .btn {background:white;color:#171717;border-color:white}
-.professional .btn:hover {background:transparent;color:white}
-.partner-grid {
-  display:grid;grid-template-columns:1fr 1fr;gap:60px;
-}
-.partner-copy h2 {
-  font:400 48px/1.1 'Cormorant Garamond',serif;margin:15px 0;
-}
-.partner-copy p {color:#777;font-size:13px}
-.partner-form {
-  background:#f6f6f4;padding:30px;
-}
-.form-row {margin-bottom:16px}
-.form-row label {
-  display:block;font-size:10px;letter-spacing:1px;margin-bottom:6px;
-}
-.form-row input,.form-row select,.form-row textarea {
-  width:100%;padding:12px;border:1px solid #ddd;
-  background:white;outline:none;font-size:12px;
-}
-.form-row input:focus,.form-row textarea:focus {border-color:#777}
-.form-row textarea {height:100px;resize:vertical}
-.form-message {font-size:12px;margin-top:12px}
-.about {background:var(--light);text-align:center}
-.about-content {max-width:740px;margin:auto}
-.about h2 {font:400 48px 'Cormorant Garamond',serif;margin:15px}
-.about p {font-size:13px;color:#666}
-footer {background:#111;color:white;padding:55px 0 20px}
-.footer-grid {
-  display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;
-}
-footer .brand-main {font-size:27px}
-footer .brand-sub {color:#aaa}
-footer p {font-size:11px;color:#aaa;margin-top:18px;max-width:300px}
-footer h4 {font-size:10px;letter-spacing:2px;margin-bottom:17px}
-footer .footer-links {display:flex;flex-direction:column;gap:10px}
-footer .footer-links a {font-size:11px;color:#aaa}
-.copyright {
-  border-top:1px solid #333;margin-top:40px;padding-top:18px;
-  color:#888;font-size:10px;text-align:center;
-}
-.whatsapp {
-  position:fixed;bottom:22px;right:22px;z-index:90;
-  background:#202020;color:white;padding:13px 18px;
-  border-radius:30px;font-size:11px;box-shadow:0 5px 20px #0002;
-}
-@media(max-width:800px) {
-  .nav {min-height:70px}
-  .menu-btn {display:block}
-  .navlinks {
-    display:none;position:absolute;top:70px;left:0;width:100%;
-    background:white;padding:25px;flex-direction:column;
-    border-bottom:1px solid var(--line);
-  }
-  .navlinks.open {display:flex}
-  .nav-cta {display:none}
-  .hero {padding:65px 0}
-  .hero-grid,.science-grid,.partner-grid {grid-template-columns:1fr}
-  .hero-art {min-height:340px}
-  .product-grid {grid-template-columns:1fr 1fr}
-  .focus-grid {grid-template-columns:1fr 1fr}
-  .footer-grid {grid-template-columns:1fr 1fr}
-  section {padding:70px 0}
-}
-@media(max-width:480px) {
-  .hero h1 {font-size:51px}
-  .section-head h2,.science-copy h2,.partner-copy h2 {font-size:39px}
-  .product-grid,.focus-grid,.footer-grid {grid-template-columns:1fr}
-  .product-image {height:240px}
-  .hero-art {min-height:300px}
-  .hero-art:before {width:280px;height:280px}
-  .hero-art:after {width:220px;height:220px}
+@media(max-width:520px){
+ section{padding:72px 0}
+ .hero h1{font-size:57px}
+ .hero-image{height:320px}
+ .heading h2,.split-copy h2,.mud-copy h2,.professional-copy h2,.partner-copy h2,.about h2{font-size:41px}
+ .science-grid,.products,.footer-grid{grid-template-columns:1fr}
+ .product-image{height:260px}
+ .form{padding:22px}
 }
 </style>
 </head>
 
 <body>
-<div class="announcement">
-  PROFESSIONAL SKINCARE · SCIENCE OF SKIN
-</div>
+<div class="announcement">PROFESSIONAL SKINCARE · SCIENCE OF SKIN</div>
 
 <header>
-  <div class="container nav">
-    <a href="#" class="brand">
-      <span class="brand-main">SKIN MIMIC</span>
-      <span class="brand-sub">CARE</span>
-    </a>
-
-    <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
-
-    <nav class="navlinks" id="navlinks">
-      <a href="#science" onclick="closeMenu()">OUR SCIENCE</a>
-      <a href="#focus" onclick="closeMenu()">PIGMENTATION</a>
-      <a href="#products" onclick="closeMenu()">COLLECTION</a>
-      <a href="#about" onclick="closeMenu()">ABOUT</a>
-      <a href="#partner" onclick="closeMenu()">PARTNERSHIP</a>
-    </nav>
-
-    <a class="nav-cta" href="#partner">PARTNER WITH US</a>
-  </div>
+<div class="container nav">
+<a class="logo" href="#">
+<div class="logo-main">Skin Mimic</div>
+<div class="logo-sub">CARE</div>
+</a>
+<button class="menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
+<nav class="links">
+<a href="#science">OUR SCIENCE</a>
+<a href="#collection">COLLECTION</a>
+<a href="#professional">PROFESSIONAL</a>
+<a href="#about">ABOUT US</a>
+<a href="#partner">CONTACT</a>
+</nav>
+<a href="#partner" class="btn">BUSINESS ENQUIRY</a>
+</div>
 </header>
 
 <main>
+
+<!-- HERO -->
 <section class="hero">
-  <div class="container hero-grid">
-    <div>
-      <div class="eyebrow">A PROFESSIONAL SKINCARE HOUSE</div>
-      <h1>The Science<br>of Skin.<br>The Art of Care.</h1>
-      <p>
-        Professional skincare inspired by skin barrier science,
-        biomimicry and a deeper understanding of pigmentation.
-      </p>
-      <div class="hero-actions">
-        <a href="#products" class="btn">EXPLORE OUR RANGE</a>
-        <a href="#science" class="btn btn-outline">OUR PHILOSOPHY</a>
-      </div>
-    </div>
-
-    <div class="hero-art">
-      <div class="product-visual">
-        <strong>SKIN MIMIC</strong>
-        <span>PROFESSIONAL SKINCARE</span>
-        <span>CARE</span>
-      </div>
-    </div>
-  </div>
+<div class="container hero-grid">
+<div class="hero-copy">
+<div class="eyebrow">A PROFESSIONAL SKINCARE HOUSE</div>
+<h1>The Science<br>of Skin.<br>The Art of Care.</h1>
+<p>
+Discover SKIN MIMIC CARE — a professional skincare
+house inspired by biomimicry, skin architecture and
+the science behind healthy-looking skin.
+</p>
+<div class="actions">
+<a href="#collection" class="btn">DISCOVER OUR COLLECTION</a>
+<a href="#science" class="btn btn-outline">OUR PHILOSOPHY</a>
+</div>
+</div>
+<div class="hero-image">
+<img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=1100&q=85" alt="Premium skincare product photography">
+<div class="image-caption">THE SKIN MIMIC PHILOSOPHY</div>
+</div>
+</div>
 </section>
 
-<section id="science">
-  <div class="container science-grid">
-    <div class="science-art">
-      <div class="science-circle">
-        <span>SKIN BARRIER<br>SCIENCE</span>
-      </div>
-    </div>
-    <div class="science-copy">
-      <div class="eyebrow">OUR PHILOSOPHY</div>
-      <h2>Inspired by the Architecture of Skin.</h2>
-      <p>
-        Skin MIMIC is built around a biomimetic approach to
-        skincare. We explore the relationship between skin
-        structure, barrier function and formulation science.
-      </p>
-      <p>
-        Our long-term research direction focuses on pigmentation,
-        uneven skin tone and the factors that influence skin health.
-      </p>
-      <a href="#focus" class="text-link">EXPLORE OUR SCIENCE →</a>
-    </div>
-  </div>
+<!-- INTRODUCTION -->
+<section>
+<div class="container split">
+<div class="split-image">
+<img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=900&q=85" alt="Luxury skincare textures and formulations">
+</div>
+<div class="split-copy">
+<div class="eyebrow">INTRODUCING SKIN MIMIC CARE</div>
+<h2>Where Skin Science Meets Thoughtful Formulation.</h2>
+<p>
+We believe that understanding the skin is the starting
+point of purposeful skincare.
+</p>
+<p>
+Inspired by the principles of biomimicry, SKIN MIMIC
+CARE explores formulations that take inspiration from
+the skin's natural structure, protective barrier and
+complex biological functions.
+</p>
+<a href="#about" class="text-link">DISCOVER OUR STORY →</a>
+</div>
+</div>
 </section>
 
-<section id="focus">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">OUR AREAS OF RESEARCH</div>
-      <h2>Understanding Pigmentation.</h2>
-      <p>
-        Exploring different pigmentation patterns and contributing
-        skin factors to guide future professional skincare development.
-      </p>
-    </div>
-
-    <div class="focus-grid">
-      <article class="focus-card">
-        <div class="focus-number">01</div>
-        <h3>Melasma</h3>
-        <p>Research into persistent, hormonally influenced and UV-associated pigmentation.</p>
-      </article>
-      <article class="focus-card">
-        <div class="focus-number">02</div>
-        <h3>Post-Pregnancy</h3>
-        <p>Understanding pigmentation changes associated with hormonal shifts after pregnancy.</p>
-      </article>
-      <article class="focus-card">
-        <div class="focus-number">03</div>
-        <h3>Barrier Damage</h3>
-        <p>Exploring irritation, inflammation and post-inflammatory uneven skin tone.</p>
-      </article>
-      <article class="focus-card">
-        <div class="focus-number">04</div>
-        <h3>Hard Water</h3>
-        <p>Investigating mineral exposure, dryness, cleansing and potential irritation.</p>
-      </article>
-      <article class="focus-card">
-        <div class="focus-number">05</div>
-        <h3>Steroid-Associated Changes</h3>
-        <p>Understanding skin changes linked to inappropriate or prolonged topical steroid use.</p>
-      </article>
-      <article class="focus-card">
-        <div class="focus-number">06</div>
-        <h3>UV Pigmentation</h3>
-        <p>Research into tanning, sun spots and uneven skin tone associated with UV exposure.</p>
-      </article>
-    </div>
-  </div>
+<!-- SCIENCE -->
+<section class="science" id="science">
+<div class="container">
+<div class="heading">
+<div class="eyebrow">THE SCIENCE BEHIND OUR NAME</div>
+<h2>Inspired by the Skin. Designed with Purpose.</h2>
+<p>
+The word MIMIC represents our formulation philosophy:
+taking inspiration from the natural architecture and
+protective functions of the skin.
+</p>
+</div>
+<div class="science-grid">
+<div class="science-card">
+<div class="number">01</div>
+<h3>Biomimicry</h3>
+<p>
+Taking inspiration from biological structures and
+natural skin functions when developing purposeful
+skincare formulations.
+</p>
+</div>
+<div class="science-card">
+<div class="number">02</div>
+<h3>Skin Barrier Science</h3>
+<p>
+Understanding the role of skin lipids, hydration
+and the protective barrier in maintaining healthy-looking skin.
+</p>
+</div>
+<div class="science-card">
+<div class="number">03</div>
+<h3>Ingredient Intelligence</h3>
+<p>
+A considered approach to selecting ingredients,
+formulation compatibility and product performance.
+</p>
+</div>
+<div class="science-card">
+<div class="number">04</div>
+<h3>Professional Care</h3>
+<p>
+Developing a professional skincare philosophy
+for salon environments and structured treatment experiences.
+</p>
+</div>
+</div>
+</div>
 </section>
 
-<section id="products" class="products">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">THE SKIN MIMIC COLLECTION</div>
-      <h2>Professional Formulations.</h2>
-      <p>
-        A growing collection of professional skincare.
-        New formulations will be introduced as they are developed and launched.
-      </p>
-    </div>
+<!-- COLLECTION -->
+<section class="collection" id="collection">
+<div class="container">
+<div class="heading">
+<div class="eyebrow">EXPLORE SKIN MIMIC CARE</div>
+<h2>Our Professional Collection.</h2>
+<p>
+A carefully developed collection of professional
+skincare formulations. Our range will continue to
+evolve as new products are introduced.
+</p>
+</div>
 
-    <div class="product-grid">
-      <article class="product-card">
-        <div class="product-image">
-          <div class="product-visual">
-            <strong>SKIN MIMIC</strong>
-            <span>CARE</span>
-          </div>
-        </div>
-        <div class="product-info">
-          <small>COLLECTION 01</small>
-          <h3>Professional Skincare</h3>
-          <p>Our professional product collection is under development.</p>
-          <a href="#partner">PRODUCT ENQUIRY →</a>
-        </div>
-      </article>
+<div class="products">
 
-      <article class="product-card">
-        <div class="product-image">
-          <div class="product-visual">
-            <strong>SKIN MIMIC</strong>
-            <span>CARE</span>
-          </div>
-        </div>
-        <div class="product-info">
-          <small>COLLECTION 02</small>
-          <h3>Pigmentation Care</h3>
-          <p>Future formulations focused on uneven skin tone and pigmentation concerns.</p>
-          <a href="#partner">STAY CONNECTED →</a>
-        </div>
-      </article>
+<div class="product">
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=650&q=80" alt="Professional skincare">
+</div>
+<div class="product-info">
+<small>PROFESSIONAL RANGE</small>
+<h3>Professional Skincare</h3>
+<p>Purposeful formulations designed for professional skincare environments.</p>
+<a href="#partner">ENQUIRE ABOUT OUR RANGE →</a>
+</div>
+</div>
 
-      <article class="product-card">
-        <div class="product-image">
-          <div class="product-visual">
-            <strong>SKIN MIMIC</strong>
-            <span>CARE</span>
-          </div>
-        </div>
-        <div class="product-info">
-          <small>COLLECTION 03</small>
-          <h3>Skin Barrier Science</h3>
-          <p>Future professional solutions inspired by skin barrier research.</p>
-          <a href="#partner">STAY CONNECTED →</a>
-        </div>
-      </article>
-    </div>
-    <p class="product-note">
-      Product illustrations are placeholders. No products are currently offered for sale through this website.
-    </p>
-  </div>
+<div class="product">
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=650&q=80" alt="Skincare formulation">
+</div>
+<div class="product-info">
+<small>FORMULATION PHILOSOPHY</small>
+<h3>Skin Science</h3>
+<p>Our approach to ingredients, skin compatibility and formulation development.</p>
+<a href="#science">EXPLORE OUR SCIENCE →</a>
+</div>
+</div>
+
+<div class="product">
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1600612253971-422e7f7faeb6?auto=format&fit=crop&w=650&q=80" alt="Luxury facial skincare">
+</div>
+<div class="product-info">
+<small>PROFESSIONAL EXPERIENCES</small>
+<h3>Salon Treatments</h3>
+<p>Professional skincare experiences and treatment concepts for salon partners.</p>
+<a href="#professional">DISCOVER MORE →</a>
+</div>
+</div>
+
+</div>
+<p class="product-note">
+Product visuals are illustrative. Official product details will be added after individual launches.
+</p>
+</div>
 </section>
 
-<section class="professional">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">FOR SKIN PROFESSIONALS</div>
-      <h2>Created for Professional Care.</h2>
-      <p>
-        Discover our professional skincare philosophy and
-        connect with us for future product launches and salon partnerships.
-      </p>
-    </div>
-    <a href="#partner" class="btn">BECOME A SALON PARTNER</a>
-  </div>
+<!-- HERO PRODUCT / MOOR MUD -->
+<section class="mud">
+<div class="container mud-grid">
+<div class="mud-image">
+<img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=950&q=85" alt="Premium skincare product">
+</div>
+<div class="mud-copy">
+<div class="eyebrow">A WORLD OF PROFESSIONAL CARE</div>
+<h2>Inspired by Nature. Guided by Science.</h2>
+<p>
+From carefully selected materials to considered
+formulation approaches, our vision is to bring
+thoughtful professional skincare experiences to salons.
+</p>
+<p>
+Our future collection will explore professional
+treatment formulations and purposeful skincare solutions.
+</p>
+<a href="#partner" class="btn">CONNECT WITH OUR TEAM</a>
+</div>
+</div>
 </section>
 
-<section id="about">
-  <div class="container about-content">
-    <div class="eyebrow">ABOUT SKIN MIMIC CARE</div>
-    <h2 class="serif">A Different Perspective on Skincare.</h2>
-    <p>
-      SKIN MIMIC CARE is a professional skincare brand being
-      developed around biomimicry, skin barrier science and
-      pigmentation-focused research.
-      Our vision is to create purposeful formulations for
-      professional skincare environments.
-    </p>
-  </div>
+<!-- PROFESSIONAL -->
+<section class="professional" id="professional">
+<div class="container professional-grid">
+<div class="professional-image">
+<img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=85" alt="Luxury professional spa environment">
+</div>
+<div class="professional-copy">
+<div class="eyebrow">FOR SKIN PROFESSIONALS</div>
+<h2>Created with Professionals in Mind.</h2>
+<p>
+SKIN MIMIC CARE aims to build meaningful relationships
+with salons, skincare professionals and business partners.
+</p>
+<p>
+Explore our brand philosophy, discover upcoming
+formulations and connect with us for professional
+business opportunities.
+</p>
+<a href="#partner" class="text-link">BECOME A PARTNER →</a>
+</div>
+</div>
 </section>
 
-<section id="partner">
-  <div class="container partner-grid">
-    <div class="partner-copy">
-      <div class="eyebrow">BUSINESS PARTNERSHIP</div>
-      <h2>Let's Build Better Professional Skincare.</h2>
-      <p>
-        Are you a salon owner, skincare professional or distributor?
-        Connect with SKIN MIMIC CARE to discuss professional products,
-        future launches and business opportunities.
-      </p>
-      <br>
-      <p>Submit your business details and our team can connect with you.</p>
-    </div>
-
-    <form class="partner-form" id="partnerForm">
-      <div class="form-row">
-        <label>BUSINESS / SALON NAME *</label>
-        <input name="business" required placeholder="Your salon name">
-      </div>
-      <div class="form-row">
-        <label>CONTACT PERSON *</label>
-        <input name="person" required placeholder="Full name">
-      </div>
-      <div class="form-row">
-        <label>MOBILE NUMBER *</label>
-        <input name="phone" type="tel" required placeholder="Mobile number">
-      </div>
-      <div class="form-row">
-        <label>EMAIL ADDRESS</label>
-        <input name="email" type="email" placeholder="Business email">
-      </div>
-      <div class="form-row">
-        <label>CITY *</label>
-        <input name="city" required placeholder="City">
-      </div>
-      <div class="form-row">
-        <label>BUSINESS TYPE</label>
-        <select name="type">
-          <option>Salon</option>
-          <option>Skin Clinic</option>
-          <option>Beauty Professional</option>
-          <option>Distributor</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <label>MESSAGE</label>
-        <textarea name="message" placeholder="Tell us about your business"></textarea>
-      </div>
-      <button type="submit" class="btn">SUBMIT ENQUIRY</button>
-      <div class="form-message" id="formMessage"></div>
-    </form>
-  </div>
+<!-- ABOUT -->
+<section class="about" id="about">
+<div class="container about-inner">
+<div class="eyebrow">ABOUT THE BRAND</div>
+<h2>More Than Skincare. A Philosophy of Understanding Skin.</h2>
+<p>
+SKIN MIMIC CARE is a professional skincare house
+built around a simple idea: understand the skin's
+natural architecture and take inspiration from its
+protective functions.
+<br><br>
+Our vision is to develop purposeful formulations
+that bring together ingredient knowledge, skin science
+and professional skincare practices.
+<br><br>
+We are building a growing collection for skin
+professionals who value thoughtful formulations
+and purposeful care.
+</p>
+</div>
 </section>
+
+<!-- PARTNERSHIP -->
+<section class="partner" id="partner">
+<div class="container partner-grid">
+<div class="partner-copy">
+<div class="eyebrow">LET'S CONNECT</div>
+<h2>Become a Part of the SKIN MIMIC Network.</h2>
+<p>
+Are you a salon owner, skincare professional,
+skin clinic or distributor?
+</p>
+<p>
+Connect with us to learn about our professional
+skincare philosophy, upcoming product launches
+and potential business partnerships.
+</p>
+</div>
+
+<form class="form" id="enquiryForm">
+<div class="field">
+<label>BUSINESS / SALON NAME *</label>
+<input name="business" required placeholder="Business name">
+</div>
+<div class="field">
+<label>CONTACT PERSON *</label>
+<input name="person" required placeholder="Your name">
+</div>
+<div class="field">
+<label>MOBILE NUMBER *</label>
+<input name="phone" type="tel" required placeholder="Mobile number">
+</div>
+<div class="field">
+<label>EMAIL ADDRESS</label>
+<input name="email" type="email" placeholder="Business email">
+</div>
+<div class="field">
+<label>CITY *</label>
+<input name="city" required placeholder="City">
+</div>
+<div class="field">
+<label>BUSINESS TYPE</label>
+<select name="type">
+<option>Salon</option>
+<option>Skin Clinic</option>
+<option>Beauty Professional</option>
+<option>Distributor</option>
+<option>Other</option>
+</select>
+</div>
+<div class="field">
+<label>MESSAGE</label>
+<textarea name="message" placeholder="Tell us about your business"></textarea>
+</div>
+<button class="btn" type="submit">SUBMIT BUSINESS ENQUIRY</button>
+<div class="form-message" id="formMessage"></div>
+</form>
+</div>
+</section>
+
 </main>
 
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="brand">
-          <span class="brand-main">SKIN MIMIC</span>
-          <span class="brand-sub">CARE</span>
-        </div>
-        <p>
-          Professional skincare inspired by biomimicry,
-          skin barrier science and pigmentation research.
-        </p>
-      </div>
-      <div>
-        <h4>EXPLORE</h4>
-        <div class="footer-links">
-          <a href="#science">Our Science</a>
-          <a href="#focus">Pigmentation</a>
-          <a href="#products">Collection</a>
-          <a href="#about">About Us</a>
-        </div>
-      </div>
-      <div>
-        <h4>CONNECT</h4>
-        <div class="footer-links">
-          <a href="#partner">Salon Partnership</a>
-          <a href="mailto:hello@skinmimiccare.com">Email Us</a>
-          <a href="#partner">Business Enquiry</a>
-        </div>
-      </div>
-    </div>
-    <div class="copyright">
-      © <span id="year"></span> SKIN MIMIC CARE. ALL RIGHTS RESERVED.
-    </div>
-  </div>
+<div class="container">
+<div class="footer-grid">
+<div>
+<div class="logo">
+<div class="logo-main">Skin Mimic</div>
+<div class="logo-sub">CARE</div>
+</div>
+<p>
+Professional skincare inspired by biomimicry,
+skin barrier science and thoughtful formulation.
+</p>
+</div>
+<div>
+<h4>EXPLORE</h4>
+<div class="footer-links">
+<a href="#science">Our Science</a>
+<a href="#collection">Our Collection</a>
+<a href="#about">About Us</a>
+</div>
+</div>
+<div>
+<h4>CONNECT</h4>
+<div class="footer-links">
+<a href="#professional">For Professionals</a>
+<a href="#partner">Business Enquiry</a>
+<a href="mailto:hello@skinmimiccare.com">Email Us</a>
+</div>
+</div>
+</div>
+<div class="copyright">
+© <span id="year"></span> SKIN MIMIC CARE. ALL RIGHTS RESERVED.
+</div>
+</div>
 </footer>
 
-<a class="whatsapp" href="https://wa.me/?text=Hello%20SKIN%20MIMIC%20CARE%2C%20I%20am%20interested%20in%20your%20professional%20skincare%20range." target="_blank" rel="noopener">WHATSAPP ↗</a>
+<a class="whatsapp" href="https://wa.me/?text=Hello%20SKIN%20MIMIC%20CARE%2C%20I%20would%20like%20to%20know%20more%20about%20your%20professional%20skincare%20range." target="_blank" rel="noopener">WHATSAPP ↗</a>
 
 <script>
-function toggleMenu() {
-  document.getElementById('navlinks').classList.toggle('open');
-}
-function closeMenu() {
-  document.getElementById('navlinks').classList.remove('open');
-}
 document.getElementById('year').textContent = new Date().getFullYear();
 
-document.getElementById('partnerForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const data = new FormData(this);
-  const message =
-    "SKIN MIMIC CARE - Business Enquiry%0A" +
-    "Busine
+function closeMenu(){
+ document.querySelector('.links').classList.remove('open');
+}
+document.querySelectorAll('.links a').forEach(function(a){
+ a.addEventListener('click',closeMenu);
+});
+
+document.getElementById('enquiryForm').addEventListener('submit',function(e){
+ e.preventDefault();
+ const f=new FormData(this);
+ const phone=f.get('phone').replace(/[^0-9+]/g,'');
+ if(phone.replace(/\D/g,'').length<10){
+  document.getElementById('formMessage').textContent='Please enter a valid mobile number.';
+  return;
+ }
+ const msg=[
+ 'SKIN MIMIC CARE - Business Enquiry',
+ 'Business: '+f.get('business'),
+ 'Contact: '+f.get('person'),
+ 'Mobile: '+f.get('phone'),
+ 'Email: '+f.get('email'),
+ 'City: '+f.get('city'),
+ 'Business type: '+f.get('type'),
+ 'Message: '+f.get('message')
+ ].join('\\n');
+
+ document.getElementById('formMessage').textContent='Opening WhatsApp. Please review and press Send.';
+ window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+});
+</script>
+</body>
+</html>`;
+
+  return new Response(html,{
+   headers:{
+    "Content-Type":"text/html;charset=UTF-8",
+    "X-Content-Type-Options":"nosniff",
+    "Referrer-Policy":"strict-origin-when-cross-origin"
+   }
+  });
+ }
+};
