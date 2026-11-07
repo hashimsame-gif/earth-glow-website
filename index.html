@@ -1,1120 +1,367 @@
-export default {
- async fetch(request) {
-
- const html = `<!DOCTYPE html>
-<html lang="en">
+```html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#ffffff">
-
-<title>SKIN MIMIC CARE | Professional Skincare House</title>
-<meta name="description" content="SKIN MIMIC CARE — Professional skincare inspired by biomimicry, skin barrier science and thoughtful formulation.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root {
- --black:#191919;
- --grey:#777773;
- --gold:#a99473;
- --cream:#f5f5f2;
- --line:#e7e6e1;
- --serif:'Cormorant Garamond',serif;
- --sans:'DM Sans',sans-serif;
-}
-
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--sans);color:var(--black);background:white;line-height:1.7}
-a{text-decoration:none;color:inherit}
-button,input,select,textarea{font:inherit}
-.container{width:min(1160px,90%);margin:auto}
-.serif{font-family:var(--serif)}
-
-.eyebrow{
- font-size:10px;
- letter-spacing:3px;
- color:var(--gold);
- font-weight:600;
- text-transform:uppercase;
-}
-
-.announcement{
- background:#171717;
- color:white;
- text-align:center;
- padding:9px;
- font-size:9px;
- letter-spacing:2.5px;
-}
-
-header{
- position:sticky;
- top:0;
- z-index:100;
- background:white;
- border-bottom:1px solid var(--line);
-}
-
-.nav{
- min-height:85px;
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:20px;
-}
-
-.logo{
- text-align:center;
- line-height:1;
- flex-shrink:0;
-}
-
-.logo-main{
- font:italic 500 32px var(--serif);
- letter-spacing:-1px;
-}
-
-.logo-sub{
- font:12px var(--serif);
- letter-spacing:9px;
- padding-left:9px;
- margin-top:7px;
-}
-
-.navlinks{
- display:flex;
- align-items:center;
- gap:24px;
-}
-
-.navlinks a{
- font-size:10px;
- letter-spacing:1px;
-}
-
-.navlinks a:hover{color:var(--gold)}
-
-.btn{
- display:inline-block;
- background:var(--black);
- color:white;
- border:1px solid var(--black);
- padding:14px 23px;
- font-size:10px;
- letter-spacing:1.5px;
- transition:.3s;
- cursor:pointer;
-}
-
-.btn:hover{
- background:white;
- color:var(--black);
-}
-
-.btn-outline{
- background:transparent;
- color:var(--black);
-}
-
-.menu{
- display:none;
- background:none;
- border:0;
- font-size:25px;
-}
-
-/* IMAGE PLACEHOLDERS */
-
-.visual{
- width:100%;
- height:100%;
- min-height:220px;
- position:relative;
- overflow:hidden;
- background:linear-gradient(145deg,#e9e8e4,#d8d7d1);
- display:flex;
- align-items:center;
- justify-content:center;
-}
-
-.visual:before{
- content:"";
- position:absolute;
- width:65%;
- aspect-ratio:1;
- border:1px solid #ffffff85;
- border-radius:50%;
-}
-
-.visual:after{
- content:"";
- position:absolute;
- width:45%;
- aspect-ratio:1;
- border:1px solid #ffffff85;
- border-radius:50%;
-}
-
-.visual span{
- position:relative;
- z-index:2;
- font-size:9px;
- letter-spacing:3px;
- color:#555;
- text-align:center;
- padding:15px;
-}
-
-/* HERO */
-
-.hero{
- background:#f2f2ef;
- min-height:610px;
- display:flex;
- align-items:center;
-}
-
-.hero-grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:50px;
- align-items:center;
-}
-
-.hero-copy{padding:65px 0}
-
-.hero h1{
- font:400 clamp(55px,6vw,82px)/.98 var(--serif);
- margin:23px 0;
-}
-
-.hero-copy p{
- font-size:13px;
- color:#6d6d69;
- line-height:2;
- max-width:460px;
-}
-
-.actions{
- display:flex;
- gap:12px;
- flex-wrap:wrap;
- margin-top:30px;
-}
-
-.hero-image{height:460px}
-
-.hero-image .visual{
- background:linear-gradient(145deg,#e1dfd8,#c6c3bb);
-}
-
-.hero-image .visual span{
- font:400 27px var(--serif);
- letter-spacing:2px;
- color:#46443f;
-}
-
-.image-caption{
- margin-top:10px;
- font-size:9px;
- letter-spacing:2px;
- color:#777;
-}
-
-/* INTRODUCTION */
-
-section{padding:95px 0}
-
-.split{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:65px;
- align-items:center;
-}
-
-.intro-image{height:420px}
-
-.intro-image .visual{
- background:linear-gradient(145deg,#e8e7e1,#d4d2cb);
-}
-
-.split-copy h2{
- font:400 49px/1.1 var(--serif);
- margin:16px 0 22px;
-}
-
-.split-copy p{
- color:var(--grey);
- font-size:13px;
- line-height:2;
- margin-bottom:16px;
-}
-
-.text-link{
- display:inline-block;
- font-size:10px;
- letter-spacing:2px;
- border-bottom:1px solid;
- padding-bottom:6px;
- margin-top:10px;
-}
-
-/* SCIENCE */
-
-.science{background:var(--cream)}
-
-.section-heading{
- max-width:720px;
- text-align:center;
- margin:0 auto 48px;
-}
-
-.section-heading h2{
- font:400 50px/1.1 var(--serif);
- margin:15px 0;
-}
-
-.section-heading p{
- font-size:13px;
- color:var(--grey);
- line-height:2;
-}
-
-.science-intro{
- max-width:820px;
- margin:auto;
-}
-
-.science-visual{
- height:340px;
- margin:35px 0;
-}
-
-.science-visual .visual{
- background:linear-gradient(145deg,#deddd8,#c6c5c0);
-}
-
-.science-grid{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:18px;
-}
-
-.science-card{
- padding:30px;
- background:white;
- border:1px solid var(--line);
-}
-
-.science-card .number{
- font:30px var(--serif);
- color:var(--gold);
-}
-
-.science-card h3{
- font:29px var(--serif);
- margin:8px 0;
-}
-
-.science-card p{
- font-size:12px;
- color:var(--grey);
- line-height:1.9;
-}
-
-/* PROFESSIONAL FORMULATIONS */
-
-.formulations{background:white}
-
-.formulation-grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:55px;
- align-items:center;
-}
-
-.formulation-image{height:420px}
-
-.formulation-image .visual{
- background:linear-gradient(140deg,#e6e5e0,#c8c7c1);
-}
-
-.formulation-copy h2{
- font:400 50px/1.05 var(--serif);
- margin:15px 0 20px;
-}
-
-.formulation-copy p{
- font-size:13px;
- color:var(--grey);
- line-height:2;
- margin-bottom:17px;
-}
-
-/* TREATMENT PROTOCOLS */
-
-.protocols{background:var(--cream)}
-
-.protocol-grid{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:20px;
-}
-
-.protocol-card{
- background:white;
- padding:30px;
- border:1px solid var(--line);
-}
-
-.protocol-card .number{
- font:30px var(--serif);
- color:var(--gold);
-}
-
-.protocol-card h3{
- font:27px var(--serif);
- margin:10px 0;
-}
-
-.protocol-card p{
- font-size:12px;
- color:var(--grey);
- line-height:1.9;
-}
-
-/* MOOR MUD */
-
-.moor{
- background:#222;
- color:white;
-}
-
-.moor-grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:60px;
- align-items:center;
-}
-
-.moor-image{height:430px}
-
-.moor-image .visual{
- background:linear-gradient(145deg,#66635c,#272522);
-}
-
-.moor-image .visual span{color:white}
-
-.moor-copy h2{
- font:400 51px/1.05 var(--serif);
- margin:15px 0 20px;
-}
-
-.moor-copy p{
- color:#c6c6c1;
- font-size:13px;
- line-height:2;
- margin-bottom:17px;
-}
-
-.moor .eyebrow{color:#c3ad8c}
-
-.moor .btn{
- background:white;
- color:#171717;
- border-color:white;
-}
-
-.moor .btn:hover{
- background:transparent;
- color:white;
-}
-
-/* SALON PARTNERS */
-
-.partners{background:white}
-
-.partner-image{height:400px}
-
-.partner-image .visual{
- background:linear-gradient(145deg,#e5e2dc,#c9c6bf);
-}
-
-.partner-copy h2{
- font:400 49px/1.08 var(--serif);
- margin:15px 0;
-}
-
-.partner-copy p{
- font-size:13px;
- color:var(--grey);
- line-height:2;
- margin-bottom:18px;
-}
-
-/* ABOUT */
-
-.about{
- background:var(--cream);
- text-align:center;
-}
-
-.about-inner{
- max-width:780px;
- margin:auto;
-}
-
-.about h2{
- font:400 50px/1.1 var(--serif);
- margin:16px 0;
-}
-
-.about p{
- font-size:13px;
- line-height:2;
- color:var(--grey);
-}
-
-/* ENQUIRY */
-
-.enquiry{background:white}
-
-.enquiry-grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:60px;
-}
-
-.enquiry-copy h2{
- font:400 51px/1.08 var(--serif);
- margin:15px 0;
-}
-
-.enquiry-copy p{
- font-size:13px;
- color:var(--grey);
- line-height:2;
-}
-
-.form{
- background:var(--cream);
- padding:32px;
-}
-
-.field{margin-bottom:16px}
-
-.field label{
- display:block;
- font-size:9px;
- letter-spacing:1.5px;
- margin-bottom:7px;
-}
-
-.field input,.field textarea,.field select{
- width:100%;
- background:white;
- border:1px solid #deded9;
- padding:13px;
- font-size:12px;
- outline:none;
-}
-
-.field textarea{height:95px;resize:vertical}
-
-.field input:focus,.field textarea:focus{
- border-color:#999;
-}
-
-.form-message{
- font-size:11px;
- margin-top:12px;
-}
-
-/* FOOTER */
-
-footer{
- background:#171717;
- color:white;
- padding:60px 0 22px;
-}
-
-.footer-grid{
- display:grid;
- grid-template-columns:2fr 1fr 1fr;
- gap:40px;
-}
-
-footer p{
- font-size:11px;
- color:#aaa;
- margin-top:18px;
- max-width:310px;
-}
-
-footer h4{
- font-size:10px;
- letter-spacing:2px;
- margin-bottom:17px;
-}
-
-.footer-links{
- display:flex;
- flex-direction:column;
- gap:12px;
-}
-
-.footer-links a{
- font-size:11px;
- color:#aaa;
-}
-
-.footer-links a:hover{color:white}
-
-.copyright{
- border-top:1px solid #383838;
- margin-top:40px;
- padding-top:20px;
- text-align:center;
- color:#888;
- font-size:10px;
-}
-
-.whatsapp{
- position:fixed;
- bottom:20px;
- right:18px;
- z-index:90;
- background:#191919;
- color:white;
- padding:13px 18px;
- border-radius:30px;
- font-size:10px;
- letter-spacing:1px;
-}
-
-@media(max-width:850px){
-
- .menu{display:block}
-
- .navlinks{
-  display:none;
-  position:absolute;
-  top:85px;
-  left:0;
-  width:100%;
-  padding:25px;
-  background:white;
-  flex-direction:column;
-  border-bottom:1px solid var(--line);
- }
-
- .navlinks.open{display:flex}
-
- .hero-grid,.split,.formulation-grid,.moor-grid,
- .enquiry-grid{
-  grid-template-columns:1fr;
- }
-
- .hero-copy{padding:65px 0 10px}
- .hero-image{height:350px}
- .intro-image{height:350px}
- .formulation-image{height:350px}
- .moor-image{height:350px}
- .partner-image{height:320px}
- .protocol-grid{grid-template-columns:1fr 1fr}
- .footer-grid{grid-template-columns:1fr 1fr}
-}
-
-@media(max-width:520px){
-
- section{padding:72px 0}
-
- .hero h1{font-size:57px}
-
- .hero-image{height:290px}
- .intro-image{height:290px}
- .science-visual{height:230px}
- .formulation-image{height:290px}
- .moor-image{height:290px}
-
- .section-heading h2,
- .split-copy h2,
- .formulation-copy h2,
- .moor-copy h2,
- .partner-copy h2,
- .about h2,
- .enquiry-copy h2{
-  font-size:40px;
- }
-
- .science-grid,.protocol-grid,.footer-grid{
-  grid-template-columns:1fr;
- }
-
- .form{padding:22px}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkinMimic CARE® | Professional Biomimetic Salon & Clinical Dermal Systems</title>
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            alabaster: '#FAF7F2',
+            cream: '#F4ECE1',
+            champagne: '#C6A573',
+            'champagne-dark': '#9E7E4A',
+            'champagne-light': '#EBDDC7',
+            charcoal: '#151518',
+            'charcoal-soft': '#24242A',
+            taupe: '#7D7569',
+            pearl: '#E7DFD5',
+            'emerald-sage': '#2D4B3D'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'serif', 'Georgia'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif', 'system-ui'],
+            script: ['"Pinyon Script"', 'cursive', 'Georgia']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    ::selection {
+      background-color: #C6A573;
+      color: #FAF7F2;
+    }
+
+    .frosted-glass {
+      background: rgba(250, 247, 242, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .dark-frosted-glass {
+      background: rgba(21, 21, 24, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .gold-shimmer {
+      background: linear-gradient(135deg, #C6A573 0%, #DFCAAA 50%, #9E7E4A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .luxury-border {
+      border: 1px solid rgba(198, 165, 115, 0.35);
+    }
+
+    .shadow-luxury {
+      box-shadow: 0 25px 50px -12px rgba(21, 21, 24, 0.08);
+    }
+
+    .gold-shadow {
+      box-shadow: 0 12px 30px -5px rgba(198, 165, 115, 0.3);
+    }
+
+    input[type=range] {
+      accent-color: #C6A573;
+    }
+  </style>
 </head>
 
-<body>
+<body class="bg-alabaster text-charcoal font-sans antialiased overflow-x-hidden selection:bg-champagne selection:text-white">
 
-<div class="announcement">
-PROFESSIONAL SKINCARE · INSPIRED BY SKIN SCIENCE
-</div>
-
-<header>
-<div class="container nav">
-
-<a href="#" class="logo">
-<div class="logo-main">Skin Mimic</div>
-<div class="logo-sub">CARE</div>
-</a>
-
-<button class="menu" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
-
-<nav class="navlinks">
-<a href="#introduction">INTRODUCTION</a>
-<a href="#science">OUR SCIENCE</a>
-<a href="#collection">COLLECTION</a>
-<a href="#protocols">TREATMENTS</a>
-<a href="#partner">PARTNERSHIP</a>
-</nav>
-
-<a href="#partner" class="btn">CONTACT US</a>
-
-</div>
-</header>
-
-<main>
-
-<!-- 01 BRAND INTRODUCTION -->
-
-<section class="hero" id="introduction">
-<div class="container hero-grid">
-
-<div class="hero-copy">
-<div class="eyebrow">INTRODUCING SKIN MIMIC CARE</div>
-
-<h1>The Science<br>of Skin.<br>The Art of Care.</h1>
-
-<p>
-A professional skincare house inspired by biomimicry,
-skin architecture and purposeful formulation.
-Discover a thoughtful approach to professional skincare
-where science meets the art of care.
-</p>
-
-<div class="actions">
-<a href="#collection" class="btn">EXPLORE COLLECTION</a>
-<a href="#partner" class="btn btn-outline">PARTNER WITH US</a>
-</div>
-</div>
-
-<div>
-<div class="hero-image">
-  <img
-    src="professional-facial.jpg"
-    alt="Professional skincare facial treatment"
-    style="width:100%;height:100%;object-fit:cover;display:block;"
-  >
-  <div class="image-caption">
-    A NEW PERSPECTIVE ON PROFESSIONAL SKINCARE
+  <!-- ================= TOP CLINICAL BANNER ================= -->
+  <div class="bg-charcoal text-[#EAE4DC] py-2.5 px-4 text-[11px] font-medium tracking-[0.25em] uppercase text-center border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-3">
+      <span class="w-1.5 h-1.5 rounded-full bg-champagne animate-pulse"></span>
+      <span>Accredited B2B Dermatology Portal &mdash; Exclusive Backbar Formulations for Salons & Med-Spas</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-champagne animate-pulse"></span>
+    </div>
   </div>
-</div>
-</section>
-
-<!-- 02 BRAND STORY -->
-
-<section>
-<div class="container split">
-
-<div class="intro-image">
-  <img
-    src="skin-barrier-architecture.jpg"
-    alt="Skin barrier architecture"
-    style="width:100%;height:100%;object-fit:cover;display:block;"
-  >
-</div>
-
-<div class="split-copy">
-<div class="eyebrow">OUR BRAND PHILOSOPHY</div>
-<h2>Inspired by Skin. Designed with Purpose.</h2>
-
-<p>
-The name SKIN MIMIC reflects our belief that
-understanding the natural architecture of skin
-is fundamental to thoughtful skincare development.
-</p>
-
-<p>
-Our approach draws inspiration from the skin's
-natural lipid structure, protective barrier and
-biological functions.
-</p>
-
-<p>
-We bring together ingredient knowledge,
-formulation thinking and professional skincare
-to build a purposeful collection.
-</p>
-
-<a href="#science" class="text-link">DISCOVER OUR PHILOSOPHY →</a>
-</div>
-
-</div>
-</section>
-
-<!-- 03 OUR SCIENCE -->
-
-<section class="science" id="science">
-<div class="container">
-
-<div class="section-heading">
-<div class="eyebrow">THE SCIENCE BEHIND SKIN MIMIC</div>
-<h2>Understanding the Architecture of Skin.</h2>
-<p>
-Our brand philosophy begins with understanding
-how the skin is structured, protected and maintained.
-</p>
-</div>
-
-<div class="science-intro">
-
-<div class="science-visual">
-<div class="visual">
-<span>SKIN BARRIER ARCHITECTURE<br>CERAMIDES · CHOLESTEROL · FATTY ACIDS</span>
-</div>
-</div>
-
-<div class="science-grid">
-
-<article class="science-card">
-<div class="number">01</div>
-<h3>What is Biomimicry?</h3>
-<p>
-Biomimicry takes inspiration from nature's structures
-and biological processes. In skincare, it can inform
-the development of ingredients and formulations
-that are designed with skin biology in mind.
-</p>
-</article>
-
-<article class="science-card">
-<div class="number">02</div>
-<h3>Understanding the Skin Barrier</h3>
-<p>
-The stratum corneum acts as an important protective
-barrier. Its structure helps regulate water loss
-and protects skin from external environmental factors.
-</p>
-</article>
-
-<article class="science-card">
-<div class="number">03</div>
-<h3>Skin Lipids & Barrier Architecture</h3>
-<p>
-Ceramides, cholesterol and free fatty acids are
-important components of the intercellular lipid
-matrix that supports the skin barrier.
-</p>
-</article>
-
-<article class="science-card">
-<div class="number">04</div>
-<h3>Formulation Philosophy</h3>
-<p>
-A considered approach to ingredient selection,
-formulation compatibility, product stability
-and intended cosmetic performance.
-</p>
-</article>
-
-<article class="science-card">
-<div class="number">05</div>
-<h3>Ingredient Research</h3>
-<p>
-Exploring the role of cosmetic ingredients,
-their functionality and their place in
-professional skincare formulations.
-</p>
-</article>
-
-<article class="science-card">
-<div class="number">06</div>
-<h3>Professional Skin Care</h3>
-<p>
-Connecting formulation knowledge with
-professional application, treatment experience
-and responsible product use.
-</p>
-</article>
-
-</div>
-</div>
-</div>
-</section>
-
-<!-- 04 PROFESSIONAL FORMULATIONS -->
-
-<section class="formulations" id="collection">
-<div class="container formulation-grid">
-
-<div class="formulation-image">
-<div class="visual">
-<span>PROFESSIONAL FORMULATION<br>IMAGE SPACE</span>
-</div>
-</div>
-
-<div class="formulation-copy">
-<div class="eyebrow">OUR COLLECTION</div>
-<h2>Professional Formulations. Purposeful Treatments.</h2>
-
-<p>
-We are building a professional skincare collection
-with an emphasis on thoughtful formulation,
-ingredient selection and treatment-oriented use.
-</p>
-
-<p>
-Our range is being developed for professional
-skincare environments, with product information
-and usage guidance to accompany individual launches.
-</p>
-
-<a href="#partner" class="text-link">ENQUIRE ABOUT OUR COLLECTION →</a>
-</div>
-
-</div>
-</section>
-
-<!-- 05 TREATMENT PROTOCOLS -->
-
-<section class="protocols" id="protocols">
-<div class="container">
-
-<div class="section-heading">
-<div class="eyebrow">PROFESSIONAL EXPERIENCE</div>
-<h2>Professional Formulations. Structured Treatments.</h2>
-<p>
-Professional skincare is not only about individual
-products. It is also about how formulations are
-incorporated into a considered treatment experience.
-</p>
-</div>
-
-<div class="protocol-grid">
-
-<article class="protocol-card">
-<div class="number">01</div>
-<h3>Product Selection</h3>
-<p>
-Understanding the intended cosmetic use,
-product characteristics and suitability
-for the professional treatment.
-</p>
-</article>
-
-<article class="protocol-card">
-<div class="number">02</div>
-<h3>Application Guidance</h3>
-<p>
-Clear product instructions, application
-sequence and usage guidance based on
-validated product information.
-</p>
-</article>
-
-<article class="protocol-card">
-<div class="number">03</div>
-<h3>Professional Aftercare</h3>
-<p>
-Appropriate aftercare information and
-responsible guidance to support the
-overall treatment experience.
-</p>
-</article>
-
-</div>
-
-</div>
-</section>
-
-<!-- 06 MOOR MUD -->
-
-<div class="moor-image">
-  <img
-    src="moor-mud-ritual-reference.jpg"
-    alt="Moor Mud professional skincare ritual"
-    style="width:100%;height:100%;object-fit:cover;display:block;"
-  >
-</div>
-
-<div class="moor-copy">
-<div class="eyebrow">A PROFESSIONAL RITUAL CONCEPT</div>
-<h2>Discover the Moor Mud Experience.</h2>
-
-<p>
-A professional treatment concept inspired by
-Moor Mud, a naturally derived material sourced
-for our planned professional skincare collection.
-</p>
-
-<p>
-We are exploring its place in a premium salon
-treatment experience, with product information,
-validated application guidance and professional
-protocol development.
-</p>
-
-<a href="#partner" class="btn">PRODUCT ENQUIRY</a>
-</div>
-
-</div>
-</section>
-
-<!-- 07 SALON PARTNERS -->
-
-<section class="partners" id="partner">
-<div class="container split">
-
-<div class="partner-image">
-<div class="visual">
-<span>PROFESSIONAL SALON<br>ENVIRONMENT</span>
-</div>
-</div>
-
-<div class="partner-copy">
-<div class="eyebrow">FOR SKIN PROFESSIONALS</div>
-<h2>Become a SKIN MIMIC Salon Partner.</h2>
-
-<p>
-We are building relationships with salon owners,
-skin professionals, clinics and distributors who
-share an interest in thoughtful professional skincare.
-</p>
-
-<p>
-Connect with us to explore our brand, upcoming
-collection and potential business opportunities.
-</p>
-
-<a href="#enquiry" class="btn">BECOME A SALON PARTNER</a>
-</div>
-
-</div>
-</section>
-
-<!-- 08 ABOUT -->
-
-<section class="about" id="about">
-<div class="container about-inner">
-
-<div class="eyebrow">ABOUT SKIN MIMIC CARE</div>
-
-<h2>A Philosophy Built Around Understanding Skin.</h2>
-
-<p>
-SKIN MIMIC CARE is a professional skincare house
-inspired by biomimicry, skin barrier science and
-thoughtful formulation.
-<br><br>
-Our vision is to bring together ingredient knowledge,
-scientific understanding and professional skincare
-practices to develop purposeful formulations.
-<br><br>
-We believe that good skincare development begins
-with understanding the skin and respecting its
-natural structure and functions.
-</p>
-
-</div>
-</section>
-
-<!-- 09 BUSINESS ENQUIRY -->
-
-<section class="enquiry" id="enquiry">
-<div class="container enquiry-grid">
-
-<div class="enquiry-copy">
-<div class="eyebrow">LET'S BUILD A CONNECTION</div>
-
-<h2>Let's Grow Together.</h2>
-
-<p>
-Are you a salon owner, skincare professional,
-skin clinic or distributor?
-</p>
-
-<p>
-Connect with SKIN MIMIC CARE for professional
-product enquiries, collection information
-and business partnerships.
-</p>
-
-</div>
-
-<form class="form" id="enquiryForm">
-
-<div class="field">
-<label>SALON / BUSINESS NAME *</label>
-<input name="business" required placeholder="Business name">
-</div>
-
-<div class="field">
-<label>CONTACT PERSON *</label>
-<input name="person" required placeholder="Full name">
-</div>
-
-<div class="field">
-<label>MOBILE NUMBER *</label>
-<input name="phone" type="tel" required placeholder="Mobile number">
-</div>
-
-<div class="field">
-<label>EMAIL ADDRESS</label>
-<input name="email" type="email" placeholder="Business email">
-</div>
-
-<div class="field">
-<label>CITY *</label>
-<input name="city" required placeholder="Your city">
-</div>
-
-<div class="field">
-<label>BUSINESS TYPE</label>
-<select name="type">
-<option>Salon</option>
-<option>Skin Clinic</option>
-<option>Beauty Professional</option>
-<option>Distributor</option>
-<option>Other</option>
-</select>
-</div>
-
-<div class="field">
-<label>MESSAGE</label>
-<textarea name="message" placeholder="Tell us about your enquiry"></textarea>
-</div>
-
-<button class="btn" type="submit">SUBMIT ENQUIRY</button>
-
-<div class="form-message" id="formMessage"></div>
-
-</form>
-</div>
-</section>
-
-</main>
-
-<footer>
-<div class="container">
-
-<div class="footer-grid">
-
-<div>
-<div class="logo">
-<div class="logo-main">Skin Mimic</div>
+
+  <!-- ================= STICKY FROSTED NAVIGATION ================= -->
+  <header class="sticky top-0 z-40 frosted-glass border-b border-pearl/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo (Recreating Image 1) -->
+      <a href="#" class="group flex flex-col items-center justify-center leading-none select-none">
+        <span class="font-script text-4xl md:text-5xl text-charcoal group-hover:text-champagne-dark transition-colors duration-300 -mb-2">
+          SkinMimic
+        </span>
+        <div class="flex items-center gap-2 w-full justify-center mt-1">
+          <span class="h-[1px] w-5 bg-champagne"></span>
+          <span class="font-serif text-[11px] tracking-[0.45em] uppercase text-charcoal-soft font-semibold">
+            C A R E
+          </span>
+          <span class="h-[1px] w-5 bg-champagne"></span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-[11px] uppercase tracking-[0.22em] font-semibold text-charcoal-soft">
+        <a href="#barrier-science" class="hover:text-champagne transition-colors">Stratum Corneum</a>
+        <a href="#biomimicry" class="hover:text-champagne transition-colors">Biomimicry Matrix</a>
+        <a href="#salon-protocols" class="hover:text-champagne transition-colors">Salon Rituals</a>
+        <a href="#partner-program" class="hover:text-champagne transition-colors">Salon Program</a>
+        <a href="#roi-calculator" class="hover:text-champagne transition-colors">Profit Calculator</a>
+      </nav>
+
+      <!-- Desktop Action CTAs -->
+      <div class="hidden sm:flex items-center gap-3">
+        <button onclick="openModal('Request Backbar Catalog & Discovery Kit')" class="px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-charcoal border border-champagne hover:bg-champagne hover:text-white transition-all duration-300 rounded-full">
+          Inquire Backbar
+        </button>
+        <a href="#partner-form" class="px-6 py-2.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white bg-charcoal hover:bg-champagne-dark transition-all duration-300 rounded-full gold-shadow">
+          Become a Partner
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobileMenuBtn" class="lg:hidden p-2 text-charcoal focus:outline-none" aria-label="Toggle Navigation Menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileDrawer" class="hidden lg:hidden bg-alabaster border-b border-pearl px-6 py-6 space-y-4">
+      <a href="#barrier-science" onclick="toggleMobileMenu()" class="block text-xs uppercase tracking-widest text-charcoal font-semibold py-1">Stratum Corneum Science</a>
+      <a href="#biomimicry" onclick="toggleMobileMenu()" class="block text-xs uppercase tracking-widest text-charcoal font-semibold py-1">Biomimicry Matrix</a>
+      <a href="#salon-protocols" onclick="toggleMobileMenu()" class="block text-xs uppercase tracking-widest text-charcoal font-semibold py-1">Salon Ritual Protocols</a>
+      <a href="#partner-program" onclick="toggleMobileMenu()" class="block text-xs uppercase tracking-widest text-charcoal font-semibold py-1">Salon Partner Program</a>
+      <a href="#roi-calculator" onclick="toggleMobileMenu()" class="block text-xs uppercase tracking-widest text-charcoal font-semibold py-1">Revenue ROI Calculator</a>
+      <div class="pt-4 flex flex-col gap-3">
+        <button onclick="openModal('Mobile Sample Kit Request'); toggleMobileMenu()" class="w-full text-center py-3 text-xs uppercase tracking-widest font-semibold border border-champagne text-charcoal rounded-full">
+          Request Discovery Kit
+        </button>
+        <a href="#partner-form" onclick="toggleMobileMenu()" class="w-full text-center py-3 text-xs uppercase tracking-widest font-semibold bg-charcoal text-white rounded-full">
+          Partner Application
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="relative min-h-[92vh] flex items-center justify-center pt-8 pb-20 overflow-hidden">
+    <!-- Atmospheric glows -->
+    <div class="absolute -top-32 -right-32 w-96 h-96 bg-champagne-light/30 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/2 -left-32 w-80 h-80 bg-pearl/60 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+      
+      <!-- Left Column: Copy & Messaging -->
+      <div class="lg:col-span-7 space-y-7 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 bg-cream border border-champagne/40 rounded-full">
+          <span class="w-2 h-2 rounded-full bg-champagne"></span>
+          <span class="text-[10px] md:text-[11px] uppercase tracking-[0.25em] font-semibold text-charcoal-soft">
+            Medical Spa & Advanced Aesthetic Cabine Formulations
+          </span>
+        </div>
+
+        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-normal leading-[1.12] text-charcoal tracking-tight">
+          Biomimetic Cellular Precision <br>
+          <span class="italic font-light text-champagne-dark">For Professional Skin Care.</span>
+        </h1>
+
+        <p class="text-sm sm:text-base md:text-lg text-taupe font-normal max-w-2xl leading-relaxed mx-auto lg:mx-0">
+          SkinMimic Care is an ultra-pure dermal clinical line engineered exclusively for leading salons, med-spas, and aesthetic practitioners. Formulated to precisely mirror the human stratum corneum's lamellar lipid architecture &mdash; delivering instantaneous cellular repair without inflammatory resistance.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+          <a href="#salon-protocols" class="w-full sm:w-auto px-8 py-4 bg-charcoal text-white text-xs uppercase tracking-[0.25em] font-semibold rounded-full hover:bg-champagne-dark transition-all duration-300 shadow-lg text-center flex items-center justify-center gap-2.5">
+            <span>Explore Treatment Protocols</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-champagne"></i>
+          </a>
+          <a href="#partner-form" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-charcoal/30 text-charcoal text-xs uppercase tracking-[0.25em] font-semibold rounded-full hover:border-champagne hover:text-champagne-dark transition-all duration-300 text-center">
+            Partner With Us
+          </a>
+        </div>
+
+        <!-- Trust Badges (Image 2 & 8 Concepts) -->
+        <div class="grid grid-cols-3 gap-6 pt-8 border-t border-pearl max-w-lg mx-auto lg:mx-0">
+          <div>
+            <div class="font-serif text-3xl font-medium text-charcoal">50:25:15</div>
+            <div class="text-[10px] text-taupe uppercase tracking-wider font-semibold mt-1">Equimolar Lipid Ratio</div>
+          </div>
+          <div>
+            <div class="font-serif text-3xl font-medium text-charcoal">100%</div>
+            <div class="text-[10px] text-taupe uppercase tracking-wider font-semibold mt-1">Bio-Identical Ceramides</div>
+          </div>
+          <div>
+            <div class="font-serif text-3xl font-medium text-charcoal">Zero</div>
+            <div class="text-[10px] text-taupe uppercase tracking-wider font-semibold mt-1">Barrier Disruption</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Visual Composite (Inspired by User Images 3 & 5) -->
+      <div class="lg:col-span-5 relative">
+        <div class="relative mx-auto max-w-md lg:max-w-none">
+          
+          <!-- Image Frame -->
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-cream">
+            <img 
+              src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1000&q=80" 
+              alt="SkinMimic Professional Treatment Protocol" 
+              class="w-full h-[500px] object-cover object-center transform hover:scale-105 transition-transform duration-700"
+              onerror="this.src='https://placehold.co/800x1000/F4ECE1/151518?text=SkinMimic+Clinical+Treatment'"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-transparent to-transparent"></div>
+            
+            <div class="absolute bottom-6 left-6 right-6 text-white">
+              <span class="text-[10px] tracking-widest uppercase bg-champagne text-charcoal px-3 py-1 rounded-full font-bold">
+                Cabine Backbar System
+              </span>
+              <h3 class="font-serif text-2xl font-light mt-2">Lamellar Lipid Infusion Ritual</h3>
+              <p class="text-xs text-white/80 font-light mt-1">Targeted post-procedure restoration & equimolar skin barrier defense.</p>
+            </div>
+          </div>
+
+          <!-- Floating Badge 1: Lamellar Bilayer -->
+          <div class="absolute -bottom-6 -left-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-pearl max-w-[240px] hidden sm:block">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-cream flex items-center justify-center text-champagne-dark">
+                <i data-lucide="sparkles" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-charcoal">Lamellar Bi-Layer</p>
+                <p class="text-[11px] text-taupe leading-tight">Mirrors human intercellular matrix</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Badge 2: Salon Exclusivity -->
+          <div class="absolute -top-6 -right-6 bg-charcoal text-white p-4 rounded-2xl shadow-xl max-w-[210px] text-right hidden sm:block border border-white/10">
+            <span class="text-[10px] font-semibold text-champagne uppercase tracking-widest">Salon Exclusive</span>
+            <p class="text-xs font-serif italic text-white/90">Never sold on mass retail. Protected territorial stock.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 1: THE SKIN BARRIER SCIENCE ================= -->
+  <!-- Recreating Images 2 & 8: Stratum Corneum "Brick & Mortar" Architecture -->
+  <section id="barrier-science" class="py-24 bg-white border-y border-pearl">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto space-y-4">
+        <span class="text-xs font-semibold uppercase tracking-[0.3em] text-champagne-dark">
+          Epidermal Dermatology & Architecture
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-charcoal font-normal">
+          The Stratum Corneum & "Brick and Mortar" Matrix
+        </h2>
+        <p class="text-taupe text-sm sm:text-base leading-relaxed">
+          The outermost protective shield of human skin behaves like an architectural brick wall: <strong class="text-charcoal font-medium">Corneocytes</strong> form the cellular bricks, bonded seamlessly by an intercellular lipid mortar containing the exact physiological ratio of <strong class="text-charcoal font-medium">Ceramides, Cholesterol, and Free Fatty Acids</strong>.
+        </p>
+      </div>
+
+      <!-- Diagnostic Toggle Container -->
+      <div class="mt-14 bg-alabaster rounded-3xl p-6 sm:p-10 border border-pearl shadow-luxury">
+        
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-pearl pb-6 mb-8">
+          <div>
+            <h3 class="font-serif text-2xl text-charcoal">Diagnostic Visualizer</h3>
+            <p class="text-xs text-taupe uppercase tracking-wider">Compare native cellular cohesion against lipid barrier collapse</p>
+          </div>
+
+          <!-- Healthy vs Compromised Buttons -->
+          <div class="flex items-center p-1 bg-pearl/70 rounded-full">
+            <button id="btnHealthy" onclick="setBarrierState('healthy')" class="px-5 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 bg-white text-charcoal shadow-sm">
+              Healthy Intact Barrier
+            </button>
+            <button id="btnCompromised" onclick="setBarrierState('compromised')" class="px-5 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 text-taupe hover:text-charcoal">
+              Compromised / Leaky Barrier
+            </button>
+          </div>
+        </div>
+
+        <!-- Barrier Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Graphic Container: Custom SVG Cross Section -->
+          <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-pearl flex flex-col items-center justify-center relative overflow-hidden">
+            
+            <div id="barrierGraphicContainer" class="w-full max-w-xl transition-all duration-500">
+              <!-- Content injected via JavaScript for 100% responsiveness & fidelity -->
+            </div>
+
+            <!-- Legend & Biomarker breakdown -->
+            <div id="barrierLegend" class="w-full mt-4 pt-4 border-t border-pearl text-xs flex flex-wrap items-center justify-between gap-3 text-taupe">
+              <span class="inline-flex items-center gap-1.5"><span class="w-3.5 h-3.5 rounded bg-[#E6D3BA] border border-[#A9875C]"></span> Corneocyte Cell "Bricks"</span>
+              <span class="inline-flex items-center gap-1.5"><span class="w-3.5 h-3.5 rounded bg-[#F4ECE1] border border-[#C6A573]"></span> Lamellar Lipids "Mortar"</span>
+              <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-sage"></span> Acid Mantle (pH 4.7-5.5)</span>
+            </div>
+          </div>
+
+          <!-- Explanation Details -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="bg-white p-6 rounded-2xl border border-pearl">
+              <div class="flex items-center gap-3">
+                <div id="barrierIconBadge" class="w-10 h-10 rounded-full bg-emerald-sage/10 text-emerald-sage flex items-center justify-center font-bold">
+                  <i data-lucide="shield-check" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 id="barrierTitle" class="font-serif text-xl font-medium text-charcoal">Reinforced Lamellar Cohesion</h4>
+                  <p id="barrierSubtitle" class="text-xs text-taupe uppercase tracking-wider font-semibold">Equimolar Physiological Balance</p>
+                </div>
+              </div>
+
+              <p id="barrierDescription" class="text-xs sm:text-sm text-taupe leading-relaxed mt-4">
+                When the stratum corneum is maintained at the precise equimolar ratio (50% Ceramides, 25% Cholesterol, 15% Free Fatty Acids), corneodesmosomes remain anchored. Trans-Epidermal Water Loss (TEWL) is arrested, allergen infiltration is blocked, and aesthetic procedure results last 3x longer.
+              </p>
+
+              <!-- Biomarker Checklist -->
+              <div class="mt-5 space-y-2.5 pt-4 border-t border-pearl" id="barrierChecklist">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+            <!-- Golden Ratio Card (Image 2 & 8 details) -->
+            <div class="bg-charcoal text-white p-6 rounded-2xl shadow-luxury space-y-3 border border-white/10">
+              <div class="flex items-center justify-between">
+                <span class="text-xs uppercase tracking-widest text-champagne font-semibold">The 50:25:15 Golden Stoichiometry</span>
+                <span class="text-[10px] bg-white/10 px-2.5 py-0.5 rounded text-white/80">Bio-Identical</span>
+              </div>
+              <p class="text-xs text-white/80 leading-relaxed font-light">
+                Random lipid blends trigger inflammatory rejection or phase-separation. SkinMimic replicates the exact multi-lamellar liquid crystal organization of natural human sebum for immediate, frictionless assimilation.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 2: HOW SKINMIMIC WORKS (BIOMIMETIC BILAYER FUSION) ================= -->
+  <!-- Recreating Image 4: Molecular Bilayer Fusion with Dermal Membranes -->
+  <section id="biomimicry" class="py-24 bg-alabaster">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Mechanism Details -->
+        <div class="lg:col-span-5 space-y-6">
+          <span
