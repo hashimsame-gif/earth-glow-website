@@ -1,11 +1,1119 @@
-<!DOCTYPE html>
+
+export default {
+ async fetch(request) {
+
+ const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SKIN MIMIC CARE | Professional Skincare Inspired by Skin Science</title>
-<meta name="description" content="SKIN MIMIC CARE is a professional skincare house inspired by biomimicry and skin barrier science, created for salons and skincare professionals.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SKIN MIMIC CARE | Inspired by Skin Science">
-<meta property="og:description" content="A biomimetic approach to professional skincare, focused on skin structure, barrier function and formulation design.">
-<meta property="og:image" content="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wgARCAOZBXgDASIAAhEBAxEB/8QAGwAAAwEBAQEBAAAAAAAAAAAAAAECAwQFBgf/xAAZAQEBAQEBAQAAAAAAAAAAAAAAAQIDBAX/2gAMAwEAAhADEAAAAfbqn872w6ZJbXM0WUDcseB9FwHyXl/RcXbnxrrw1l+3824+x934/wCt570VFsqpgFEvBn6Xxy9Hz3T5nTn6J4/drP6BXzf1mOnc8NE0AGIGIKchRIWSFOAshlOAsgNHmy3mGizB6Y4Zvec8R25zxV6d8PTZu8HqbVgzZ4ibPENzErcxabPF1q8hNXkVeDyxrntVz31TE7zz8vXz41z57525lGo/rflPo/R5+4DvxMN0fH4+v5fDrjG0c+uc2iCppDBAGPF28XXkm61mY1zJVIkpEqlKhhI2KirFT1M9ezqs5uq/UTzvc796VIsCfBPR+UxxxtQTnRLSyms1DRI1QmQkyyVSEmEjRKuRAJIw+ueh4/VBoEGhLkarLI0a583ZxWcXH18vfnkqO3IYWdPs+D7PHr1rQ5bzWky5zqpfO8z6Lzj845v0HD08PgL+2jeeP6ry/T5de3tHioYIYIYAAAAAAACIYgYktOQoQPOiM8lz51HT8zce9w+Jdn2nVzTp11m7nQgq3mzQzZo8g1eQavFmxiGxiRpnMSvTDWXSUWRjrnLjGkGapaj9bydOvP645er1eYAsy+c+owj5PL1OLHTlnoy5dM1SlSpCAMOPt5OvObV6znGkkK0SqCCgkrWzB93XHkdfquubo29JPI9H2+iuXqCwDkOvz/J86XXhrPOozqM6UtCBSpNSiaBAIaBNAmWSqkEwlUiSpEAn25q/H6cnozI1JcVslxejjDg9TzTz+Xr5e/PIK7cidsrmva8f2+XXvWq49MlrOWZoTXJ5/peXpy5ax6OE0V0wunm2zfd0z34doLCCgkoJKCSgkoJVKVInNjzY8PD2cfA57Pse/wCF9OvsSb0jHozzpeL0Evy3jd3jdOfo/UfF/QafV+l5foY1vcu5ol0xEMQUSFOAsglszDRRMXMpa259y0gmLgzz0giamhy956/o/kurty+oOXq78ACyPK9hHyuX1nnx4Gfqcs1xT2rGuE7Uvm8ntRc+R0912ePn7arxD3rPA19tV5mvdac2nb1nj39F1p4Ho+gVNABn5x6nH4XHL6fmxEtrNQouJrPPbOXOalRNSpNQAEjQJoABDVJUkkaCaQk0IBP0A+b18/b334mx6p5+svUsrlodRl5ns+TnXmcvZydc46I68unk2y3mvd8T6Hj17lques51UuT0I8/y/Y8prhjXL0cb0z6+vLh3y6Mb9voz6ePTI0FyNAzNAzNFEFhBYZTtOblbrN4uP0OHU4c+nLvx53cbns93j+15+2c6Lnvl+e+q89fkPlv0zl9HD4D6v0Hqer6vnejx6MaE2CGQmAACAECUBQIUCQr6OfoKQCi4jOLgmLjRIWsuoK39bw66c/r7+T9Ltx9o5+jeWh2KNA4ef1g8PL6FHzU/Ts+VPqkfL19MHz23tkeVv3FYbMAFDOTzz24+W85fqvM8So6YzZSULcKZW5JWkpSKRlNohUpUmpUAE0hDQhoE0AFim5EmCVSiAO5j1lNMYCtzUt6YkdWeSlqGyFoVkthF9F8/eNfVv5fXO/ozwLzfbPI0jfyO3z865sujPrhdPMdMLox6s69/eduW8zQsyNSMlqGRqqzNCXM0DGd5zcnaji4fQ4F5M9V6OPNGkbnb7vi+95e2K1M6w8/0fMObHTPvymdsevO/f8D6Hl10KOeoLCC0SURKsILRCtEFqWJtGaqYfTzdKsBFFwucaZxMXGkoWsoRTEWVWZZt1cD1n2+z5l7z9dr8besfYnym2p9KfPXZ7x4E2fQnz0H0Z8zgfWnxfOfcYfEh9byfOB6/ByzK1ko1eNmlZWa1nRWZC1KUtEuWkgBIJqSZuJUmSpNAAJMEmgAENAmWSmCTSSMr0ns7nnN6OV6ozq0SUpUMEME2CGyWwAFAAAAAAABiuQ9DXyjN9rTwSX6LT5kj6q/k6l+sfyuh9OfOaS/QLxNT1Z4Ll7JycvLwdfFjfM1l25xDe8+l7vle1w6YGhlxeX6/kZ3xzc9+OnL28XXGn0nz30/LozUxrE2RktlGJqGRqjI1JcTUMp2RhO8S4TrBPRh0wNszjXNcs9Myc7iplzrIhUxFjSLKcOqcCWQFkCW4dmeN4duVmas2iEWIV1DHCQ0kShFVnoaXlqWTIkpiklLZItkhSQCCFLSoCVKkIaAASaEMEAIaRKlUgCAT6teqeXv5K9ea8efYR48+wrPFn2keIvbLPDPbmzxT2ZryD1Js809CdThOyK5zeUyWiskZSBiAAYIYgAoAIYiYADEwUABpDE4EypKDt7fFMa93T55Zvt+bzEpnotzOdjWb+p+W9Lnv3F5Omb6RxWdSyqLQxFMzWpLmtQxNlWEdEZvLl1YZ1j08/RFjdZ565S456ZkZ3nUw53liKE0gBYNMBFjEDEWNyzDHXDtypCsEiLUsslFJFCJFNTY7zuXTTOhkkKWlBEDQrEDEStACAQCiZCAENAmEjQJgkwSqbENCGJ9qdp5e/G+sOe9Ss7BKearYxUm6wDdYFazNCnRrjPVRxT6Ls8tesR5E+yHiz7cnhz7s14M+/J4E/QTXz8/QKz59e/J4K92U8M9ua8c9WK809CLOI65rmN5syNJJGWIaAAEwQwQAAIIFAAaCqzJdbwJevThUenfkh7engEv0enzDPqD5ly/Rc/jGb6fR4mmde7Xi6Ho48sZu+WcreamyVJpTkRgABYAACsYimgBpmGOuPXkJqxDAQhVLGJFIVkioKQUIilKW0IaCATUAlABgAmCTQAKJkJMEAIaENCGCTSE0VIxP0Qg8/a3BVkhQgoQMGiGCGVJQSWRmtSsls4510hzLqRzHSVz1sGL1UktlNwjV4o6Fgk3WQWpcqm2ZT0M5J7mefHqFeTPskeJHvKvAj6GT52PpJPm4+lk+an6Sa+aX0cHzq+givCPaizyH6cHnndFch0zZgayQUkTENyVQmDTAHKo0hKYTQAKLyI34+zOrAzpgAMQTATViGUgAAMMNsevIaLBNCTABUgUAhByVZLhpCsAYACcDTUAlGmAAAKhpBMENKAQlSEMEmCTCSkkjKkYn3jyPN6NTMs1MyNXk60eTNTJpqZOtHkzR5M0M3Whm0t5hoQFvNlkCWSFkFWSFEtG5KoQAADBDCSglWS5mgZLYMTZGRqGZoiGyEJLbymNznk6p5iN4y5prsnx/KPq5+P3Pp143sBPfVnmT64eNHus+en6NWfNR9RB8u/o868CPb5c68w6M7MlasiNFqcnUrltt51JSEBYAABSGrENABGGG+HXkAtRy5GhU0KEnIAqKi0HLlYmMQNoACG02hpwAAAoAAAhiJUhDQAKhkJMEmCTEQFkjD7N5Hm9GpmzQzZoZs0eTrR5M0M2aGbTQgNHkzQzDUyZoZuzQzDSsg1Mw0M2aGYmpkzR5OtTINTMNTINXk60Mw0Mw1UEW8yyyCLIFshFmYaTCNFmS2onNvn8r8s1PsfjvJz7c9M0t4dRR0eh5vVjXu/S/I551+xa/kP6Xy36lPQzrR6mOHXzZvLWe2NbY9caeRl6PNjXHHVlWC1nUzLnWXUUNMENWIaAChNIJlJijnx2x68hBqJNAgCXI0IQFDlo2nKUMBoTAAIbBQCABQBQGIaAAABDEQAhpUMhACVJJGqAE+qcPzeiyQskLebLcBZIWSFuCrIZZAaEBZAlvN1bzcW8w0ICyCrIcWQGjydaGYmhmGpmzQzDR5M0Mw0Mw0Mw0eQaGQaLNS6LKTYxmXc8zmPc8HH8y1k87TL0cZSW80QJppz1L2a8PRnXf63j98dOHq4S/de5+UfecunumCxrfKYlnXDXN3mVqZ8++OdYZ7ZmUaxqRNzqSNWUJgmWIAQFACICgA5sN8OvJAWJNAmhJoE0ICxOaClUraYDAGgYQAKAxMcqBiGCGCVJUMEACYCaQAEmSoapKkkjE+ll8/D0a1573z9CvMaenfB28+lI4a7zzjWfSfmh6ZjpjVPHCzsfE7O049V3Jzl2MGm5izV5i6EBooZThxRIU4ZRKqyGWQynAWQFvMLICyAtSFEEVKStLI5vzrm+e689a5vR6c9uaubOjNz0wpauQQOoZptza516nZw9+ddfteB7yeeujlX9E3+H+z83bWJnOr25t40SQsrzXPPTMiLnUhVOoppWKoqmIQTQAABYgKADmw2x68hBYgKSZEqkIASaqaVDaqG0wYAMEwlEwTYAEoMEMBAAAhghoAFQwkYIBEMJTQhln0WdHk9PntT6vPoRVnX1c23m76cnRlLyEL0+fSs9D0al+b0Li7uDphqTtyrq4+3nrbDbPl151J6eFXlpL1c3Vyc9sh9Od9XH2Y6U5Oe6EDcgxBRIUIKJCiQoljJChIbkGkDlKV/n31X5HvGWbfo4Pv4/Qxvly0ysiajWRCsAAaZWmVS+n3+N6Od9Pb5ukfb/I/XeJZwfbfEdPPf6CkuHWt+beXRIhRULEVBOdxqKKnUEKxNFUIQAAAALBNUAHLjtj14oaoTVCahJhKpCTKm5qG0ygYNMAcJjVAADEBDAUAUAAAQxBMEAIaBAIYIASpCAufforxevzuTuy9XnwOg3nr2jTyegmzN8rHrPX5+Xe9K7GPx+lcfdybx5z1v1cMvV4fQ5bao49vNi8/V5jo5uo7uTs5OPbnMV6PP2dvnely6gHPoFOocuAKEAAAAAJ0AQEFlk0oGRqsxLioxr5X81/Q/zvvxgF259Pdx78t44aZaky1vCAAAAB1DN/Q8z0Ma69MUv1Xo/P/VJ8Sq5Zr9O3+B+k5dPb35+jj0YEKKhYzuKiKnUUtWJNWIChpoAAAJosAKECc2OufXlI1QmUk1CTQJoE1Sqah0mNpgxgxwhtZKQhghkACgAAKAAmCGEjBAIlSEMRAUlSJGJ9G2/F6+Dj7/O9HHas9evPv0V+P0SWZ15WW/N6/Pttjtqdzo8fpXN2c2s8F4aevz693D6HHoyjh18wefr4Xvh0p08vZy8O3OZ36vNt1c3Tx7jTxulONzuImnrkkuVaIYstKWc9OTry6deHtlXJ3cGs31cfbNHN1c+bzXhp059qtcO/578P+l/nHbjEuevPuHvz35sfXeJp5Sa3zAABgVpLG2no51xdfs+nz381f2+x8p9RWq/Bef8AUfO7x3/ZfKfdZvR0c/R5+4N5RF5rnneVKKnUkC5SapAUAIwYgKE0gBSATlz0z68kmqE1QmoQ0IECapVNRVTY2MTGDbiW2sjBK1EjBDSgMkYIYIaAAABDQhoEyyRggBDD6Z1Xi9XB5/qef15rRV6OPoaTr4/RJZnXk49PL6eOm2O28ei7fk9E8vby15To9fnr0/N9XlsdPh18nDrw9XA6sOmzq5e3l8/bzLqvVw06cOrh2h0c9c/mdeWp6D5+uVeT6fFLr3+f6O8i0RkaGbl5/qcHXnh6XD6NLj7eNJ7OP0JZw6+XOuVh15dq0Xn7+d+P/tXw3bn+e1d9uW/1fzP2Pn9HJ6uHFy7fG8vs+N7PCinrM6Lea19Pm9Xl06PTx7OPbo6ufbPT0duHfWNYA4fK+iqz5f6YNc+no5+nj0BkRnrkvPneeopc6gmkE1SAsAAYABQmkAKE0nNlpn15ICkmqE1AmEjQgKVTUVU0U1SFANlSptrJQSqDMpRIxUAAAAAmCGhDBDQhpEBQmEjCRh9a6fi9PF5vq+Z0zkx+jj6+2e/k7y6cvkcnfw9+b6Ofo68/WKfk9E8/Xz2eKtY9PGvZ8n2saTtcOnlcXfx9+c93L26z3cvby8OvlFP1cNfQ4vQ4doz6MuW/nNM9e+Or1PO9bF8zyvY8bHSvd8L6HWdjQuMjRy4cPpedvOXp+Z6+s8/F6HnSr0/N9YXH6HDjXK4vty7zU4duHh9Hh6c/A+Z/RWv5P9p8p9bjt4WHRxY3PgfWeZ04+R37errPLr7T5dvJ7dwvoy3mtNJs02wo6K56s3vn1ud4S68fROTp5b1Gc9Z5bY28uWuOoJLUYhBNUAIADEwAsEwQFCaTlz0z68hNUgKSaACEmhAUqVSOppbqaRsqGxq22qKRCtGaqYSpCAEMVAxDBDQJglSRKkIZUsBJhIw+xpPx+jm8v0vmNPQflv0cfrds9fN2Klx5nDt850z73R4Po9ef0rT8/Z475WeLPn5dufr+38f9hnVtXzvlcXV4fSen3+B7u8elzdfFx6+YeY+3L2/S8T3eXRZbxnXy3Ty11x6fq+L7fO+Z5Hs+Pnpp9B4H0Os9BRcQ21y8z0/Hpe14Pv6xj5npeLL0+v4vvVPn+j5eNcunB2dMe06fPfBw+hwdMzy9M4v5X9d897OO3R43t+cuPP0YLfocfbL0s1OZGdnVv5+FnvafOeuz3DedZugryvY+Z68t+ng6OnH1/T+b93OvVE/P2jHXGXlx0w3lpLSiWjAoGIhoGmAFiGqAATSckaZ9eQmqQAk1QCgQCTKKmoqpopqiqio0qaWqVCGQppGc6QTNJUgQABpiBiTFQAJggLENCGgTQAH1j81+Xvv8d9L42p5td1d+X1Wvl6ebt6D84OT5T6nyumeL1M+rePpzzjh19PPhmvmMfTnty8/735T28a9SvLM65vmvoOHpjzvpvL9Cz3uLHHl0+Xfpvty3+k+e7+XT0o4Jl8Lh9edNfpPA7M3Tx/Q5ZY+h8Lu1PaXlq49Q8oO75L3PPXzvtPmfS1np+W97jMfrfm+89XwenkxrwPXjfpj6R+Qsb6PNeVnRvx4zXyHTGvLvpz0zmz2zWejns9T0PL9VMPC+t+TuV3/Ke7XV4nt8lzfv/M+znXpPxufWfX8/3NevD53t9S7Of0MTOvTPNOfT0MeVCx1nWcTQ1M7w2zaaqUAAAAAAsAATVCaOXPTPrxAVIaEmqEyJAECp1FSXUUtXnY6VRdxoaNUoqmEmiZpGc3KyAACAAAAmgTBDQAUJoQAkwQBsADTgYKNMAABgMRiYNAMdIYAAAxNgAKAINMJoOd7wS3BoY6pVIKM5rZxQ02SUCVAmAhoSpE1SAHKvG9T53l2Uk8PRtlrkZTbswWsL1en5Hce153T1M/mh+hR05+D1e1zxx8/ucU38x91x9fbhsBvmDUqmpIdSrYoAQgE5N8d86thjYMBMEMEMsQ0AFCaOXO568ZApJoQ1SAhJoSZSuLkdTS05ZpWehppGsOlSk1IpqYSaJi5WBpAAAAAAAAATBAUJolgJNCGGoAMFGmjAlAYMAGyW2SUQnRUltMzRrk9RMzVribuOd70cx1M5TrZxrtZxvsquDL1HHjz7IeMezR4r9pnk6elZ5Z6tHkHsM8Y9pr4i9xnhP3SPDPe8w+W5Mubl39LnMsdKhSdaz6JecuaUasx6sLPV7vI6zvnn4U7459Tu2itZ69Pb06efwT3g8HP38Jrwb9DbGuXH3ct4+dz9Xl59OKejOzFalnPrZTG5ZGVLaRDBDVCYiGhJlnJnpHXlI1SVISapAQk0ICipqRtNXSZW2W0aXFLdRQ5cwS5EmhS5VIEAAAAAAAAAASaoABMJGhAH0r9Q8/bzX6Iee/QE4K7SuJ9gcj6yOU6iuZ9AYHQJgboyepWZozM0DN2EFhJQS26koJKElsEMEMAATAAAAAAEwAQxIz+W7fJWPmfreCa8WJfPu00V28OxvOhEaGhzaXosV43rWdnj+zwR115HrHt+n4f1OuXS8nvlZmisXlneemWmb0TCsx5unHnvmz3zrGdY1M1a1FUsFSEBYhoABDVACJNVyRcduCTQJpUmhACTQgKKVSDBavOjTXDSNby1W6ihzSiIuBJJXLkAEAAAAAAAAAAQAhqgAQBIw+5cHDpZKWyAsgLICyAsgLICyBNDNlkBZAWZhoQLZAWQJZAWQFkJdCAshGhAWQGigNDNGhmGhmjVZhoZybcnJxazhj0vrjg3x0l87wft/Ox1+eTrj2zoF16OLaOms2dF52vH5H0HEnP28eh6v3XL0a5amRc6LNRos5W81Er0w1jRSBlUS55aQZxpGpCZUgrKTQhqhMRAAh0gEJpVxxcduAmhAKk0KakE0ICnU1IMFbmh6Z6xprFrVRYDUTFownTNQBAAAAAAAAAAAAE0AFIAE0IA+zIPN3sgLICyAsgqyAsgiyAsgLcBalWaGbLICyAsgWyUlkC2QJRIU4CyGUQFkBRIUSiyAsgLnn5NTr5s9uvKM9TpiJ3LPP5fW4M6025ek4fmftcefT5CPQ5OHpx0z1zroDlrt3IOjHXWMfr+H0tc2Qk0M0WoClMxUKStcNY0SUrzqSIuCJuNIVTYk1YxMQAgLEAAAJqwmprkm47cEmhAKk0JNBNSCasdTUMTUYy9MrjW4ZrUWrQoJEGdyZgAwUAAAAAARDBAAAIaoTQJhIw+rMzy+jQzDQzZbzVaPNGpmJoZhoZhoZhoZhoZhoZho8maGYaGYaGYW8w0UBZAWQVZAWQFkBZAWQjRRnZtyuenMZXXnzdeW1mVVNlNURh1yeTvthLVubL8T3Kzr4Q9HyfJ7dOPl+k3j7bn9Db0+Twej1c5dJqtZ5su5c9+etufz96UrOqUoalFbc+0uiShyBMXFTNTZM1NE1NiqWNAAKwTBDBJoE1ZyTU9+CTVJNQTSVTSFNSgmqbmobTVgDqKNry1jS4tXLmCHAENU00AFBoaYIYAAhpENAAICgAQAAH0TzPL6NDMNDMNCEaEBZAaGZVvMNDMNDMNCAsgLeYmhCNCAsgLICyUaKCrICyAsgLJCiUVHFw2eyuPt78JrWd5G6six0p0UZ0mUmWRGyl5n1QctuTxPnfpfK8ns+U/Qfiv0rfP1dZv0+Umwy1ixAWnm+nhz15qR5PUISiQPbDbNoRAtFZnOkVE1FKakJqbEAUgBNWAAgATQJqzkmp78EmhKkJNKk1STUkpqnU1DaFYmNorTXDXLbTO1qaiIhwMAGmACgMAAAAAE0gmgAEBQAIaAYe0SeX0WQFkBZDKIC3myyAsgLIdU4CyQokKJCyQokSyGUSFElUSFEhRIUSFCRXJt4pO2VdMdGmevTl6HT5Hq9MBc2AAxszVSUKgTCkUTnozwOb6ri4ej437uOzeKtV14gyJbQ5uBoZ42fRzeP2CFnQhFa47S00ZdNRnubTlrZxRUxKaVJqwTQxOwTQACABMEmrOSanvwQ0JOQTSpNUpqYSaspyxtENoWhMeuVxtplst53lESAwBgKNMAAAAAAAARJoAATBAUJoAD1Xm/N6LICyQpwFkMolGhAWSFEsokKcMokKchRIWQ0okKJKoljchRIUSJRIUlyGHDj01RGnXnv0c3Rvnp082u8+nlpFiIculZ3Y5uSKTGwFc0C0QxamBXKd+vP0IMBADlhLCvO4fS8zy+ly1z6Cag2x2mqEZdGelbnL0p3PFNSspqVJlkgWAmAAACAAASa1OSanrwQ1SmpBNLKaCWhJzVOWjc1DAVuWVU1Gm+O6vHoyjFtAAMBRgAAAAAAAAIhoEwQACKABAHoknl9FOSqJYxBRLGIGIGIKchRLKJZRLRiKoljEDaBiBuWjEKwAAsBAvA9TxDfWpqdc9evLbr5eneLNFrPbrxd1cxLitMLOhxdkzrANMG2U51TGyTeVsZayxgiMtEG2Iapqubx/b8jz98zU49slqRlqaZ1DoinlFdJxqrlOxIBTU2CFQ00AAABNAAKanU5ZqevAQVKqQQlSaFLkEKyhMbThtBQha6ea49u89bCXzGHM1nQ0wBqAAAAAAAAgACaoAgQCAoTQAHa5PN6KEIwBiFbkKEFEsbljEDaBtA3LG5LKEQwKGhGJqNOwAGIGIAA87i6syHFbzVy+nLq0w9bWfK9Lzot9np5em551eNaCI225dk6EXZiaSraY9IpKz2gy2xDqIsE0GG+ZfLrB0AVn53o+Vx62szj3sTR3Lxq3JK5oM42lMZ3Vc0daOSOxWcZ1TXM9sgLRI0CABFCas5Jc9eAhUJIciBDIWhWC6Gcz6Wc72kkVQMB9GPsLtaBYb52ebPXy5qYTQwAAAAAAAAEAAQAgAAQFCaAYdZL83oYmMQlEsYmAAxCsAbljBg0wM9LLoJWIsbkG5ChBTlinUsweiJNmYLqDyeP0vIlopduVWVvGnq+R6dzp4vv8ABXN7fzPqR6XJ2cmpbjQWmbOrbk6LNZqkypijBNEUY5dOIdHJqboQGYW8g2nB0eV6XFy65VocO00FFzeKmnNAApaskTEmkE1qJNBzdOJd5agqVkCuMo3zqJ1s8uepduPMboxjbMqLzMts7GAICnedoJhzaaZS7NaRv25atNCsIqLMufpyTmOis75TVSwrozNEQUhAACQABNANAAIChNAAdQHn9DAQYQAKDAKBF0Zm1Rz10Ucr7KOJ90VyPXWzLd6y8ho5MyypbLHcb1gViaLMNa56NpitZ41rznNxbRLc659eWmuXTvOPZzs9jNaaz4cel5Ob9Djz1ZXTxwd41Vbc9V3a8PSmybSRqjTOxxZHOtcTe+foMI6WZViy0aEcPfzc+nObT5vRm6QrTlQAholNVDQCEgBqJMEmHP0825SaszokubmlNpONVPXlM0iBonLXnrPfPUihRQgdxdgAE0oVSs77NOGefTu7/me7rz9Hn6vmtZ9fLzyPR3830JqFNy3TlNWnSVJJKSwtAyndHOulHMuoOQ65OU6ZOc3kxLDrrtXm9HLW+BV5tNa50dT5HXWcgda5Q6VzibLJLoQF1AmhGg7NTmrolZV5l6cpZvtyhpnbTI2VYl0ZaBYuLu5TxrjYeXTh15V08nZZry9hqL0PJ9FJ8b3PFWd+UzfU4urhs9XeNtTNayZ6xNejv53YmyHYgRoTULPTMz6OfcYIBoGgnj6+HG2sjzenRQFvN5rSKAAECAACxDKSYklFZRqi0xFFoYFQ3Kcs1HblAIESZY3JqJDEoaQVplVWQFEKKIed3nc53lOi1ky0zuWINe/h9KXPSqRTaLB0hoQwkpCGkSc02gaAJogTSgBoxceizWqlDExgNqmEAADUJtibFJFm67Q5beLrTCpudHlNU8CXryJs6HEJ0rNWa3hsubt6zlx+n5UvmaSaztthv148W+2VekuTvs5Ndcq6fH9bw5THXjzfY5doO/0vI9LedaCxR0SY7xRteVpSTV3FWE2HD11EWAE1IxBnydOC8w58nqBkowlTYSwQEhoVNTNmhkk2WE6nQcukulZWWkAiaskGmk51pPTGa1DKdkYRvJkaNMTUXJbIyejMTWTI1DJ6ejL40+/meDPtxZ4sezFz456yOf0MNJrV5uLIF0eTs1M2UIACkqSKLkByMmgABJwhi65VPHrVtibBNsBuVDQAABKCIE3nULapctqtOGdOPU3nHm1PRvzN7O++EO/LEs6I5mb1zdJ29eVy0SD8P2fDOfHp5+3Lfs870d4nHrwsOvj60pbZ1Xi+35svmc23jY37leXpHpen87tX13V8r7e8dm2JrOq05EryOT3Jrxn9LFef3/O8Ev2e3n9Vz0Th0DEikhBJGedZLnnph5+9mU5u75Z07FxqzrnlVz0RlNlrN2LRdmdc0bb51wzc9OUMhdXk871rnuXd4UdFcwdRzsqadmZpmCbTOdYM6oJGCVIQ2QrCTQMt5zXr8xRZHreZes+tPnxqd+XFlHUZbY3dZ2UIKEDJCyQbgLMwshlmYhpkzQzAvOiyQu56ePbJ7XLzPqo4666jkrqZy10i89ahDpQNC0QZWZTLuc2Z0eP14V5+V8nTHRMOzbJI6b5KrbTl2Oz0vO6I7647l6Xzhv5HfxWZ5b59+PP3c9J6WOlbzzbTUdUhU8XZyR85y7bY6RproYT2VLxdNYH0Hf8AKezvHtfML2dZ6uiKsYKw+Y+mrN+D9j0vmcdPt6+I949a/L5l9uPIWNe5KXfhil5+da4NCAQTRLQNCVlPGoOji5dsPZ45zvqx18nOuuujn9PkjHXm1nTTO87oSlNM0dDiwaYNA8Ng4ujDQ6nnSWpRaVELVmC6A5zoVYmsxnrNhNRQ51M53izIuRDcsFoSsEUEK0SrRE6ozdIQIaaAGJMEAIYe03Hl9FqVVOGW4SaGaNDMNDINTENVml0mFFxKKzpEZdEnBj6S1PNXpKvNPSE86/QacGvWzHpLUeqMjQOfj6ufeXrjfXjbNt5y6HZgbwN5sXn9Pz8vP0YVjfRfNZ1bcmp0zFWcxryZvZ9P877fTHVXPepq8mmnHj8hx7+5x45+f1VlhMdtcTPpd/nepn2+35zq6Y18z0fKl9gi/T5BNWNAE0pVz15HHv2141cPR7HLw4r9L5vt8/Xhy+ht4+Onp+Rz+T14ezp53pdOda8cL6r8m5fTXEzu149jYllNMGxOWejkOm0xklU5Ro5YxMABuQsgLSEg5+au+I6TnnrRhegSEy08g0eKNlmGhkGhDGIQTFSpELQMy1YgAANLzfk9PRfLUddcmpsRWjRFlEI0MwshjABME2QNNYmswTAmxEtATpWTVITIrovkmuxcMazWfF5qfQaef6HXlrcVvNXFFuAvMyPL83Di5792OHqWZ1yl015dJevXl11nbnjrsr1fK9CujTldz18Xj+Tx7b549nD1eodAnh+N9finL7XFPTHneR9D2Y1837XpZHp+L6npduPhdPN39OXPn6mUvm5dXDE1jjz658dzz64493PN83XybH1XkV6W+PgdHqa53gtb7efj0H0wXFS7CcTh0tfPz9Ql8u/RVnJ1xMehfEL1cb5jufm9NnUTdim5KIZoSyhAADAACzPzPW4DPv8AN6U7by1BopuSGIJDE2QyFaIndnKulLzG6MDYMF0SYG6MXoGZoFu78npzrR1OkKzRSySgGAADJIoktpwk1MMzqnjzs7l50HqnjKz2o8ZWezHlOz0c+N2dMYutZi7GgC81Zl8x9H85w9PLrnll73s/Dm8/p/R+Wep05ffny3pbx63HPhWcOefXz6c99EQaYNei+fSunXlE37uPSuzs8bl579rxuDPPXRRGN6vjs9jU605Z6+Sxy3LhrHLL6MeL2Hp+ll4u+fq+UY9eP1Ho/EfS89+pfjevGfy32vgr8r0enzN8fH73kZ3z749EvZOvTc8naa2bpr1ePnaoTTi7zpaaJaEDaJTm6ZjhroxXTPPWzKunezzV6gvl36MJydOXOepXiqz3DxtT1Hx72akOKEDz0K8quvhOrq8/VO546FiLGAEMITKjDpyHphqaVDKJCkiCaFzncOc2UZGoUqfn9E0KWiJrR80J2nnxZ6i8eLPZjxpr18/LE78+Mro5iErn0moKDa+fU0qKKAGkjSs7qyaBplNUim0eZ4PveBx9GK0vnuNa1VbVaqmjLi7M+nHk6MjXP0N/L11PQjHoWLvPGtZw3qo4lz7a8ziUvFm2Qybeiet2eLuepnx8a+qvGlPV15Pa1ji9Pqjrxfx/ufK46P2fDLPc193dPJ6urz8brDzdsddjk6F9fm+Q+p1jwn7hL5fd3115SUuvCQLnnqWKppXUuKaJqxMYgYECZUtsVJjcsYAAgAFlsJw8ns5nk367PL368a0183A9vn8wOjTgqz0Onh6E7HjsMCyc98Rg6SYYGmRtWGyMQNCGAISKSBiDmnjfPrvGZZSQAgTSikgECiENEylSzPPaSHQTSRtrhsU0CbZjtMm9ZuzQrrl5N+6sa5984l8j5f6P57n2zpNrfXnmOyI7Fy11owOl3PKuybObV5RtHPDW2eYbbLm3ymCMdSXaYUaCelJD0qseuaO183pbxzdfX4HXh73RnlZq8ew4vm/rfkeXfl9/w/c5devz48s9Tq7+zWOTo69sX5DL6Pz7uPa4ME9HPg601y3z7+aJa680JnNU1CqaVgRTmpW5a0Jg0DABoKEwaBiYAAAgAGeuRq5YxA0wSoMebuDycvbVeLt6kpzd/PVdxwFnScgnScl10ZVELTn0NyasEIZICYZ2pLEHjVBnWpNSilqyEWZhZlUtpASECErJZQMhUhIA6OPU6Xx5noPyZPYx8uz0vSjv57t455u0ZrUohWeL4freLy7usraOnDQ69eS46nzB1LmR1RzI3jCTVZOyzPbWOzi15xp653nrpoc66+nfPh09bfpz8d+wax5fV6W1z4ldXLZjwfO/ZzXqEEP0OP0bM/jfsPnMdfN9Xzezh6devz9Y9HbzehfT6vM6bjo55DyPP7t5rp7+Le56Jre48mPS8/vwzae8c1RQqmlbRDqXVAZrctaEwAGDBgAAMAAQAAAM9MjVoGCGIGAAnQAEsTi4/V515d4xl9Djw67NcO67PIPZUeLfq51zd3BzHtHhXZ69+N0J6Kx0KztUiQ8yLM2aztSbJYdBmtFGc6ZrZko1ObI7Tzs19WfIg9iPJUennwldMZVDnTY5X37Hl16+leT9Hn2897Z5Z51qsq1nSYCiA8LxfY8bHUeZG7wpei+Wl6XzNdzBJsYo2nKjSosfo8nd05cJV46rVdbOPZ2dXbhO+U9eOnPWtZ9NNBZwu3y3sfm8vH+pflv6lnW/Ry9Mq6q47OrzvR586+YrJ+b16bc1r29HD0Hdtx9EnQ8HW/O8ytORnp15zs7csLuYaPT5Oe4qxVLWhOGCLaajTlbTA16rOF+13WfO9XvGseVr6BZxHa687L1iXwOX6hR8oe952d8WW2MuoEAAAUAA0AAAgcsSZsMzQoYDEAAIagTKjHoDzMvXDxq9ZHmHcJwvmxmuxedlHsrw4X28/HceljyI2ylKS7Mjp0jiPS0PJv17PJ19JnFr0Mz0GNoptMbVnVWc8urmBNHmzQkqiWnheN7ni465KpgcsbkWyRLcMbmlLVFaRrXfnvn0459W+1T6HN075JSWVSveXpnJ1xgkeRwzXz3yfXxLp+o/ln6LHuZ9E510beZ6lzy675Hxq7/O83sKgzrfq4uhe/fi2jrMGXkZUPJm2vPrJvpl0XMTrl6/Hz1NWKotWDgNOiuPT2vSufnuz2zU83q3LCpdiVszduJYUAQAUAQgK5/I98l+Un6bycb88azoAAQNIGAAAACAACwaAAAABAAgAAQACIA+QfReN8p2aHnL1KPJ017zz9OtGF2lQIBAxEU5Y3LG5ZQmNyxtFVrjpLrMzz2POrNXFS0IKJdeZ4P0/wAvjcSKUAAToaYMIdq1d6dms8nb0304zcXrOl53qa78+iVWVVvWV3JLkEKJ8L3PmmvkcrmxfY/H+wfo/oeT6GdY128CemuLus8r5H734jl6ADj3vbC5evXk0Op8rNoyC6jUet9SZenh6G+XrcvYe3xeBxfWOX5Xu91HB060kW1TG7JbcJhQADThNA0FAAAhoIAAABMrk8f6KM35Y9fycdJTJUBQBAAAAAUAAIGhIxAAAACaAEjQlADy0LNaAE0vB38HfCBCTkEJRy4YgbQUSyhBTljcuqchWmVytQY03FGl5WUS1pIh/OfRZHx77OTO0VuvMev02eDfvaM+Ft686nn9HUbxGrLlaPezmvo0rlrqLMjq1TivrzrKt+uzzK9rVPHv0+Q4/i/q/kMb+RarUjSLP0zr+O+sxv178r0dTDrWMnV5HtJfh568PL7cqiTeufSN6neWNdtajqjVOnq5vT3zm+/Xv54tHbjSUlJMoBHUhRLG5Y3IUIG0ABQAAAJghkIYIYJMBALn6UvzvJ9ZwZ14RvhnQBKCBiBiQxCAFAAAACGkI0CgIBACDymjNAFE0ef6Hn+gJCgQhIUoIKEDcsoTGIqnLG5CmgqoYiHnTedZbVnasQtJCMQLg9BnB6V6zWZrypzmi3nJUWFF2Ty9Glmuk2VvhvYzTos5te7W55eqr1ChjEWLDolfnvjv0v5vnv8ALDv4TK5NTT77879XN/QNvH9DOvYPN7LO2+Pps4flPsfiuPfS+Lp5dujow6ZrbfLU3rHtuce/0+3t58OmZ7+eyDUalFNMbUpbiTRQGlZUaOQokKchZLKEUxAwAAAaBogAoAEqUIYJBU+f6Sl+Zw+s8/OvDW+GdAAAKCEYgAQxAADQhoAEAIJEHmpPNAFEB5/f5/eCFK5JBCGJRQmMTG5CnLGJ03LKEFOWZuXA4cu2mOmdUklokSnDKFoddrkzq+TSemGBrLZQN8lj9CNrMq16zi7r0HpjrZped3NuKsus6qyWUJU8tEfL/m/7Z89jX5NHocS5rq509D6T4raa+80+Q7svq+343c+s5+PVfmr7vnOXb3unyPex0Oz0/c3z4fZD0+WklrNSIaEKpsbTDMkZCLIk30x2KBIEo0rOi3FDaYNFNpgAAAAAAAnCAAAACRlSVJHn+mpfl8vqfMzryVcZ0AhiAABANIGIGgBOQBEEh54jNGhRNJwd/n96ktSpIEhDEQwRTkKchQgpyyhMbl0xBASDkja8bzrRSS04CnDL6+PvWc70TB1pvPOuhWY3VHPhn6lzp0PatCUaQwdzRemVXOlZOzSoepTVDbdSW0yWweT8R+mTm/h8fq3wnPp8zn38WmVbOxdnH7cZ+97/ANMfI+n9Mt45egkbl0yKSiaGCBOiWwcVgCUjEpXLR0a56WUmklOC6yo0vOi3NDaYNMAKAQxAxEMAEwQAAAmCGEqipnRLzeR7yj5JfScmNeMe2l8VexgecunCJGKgQCABIIDEkXiEZoACEvn9/B3DQoSEJCVoBiIpyFADcsbljcum5CnILPTEtIi7yrOtXk5dFmGiyzr0erl7Zaz0m50brpiCxM+Lr8k6+/Oa6DFS77chL3Xw6na8NtZqpEtljqb1mtIvUpqqbbRDZKtGfN1h8X8f+w4Y3+Ea/qPn510fW8fRrPTWVaw0hQdJLqqg0CHUhJQ2gGSRm0SmhJzLOuPSa3N2CYkRUKVAaXlRteNpq82U4CyWMQMQMAYgYgaAAAAAAEADBAgQUDCRizh0KPK4folHysfU5TXzK+g4Y8xaZyocmBIvIgzQQOXK8HfwdwIUEuQkSsljJZQgoRFCCiQpyVQgokLw2Ri7RNBmhWi466vWVy9ecd/RJjc7RrvLec6zrOPKc3XydJrGMm+/nqPSfDuvZUOXTTJ2devn0nobebvqdmmG+sXc6alOWWS7KchQmIbIVhn5HsfOY3e/Fpjfpb+b2bx11jrrNNFlk0U5KeYsnpLoaB5VkE1IhhOWmctdGWxdKrkTRnGmayAW4ous2avENXg02MGb1izZ5M0JZQmMQMQMAAAAAkGgAACVVCQ0lFKZKUg0naJiYeZ7Jm/KZ/T8k18yd5m+IIzoABCODu4O5RCglyJOVGgYgbljERQgoljEDcuqcMoTGJjqWlOWU5dPTPozeuHOda55z0xUTI+KdTeCRRckK1E0B6fT4u016xzdBYqR1OlX2cDs9XTy+nWO589az0HNR1PKrNXDqyQoQmHznt+Hx7O5rOr7OHq1nv15dunPd5VWjmrGiAuaikFVLzJQAICakyC83TSb1KqaQTREXCynI3FDBip6Gd6NIdhLoE2CbAGCaYNAxIpSDQqZLGIgEhpTVKUUpIaqiHoEOlSBAhQSKgkX89BcOoACJOHu4O4EJVLUJCUEFEhQgbljEDEDchQgollOWU4opy0pxVU5C+zj7c6emPRZC6TWePj9TxpV3dSOV6ozfRscWvqWeRn7Kjwcfe4868no3xO3o8Tpr1bw0ubclMCNunkLO3bk9DeZ0t6yVIUSi1nJxeZ1c/HtTuCN8NE7tMNd42vn01Oms7sBUMTsdATmwSoJGE53jLPRltF3NalMEE0RNwsKkJpl1DNHkjYyZo82mjhluKqnJDExsQ1KGpktQyiXVNVDSQJIJZSKoi24TAQKkAJNCVEQW6zNCPzUFx7OWgQHB28XYNCVTUwk5UEIxCsQMQjchTkWiQpyQ2im0FOWW4aW4dW5o33y2xrOsK1O2eLAN+HvTRLa3o9Dpi5joqrM4vQhaswx66k4Of1pXwOX6Tmzr5/L2OKay9PxsT6VeX6NnReOlkdHPJ7Wvi9ms+jOZrNREGs5Z5vIK8dHnUCubOrfn6N4dS7nocVqaPOkqp0ozcBSYAgBGeNzLprGg7mrltMJaFFJYm5JaBtAwAbY6hGpnolVLpuWWJQyUOZgYUDdVNMAShoQIQ2nTYwAgTKSYIaEUgTATQgI/NBHHsAgTRwdnH1lJpZTUSmlSZAhDaBiBiBiYAUxCUIKE1blpTlluKqqhnVtydOby7cnQPztt61rNmnTh0nu35fq6zUFXLFVMNEJd1JcpEbs4sfSnOvC4fqOfO/lJ+j4s3n7PLwPez8ztrr04+o7Ong23jsz5qsOd5Y001nRnc0XNHR08nTrGlhvFrMra8tk0RlTqaGJgCCLxjOo3lq1Wo2mjaYk0KalZGhIoksJbQgAaoqkJRLLJdUkhwTCpsbl1VQxpA0kAOE6YnSBoBoAAE1QIAQAgE1AIPzVC49mIBNHF1cnUWmllNRKaEClQAAAADQDQMTGIGBTctKE1bQluWVUuzTSbmsTfyjp7KY9GQaZWt65Evu6fOepvHoVFbxoKLNnJVuWjaYNOCNAxy6hfM876HDOvk+X6zz8a8jry5Jfc6fmLs+py8POvU2+d92XqZ0Wcp38hJe8T1znvGuea1NdMN021yqqiKq3LSmgbkpYaY5tbZ6pdTVjaYNAJoScimpUJRZIUSwpUK0ASx1NFAIS0AkMllVKLJC0UJjByFOAshFkOqICiSGhDJCkgBAACAPzQFx7MQCaOPow2NU5VJqJTQk5lE0AAAAADQMABMbRTAG00bTVuaS+uds6WdEvC+T19ZrVK1kkVedppWdRUaK09Xxs7Pqzj7t81WdVo5LNHLspxRQiBqlSck49EHD53t4Zvz/N7vHnfndHo9J53r+hprOG7reMuPv55edGEpClbebZ26eXprWUrG5ZpUUW5dlJIykedaa566zTBGAMTBNCVSRNysgCGAyhghOQpzRVpgiQkgppg0wUsqoZTzDQihiEYgYgYgYA0ACBiBpoAQCAEH//xAAyEAACAgEDAwQCAgICAwADAQEAAQIRAwQQEhMgMRQhME
+<meta name="theme-color" content="#ffffff">
+
+<title>SKIN MIMIC CARE | Professional Skincare House</title>
+<meta name="description" content="SKIN MIMIC CARE — Professional skincare inspired by biomimicry, skin barrier science and thoughtful formulation.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+ --black:#191919;
+ --grey:#777773;
+ --gold:#a99473;
+ --cream:#f5f5f2;
+ --line:#e7e6e1;
+ --serif:'Cormorant Garamond',serif;
+ --sans:'DM Sans',sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--black);background:white;line-height:1.7}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+.container{width:min(1160px,90%);margin:auto}
+.serif{font-family:var(--serif)}
+
+.eyebrow{
+ font-size:10px;
+ letter-spacing:3px;
+ color:var(--gold);
+ font-weight:600;
+ text-transform:uppercase;
+}
+
+.announcement{
+ background:#171717;
+ color:white;
+ text-align:center;
+ padding:9px;
+ font-size:9px;
+ letter-spacing:2.5px;
+}
+
+header{
+ position:sticky;
+ top:0;
+ z-index:100;
+ background:white;
+ border-bottom:1px solid var(--line);
+}
+
+.nav{
+ min-height:85px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:20px;
+}
+
+.logo{
+ text-align:center;
+ line-height:1;
+ flex-shrink:0;
+}
+
+.logo-main{
+ font:italic 500 32px var(--serif);
+ letter-spacing:-1px;
+}
+
+.logo-sub{
+ font:12px var(--serif);
+ letter-spacing:9px;
+ padding-left:9px;
+ margin-top:7px;
+}
+
+.navlinks{
+ display:flex;
+ align-items:center;
+ gap:24px;
+}
+
+.navlinks a{
+ font-size:10px;
+ letter-spacing:1px;
+}
+
+.navlinks a:hover{color:var(--gold)}
+
+.btn{
+ display:inline-block;
+ background:var(--black);
+ color:white;
+ border:1px solid var(--black);
+ padding:14px 23px;
+ font-size:10px;
+ letter-spacing:1.5px;
+ transition:.3s;
+ cursor:pointer;
+}
+
+.btn:hover{
+ background:white;
+ color:var(--black);
+}
+
+.btn-outline{
+ background:transparent;
+ color:var(--black);
+}
+
+.menu{
+ display:none;
+ background:none;
+ border:0;
+ font-size:25px;
+}
+
+/* IMAGE PLACEHOLDERS */
+
+.visual{
+ width:100%;
+ height:100%;
+ min-height:220px;
+ position:relative;
+ overflow:hidden;
+ background:linear-gradient(145deg,#e9e8e4,#d8d7d1);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+}
+
+.visual:before{
+ content:"";
+ position:absolute;
+ width:65%;
+ aspect-ratio:1;
+ border:1px solid #ffffff85;
+ border-radius:50%;
+}
+
+.visual:after{
+ content:"";
+ position:absolute;
+ width:45%;
+ aspect-ratio:1;
+ border:1px solid #ffffff85;
+ border-radius:50%;
+}
+
+.visual span{
+ position:relative;
+ z-index:2;
+ font-size:9px;
+ letter-spacing:3px;
+ color:#555;
+ text-align:center;
+ padding:15px;
+}
+
+/* HERO */
+
+.hero{
+ background:#f2f2ef;
+ min-height:610px;
+ display:flex;
+ align-items:center;
+}
+
+.hero-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:50px;
+ align-items:center;
+}
+
+.hero-copy{padding:65px 0}
+
+.hero h1{
+ font:400 clamp(55px,6vw,82px)/.98 var(--serif);
+ margin:23px 0;
+}
+
+.hero-copy p{
+ font-size:13px;
+ color:#6d6d69;
+ line-height:2;
+ max-width:460px;
+}
+
+.actions{
+ display:flex;
+ gap:12px;
+ flex-wrap:wrap;
+ margin-top:30px;
+}
+
+.hero-image{height:460px}
+
+.hero-image .visual{
+ background:linear-gradient(145deg,#e1dfd8,#c6c3bb);
+}
+
+.hero-image .visual span{
+ font:400 27px var(--serif);
+ letter-spacing:2px;
+ color:#46443f;
+}
+
+.image-caption{
+ margin-top:10px;
+ font-size:9px;
+ letter-spacing:2px;
+ color:#777;
+}
+
+/* INTRODUCTION */
+
+section{padding:95px 0}
+
+.split{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:65px;
+ align-items:center;
+}
+
+.intro-image{height:420px}
+
+.intro-image .visual{
+ background:linear-gradient(145deg,#e8e7e1,#d4d2cb);
+}
+
+.split-copy h2{
+ font:400 49px/1.1 var(--serif);
+ margin:16px 0 22px;
+}
+
+.split-copy p{
+ color:var(--grey);
+ font-size:13px;
+ line-height:2;
+ margin-bottom:16px;
+}
+
+.text-link{
+ display:inline-block;
+ font-size:10px;
+ letter-spacing:2px;
+ border-bottom:1px solid;
+ padding-bottom:6px;
+ margin-top:10px;
+}
+
+/* SCIENCE */
+
+.science{background:var(--cream)}
+
+.section-heading{
+ max-width:720px;
+ text-align:center;
+ margin:0 auto 48px;
+}
+
+.section-heading h2{
+ font:400 50px/1.1 var(--serif);
+ margin:15px 0;
+}
+
+.section-heading p{
+ font-size:13px;
+ color:var(--grey);
+ line-height:2;
+}
+
+.science-intro{
+ max-width:820px;
+ margin:auto;
+}
+
+.science-visual{
+ height:340px;
+ margin:35px 0;
+}
+
+.science-visual .visual{
+ background:linear-gradient(145deg,#deddd8,#c6c5c0);
+}
+
+.science-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:18px;
+}
+
+.science-card{
+ padding:30px;
+ background:white;
+ border:1px solid var(--line);
+}
+
+.science-card .number{
+ font:30px var(--serif);
+ color:var(--gold);
+}
+
+.science-card h3{
+ font:29px var(--serif);
+ margin:8px 0;
+}
+
+.science-card p{
+ font-size:12px;
+ color:var(--grey);
+ line-height:1.9;
+}
+
+/* PROFESSIONAL FORMULATIONS */
+
+.formulations{background:white}
+
+.formulation-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:55px;
+ align-items:center;
+}
+
+.formulation-image{height:420px}
+
+.formulation-image .visual{
+ background:linear-gradient(140deg,#e6e5e0,#c8c7c1);
+}
+
+.formulation-copy h2{
+ font:400 50px/1.05 var(--serif);
+ margin:15px 0 20px;
+}
+
+.formulation-copy p{
+ font-size:13px;
+ color:var(--grey);
+ line-height:2;
+ margin-bottom:17px;
+}
+
+/* TREATMENT PROTOCOLS */
+
+.protocols{background:var(--cream)}
+
+.protocol-grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:20px;
+}
+
+.protocol-card{
+ background:white;
+ padding:30px;
+ border:1px solid var(--line);
+}
+
+.protocol-card .number{
+ font:30px var(--serif);
+ color:var(--gold);
+}
+
+.protocol-card h3{
+ font:27px var(--serif);
+ margin:10px 0;
+}
+
+.protocol-card p{
+ font-size:12px;
+ color:var(--grey);
+ line-height:1.9;
+}
+
+/* MOOR MUD */
+
+.moor{
+ background:#222;
+ color:white;
+}
+
+.moor-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:60px;
+ align-items:center;
+}
+
+.moor-image{height:430px}
+
+.moor-image .visual{
+ background:linear-gradient(145deg,#66635c,#272522);
+}
+
+.moor-image .visual span{color:white}
+
+.moor-copy h2{
+ font:400 51px/1.05 var(--serif);
+ margin:15px 0 20px;
+}
+
+.moor-copy p{
+ color:#c6c6c1;
+ font-size:13px;
+ line-height:2;
+ margin-bottom:17px;
+}
+
+.moor .eyebrow{color:#c3ad8c}
+
+.moor .btn{
+ background:white;
+ color:#171717;
+ border-color:white;
+}
+
+.moor .btn:hover{
+ background:transparent;
+ color:white;
+}
+
+/* SALON PARTNERS */
+
+.partners{background:white}
+
+.partner-image{height:400px}
+
+.partner-image .visual{
+ background:linear-gradient(145deg,#e5e2dc,#c9c6bf);
+}
+
+.partner-copy h2{
+ font:400 49px/1.08 var(--serif);
+ margin:15px 0;
+}
+
+.partner-copy p{
+ font-size:13px;
+ color:var(--grey);
+ line-height:2;
+ margin-bottom:18px;
+}
+
+/* ABOUT */
+
+.about{
+ background:var(--cream);
+ text-align:center;
+}
+
+.about-inner{
+ max-width:780px;
+ margin:auto;
+}
+
+.about h2{
+ font:400 50px/1.1 var(--serif);
+ margin:16px 0;
+}
+
+.about p{
+ font-size:13px;
+ line-height:2;
+ color:var(--grey);
+}
+
+/* ENQUIRY */
+
+.enquiry{background:white}
+
+.enquiry-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:60px;
+}
+
+.enquiry-copy h2{
+ font:400 51px/1.08 var(--serif);
+ margin:15px 0;
+}
+
+.enquiry-copy p{
+ font-size:13px;
+ color:var(--grey);
+ line-height:2;
+}
+
+.form{
+ background:var(--cream);
+ padding:32px;
+}
+
+.field{margin-bottom:16px}
+
+.field label{
+ display:block;
+ font-size:9px;
+ letter-spacing:1.5px;
+ margin-bottom:7px;
+}
+
+.field input,.field textarea,.field select{
+ width:100%;
+ background:white;
+ border:1px solid #deded9;
+ padding:13px;
+ font-size:12px;
+ outline:none;
+}
+
+.field textarea{height:95px;resize:vertical}
+
+.field input:focus,.field textarea:focus{
+ border-color:#999;
+}
+
+.form-message{
+ font-size:11px;
+ margin-top:12px;
+}
+
+/* FOOTER */
+
+footer{
+ background:#171717;
+ color:white;
+ padding:60px 0 22px;
+}
+
+.footer-grid{
+ display:grid;
+ grid-template-columns:2fr 1fr 1fr;
+ gap:40px;
+}
+
+footer p{
+ font-size:11px;
+ color:#aaa;
+ margin-top:18px;
+ max-width:310px;
+}
+
+footer h4{
+ font-size:10px;
+ letter-spacing:2px;
+ margin-bottom:17px;
+}
+
+.footer-links{
+ display:flex;
+ flex-direction:column;
+ gap:12px;
+}
+
+.footer-links a{
+ font-size:11px;
+ color:#aaa;
+}
+
+.footer-links a:hover{color:white}
+
+.copyright{
+ border-top:1px solid #383838;
+ margin-top:40px;
+ padding-top:20px;
+ text-align:center;
+ color:#888;
+ font-size:10px;
+}
+
+.whatsapp{
+ position:fixed;
+ bottom:20px;
+ right:18px;
+ z-index:90;
+ background:#191919;
+ color:white;
+ padding:13px 18px;
+ border-radius:30px;
+ font-size:10px;
+ letter-spacing:1px;
+}
+
+@media(max-width:850px){
+
+ .menu{display:block}
+
+ .navlinks{
+  display:none;
+  position:absolute;
+  top:85px;
+  left:0;
+  width:100%;
+  padding:25px;
+  background:white;
+  flex-direction:column;
+  border-bottom:1px solid var(--line);
+ }
+
+ .navlinks.open{display:flex}
+
+ .hero-grid,.split,.formulation-grid,.moor-grid,
+ .enquiry-grid{
+  grid-template-columns:1fr;
+ }
+
+ .hero-copy{padding:65px 0 10px}
+ .hero-image{height:350px}
+ .intro-image{height:350px}
+ .formulation-image{height:350px}
+ .moor-image{height:350px}
+ .partner-image{height:320px}
+ .protocol-grid{grid-template-columns:1fr 1fr}
+ .footer-grid{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:520px){
+
+ section{padding:72px 0}
+
+ .hero h1{font-size:57px}
+
+ .hero-image{height:290px}
+ .intro-image{height:290px}
+ .science-visual{height:230px}
+ .formulation-image{height:290px}
+ .moor-image{height:290px}
+
+ .section-heading h2,
+ .split-copy h2,
+ .formulation-copy h2,
+ .moor-copy h2,
+ .partner-copy h2,
+ .about h2,
+ .enquiry-copy h2{
+  font-size:40px;
+ }
+
+ .science-grid,.protocol-grid,.footer-grid{
+  grid-template-columns:1fr;
+ }
+
+ .form{padding:22px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="announcement">
+PROFESSIONAL SKINCARE · INSPIRED BY SKIN SCIENCE
+</div>
+
+<header>
+<div class="container nav">
+
+<a href="#" class="logo">
+<div class="logo-main">Skin Mimic</div>
+<div class="logo-sub">CARE</div>
+</a>
+
+<button class="menu" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
+
+<nav class="navlinks">
+<a href="#introduction">INTRODUCTION</a>
+<a href="#science">OUR SCIENCE</a>
+<a href="#collection">COLLECTION</a>
+<a href="#protocols">TREATMENTS</a>
+<a href="#partner">PARTNERSHIP</a>
+</nav>
+
+<a href="#partner" class="btn">CONTACT US</a>
+
+</div>
+</header>
+
+<main>
+
+<!-- 01 BRAND INTRODUCTION -->
+
+<section class="hero" id="introduction">
+<div class="container hero-grid">
+
+<div class="hero-copy">
+<div class="eyebrow">INTRODUCING SKIN MIMIC CARE</div>
+
+<h1>The Science<br>of Skin.<br>The Art of Care.</h1>
+
+<p>
+A professional skincare house inspired by biomimicry,
+skin architecture and purposeful formulation.
+Discover a thoughtful approach to professional skincare
+where science meets the art of care.
+</p>
+
+<div class="actions">
+<a href="#collection" class="btn">EXPLORE COLLECTION</a>
+<a href="#partner" class="btn btn-outline">PARTNER WITH US</a>
+</div>
+</div>
+
+<div>
+<div class="hero-image">
+<div class="visual">
+<span>SKIN MIMIC CARE<br>PROFESSIONAL SKINCARE</span>
+</div>
+</div>
+<div class="image-caption">A NEW PERSPECTIVE ON PROFESSIONAL SKINCARE</div>
+</div>
+
+</div>
+</section>
+
+<!-- 02 BRAND STORY -->
+
+<section>
+<div class="container split">
+
+<div class="intro-image">
+<div class="visual">
+<span>THE ART OF FORMULATION</span>
+</div>
+</div>
+
+<div class="split-copy">
+<div class="eyebrow">OUR BRAND PHILOSOPHY</div>
+<h2>Inspired by Skin. Designed with Purpose.</h2>
+
+<p>
+The name SKIN MIMIC reflects our belief that
+understanding the natural architecture of skin
+is fundamental to thoughtful skincare development.
+</p>
+
+<p>
+Our approach draws inspiration from the skin's
+natural lipid structure, protective barrier and
+biological functions.
+</p>
+
+<p>
+We bring together ingredient knowledge,
+formulation thinking and professional skincare
+to build a purposeful collection.
+</p>
+
+<a href="#science" class="text-link">DISCOVER OUR PHILOSOPHY →</a>
+</div>
+
+</div>
+</section>
+
+<!-- 03 OUR SCIENCE -->
+
+<section class="science" id="science">
+<div class="container">
+
+<div class="section-heading">
+<div class="eyebrow">THE SCIENCE BEHIND SKIN MIMIC</div>
+<h2>Understanding the Architecture of Skin.</h2>
+<p>
+Our brand philosophy begins with understanding
+how the skin is structured, protected and maintained.
+</p>
+</div>
+
+<div class="science-intro">
+
+<div class="science-visual">
+<div class="visual">
+<span>SKIN BARRIER ARCHITECTURE<br>CERAMIDES · CHOLESTEROL · FATTY ACIDS</span>
+</div>
+</div>
+
+<div class="science-grid">
+
+<article class="science-card">
+<div class="number">01</div>
+<h3>What is Biomimicry?</h3>
+<p>
+Biomimicry takes inspiration from nature's structures
+and biological processes. In skincare, it can inform
+the development of ingredients and formulations
+that are designed with skin biology in mind.
+</p>
+</article>
+
+<article class="science-card">
+<div class="number">02</div>
+<h3>Understanding the Skin Barrier</h3>
+<p>
+The stratum corneum acts as an important protective
+barrier. Its structure helps regulate water loss
+and protects skin from external environmental factors.
+</p>
+</article>
+
+<article class="science-card">
+<div class="number">03</div>
+<h3>Skin Lipids & Barrier Architecture</h3>
+<p>
+Ceramides, cholesterol and free fatty acids are
+important components of the intercellular lipid
+matrix that supports the skin barrier.
+</p>
+</article>
+
+<article class="science-card">
+<div class="number">04</div>
+<h3>Formulation Philosophy</h3>
+<p>
+A considered approach to ingredient selection,
+formulation compatibility, product stability
+and intended cosmetic performance.
+</p>
+</article>
+
+<article class="science-card">
+<div class="number">05</div>
+<h3>Ingredient Research</h3>
+<p>
+Exploring the role of cosmetic ingredients,
+their functionality and their place in
+professional skincare formulations.
+</p>
+</article>
+
+<article class="science-card">
+<div class="number">06</div>
+<h3>Professional Skin Care</h3>
+<p>
+Connecting formulation knowledge with
+professional application, treatment experience
+and responsible product use.
+</p>
+</article>
+
+</div>
+</div>
+</div>
+</section>
+
+<!-- 04 PROFESSIONAL FORMULATIONS -->
+
+<section class="formulations" id="collection">
+<div class="container formulation-grid">
+
+<div class="formulation-image">
+<div class="visual">
+<span>PROFESSIONAL FORMULATION<br>IMAGE SPACE</span>
+</div>
+</div>
+
+<div class="formulation-copy">
+<div class="eyebrow">OUR COLLECTION</div>
+<h2>Professional Formulations. Purposeful Treatments.</h2>
+
+<p>
+We are building a professional skincare collection
+with an emphasis on thoughtful formulation,
+ingredient selection and treatment-oriented use.
+</p>
+
+<p>
+Our range is being developed for professional
+skincare environments, with product information
+and usage guidance to accompany individual launches.
+</p>
+
+<a href="#partner" class="text-link">ENQUIRE ABOUT OUR COLLECTION →</a>
+</div>
+
+</div>
+</section>
+
+<!-- 05 TREATMENT PROTOCOLS -->
+
+<section class="protocols" id="protocols">
+<div class="container">
+
+<div class="section-heading">
+<div class="eyebrow">PROFESSIONAL EXPERIENCE</div>
+<h2>Professional Formulations. Structured Treatments.</h2>
+<p>
+Professional skincare is not only about individual
+products. It is also about how formulations are
+incorporated into a considered treatment experience.
+</p>
+</div>
+
+<div class="protocol-grid">
+
+<article class="protocol-card">
+<div class="number">01</div>
+<h3>Product Selection</h3>
+<p>
+Understanding the intended cosmetic use,
+product characteristics and suitability
+for the professional treatment.
+</p>
+</article>
+
+<article class="protocol-card">
+<div class="number">02</div>
+<h3>Application Guidance</h3>
+<p>
+Clear product instructions, application
+sequence and usage guidance based on
+validated product information.
+</p>
+</article>
+
+<article class="protocol-card">
+<div class="number">03</div>
+<h3>Professional Aftercare</h3>
+<p>
+Appropriate aftercare information and
+responsible guidance to support the
+overall treatment experience.
+</p>
+</article>
+
+</div>
+
+</div>
+</section>
+
+<!-- 06 MOOR MUD -->
+
+<section class="moor">
+<div class="container moor-grid">
+
+<div class="moor-image">
+<div class="visual">
+<span>MOOR MUD<br>PRODUCT PHOTOGRAPHY</span>
+</div>
+</div>
+
+<div class="moor-copy">
+<div class="eyebrow">A PROFESSIONAL RITUAL CONCEPT</div>
+<h2>Discover the Moor Mud Experience.</h2>
+
+<p>
+A professional treatment concept inspired by
+Moor Mud, a naturally derived material sourced
+for our planned professional skincare collection.
+</p>
+
+<p>
+We are exploring its place in a premium salon
+treatment experience, with product information,
+validated application guidance and professional
+protocol development.
+</p>
+
+<a href="#partner" class="btn">PRODUCT ENQUIRY</a>
+</div>
+
+</div>
+</section>
+
+<!-- 07 SALON PARTNERS -->
+
+<section class="partners" id="partner">
+<div class="container split">
+
+<div class="partner-image">
+<div class="visual">
+<span>PROFESSIONAL SALON<br>ENVIRONMENT</span>
+</div>
+</div>
+
+<div class="partner-copy">
+<div class="eyebrow">FOR SKIN PROFESSIONALS</div>
+<h2>Become a SKIN MIMIC Salon Partner.</h2>
+
+<p>
+We are building relationships with salon owners,
+skin professionals, clinics and distributors who
+share an interest in thoughtful professional skincare.
+</p>
+
+<p>
+Connect with us to explore our brand, upcoming
+collection and potential business opportunities.
+</p>
+
+<a href="#enquiry" class="btn">BECOME A SALON PARTNER</a>
+</div>
+
+</div>
+</section>
+
+<!-- 08 ABOUT -->
+
+<section class="about" id="about">
+<div class="container about-inner">
+
+<div class="eyebrow">ABOUT SKIN MIMIC CARE</div>
+
+<h2>A Philosophy Built Around Understanding Skin.</h2>
+
+<p>
+SKIN MIMIC CARE is a professional skincare house
+inspired by biomimicry, skin barrier science and
+thoughtful formulation.
+<br><br>
+Our vision is to bring together ingredient knowledge,
+scientific understanding and professional skincare
+practices to develop purposeful formulations.
+<br><br>
+We believe that good skincare development begins
+with understanding the skin and respecting its
+natural structure and functions.
+</p>
+
+</div>
+</section>
+
+<!-- 09 BUSINESS ENQUIRY -->
+
+<section class="enquiry" id="enquiry">
+<div class="container enquiry-grid">
+
+<div class="enquiry-copy">
+<div class="eyebrow">LET'S BUILD A CONNECTION</div>
+
+<h2>Let's Grow Together.</h2>
+
+<p>
+Are you a salon owner, skincare professional,
+skin clinic or distributor?
+</p>
+
+<p>
+Connect with SKIN MIMIC CARE for professional
+product enquiries, collection information
+and business partnerships.
+</p>
+
+</div>
+
+<form class="form" id="enquiryForm">
+
+<div class="field">
+<label>SALON / BUSINESS NAME *</label>
+<input name="business" required placeholder="Business name">
+</div>
+
+<div class="field">
+<label>CONTACT PERSON *</label>
+<input name="person" required placeholder="Full name">
+</div>
+
+<div class="field">
+<label>MOBILE NUMBER *</label>
+<input name="phone" type="tel" required placeholder="Mobile number">
+</div>
+
+<div class="field">
+<label>EMAIL ADDRESS</label>
+<input name="email" type="email" placeholder="Business email">
+</div>
+
+<div class="field">
+<label>CITY *</label>
+<input name="city" required placeholder="Your city">
+</div>
+
+<div class="field">
+<label>BUSINESS TYPE</label>
+<select name="type">
+<option>Salon</option>
+<option>Skin Clinic</option>
+<option>Beauty Professional</option>
+<option>Distributor</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="field">
+<label>MESSAGE</label>
+<textarea name="message" placeholder="Tell us about your enquiry"></textarea>
+</div>
+
+<button class="btn" type="submit">SUBMIT ENQUIRY</button>
+
+<div class="form-message" id="formMessage"></div>
+
+</form>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container">
+
+<div class="footer-grid">
+
+<div>
+<div class="logo">
+<div class="logo-main">Skin Mimic</div>
